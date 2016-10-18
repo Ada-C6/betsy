@@ -57,13 +57,13 @@ class ProductsControllerTest < ActionController::TestCase
   #   assert_equal product, xxxxxx # Need to have number of products
   # end
 
-  test "will delete a product from the DB when all are purchased" do
-    product = products(:elephant)
-    assert_difference('Product.count', -1) do
-      delete :destroy, id: product
-    end
-
-    assert_redirected_to products_path
-  end
+  # test "will delete a product from the DB when all are purchased" do
+  #   product = products(:elephant)
+  #   assert_difference('Product.count', -1) do
+  #     delete :destroy, id: product
+  #   end
+  #
+  #   assert_redirected_to products_path
+  # end
 
 end
