@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :merchants, except: [:index]
+  resources :merchants, only: [:show]
 
   resources :reviews, except: [:index, :show]
 
