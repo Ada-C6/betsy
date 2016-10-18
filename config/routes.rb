@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+
+  root 'guests#index'
+
+  get "/auth/:provider/callback" =>  "sessions#create" # called from the provider (github) OAuth strategy and not by a link the user clicks on
+  get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
+  get "/sessions", to: "sessions#index", as: "sessions"
+  delete "/sessions", to: "sessions#destroy"
+
+  resources :products
+
+  resources :merchants, except: [:index]
+
+  resources :reviews, except: [:index, :show]
+
+  resources :orderitems, except: [:index, :show]
+
+  resources :orders, except: [:index]
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
