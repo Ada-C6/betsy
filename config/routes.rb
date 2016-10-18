@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
 # We're going to talk about this more if any of us needs to edit this. :)
     resources :orders, only: [:new, :create, :show] do
-        resources :order_items, except [:index, :show]
+        resources :order_items, except: [:index, :show]
     end
 
 # Sessions routes - can be further flushed out...
