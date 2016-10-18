@@ -3,16 +3,19 @@
 elephant:
   name: Elephant
   price: 100200
+  inventory: 2
 
 monkey:
   name: Monkey
   price: 10290
+  inventory: 3
 
 kuakka:
   name: Kuakka
   price: 10340
+  inventory: 43
 
 snake:
   name: Snake
   price: 20000
-  merchant_id: 1
+  inventory: 1
