@@ -1,16 +1,12 @@
 class MerchantsController < GuestsController
-  before_action :find_merchant, only: [:edit, :update]
 
   def index
     @merchant = Merchant.all
   end
 
   def show
-    begin
-      @merchant = Merchant.find(params[:id])
-    rescue StandardError => err
-      render "/errors/not_found", status: :not_found
-    end
+    @merchant = Merchant.find(params[:id])
+    @products = Product.where(merchant_id: @merchant.id)
   end
 
   def new
@@ -27,28 +23,10 @@ class MerchantsController < GuestsController
     end
   end
 
-  def edit; end
-
-  def update
-    if @merchant.update(merchant_params)
-      redirect_to merchant_path
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @merchant = Merchant.find(params[:id]).destroy
-    redirect_to merchan_path
-  end
-
   private
 
   def merchant_params
     params.require(:merchant).permit(:username, :email)
   end
 
-  def find_merchant
-    @merchant = Merchant.find(params[:id])
-  end
 end
