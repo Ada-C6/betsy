@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # Need to intialize number of products to 1 upon creation
     if @product.save
       redirect_to product_path(@product)
     else
@@ -45,7 +44,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price) #need variable for number of products
+    params.require(:product).permit(:name, :price, :inventory)
   end
 
   def find_product

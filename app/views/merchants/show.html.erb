@@ -1,0 +1,5 @@
+<h1><%= @merchant.username %></h1>
+
+<% @products.each do |p| %>
+  <p>Name: <%= p.name %>, $<%= p.price %></p>
+<% end %>
