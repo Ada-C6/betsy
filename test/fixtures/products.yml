@@ -1,3 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+elephant:
+  name: Elephant
+  price: 100200
+
+monkey:
+  name: Monkey
+  price: 10290
+
+kuakka:
+  name: Kuakka
+  price: 10340
+
 snake:
   name: Snake
   price: 20000
