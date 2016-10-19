@@ -8,7 +8,6 @@ class ProductsControllerTest < ActionController::TestCase
     get :index
     assert_template :index
     assert_response :success
-
   end
 
   test "show should a specific product" do
