@@ -66,4 +66,8 @@ class ProductsControllerTest < ActionController::TestCase
   #   assert_redirected_to products_path
   # end
 
+  # test "will throw an error if products ordered are greater than inventory" do
+  #   To be done
+  # end
+
 end
