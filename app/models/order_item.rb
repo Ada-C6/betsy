@@ -5,7 +5,7 @@ class OrderItem < ActiveRecord::Base
     # Also, need to confirm what the quantity/stock variable is in the Product model and update the last word of this commented out code in line 3.
     validates :product_id, presence: true
     validates :order_id, presence: true
-    validates :shipped?, presence: true
+    validates :shipped?, inclusion: { in: [true, false] }
 
     belongs_to :product
     belongs_to :order
