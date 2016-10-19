@@ -1,14 +1,35 @@
 require 'test_helper'
 
 class ReviewTest < ActiveSupport::TestCase
-    # test "Can create an album with only a name provided" do
-    #     assert albums(:valid_data).valid?
-    # end
-    #
-    # test "Cannot create an album without a name" do
-    #     album = Album.new
-    #     assert_not album.valid?
-    # end
+    test "Creating a new review will instantiate rating as nil" do
+        r = Review.new
+        assert_equal(nil, r.rating)
+    end
+
+    test "Cannot save a nil rating to the database" do
+        no_rating = Review.new(description: "whatever", product_id: 123)
+        assert_not no_rating.valid?
+    end
+
+    test "Can create reviews with ratings between 1 and 5" do
+        assert reviews(:one_star).valid?
+        assert reviews(:four_star).valid?
+        assert reviews(:five_star).valid?
+    end
+
+    test "Can only create reviews with integer ratings" do
+        float_rating = Review.new(rating: 3.2, description: "whatever", product_id: 123)
+        string_rating = Review.new(rating: "excellent", description: "whatever", product_id: 123)
+        assert_not float_rating.valid?
+        assert_not string_rating.valid?
+    end
+
+    test "Cannot create reviews with ratings less than 1 or greater than 5" do
+        too_low_rating = Review.new(rating: 0, description: "whatever", product_id: 123)
+        too_high_rating = Review.new(rating: 6, description: "whatever", product_id: 123)
+        assert_not too_low_rating.valid?
+        assert_not too_high_rating.valid?
+    end
     #
     # test "Create two albums with different titles" do
     #     album1 = albums(:valid_data)
@@ -31,11 +52,6 @@ class ReviewTest < ActiveSupport::TestCase
     # test "Cannot create an album with a description 810 characters long" do
     #     album_too_long = Album.new(name: "Too Long", description: "Here is a description of Book Title #12. It is a great book, worth reading and possibly adding to your personal library. You will not be disappointed. Check this book out from your local library so you can form your own opinion and upvote it here. klsjdf lkajsf jej faiosejf esj oiasejf lsdjf ;oasjef ojsdfkl jasefj sodf lsdfj oisejf SDJf lKSDJFo iejw lKDSFJ l;SEF SIefj l;KSZDf os;IF ;KLSDJf l;SJf;ijsefl j SDKL:fj es f;oSJDF l;kSDJFio SJefm LS:Dfj ;djf ;LKSDFj ;Ldjs ;ILEJSF l;SDJF SDIJfp oSfj ko;SDfopPSEfj PAEIOSfj lsidfj IOSEfj KL o;iSDfj efj DFIJS IOSEf oIAEJSf oDJS fo;IJSDF ;oIJDF ioSdfj dios;f jo;ISJf io;SDFJ ;SDKOFj ;Sdfj ;Jf :IOSDFJ ads o;iASdfj AKLSdj O:IADJ ;AOId oSDFJ S:OIDF :OSjm S:DFJ oiDJSf L:DFSZ O:IDSZJF ;oISJDf ;OSDFJ L:SDIFj L:SDKFJ O:ISDJf ;DFJS ;sIOJF ;oDFJS IO:SEfjDJSF ;SDFJ ioSfjUH")
     #     assert_not(album_too_long.valid?)
-    # end
-    #
-    # test "Creating a new album will instantiate vote count at zero" do
-    #     b = Album.new
-    #     assert_equal(0, b.votes)
     # end
     #
     # test "Calling upvote_one increments votes by 1 correctly when starting with a new album" do
