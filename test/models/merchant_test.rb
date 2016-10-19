@@ -17,7 +17,7 @@ class MerchantTest < ActiveSupport::TestCase
   end
 
   test "Should not create a merchant with the same username or email as another" do
-    m1 = Merchant.create!(username: "foo", email: "foo@hotmail.com")
+    Merchant.create!(username: "foo", email: "foo@hotmail.com")
     m2 = Merchant.new(username: "foo", email: "other@hotmail.com")
     m3 = Merchant.new(username: "other", email: "foo@hotmail.com")
     assert_not m2.valid?

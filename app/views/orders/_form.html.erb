@@ -1,0 +1,48 @@
+<% if @order.errors.any? %>
+  <ul class="errors">
+    <% @order.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<article>
+  <%= form_for @order do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br />
+    <%= f.label "Email address" %>
+    <%= f.text_field :email %>
+    <br />
+    <%= f.label "Street address" %>
+    <%= f.text_field :street_address %>
+    <br / />
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <br />
+    <%= f.label :state %>
+    <%= select_tag :state, options_for_select(us_states) %>
+    <br />
+    <%= f.label "Mailing zip code" %>
+    <%= f.text_field :mailing_zip %>
+    <br />
+    <%= f.label "Credit card number" %>
+    <%= f.text_field :cc_number %>
+    <br />
+    <%= f.label "Expiration month" %>
+    <%= select_tag :cc_exp_month, options_for_select(months_in_year) %>
+    <br />
+    <%= f.label "Expiration year" %>
+    <%= select_tag :cc_exp_year, options_for_select(expiration_year) %>
+    <br />
+    <%= f.label "Credit card security code" %>
+    <%= f.text_field :cc_sec_code %>
+    <br />
+    <%= f.label "Billing zip code" %>
+    <%= f.text_field :billing_zip %>
+    <br />
+    <%= f.submit %>
+  <% end %>
+</article>

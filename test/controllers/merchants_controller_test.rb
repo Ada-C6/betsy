@@ -2,45 +2,15 @@ require 'test_helper'
 
 class MerchantsControllerTest < ActionController::TestCase
 
-    # test "should get the new form" do
-    #   get :new
+    # test "should display all merchants" do
+    #   get :index
     #   assert_response :success
-    #   assert_template :new
-    # end
-    #
-    # test "should get the new form for a new merchant" do
-    #   get :new
-    #   assert_response :success
-    #   assert_template :new
-    #
-    #   merchant = assigns(:merchant)
-    #   assert_not_nil merchant
-    #   assert_nil merchant.id
+    #   assert_template 'merchants/index'
     # end
 
-    # test "should show 404 error for invalid merchant id" do
-    #   product_id = 1346134598    # Bogus ID shouldn't be in DB, otherwise test is invalid
-    #   assert_raises StandardError do
-    #     Merchant.find(product_id)
-    #   end
-    #
-    #   get :show, { id: product_id }
-    #   assert_response :not_found
-    # end
-
-    # # test "purchasing a product will decrease its number by one" do
-    # #   post :purchase, id: products(:elephant).id
-    # #   product = assigns(:product)
-    # #   assert_equal product, xxxxxx # Need to have number of products
-    # # end
-    #
-    # test "will delete a product from the DB when all are purchased" do
-    #   product = products(:elephant)
-    #   assert_difference('Product.count', -1) do
-    #     delete :destroy, id: product
-    #   end
-    #
-    #   assert_redirected_to products_path
-    # end
+    test "should show a merchant's page" do
+      get :show, { id: 1 }
+      assert_response :success
+    end
 
 end
