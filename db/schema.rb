@@ -24,4 +24,6 @@ ActiveRecord::Schema.define(version: 20161019045258) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"
+
 end

@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :stock
       t.integer :price
       t.string :photo_url
-      t.belongs_to :merchant
+      t.belongs_to :merchant, index: true
 
       t.timestamps null: false
     end
