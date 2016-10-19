@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_name: MyString
+  product_unit_price: 1
+  product_description: MyString
+  product_quantity: 1
+  merchant_last_name: MyString
+  merchant_first_name: MyString
+  merchant_email: MyString
+
+two:
+  product_name: MyString
+  product_unit_price: 1
+  product_description: MyString
+  product_quantity: 1
+  merchant_last_name: MyString
+  merchant_first_name: MyString
+  merchant_email: MyString
