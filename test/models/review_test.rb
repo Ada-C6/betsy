@@ -30,6 +30,18 @@ class ReviewTest < ActiveSupport::TestCase
         assert_not too_low_rating.valid?
         assert_not too_high_rating.valid?
     end
+
+    test "Review creation requires a description [string]" do
+        no_description = Review.new(rating: 0, product_id: 123)
+        assert_not no_description.valid?
+        assert reviews(:one_star).valid?
+    end
+
+    test "Can only create reviews with descriptions 400 characters or less" do
+        assert reviews(:character_400).valid?
+        character_401 = Review.new(rating: 0, product_id: 123, description: "Here is a review of a book for sale. It is a great book, worth reading and possibly adding to your personal library. You will not be disappointed. Check this book out from your local library so you can form your own opinion and upvote it here. klsfjshrjdf lkajsf jej faiosejf esj oiasejf lsdjf ;oasjef ojsdfkl jasefj sodf lsdfj oisejf SDJf lKSDJFo iejw lKDSFJ l;SEF SIefj l;KSZDf sd eddjjrhdm fydowkf!")
+        assert_not character_401.valid?
+    end
     #
     # test "Create two albums with different titles" do
     #     album1 = albums(:valid_data)
