@@ -1,6 +1,13 @@
 class SessionsController < ApplicationController
 
-  def index; end
+  def index
+    if session[:user_id].nil?
+        redirect_to login_failure_path
+        return
+      else
+        @merchant = Merchant.find(session[:user_id])
+      end
+  end
 
   def create
     auth_hash = request.env['omniauth.auth']
@@ -19,5 +26,9 @@ class SessionsController < ApplicationController
     redirect_to sessions_path
   end
 
+  def destroy
+    session.delete(:user_id)
+    redirect_to root_path
+  end
 
 end
