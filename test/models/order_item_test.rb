@@ -50,6 +50,6 @@ class OrderItemTest < ActiveSupport::TestCase
     end
 end
 
-    # note: have not written any tests on the belongs_to relationship, as we haven't set-up the product_id in the controller using params yet. I think this relationship can be tested in the controller instead of the model tests?
+    # note: have not written any tests on the belongs_to relationships, as we haven't set-up the product_id or order_id in the controller using params yet. I think these relationships can be tested in the controller instead of the model tests?
 
     # fyi from earlier project: on rails console, object.new goes straight to the model, bypassing the controller completely.
