@@ -42,62 +42,14 @@ class ReviewTest < ActiveSupport::TestCase
         character_401 = Review.new(rating: 0, product_id: 123, description: "Here is a review of a book for sale. It is a great book, worth reading and possibly adding to your personal library. You will not be disappointed. Check this book out from your local library so you can form your own opinion and upvote it here. klsfjshrjdf lkajsf jej faiosejf esj oiasejf lsdjf ;oasjef ojsdfkl jasefj sodf lsdfj oisejf SDJf lKSDJFo iejw lKDSFJ l;SEF SIefj l;KSZDf sd eddjjrhdm fydowkf!")
         assert_not character_401.valid?
     end
-    #
-    # test "Create two albums with different titles" do
-    #     album1 = albums(:valid_data)
-    #     album2 = albums(:another_album)
-    #     assert album2.valid?
-    # end
-    #
-    # test "Cannot create two albums with the same title" do
-    #     album1 = albums(:valid_data)
-    #     album2 = Album.new(name: "Hello")
-    #     assert_not(album2.valid?)
-    # end
-    #
-    # test "Can create an album with a description 808 characters long" do
-    #     album1 = albums(:valid_data)
-    #     album2 = Album.new(name: "Hello")
-    #     assert_not(album2.valid?)
-    # end
-    #
-    # test "Cannot create an album with a description 810 characters long" do
-    #     album_too_long = Album.new(name: "Too Long", description: "Here is a description of Book Title #12. It is a great book, worth reading and possibly adding to your personal library. You will not be disappointed. Check this book out from your local library so you can form your own opinion and upvote it here. klsjdf lkajsf jej faiosejf esj oiasejf lsdjf ;oasjef ojsdfkl jasefj sodf lsdfj oisejf SDJf lKSDJFo iejw lKDSFJ l;SEF SIefj l;KSZDf os;IF ;KLSDJf l;SJf;ijsefl j SDKL:fj es f;oSJDF l;kSDJFio SJefm LS:Dfj ;djf ;LKSDFj ;Ldjs ;ILEJSF l;SDJF SDIJfp oSfj ko;SDfopPSEfj PAEIOSfj lsidfj IOSEfj KL o;iSDfj efj DFIJS IOSEf oIAEJSf oDJS fo;IJSDF ;oIJDF ioSdfj dios;f jo;ISJf io;SDFJ ;SDKOFj ;Sdfj ;Jf :IOSDFJ ads o;iASdfj AKLSdj O:IADJ ;AOId oSDFJ S:OIDF :OSjm S:DFJ oiDJSf L:DFSZ O:IDSZJF ;oISJDf ;OSDFJ L:SDIFj L:SDKFJ O:ISDJf ;DFJS ;sIOJF ;oDFJS IO:SEfjDJSF ;SDFJ ioSfjUH")
-    #     assert_not(album_too_long.valid?)
-    # end
-    #
-    # test "Calling upvote_one increments votes by 1 correctly when starting with a new album" do
-    #     b = Album.new
-    #     b.upvote_one
-    #     assert_equal(1, b.votes)
-    # end
-    #
-    # test "Calling upvote_one increments votes by 1 correctly with any integer higher than zero" do
-    #     b = Album.new
-    #     b.votes = 5
-    #     b.upvote_one
-    #     assert_equal(6, b.votes)
-    # end
-    #
-    # test "Cannot set votes to a negative integer" do
-    #     b = Album.new(name: "yellow")
-    #     b.votes = -4
-    #     assert(b.invalid?)
-    #     assert_includes(b.errors, :votes)
-    # end
-    #
-    # test "Votes cannot be set to nil" do
-    #     b = Album.new(name: "yellow")
-    #     b.votes = nil
-    #     assert(b.invalid?)
-    #     assert_includes(b.errors, :votes)
-    # end
+
+    test "Review creation requires a product_id [integer]" do
+        no_product_id = Review.new(rating: 0, description: "hello")
+        assert_not no_product_id.valid?
+        assert reviews(:one_star).valid?
+    end
 end
 
-# on rails console, object.new goes straight to the model, bypassing the controller completely.
+# note: have not written any tests on the belongs_to relationship, as we haven't set-up the product_id in the controller using params yet. I think this relationship can be tested in the controller instead of the model tests?
 
-# Reviews:
-# Rating: integer default to 1
-# Description: string
-# Product_ID
-# (belongs to a product)
+# fyi from earlier project: on rails console, object.new goes straight to the model, bypassing the controller completely.

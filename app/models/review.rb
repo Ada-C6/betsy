@@ -5,10 +5,3 @@ class Review < ActiveRecord::Base
 
     belongs_to :product
 end
-
-
-# Reviews:
-# Rating: integer default to 1
-# Description: string
-# Product_ID
-# (belongs to a product)
