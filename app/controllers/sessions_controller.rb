@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
+  def index; end
 
-  def create # TODO: Need to add a 'uid' column to the Merchant db in order to create a session for a merchant! Look at line 8
+  def create
     auth_hash = request.env['omniauth.auth']
     redirect_to login_failure_path if auth_hash['uid'].nil?
 
