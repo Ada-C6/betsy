@@ -53,11 +53,18 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "zip code must be 5 digits long" do
-
+    order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
+    cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
+    assert order.valid?
   end
 
   test "zip code cannot be longer or shorter than 5 digits" do
-
+    order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "9810", cc_number: "1223456743254456", cc_exp_month: 5,
+    cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
+    assert_not order.valid?
+    assert_includes order.errors, :mailing_zip
   end
 
   test "email address must be in a valid format" do
@@ -79,20 +86,38 @@ class OrderTest < ActiveSupport::TestCase
   # algorithm here. In this world, AmEx is 15 and the rest are 16 digits long, so that's
   # what we're testing
   test "credit card number must be 15 to 16 digits long" do
-
+    order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
+    cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
+    assert order.valid?
   end
 
   test "credit card number cannot be invalid" do
-
+    order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1456743254456", cc_exp_month: 5,
+    cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
+    assert_not order.valid?
+    assert_includes order.errors, :cc_number
   end
 
   # The security code for AmEx is 4 digits, whereas other cards are only 3
   test "credit card security number must be 3 to 4 digits long" do
+    order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
+    cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
+    assert order.valid?
+  end
 
+  test "credit card security number cannot be anything other than 3 or 4 digits long" do
+    order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
+    cc_exp_year: 2017, cc_sec_code: 32348, billing_zip: "98102")
+    assert_not order.valid?
+    assert_includes order.errors, :cc_sec_code
   end
 
   # AmEx is 15 digits with 4-digit security, whereas other cards are 16 digits with 3-digit security
-  test "credit card number.length plus security number.length must total 19" do
-
-  end
+  # test "credit card number.length plus security number.length must total 19" do
+  #   Need to figure out how to do this
+  # end
 end

@@ -24,6 +24,16 @@ class OrdersControllerTest < ActionController::TestCase
     assert_template :edit
   end
 
+  # test "should create new order" do
+  #   order = Order.new(name: "Igor Smith", street_address: "38 Main St",
+  #   city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
+  #   cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
+  #
+  #   order = assigns(:order)
+  #   assert_not_nil order
+  #   assert_nil order.id
+  # end
+
   test "should update order" do
     order = orders(:buffy)
     patch :update, id: order, order: { name: order.name, email: order.email, street_address: order.street_address, city: order.city,
