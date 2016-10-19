@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+product1:
+  name: sunscreen
+  description: SPF10000
+  price: 99.99
+  photo_url: https://unsplash.it/200
+  inventory: 20
+  category: personal_care
+  user_id: 1
+
+product2:
+  name: coffin
+  description: softest conforty bed...
+  price: 9.99
+  photo_url: https://unsplash.it/200
+  inventory: 2
+  category: Houseware
+  user_id: 2
+
+product3:
+  name: cape
+  description: why I am so handsome.
+  price: 229.99
+  photo_url: https://unsplash.it/200
+  inventory: 1
+  category: clothing
+  user_id: 3
+
+product4:
+  name:
+  description: I treat them as my family.
+  price: 9.99
+  photo_url: https://unsplash.it/200
+  inventory: 1000
+  category:  minion
+  user_id: 4

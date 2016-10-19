@@ -1,0 +1,9 @@
+<h1> @product.name </h1>
+<%= image_tag(@product.url), :class => "class_name" %>
+Price: <%= @product.price %>
+Description: <%= @product.description %>
+Inventory: <%= @product.inventory %>
+Category: <%= @product.category %>
+Seller: <%= link_to @seller.name, by_seller_products_path %>
+Average rating: <%= @product.average_rating %>
+review: <%= @review.description %>
