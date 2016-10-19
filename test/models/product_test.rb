@@ -57,7 +57,7 @@ class ProductTest < ActiveSupport::TestCase
 
   # test "Product can be assigned a merchant id" do
   #   product = Product.create!(name: "mouse hat", price: 1240)
-  #   merchant = Merchant.create!(username: "testing", email: "test@test.com")
+  #   merchant = Merchant.create!(user_name: "testing", email: "test@test.com")
   #
   #   product.merchant = merchant
   #   assert product.save
