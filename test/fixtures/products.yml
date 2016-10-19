@@ -4,6 +4,7 @@ cat_suit:
   description: your cat will look dapper in this one-piece suit!
   stock: 4
   photo_url: http://placekitten.com/200/300
+
 hamster_monocle:
   name: hamster monocle
   price: 500
