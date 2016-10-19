@@ -2,8 +2,8 @@
 
 <%@product.each do |product|%>
 <section>
-  <%= image_tag "#{product.url}"%>
   <%= product.name %>
+  <%= image_tag "#{product.photo_url}"%>
   <%= product.description %>
 </section>
 <%end%>
