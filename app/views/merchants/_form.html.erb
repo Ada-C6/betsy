@@ -1,0 +1,21 @@
+<% if @merchant.errors.any? %>
+  <ul class="errors">
+    <% @merchant.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@merchant] do |f| %>
+  <%= f.label "Username" %>
+  <%= f.text_field :username %>
+  <%= f.label "Email" %>
+  <%= f.text_field :email %>
+  <%= f.label "Password" %>
+  <%= f.password_field :password %>
+  <%= f.label "Confirm Password" %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit %>
+<% end %>

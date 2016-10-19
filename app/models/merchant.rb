@@ -3,5 +3,4 @@ class Merchant < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  # make email have format requirements
 end

@@ -4,11 +4,6 @@ class MerchantsController < GuestsController
     @merchant = Merchant.all
   end
 
-  def show
-    @merchant = Merchant.find(params[:id])
-    @products = Product.where(merchant_id: @merchant.id)
-  end
-
   def new
     @merchant = Merchant.new
   end
@@ -21,6 +16,11 @@ class MerchantsController < GuestsController
     else
       render :new
     end
+  end
+
+  def show
+    @merchant = Merchant.find(params[:id])
+    @products = Product.where(merchant_id: @merchant.id)
   end
 
   private
