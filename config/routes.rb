@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-    root 'ffc#index'
+    root 'home#index'
 
     resources :merchants, only: [:show] do
         resources :products
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 # Sessions routes - can be further flushed out...
     get '/auth/:provider/callback' =>  'sessions#create'
 
-    # get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
+    get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
 
     get '/sessions', to: 'sessions#index', as: 'sessions'
 
