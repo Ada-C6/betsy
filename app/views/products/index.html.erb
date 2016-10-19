@@ -1,1 +1,9 @@
 <h1>All Products Here</h1>
+
+<%@product.each do |product|%>
+<section>
+  <%= image_tag "#{product.url}"%>
+  <%= product.name %>
+  <%= product.description %>
+</section>
+<%end%>
