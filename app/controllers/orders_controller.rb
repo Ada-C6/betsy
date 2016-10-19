@@ -29,8 +29,8 @@ class OrdersController < ApplicationController
   def edit; end
 
   def update
-    if @order.update(order_params)
-      redirect_to update_path
+    if @order.update(post_params)
+      redirect_to order_path
     else
       render :edit
     end
@@ -43,8 +43,8 @@ class OrdersController < ApplicationController
 
   private
 
-  def product_params
-    params.require(:order).permit(:name, :email, :street_address, :city, :state, :zip, :cc_number, :cc_exp_month, :cc_exp_year, :cc_sec_code, :billing_zip)
+  def post_params
+    params.require(:order).permit(:name, :email, :street_address, :city, :state, :mailing_zip, :cc_number, :cc_exp_month, :cc_exp_year, :cc_sec_code, :billing_zip)
   end
 
   def find_order
