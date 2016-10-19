@@ -1,0 +1,58 @@
+<h2><%= @merchant[:name] %></h2>
+<p></p>
+
+<ul>
+  <li><%= button_to 'Add a Product', products_new_path(params[:id]), :class => "button", method: :get %></li>
+  <li><%= button_to 'View Products', products_show_path(params[:id]), :class => "button", method: :get %></li>
+  <li><%= button_to 'Add a Category', categories_new_path(params[:id]), :class => "button", method: :get %></li>
+</ul>
+
+<article>
+  <table>
+    <tbody>
+      <tr>
+        <th>Order Number</th>
+        <th>Items</th>
+        <th>Order Status</th>
+      </tr>
+
+      <% @merchant.orders.each do |order| %>
+        <tr>
+          <th><%= link_to(order.id, orders_show_path(order.id)) %></th>
+          <th><%#= link_to(Product.find(order.product_ids).name, products_show_path(product.id)) %></th>
+          <th><%#= order.status %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>
+
+<container>
+  <h1>Summary</h1>
+  <div>
+    <h2>Revenue</h2>
+    <p>Total Revenue for Pending Orders: </p>
+    <p>$</p>
+    <p>Total Revenue for Paid Orders:</p>
+    <p>$</p>
+    <p>Total Revenue for Cancelled Orders:</p>
+    <p>$</p>
+    <p>Total Revenue for Completed Orders:</p>
+    <p>$</p>
+    <p>Total Net Revenue:</p>
+    <p>$</p>
+  </div>
+  <div>
+    <h2>Orders</h2>
+    <p>Total Pending Orders</p>
+    <p></p>
+    <p>Total Cancelled Orders:</p>
+    <p></p>
+    <p>Total Paid Orders:</p>
+    <p></p>
+    <p>Total Completed Orders:</p>
+    <p></p>
+    <p>Total Orders:</p>
+    <p></p>
+  </div>
+</container>

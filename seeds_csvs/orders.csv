@@ -1,0 +1,11 @@
+id,total_amount,guest_id,merchant_id,card_name,card_number,card_exp,card_cvv,billing_zip,shipping_street,shipping_city,shipping_state,shipping_zip
+1,Heather Martin,700,3,jcb,3544153313003422,6/5/2016,1,2,8 Blaine Trail,Milwaukee,Wisconsin,5
+2,Ryan King,600,10,jcb,3535790488366570,2/3/2016,2,5,3421 Atwood Street,Milwaukee,Wisconsin,4
+3,Scott Freeman,800,2,visa-electron,4844470197867465,3/22/2016,3,4,12980 Hudson Hill,Colorado Springs,Colorado,2
+4,Matthew Mason,400,8,visa-electron,4913634062130046,7/24/2016,2,1,24351 1st Point,Denver,Colorado,5
+5,Lisa Oliver,400,10,jcb,3561305235966635,8/9/2016,1,5,2063 Pine View Road,Salt Lake City,Utah,2
+6,Sarah Cox,500,6,jcb,3541499214835088,10/24/2015,3,4,56903 American Lane,Beaumont,Texas,1
+7,Nicole Adams,600,9,diners-club-enroute,201516174929028,6/29/2016,3,5,5 Dixon Parkway,Charleston,West Virginia,1
+8,Amanda West,500,4,visa,4041595386325825,11/3/2015,3,2,2 Menomonie Terrace,Dallas,Texas,5
+9,Douglas Sanchez,500,2,mastercard,5100176740926148,12/16/2015,2,1,96916 Loomis Crossing,Florence,South Carolina,3
+10,James Mendoza,100,7,jcb,3528298798434178,9/13/2016,1,1,0662 Duke Court,El Paso,Texas,2
