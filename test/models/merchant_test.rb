@@ -9,4 +9,11 @@ class MerchantTest < ActiveSupport::TestCase
     assert_not merchant.valid?
   end
 
+  # test "the provider must be from github" do
+  #   git_hash = {user_name: "kitty", email: "abc@aol.com", uid: 15, provider: "twitter"}
+  #   merchant = Merchant.build_from_github(git_hash)
+  #   assert_not merchant.valid?
+  #
+  # end
+
 end
