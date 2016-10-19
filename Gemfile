@@ -33,6 +33,7 @@ gem "omniauth-github"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,6 +41,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+
 end
 
 group :development do
