@@ -1,0 +1,12 @@
+<%= form_for @merchant, url: @path do |f| %>
+<ul>
+  <li><%= f.label :name %></li>
+  <li><%= f.text_field :name %></li>
+
+  <li><%= f.label :email %></li>
+  <li><%= f.text_field :email %></li>
+
+  <li><%= f.label :password %></li>
+  <li><%= f.text_field :password %></li>
+
+</ul>

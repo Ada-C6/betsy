@@ -1,0 +1,11 @@
+id,name,description,price,image,merchant_id
+1,ut,elit proin risus praesent lectus vestibulum quam sapien,37.04,http://dummyimage.com/172x213.jpg/5fa2dd/ffffff,9
+2,sollicitudin,ultrices posuere cubilia curae donec pharetra magna,88.38,http://dummyimage.com/145x190.bmp/ff4444/ffffff,3
+3,libero,in magna bibendum imperdiet nullam orci pede venenatis non sodales,11.71,http://dummyimage.com/205x159.bmp/dddddd/000000,10
+4,eget,vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum,73.05,http://dummyimage.com/112x147.bmp/dddddd/000000,1
+5,mi nulla,mauris lacinia sapien quis libero,48.57,http://dummyimage.com/181x184.jpg/ff4444/ffffff,1
+6,mauris,ipsum primis in faucibus orci,7.39,http://dummyimage.com/109x202.bmp/ff4444/ffffff,9
+7,sed augue,sodales sed tincidunt eu felis fusce,1.9,http://dummyimage.com/232x126.png/5fa2dd/ffffff,8
+8,nonummy,sit amet eros suspendisse accumsan tortor quis turpis,16.89,http://dummyimage.com/216x113.jpg/dddddd/000000,4
+9,convallis,orci luctus et ultrices posuere cubilia,59.13,http://dummyimage.com/199x218.png/cc0000/ffffff,9
+10,amet erat,quam pede lobortis ligula sit amet eleifend pede libero quis,46.05,http://dummyimage.com/116x101.jpg/5fa2dd/ffffff,9

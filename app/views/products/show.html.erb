@@ -1,0 +1,14 @@
+<h1><%= @product.name %></h1>
+<p><%= image_tag(@product.image, size: "200x275", alt: "Photo of #{@product.name}.") %> </p>
+<p> Description: <%= @product.description %></p>
+<p>Price: $<%= '%.2f' % (@product.price/100) %></p>
+<p>  Inventory: <%= @product.inventory %></p>
+<p>  Rating: <%= @product.rating.times { p "⭐️"} %></p>
+
+<% @reviews.each do |review| %>
+  <p> <%= review.stars.times { p "⭐️"} %>  </p>
+  <p><%= review.description %></p>
+  <p>  By: <%= review.author %></p>
+<% end %>
+
+<%# Add editing stuff buttons if the merchant is logged in  %>
