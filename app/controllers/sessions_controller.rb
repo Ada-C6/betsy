@@ -1,7 +1,15 @@
 class SessionsController < ApplicationController
 
+  def index
+    if session[:user_id].nil?
+        redirect_to login_failure_path
+        return
+      else
+        @merchant = Merchant.find(session[:user_id])
+      end
+  end
 
-  def create # TODO: Need to add a 'uid' column to the Merchant db in order to create a session for a merchant! Look at line 8
+  def create
     auth_hash = request.env['omniauth.auth']
     redirect_to login_failure_path if auth_hash['uid'].nil?
 
@@ -18,5 +26,9 @@ class SessionsController < ApplicationController
     redirect_to sessions_path
   end
 
+  def destroy
+    session.delete(:user_id)
+    redirect_to root_path
+  end
 
 end
