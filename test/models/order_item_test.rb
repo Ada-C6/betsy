@@ -6,7 +6,7 @@ class OrderItemTest < ActiveSupport::TestCase
     assert order_items(:one).valid?
   end
 
-  test "Create a merchant with no quantity" do
+  test "Create an orderitem with no quantity" do
     o = OrderItem.new
     o.product_id = 1
     o.order_id = 1
@@ -21,5 +21,14 @@ class OrderItemTest < ActiveSupport::TestCase
     o.quantity = "hi"
     assert_not o.valid?
   end
+
+  # NOT WORKING YET BUT FIGURE IT OUT!
+  # test "Must be associated with a user" do
+  # o = OrderItem.new
+  # o.quantity = 1
+  # o.product_id = 1
+  #
+  # assert_not o.valid?
+  # end
 
 end
