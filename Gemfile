@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+
+#gem for aAuth github Authentication
+gem 'omniauth'
+gem 'omniauth-github'
+
+#make it easier to read
+gem 'awesome_print'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
@@ -35,6 +44,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'sqlite3'
+  gem 'dotenv-rails'
+  gem 'pry'
 end
 
 group :development do
@@ -43,4 +55,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'better_errors'
+end
+
+group :test do
+  gem 'minitest-reporters'
 end
