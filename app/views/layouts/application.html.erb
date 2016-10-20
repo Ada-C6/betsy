@@ -13,27 +13,27 @@
       <ul>
         <li>
           <% if current_user %>
-            <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" } } %>
+            <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
           <% else %>
-            <%= button_to "Log in with Github", '/auth/github', { method: :post } %>
+            <%= button_to "Log in with Github", '/auth/github', method: :post, class: "button" %>
           <% end %>
         </li>
         <li>
           <% if current_user %>
-            <%= button_to "Dashboard", merchant_path(@merchant), { method: :get } %>
+            <%= button_to "Dashboard", merchant_path(@merchant), method: :get, class: "dashboard-button" %>
           <% else %>
-            <%= button_to "Sign up with Github", '/auth/github', { method: :post } %>
+            <%= button_to "Sign up with Github", '/auth/github', method: :post, class: "dashboard-button" %>
           <% end %>
         </li>
         <li>
-          <%= button_to "View Cart", root_path, { method: :get } %>
+          <%= button_to "View Cart", root_path, method: :get, class: "cart-button" %>
         </li>
       </ul>
     </div>
     <div id="product-navbar">
       <ul>
         <li>
-          <%= button_to "Shop All Products", products_path, { method: :get } %>
+          <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
         </li>
         <li>
           <h4>Products by Category - need dropdown</h4>
@@ -51,7 +51,7 @@
 <%= yield %>
 
   <footer>
-    <h4>&copy; 2016 Heather Herrington, Mary Morrison, Yasmin Or, Danielle Schrimmer</h4>
+    <h4>&copy; <%= Time.now.year %> Heather Herrington, Mary Morrison, Yasmin Or, Danielle Schrimmer</h4>
   </footer>
 </body>
 </html>
