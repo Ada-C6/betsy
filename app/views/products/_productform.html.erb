@@ -1,0 +1,28 @@
+<h5 class="error-message"><%= @error if @error %></h5>
+<%= form_for @product,
+  method: @post_method,
+  url: @post_path do |f| %>
+  <div class="form_attribute">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form_attribute">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="form_attribute">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+  <div class="form_attribute">
+    <%= f.label :inventory %>
+    <%= f.number_field :inventory %>
+  </div>
+  <div class="form_attribute">
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+  </div>
+  <div class="form_attribute">
+    <%= f.submit %>
+  </div>
+<% end %>

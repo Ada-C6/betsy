@@ -1,0 +1,31 @@
+<h1><%= @product.name %></h1>
+<p><%= image_tag(@product.image, size: "200x275", alt: "Photo of #{@product.name}.") %> </p>
+<p> Description: <%= @product.description %></p>
+<p>Price: $<%= '%.2f' % (@product.price/100) %></p>
+<p>  Inventory: <%= @product.inventory %></p>
+<p>  Rating: <%= @product.rating == 0 ? "Not Yet Rated!" : star_string(@product.rating) %></p>
+
+<%# IF it's a merchant ONLY  %>
+<p> <%= button_to "Edit Product", edit_product_path(@product.id) %></p>
+<p> <%= button_to "Delete Product", {controller: 'products', action: 'destroy'}, path: 'product', method: :delete, data: {confirm: "Are you sure?"}%></p>
+
+
+<% if @reviews != nil %>
+  <% @reviews.each do |review| %>
+    <article>
+      <p><%= star_string(review.stars) %></p>
+      <p><%= review.description %></p>
+      <p>  By: <%= review.author %></p>
+    </article>
+  <% end %>
+<% end %>
+
+<p>  <%= link_to 'See All Product Reviews!', product_reviews_path(@product.id) %> </p>
+<p>  <%= link_to 'Add A Review!', new_product_review_path(@product.id) %> </p> <%# Don't allow a merchant to add their own product review  %>
+
+<p>
+  <%= link_to 'See All Products', products_path %>
+</p>
+
+
+<%# Add editing stuff buttons if the merchant is logged in  %>

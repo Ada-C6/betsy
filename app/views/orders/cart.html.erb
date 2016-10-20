@@ -1,0 +1,25 @@
+
+<section>
+<div class="grid-block">
+<div class="small-12 medium-6 grid-content">
+<%= form_for @order.line_items do |f| %>
+  <h4><%= f.label :product.name %></h4>
+    <%= f.text_field :product_id %>
+    <div class="col-xs-4">
+    <%= f.number_field :quantity, value: order_item.quantity.to_i, class: "form-control", min: 1 %>
+    <%= f.hidden_field :product_id, value: product.id %>
+  </div>
+  <%= f.label :author  %>
+  <%= f.text_field :creator%>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%# <%= f.label :rank %>
+  <%#<%= f.text_field :rank %>
+
+  <%= f.submit %>
+    <% end %>
+</div>
+</div>
+</section>

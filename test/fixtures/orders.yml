@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+orderone:
+  total_amount: 1
+  guest_id: 1
+  merchant_id: 1
+  card_name: visa
+  card_number: 123456789012
+  card_exp: 02/16
+  card_cvv: 123
+  billing_zip: 12345
+  shipping_street: "1234 street"
+  shipping_city: City
+  shipping_state: State
+  shipping_zip: 12345
+  order_status: pending
+
+two:
+  total_amount: 1
+  guest_id: 1
+  merchant_id: 1
+  card_name: MyString
+  card_number: 1
+  card_exp: MyString
+  card_cvv: 1
+  billing_zip: 1
+  shipping_street: MyString
+  shipping_city: MyString
+  shipping_state: MyString
+  shipping_zip: 1

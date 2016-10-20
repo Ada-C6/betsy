@@ -1,0 +1,11 @@
+id,name,description,price,image,merchant_id
+1,product 1,description 1,37.04,http://placekitten.com/g/200/300,9
+2,product 2,description 2,88.38,http://placekitten.com/g/200/300,3
+3,product 3,description 3,11.71,http://placekitten.com/g/200/300,10
+4,product 4,description 4,73.05,http://placekitten.com/g/200/300,1
+5,product 5,description 5,48.57,http://placekitten.com/g/200/300,1
+6,product 6,description words,7.39,http://placekitten.com/g/200/300,9
+7,product 7,description words,1.9,http://placekitten.com/g/200/300,8
+8,product 8,description words,16.89,http://placekitten.com/g/200/300,4
+9,product 9,description words,59.13,http://placekitten.com/g/200/300,9
+10,product 10,description words,46.05,http://placekitten.com/g/200/300,9

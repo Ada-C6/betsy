@@ -1,0 +1,12 @@
+<h1>See All NotYetsy Products</h1>
+
+<% @products.each do |product| %>
+  <article>
+    <p>  <%= link_to product.name, product_path(product.id) %>  </p>
+    <p>  <%= image_tag(product.image, size: "200x275", alt: "Photo of #{product.name}.") %>  </p>
+  </article>
+<% end %>
+
+<p>
+  <%= link_to "Add New Product", new_product_path %>
+</p>
