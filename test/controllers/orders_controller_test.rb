@@ -57,7 +57,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should show 404 error for invalid order id" do
-    order_id = 1346134598    # Boguse ID shouldn't be in DB, otherwise test is invalid
+    order_id = 1346134598    # Bogus ID shouldn't be in DB, otherwise test is invalid
     assert_raises StandardError do
       Order.find(order_id)
     end
