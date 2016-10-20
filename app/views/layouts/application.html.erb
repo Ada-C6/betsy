@@ -9,7 +9,7 @@
 <body>
   <header>
     <h1 class="zoolily"><%= link_to "ZOOLILY", root_path %></h1>
-    <div id="navbar">
+    <div id="login-navbar">
       <ul>
         <li>
           <% if current_user %>
@@ -30,9 +30,28 @@
         </li>
       </ul>
     </div>
+    <div id="product-navbar">
+      <ul>
+        <li>
+          <%= button_to "Shop All Products", products_path, { method: :get } %>
+        </li>
+        <li>
+          <h4>Products by Category - need dropdown</h4>
+        </li>
+        <li>
+          <h4>Products by Merchant - need dropdown</h4>
+        </li>
+        <li>
+          <h4>Search - need functionality</h4>
+        </li>
+      </ul>
+    </div>
   </header>
 
 <%= yield %>
 
+  <footer>
+    <h4>&copy; 2016 Heather Herrington, Mary Morrison, Yasmin Or, Danielle Schrimmer</h4>
+  </footer>
 </body>
 </html>

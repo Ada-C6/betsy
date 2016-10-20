@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+#login-navbar li, #product-navbar li {
+  display: inline-block;
+}
