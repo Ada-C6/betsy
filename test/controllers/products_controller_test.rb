@@ -30,6 +30,17 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to product_path
   end
 
+  test "should create new product" do
+    post_params = {product: { name: "Tigers", price: 234513, inventory: 5 } }
+    assert_difference('Product.count') do
+      post :create, post_params
+    end
+
+    product = assigns(:product)
+    assert_redirected_to product_path(product)
+    assert_not_nil product
+  end
+
   test "should show the show page for the specified product" do
     product_id = products(:elephant).id
     get :show, { id: product_id }
@@ -49,6 +60,15 @@ class ProductsControllerTest < ActionController::TestCase
 
     get :show, { id: product_id }
     assert_response :not_found
+  end
+
+  test "will delete a product from the DB" do
+    product = products(:snake)
+    assert_difference('Product.count', -1) do
+      delete :destroy, id: product
+    end
+
+    assert_redirected_to products_path
   end
 
   # test "purchasing a product will decrease its number by one" do
