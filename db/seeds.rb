@@ -22,7 +22,7 @@ product = [
     photo_url: "http://www.yesandyes.org/wp-content/uploads/2011/01/scarf5.jpg"
   },
   {
-    name: "penguin hawaiin shirt",
+    name: "penguin hawaiian shirt",
     description: "For the penguin who wants to get away",
     stock: 4,
     price: 2000,
@@ -36,7 +36,7 @@ product = [
     photo_url: "http://2damnfunny.com/wp-content/uploads/2013/12/Classy-Dog-With-a-Fancy-Top-Hat-a-Rich-Mahogany-Smoke-Pipe.png"
   },
   {
-    name: "pigglet dance outfit",
+    name: "piglet dance outfit",
     description: "For the lil piggies who just wanna dance!",
     stock: 12,
     price: 3050,
@@ -44,7 +44,7 @@ product = [
   },
   {
     name: "Baby Bunny outfit",
-    description: "Are you a new mommy? Dress you little hopper in style!",
+    description: "Are you a new mommy? Dress your little hopper in style!",
     stock: 4,
     price: 1900,
     photo_url: "http://4.bp.blogspot.com/-hZqBuA0W9W8/Uda9I5QVTiI/AAAAAAAABes/Ijk17zrUo-w/s500/tumblr_lsxp1kA2Ks1r4zdm8o1_500.jpg"
@@ -53,4 +53,27 @@ product = [
 
 product.each do |item|
   Product.create(item)
+end
+
+categories = ["cat", "pants", "llama", "scarves", "penguin", "shirts", "hats", "dogs", "pig", "tutu", "baby", "bunny"]
+
+categories.each do |category|
+  Category.create(name: category)
+end
+
+all_categories = Category.all
+all_products = Product.all
+
+
+# NOTE: The code below only works for the seed! My seed data has 2 categories per product in the seed. If this seed
+# data changes, then this code WILL NOT WORK.
+i = 0
+j = 0
+until i == all_products.size
+  product = all_products[i]
+  all_products[i].categories << all_categories[j]
+  j += 1
+  all_products[i].categories << all_categories[j]
+  i+=1
+  j += 1
 end
