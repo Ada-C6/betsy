@@ -1,0 +1,7 @@
+<h1><%= @product_category %></h1>
+
+<% @products_in_category.each do |product| %>
+  <p><%= link_to image_tag("product.photo_url", :class => "product_img"), show_products_path(product.id) %></p>
+  <p><%= link_to product.name, show_products_path(product.id) %></p>
+  <p><%= product.price %></p>
+<% end %>
