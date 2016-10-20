@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
 
   def index
     if session[:user_id].nil?
-        redirect_to login_failure_path
-        return
-      else
-        @merchant = Merchant.find(session[:user_id])
-      end
+      redirect_to login_failure_path
+      return
+    else
+      @merchant = Merchant.find(session[:user_id])
+    end
   end
 
   def create
@@ -21,13 +21,15 @@ class SessionsController < ApplicationController
       render :creation_failure unless @merchant.save # This line saves the newly built @merchant to the database if it can be saved
     end
     # Save the user ID in the session
-    session[:user_id] = @merchant.id
+    session[:merchant_id] = @merchant.id
 
     redirect_to sessions_path
   end
 
   def destroy
-    session.delete(:user_id)
+    if current_user
+      session.delete(:merchant_id)
+    end
     redirect_to root_path
   end
 

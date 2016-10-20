@@ -23,7 +23,7 @@
     <%= f.text_field :city %>
     <br />
     <%= f.label :state %>
-    <%= select_tag :state, options_for_select(us_states) %>
+    <%= f.select(:state, options_for_select(states)) %>
     <br />
     <%= f.label "Mailing zip code" %>
     <%= f.text_field :mailing_zip %>
@@ -32,10 +32,10 @@
     <%= f.text_field :cc_number %>
     <br />
     <%= f.label "Expiration month" %>
-    <%= select_tag :cc_exp_month, options_for_select(months_in_year) %>
+    <%= f.select(:cc_exp_month, options_for_select(months)) %>
     <br />
     <%= f.label "Expiration year" %>
-    <%= select_tag :cc_exp_year, options_for_select(expiration_year) %>
+    <%= f.select(:cc_exp_year, options_for_select(expiration_year)) %>
     <br />
     <%= f.label "Credit card security code" %>
     <%= f.text_field :cc_sec_code %>

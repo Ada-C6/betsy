@@ -7,6 +7,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1 class="zoolily"><%= link_to "ZOOLILY", root_path %></h1>
+    <div id="navbar">
+      <ul>
+        <li>
+          <% if current_user %>
+            <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" } } %>
+          <% else %>
+            <%= button_to "Log in with Github", '/auth/github', { method: :post } %>
+          <% end %>
+        </li>
+        <li>
+          <% if current_user %>
+            <%= button_to "Dashboard", merchant_path(@merchant), { method: :get } %>
+          <% else %>
+            <%= button_to "Sign up with Github", '/auth/github', { method: :post } %>
+          <% end %>
+        </li>
+        <li>
+          <%= button_to "View Cart", root_path, { method: :get } %>
+        </li>
+      </ul>
+    </div>
+  </header>
 
 <%= yield %>
 
