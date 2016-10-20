@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+
+@import url('foundation.css');
+
+/*Header and footer CSS*/
+#login-navbar li, #product-navbar li {
+  display: inline-block;
+}
+
+.zoolily {
+  display: inline;
+}
+
+.button, .log-out-button, .dashboard-button, .cart-button {
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.button {
+  background-color: blue;
+}
+
+.log-out-button {
+  background-color: red;
+}
+
+.dashboard-button {
+  background-color: green;
+}
+
+.cart-button {
+  background-color: purple;
+}
+
+.get-products-button {
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+/*Main page CSS*/
+.home-page-product {
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  margin: 50px;
+}

@@ -1,1 +1,5 @@
-<h1>Localhost demanded an index page for guests.</h1>
+<section class="row small-up-1 medium-up-2 large-up-3">
+  <% 6.times do %>
+    <%= image_tag Dir.new(Rails.root.to_s + "/app/assets/images/").to_a.select{|f| f.downcase.match(/\.jpg|\.jpeg|\.png/) }.sample, class: "column home-page-product" %>
+  <% end %>
+</section>
