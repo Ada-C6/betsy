@@ -55,16 +55,16 @@ class ProductTest < ActiveSupport::TestCase
     end
   end
 
-  # test "Product can be assigned a merchant id" do
-  #   product = Product.create!(name: "mouse hat", price: 1240)
-  #   merchant = Merchant.create!(user_name: "testing", email: "test@test.com")
-  #
-  #   product.merchant = merchant
-  #   assert product.save
-  #
-  #   assert_equal product.merchant_id, merchant.id
-  #   assert_includes merchant.products, product
-  # end
+  test "Product can be assigned a merchant id" do
+    product = Product.create!(name: "mouse hat", price: 1240)
+    merchant = Merchant.create!(user_name: "testing", email: "test@test.com", uid: 124, provider: "github")
+
+    product.merchant = merchant
+    assert product.save
+
+    assert_equal product.merchant_id, merchant.id
+    assert_includes merchant.products, product
+  end
 
   # test "Product can have many categories" do
   #   # INSERT TEST HERE
