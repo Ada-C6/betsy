@@ -24,15 +24,18 @@ class OrdersControllerTest < ActionController::TestCase
     assert_template :edit
   end
 
-  # test "should create new order" do
-  #   order = Order.new(name: "Igor Smith", street_address: "38 Main St",
-  #   city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
-  #   cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102")
-  #
-  #   order = assigns(:order)
-  #   assert_not_nil order
-  #   assert_nil order.id
-  # end
+  test "should create new order" do
+    post_params = {order: { name: "Igor Smith", email: "hello@gmail.com", street_address: "38 Main St",
+    city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456",
+    cc_exp_month: 5, cc_exp_year: 2017, cc_sec_code: 328, billing_zip: "98102" } }
+    assert_difference('Order.count') do
+      post :create, post_params
+    end
+
+    order = assigns(:order)
+    assert_redirected_to root_path(order)
+    assert_not_nil order
+  end
 
   test "should update order" do
     order = orders(:buffy)

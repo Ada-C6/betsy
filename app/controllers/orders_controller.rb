@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(post_params)
     if @order.save
       redirect_to root_path(@order)
     else
