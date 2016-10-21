@@ -25,14 +25,14 @@
   display: inline;
 }
 
-.button, .log-out-button, .dashboard-button, .cart-button {
+.github-button, .log-out-button, .dashboard-button, .cart-button {
   color: white;
   font-weight: bold;
   border-radius: 5px;
   padding: 5px;
 }
 
-.button {
+.github-button {
   background-color: blue;
 }
 
