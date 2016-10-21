@@ -76,4 +76,11 @@ class ProductTest < ActiveSupport::TestCase
     assert_includes product.category_ids, category_one.id
     assert_includes product.category_ids, category_two.id
   end
+
+  # test "Products can have many order_items" do
+  #   product = Product.create!(name: "mouse hat", price: 1240)
+  #   order_item = OrderItem.create!(quantity: 1, product_id: product.id, order_id: 1294, shipped?: false)
+  #
+  #   assert_equal order_item.product_id, product.id
+  # end
 end
