@@ -5,9 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="../../assets/stylesheets/application.css" media="screen" title="no title" charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Poiret+One|Quicksand" rel="stylesheet">
 </head>
 <body>
-
+  <header>
+    <h1><%= @page_title %></h1>
+    <nav>
+  <ul class="nav-bar">
+    <li><%= link_to "HOME", root_path %></li>
+    <li><%= link_to "LOGIN", '/auth/github' %></li>
+    <li><%= link_to "LOGOUT",  sessions_path, method: :delete %></li>
+  </ul>
+</nav>
+  </header>
 <%= yield %>
 
 </body>

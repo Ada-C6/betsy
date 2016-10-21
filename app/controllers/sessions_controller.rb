@@ -12,16 +12,27 @@ class SessionsController < ApplicationController
 
         @merchant = Merchant.find_by(uid: auth_hash[:uid], provider: 'github')
         if @merchant.nil?
-            # Merchant doesn't match anything in the DB.
-            # Attempt to create a new merchant.
-            @merchant = Merchant.build_from_github(auth_hash)
-            render :login_failure unless @merchant.save
+          @merchant = Merchant.build_from_github(auth_hash)
+          render :login_failure unless @merchant.save
         end
 
-        # Save the merchant ID in the session
         session[:merchant_id] = @merchant.id
-
         redirect_to sessions_path
+        # if @merchant.nil?
+        #     # Merchant doesn't match anything in the DB.
+        #     # Attempt to create a new merchant.
+        #     @merchant = Merchant.build_from_github(auth_hash)
+        #     if @merchant.save
+        #       redirect_to sessions_path
+        #     else
+        #       redirect_to login_failure_path
+        #     end
+        # else
+        #     # Save the merchant ID in the session
+        #     session[:merchant_id] = @merchant.id
+        #
+        #     redirect_to sessions_path
+        # end
     end
 
     def index
