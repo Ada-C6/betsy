@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
-    @product = Product.all
+    @products = Product.all
+    @order_item = current_order.order_items.new
   end
 
   def show

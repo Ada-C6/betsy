@@ -31,7 +31,7 @@ class OrderItemTest < ActiveSupport::TestCase
         assert_not no_product_id.valid?
         assert_includes(no_product_id.errors, :product_id)
 
-        assert order_items(:one_unit).valid?
+        assert_equal(123, order_items(:one_unit))
         assert order_items(:four_unit).valid?
     end
 
@@ -44,7 +44,7 @@ class OrderItemTest < ActiveSupport::TestCase
         assert order_items(:four_unit).valid?
     end
 
-    test "Creating an order item instantiate :shipped? as false" do
+    test "Creating an order item instantiates :shipped? as false" do
         o = OrderItem.new
         assert_equal(false, o.shipped?)
     end

@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
     has_many :order_items
+
     validates :cc_number, presence: true, numericality: {only_integer: true}, length: { is: 16 }
     validates :cc_exp_year, presence: true, length: {is: 4}
     validates :cc_exp_month, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 12}
@@ -7,6 +8,7 @@ class Order < ActiveRecord::Base
     validate :valid_exp
     validates_associated :order_items
     validate :acceptable_status
+
     before_create :set_order_status
     before_save :update_total
 
@@ -25,9 +27,8 @@ class Order < ActiveRecord::Base
     end
 
     def total
-        order_items.collect { |oi| oi.valid? ? (oi.quantity * Product.find(oi.product_id).price) : 0 }.sum
+        order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.product.price) : 0 }.sum
     end
-
 
     private
     def set_order_status

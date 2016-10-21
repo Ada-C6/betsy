@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:new, :create, :show]
 
+    resource :cart, only: [:show]
+
 # We're going to talk about this more if any of us needs to edit this. :)
     resources :orders, only: [:new, :create, :show] do
         resources :order_items, except: [:index, :show]
