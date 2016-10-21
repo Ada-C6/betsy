@@ -18,6 +18,7 @@ class ProductTest < ActiveSupport::TestCase
     assert_not product.valid?
     assert_not product.save
     assert_includes product.errors, :name
+    assert_equal ["has already been taken"], product.errors.messages[:name]
   end
 
   test "Price must be an integer" do
