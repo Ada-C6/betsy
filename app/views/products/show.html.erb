@@ -3,7 +3,7 @@
 <% image = @product.name.downcase.gsub(' ', '_') %>
 <p><%= image_tag "#{image}.jpeg", alt: "#{ @product.name }" %></p>
 
-<p><%= "Description: " + "#{ @product.description }" %></p>
+<p><%= "Description: " + @product.description %></p>
 
 <p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
 
