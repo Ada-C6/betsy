@@ -1,1 +1,7 @@
-<h1>Show individual product</h1>
+<h1><%= @product.name %></h1>
+
+<p><%= "Description: " + @product.description %></p>
+
+<p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
+
+<p>Future "Add To Cart" link</p>

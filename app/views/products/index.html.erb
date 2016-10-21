@@ -4,6 +4,6 @@
     <p>
       <%= p.name %>
       <% image = p.name.downcase.gsub(' ', '_') %>
-      <%= image_tag("/assets/images/#{image}", alt: "#{ p.name }") %>
+      <%= image_tag("/app/assets/images/#{image}.jpeg", alt: "#{ p.name }") %>
     </p>
 <% end %>
