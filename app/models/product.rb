@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
   has_many :orderitems
   has_many :reviews
+  has_many :ordered_products
+  has_many :categories, through: :ordered_products
   belongs_to :merchant
 
   validates :name, presence: true, uniqueness: true
