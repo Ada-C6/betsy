@@ -55,7 +55,7 @@
 
 /*Main page CSS*/
 .home-page-product {
-  border-radius: 50%;
+  border-radius: 50px;
   height: 300px;
   width: 300px;
   margin: 50px;
