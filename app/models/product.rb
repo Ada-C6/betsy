@@ -8,4 +8,8 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :inventory, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
+  def self.search(search)
+    where("name LIKE ? OR description LIKE ? OR category LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+  end
 end

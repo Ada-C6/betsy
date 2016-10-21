@@ -1,1 +1,10 @@
-<h1>Show individual product</h1>
+<h1><%= @product.name %></h1>
+
+<% image = @product.name.downcase.gsub(' ', '_') %>
+<p><%= image_tag "#{image}.jpeg", alt: "#{ @product.name }" %></p>
+
+<p><%= "Description: " + @product.description %></p>
+
+<p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
+
+<p>Future "Add To Cart" link</p>

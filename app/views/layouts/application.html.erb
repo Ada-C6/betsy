@@ -20,13 +20,13 @@
         </li>
         <li>
           <% if current_user %>
-            <%= button_to "Dashboard", merchant_path(@merchant), method: :get, class: "dashboard-button" %>
+            <%= button_to "Dashboard", merchant_path(current_user), method: :get, class: "dashboard-button" %>
           <% else %>
             <%= button_to "Sign up with Github", '/auth/github', method: :post, class: "dashboard-button" %>
           <% end %>
         </li>
         <li>
-          <%= button_to "View Cart", root_path, method: :get, class: "cart-button" %>
+          <%= button_to "View Cart", orderitems_path, method: :get, class: "cart-button" %>
         </li>
       </ul>
     </div>
@@ -36,13 +36,24 @@
           <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
         </li>
         <li>
-          <h4>Products by Category - need dropdown</h4>
+          <select name="product-by-category">
+            <%= Category.all.each do |cat| %>
+              <option value="<%= cat.id %>"><%= "#{ cat.name }" %></option>
+            <% end %>
+          </select>
         </li>
         <li>
-          <h4>Products by Merchant - need dropdown</h4>
+          <select name="product-by-merchant">
+            <%= Merchant.all.each do |merch| %>
+              <option value="<%= merch.id %>"><%= "#{ merch.username }" %></option>
+            <% end %>
+          </select>
         </li>
-        <li>
-          <h4>Search - need functionality</h4>
+        <li class="search-form">
+          <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+            <%= submit_tag "Search", :name => nil %>
+          <% end %>
         </li>
       </ul>
     </div>

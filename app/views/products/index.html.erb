@@ -3,7 +3,10 @@
 <% @products.each do |p| %>
     <p>
       <%= p.name %>
+      <br />
       <% image = p.name.downcase.gsub(' ', '_') %>
-      <%= image_tag("/assets/images/#{image}", alt: "#{ p.name }") %>
+
+      <%= link_to image_tag("#{image}.jpeg", alt: "#{ p.name }"), product_path(p) %>
+
     </p>
 <% end %>
