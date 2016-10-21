@@ -1,5 +1,8 @@
 <section class="row small-up-1 medium-up-2 large-up-3">
   <% 6.times do %>
-    <%= image_tag Dir.new(Rails.root.to_s + "/app/assets/images/").to_a.select{|f| f.downcase.match(/\.jpg|\.jpeg|\.png/) }.sample, class: "column home-page-product" %>
+    <% featured_image = @products[rand(@product_count)] %>
+    <%= link_to featured_image.name, product_path(featured_image) %>
+    <% image = featured_image.name.downcase.gsub(' ', '_') %>
+    <%= link_to image_tag("#{ image }.jpeg", alt: "#{ featured_image.name }"), product_path(featured_image) %>
   <% end %>
 </section>
