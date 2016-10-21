@@ -55,7 +55,7 @@ product.each do |item|
   Product.create(item)
 end
 
-categories = ["cat", "pants", "llama", "scarves", "penguin", "shirts", "hats", "dogs", "pig", "tutu", "baby", "bunny"]
+categories = ["cat", "pants", "llama", "scarves", "penguin", "shirts", "hats", "dogs", "pig", "tutu", "baby", "bunny", "mammals", "birds"]
 
 categories.each do |category|
   Category.create(name: category)
@@ -76,4 +76,15 @@ until i == all_products.size
   all_products[i].categories << all_categories[j]
   i+=1
   j += 1
+end
+
+birds = Category.find_by(name: "birds")
+mammals = Category.find_by(name: "mammals")
+
+all_products.each do |item|
+  if item.name == "penguin hawaiian shirt"
+    item.categories << birds
+  else
+    item.categories << mammals
+  end
 end

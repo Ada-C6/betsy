@@ -1,1 +1,19 @@
-<h1>Show single product here</h1>
+<h2><%= @product.name.capitalize %></h2>
+<section>
+  <p>
+    <%= image_tag "#{@product.photo_url}" %>
+  </p>
+
+  <p>
+    <strong>Description</strong>: <%= @product.description %>
+  </p>
+
+<% unless @product.categories.empty? %>
+  <h3>Categories</h3>
+  <ul>
+  <% @product.categories.each do |category| %>
+    <li><%= link_to "#{category.name}", category_path(category) %></li>
+    <% end %>
+  </ul>
+<% end %>
+</section>

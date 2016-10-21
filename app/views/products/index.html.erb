@@ -1,9 +1,9 @@
-<h1>All Products Here</h1>
+<h2>All Products</h2>
 
 <%@product.each do |product|%>
   <section>
     <h2>
-      <%= product.name %>
+      <%= link_to product.name, product_path(product) %>
     </h2>
     <p>
       <%= image_tag "#{product.photo_url}"%>
@@ -11,15 +11,5 @@
     <p>
       <%= product.description %>
     </p>
-
-    <h3>
-      Categories
-    </h3>
-
-    <ul>
-    <% product.categories.each do |category| %>
-      <li><%= category.name %></li>
-      <% end %>
-    </ul>
-</section>
+  </section>
 <%end%>
