@@ -10,7 +10,6 @@ class Product < ActiveRecord::Base
   validates :inventory, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
   def self.search(search)
-    where("name LIKE ?", "%#{search}%")
-    where("description LIKE ?", "%#{search}%")
+    where("name LIKE ? OR description LIKE ? OR category LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
   end
 end

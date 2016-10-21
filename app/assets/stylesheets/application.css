@@ -53,6 +53,10 @@
   border-radius: 5px;
 }
 
+.search-form {
+  display: inline-block;
+}
+
 /*Main page CSS*/
 .home-page-product {
   border-radius: 50px;
