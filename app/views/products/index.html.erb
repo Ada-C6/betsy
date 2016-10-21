@@ -1,1 +1,9 @@
-<h1>Index for products</h1>
+<h1>All products</h1>
+
+<% @products.each do |p| %>
+    <p>
+      <%= p.name %>
+      <% image = p.name.downcase.gsub(' ', '_') %>
+      <%= image_tag("/assets/images/#{image}", alt: "#{ p.name }") %>
+    </p>
+<% end %>
