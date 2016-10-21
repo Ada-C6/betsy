@@ -1,0 +1,23 @@
+<h1><%= @product.name %></h1>
+<p>Price: $<%= @product.unit_price %>
+<img src="<%= @product.photo_url %>", alt="<%= @product.name %>">
+<p>
+  <% if @product.quantity == 0 %>
+    <%= "Out of Stock" %>
+  <% else %>
+    <%= @product.quantity %> left in stock.
+  <% end %>
+</p>
+<p><%= @product.description %></p>
+
+<!-- Insert reviews here -->
+
+
+<!-- ONLY FOR MERCHANTS -->
+<%= button_to "Edit Item", edit_product_path(@product), method: :get %>
+<%= button_to "Delete Item", product_path(@product), method: :delete, data: { confirm: "Are you sure?" } %>
+
+
+
+
+<!-- ONLY FOR MERCHANTS -->

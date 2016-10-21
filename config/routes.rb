@@ -1,4 +1,105 @@
 Rails.application.routes.draw do
+
+
+  
+ ################### HOMEPAGES ####################
+  root to: 'homepages#index', as: 'index'
+
+  get 'homepages/index'
+
+  get 'homepages/show_by_category'
+
+  get 'homepages/show_all_products'
+
+  get 'homepages/login'
+
+  get 'homepages/show_by_merchant'
+################### HOMEPAGES ####################
+
+
+
+################### TRANSACTIONS ####################
+  get 'transactions/new' => 'transactions#new', as: 'new_transaction'
+
+  post 'transactions/create' => 'transactions#create', as: 'create_transaction'
+
+  get 'transactions/show'
+
+################### TRANSACTIONS ####################
+
+
+
+################### CARTS ####################
+
+  get 'carts/edit'
+
+  get 'carts/update'
+
+  get 'carts/show'
+
+  get 'carts/destroy'
+
+################### CARTS ####################
+
+
+
+################### REVIEWS ####################
+
+  get 'reviews/new'
+
+  get 'reviews/create'
+
+  get 'reviews/edit'
+
+  get 'reviews/update'
+################### REVIEWS ####################
+
+
+
+################### SESSIONS ####################
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  get "/auth/:provider/callback" =>  "sessions#create"
+
+################### SESSIONS ####################
+
+
+
+################### PRODUCTS ####################
+  resources :products, except: [:index]
+  # get 'products/new', to: "products#new", as: :new_product
+
+  # post 'products', to: 'products#create', as: :products
+
+  # delete 'products/:id', to: "products#destroy", as: :product
+  # put/patch 'products/:id', to: "products#update"
+  # get 'products/:id', to: "products#show"
+
+  # get 'products/:id/edit', to: "products#edit", as: :edit_product
+################### PRODUCTS ####################
+
+
+################### USERS ####################
+
+  get 'users/logged_in_index'
+
+  get 'users/new'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/destroy'
+################### USERS ####################
+
+
+  get "/auth/:provider/callback" =>  "sessions#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

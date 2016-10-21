@@ -1,0 +1,20 @@
+<% if @user %>
+<h1>Welcome <%= @user.name %></h1>
+<% else %>
+<h1>please log in</h1>
+<% end %>
+
+
+<% if flash[:notice] %>
+<p class = "flash-notice"><%= flash[:notice] %></p>
+<% end %>
+
+<!-- ########### Products ################### -->
+
+<div class="index-photo">
+  <% @product.each do |p| %>
+
+    <%= link_to image_tag(p.photo_url, :title => p.name, :alt => p.name), product_path(p), method: :get %>
+
+  <% end %>
+</div>

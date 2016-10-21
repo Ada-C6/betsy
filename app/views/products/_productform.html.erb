@@ -1,0 +1,11 @@
+<section>
+  <%= form_for @product do |f| %>
+    <p><%= f.text_field :name, placeholder: "Name (require)" %></P>
+    <p>$ <%= f.text_field :unit_price, placeholder: "unit price in cents (require)" %></p>
+    <p><%= f.select :quantity, (1..30) %></p>
+    <p><%= f.text_area :description, rows:"5", placeholder: "Description" %></p>
+    <p><%= f.text_field :photo_url, placeholder: "photo url" %></P>
+
+    <p><%= f.submit "Save" %></p>
+  <% end %>
+</section>
