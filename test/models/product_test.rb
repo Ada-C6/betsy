@@ -18,6 +18,7 @@ class ProductTest < ActiveSupport::TestCase
     assert_not product.valid?
     assert_not product.save
     assert_includes product.errors, :name
+    assert_equal ["has already been taken"], product.errors.messages[:name]
   end
 
   test "Price must be an integer" do
@@ -42,7 +43,8 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "create Product with valid data" do
-    product = Product.new(name: "penguin bowtie", price: 2150)
+    product = products(:cat_suit)
+
     assert product.valid?
     assert_not_nil product.name
     assert_not_nil product.price
@@ -55,18 +57,30 @@ class ProductTest < ActiveSupport::TestCase
     end
   end
 
-  # test "Product can be assigned a merchant id" do
-  #   product = Product.create!(name: "mouse hat", price: 1240)
-  #   merchant = Merchant.create!(user_name: "testing", email: "test@test.com")
-  #
-  #   product.merchant = merchant
-  #   assert product.save
-  #
-  #   assert_equal product.merchant_id, merchant.id
-  #   assert_includes merchant.products, product
-  # end
+  test "Product can be assigned a merchant id" do
+    product = Product.create!(name: "mouse hat", price: 1240)
+    merchant = Merchant.create!(user_name: "testing", email: "test@test.com", uid: 124, provider: "github")
 
-  # test "Product can have many categories" do
-  #   # INSERT TEST HERE
+    product.merchant = merchant
+    assert product.save
+
+    assert_equal product.merchant_id, merchant.id
+    assert_includes merchant.products, product
+  end
+
+  test "Product can have many categories" do
+    product = products(:hamster_monocle)
+    category_one = categories(:hamster)
+    category_two = categories(:eyewear)
+    assert_equal 2, product.categories.length
+    assert_includes product.category_ids, category_one.id
+    assert_includes product.category_ids, category_two.id
+  end
+
+  # test "Products can have many order_items" do
+  #   product = Product.create!(name: "mouse hat", price: 1240)
+  #   order_item = OrderItem.create!(quantity: 1, product_id: product.id, order_id: 1294, shipped?: false)
+  #
+  #   assert_equal order_item.product_id, product.id
   # end
 end
