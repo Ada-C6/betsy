@@ -1,6 +1,8 @@
-shoes:
-  name: shoes
-ducks:
-  name: ducks
-hats:
-  name: hats
+cat:
+  name: cat
+formal_wear:
+  name: formal wear
+hamster:
+  name: hamster
+eyewear:
+  name: eyewear

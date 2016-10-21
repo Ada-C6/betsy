@@ -42,7 +42,8 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "create Product with valid data" do
-    product = Product.new(name: "penguin bowtie", price: 2150)
+    product = products(:cat_suit)
+
     assert product.valid?
     assert_not_nil product.name
     assert_not_nil product.price
@@ -66,7 +67,12 @@ class ProductTest < ActiveSupport::TestCase
     assert_includes merchant.products, product
   end
 
-  # test "Product can have many categories" do
-  #   # INSERT TEST HERE
-  # end
+  test "Product can have many categories" do
+    product = products(:hamster_monocle)
+    category_one = categories(:hamster)
+    category_two = categories(:eyewear)
+    assert_equal 2, product.categories.length
+    assert_includes product.category_ids, category_one.id
+    assert_includes product.category_ids, category_two.id
+  end
 end
