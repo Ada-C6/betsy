@@ -7,4 +7,6 @@
 
 <p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
 
-<p>Future "Add To Cart" link</p>
+<p>Future "Add To Cart" functionality</p>
+
+<%= link_to "Add To Cart", add_to_cart_path(@product), method: :get %>

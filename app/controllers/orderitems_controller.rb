@@ -7,6 +7,16 @@ class OrderitemsController < ApplicationController
     @order_item = OrderItem.new
   end
 
+  def add_to_cart
+    @item = OrderItem.new
+    @item.quantity = 1
+    @item.product_id = @product.id
+    @product.inventory -= 1
+    @item.save
+
+    redirect_to :index
+  end
+
   def create
     @order_item = OrderItem.new(order_params)
     if @order_item.save
