@@ -38,14 +38,14 @@
         <li>
           <select name="product-by-category">
             <%= Category.all.each do |cat| %>
-              <option value="<%= cat.id %>"><%= "#{ cat.name }" %></option>
+              <option value="<%= cat.id %>"><%= link_to "#{ cat.name }", product_path(cat.id), method: :get %></option>
             <% end %>
           </select>
         </li>
         <li>
           <select name="product-by-merchant">
             <%= Merchant.all.each do |merch| %>
-              <option value="<%= merch.id %>"><%= "#{ merch.username }" %></option>
+              <option value="<%= merch.id %>"><%= link_to "#{ merch.username }", merchant_path(merch.id), method: :get %></option>
             <% end %>
           </select>
         </li>
