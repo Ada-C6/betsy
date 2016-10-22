@@ -1,0 +1,26 @@
+# render shared header here
+
+<%= flash[:notice] %>
+
+<h1>Sign-up as a Unicorns 'R' Us Merchant</h1>
+<h3>Provide the following information: </h3>
+
+<%= form_for @merchant, url: merchants_update_path do |f| %>
+
+  <%= f.label "Store Name" %>
+  <%= f.text_field :displayname, :place_holder => "Your Store Name" %>
+
+  <%= f.label "Store Location" %>
+  <%= f.text_field :location, :place_holder => "Store location" %>
+
+  <%= f.label "Store Contact Number" %>
+  <%= f.telephone_field :phone, :place_holder => "Contact Number" %>
+
+  <%= f.label "Email" %>
+  <%= f.email_field :email  %>
+
+  <%= f.label "User Name" %>
+  <%= f.text_field :username %>
+
+  <%= f.submit "Save" %>
+<% end %>

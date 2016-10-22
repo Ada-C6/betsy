@@ -1,0 +1,11 @@
+
+
+
+<% @browse_by.products.each do |product| %>
+
+  <div class="product-tile">
+    <%= image_tag product.photo, alt: product.name %>
+    <p><%= link_to product.name, products_show_path(product.id) %></p>
+  </div>
+
+<% end %>

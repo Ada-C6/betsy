@@ -1,4 +1,112 @@
 Rails.application.routes.draw do
+
+
+  root "homepages#index"
+
+  get 'homepages/index'
+
+  get 'homepages/show'
+
+  # Orderitems controller
+
+  post 'orderitems/:product_id/create' => 'orderitems#create', as: 'orderitems_create'
+
+  patch 'orderitems/:id/update' => 'orderitems#update', as: 'orderitems_update'
+
+  delete 'orderitems/:id/destroy' => 'orderitems#destroy', as: 'orderitems_destroy'
+
+  # Carts controller
+
+  get 'carts/index'
+
+  get 'carts/show'
+
+  get 'carts/edit'
+
+  put 'carts/update'
+
+  get 'carts/update' # To deal with refresh
+
+  get 'carts/new'
+
+  post 'carts/create'
+
+  delete 'carts/destroy'
+
+  # Stores controller (for user-facing merchant-based display of products)
+
+  get 'stores/index'
+
+  get 'stores/show/:id' => "stores#show", as: "stores_show"
+
+
+  # Orders controller
+
+  get 'orders/index'
+
+  get 'orders/new'
+
+  get 'orders/:product_id/create' => 'orders#create', as: 'orders_create'
+
+  get 'orders/:product_id/update' => 'orders#update', as: 'orders_update'
+
+  get 'orders/show'
+
+  get 'orders/destroy'
+
+  # merchant controller
+
+  get 'merchants/index' => 'merchants#index', as: 'merchants_index'
+
+  get 'merchants/show'
+
+  get 'merchants/new'
+
+  get 'merchants/create'
+
+  get 'merchants/:id/edit' => 'merchants#edit', as: 'merchants_edit'
+
+  patch 'merchants/:id/update' => 'merchants#update', as: 'merchants_update'
+
+
+  # Products controller routes
+
+  get 'product/index'
+
+  get 'products/:id/reviews/new' => 'reviews#new', as: "reviews_new"
+
+  post 'products/:id/reviews/create' => 'reviews#create', as: "reviews_create"
+
+  patch 'products/:id/retire' => 'products#retire', as: "products_retire"
+
+  get 'products/show/:id' => "products#show", as: "products_show"
+
+  get 'products/new'
+
+  get 'products/create'
+
+  # sessions controller
+
+  get 'sessions/create'
+
+  get 'sessions/index'
+
+  delete 'sessions/:id/destroy' => 'sessions#destroy', as: 'session_delete'
+
+  # Categories controllers
+
+  get 'categories/index'
+
+  get 'categories/new'
+
+  get 'categories/create'
+
+  get 'categories/show/:id' => "categories#show", as: "categories_show"
+
+  get 'categories/destroy'
+
+  get "/auth/:provider/callback" =>  "sessions#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

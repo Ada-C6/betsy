@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+.product-tile {
+  display: inline-block;
+  text-align: center;
+  margin: 2.5%;
+  border: 1px solid black;
+  height: 300px;
+  width: 300px;
+}
+
+.product-tile img {
+  padding-top: 30px;
+  max-height: 180px;
+}
+
+nav li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0 1% 0 1%;
+}

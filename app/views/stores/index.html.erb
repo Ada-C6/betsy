@@ -1,0 +1,21 @@
+
+
+<h1>Browse by store</h1>
+
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Browse by store", stores_index_path %></li>
+    <li><%= link_to "Browse by category", categories_index_path %></li>
+    <li><%= link_to "Browse all", homepages_show_path %></li>
+  </ul>
+</nav>
+
+<% @stores.each do |store| %>
+
+  <div class="product-tile">
+    <%= image_tag store.products.first.photo, alt: store.displayname %>
+    <p><%= link_to store.displayname, stores_show_path(store.id) %></p>
+  </div>
+
+<% end %>

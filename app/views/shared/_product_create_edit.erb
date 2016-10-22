@@ -1,0 +1,19 @@
+
+<h2> <% "#{@action} + Product" %> </h2>
+
+<%= form_for @product do |f|%>
+
+  <%= f.image_field :photo, :place_holder => @product.photo, alt: "product Image"  %>
+
+  <%= f.text_field :name, :place_holder => @product.name, alt: "Product Name" %>
+
+  <%= f.text_area :description, :place_holder => @product.description, alt: "Product Description"%>
+
+  <%= f.integer_field :price, :place_holder => @prodcut.price, alt: "Product Price" %>
+
+  <%= f.integer_field :stock, :place_holder => @product.stock, alt: "Quantity in Stock" %>
+
+
+  <%= f.submit "Save" %>
+
+<% end %>
