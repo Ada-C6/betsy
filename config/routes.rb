@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/sessions", to: "sessions#index", as: "sessions"
   delete "/sessions", to: "sessions#destroy"
 
+  get "/add_to_cart" => "orderitems#add_to_cart"
+
   resources :products
 
   resources :merchants, only: [:new, :create, :show]
