@@ -1,7 +1,7 @@
 <h2><%= capitalize_each_word(@product.name) %></h2>
 <section>
   <p>
-    <%= image_tag "#{@product.photo_url}" %>
+    <%= image_tag "#{@product.photo_url}", alt: "#{@product.name}" %>
   </p>
 
   <p>
@@ -19,5 +19,28 @@
     <li><%= link_to "#{category.name}", category_path(category) %></li>
     <% end %>
   </ul>
+<% end %>
+
+
+<h3>Reviews</h3>
+<% if @product.reviews.empty? %>
+<p>
+  No reviews! <%= link_to "Be the first.", new_product_review_path(@product.id) %>
+</p>
+<% else %>
+<% @product.reviews.each do |review| %>
+
+<p>
+  <% review.created_at %>
+</p>
+
+<p>
+  Rating: <%= review.rating %>
+</p>
+
+<p>
+  Description: <%= review.description %>
+</p>
+<% end %>
 <% end %>
 </section>

@@ -16,16 +16,14 @@
     <div class="small-12 medium-12 large-12 columns">
       <p class="row">
         <%= f.label :rating, "Rating (1 (worst) to 5 (best)): " %>
-      </p>
-      <p class="row">
         <%= f.number_field :rating, in: 1..5, size: "30x1" %>
       </p>
 
       <p class="row">
         <%= f.label :description, "Description (max 400 characters):" %>
       </p>
-      <p>
-        <%= f.text_area :description, size: "30x10" %>
+      <p class="row">
+        <%= f.text_area :description, size: "35x10" %>
       </p>
 
       <%= f.submit "Submit", class: "success button" %>

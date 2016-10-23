@@ -1,4 +1,4 @@
-<h2><%= @category.name.capitalize %></h2>
+<h2><%= capitalize_each_word(@category.name) %></h2>
 <% if @products.empty? %>
   <p>
     No products in this category!
@@ -6,6 +6,6 @@
 <% end %>
 
 <% @products.each do |product| %>
-  <h3><%= product.name.capitalize %></h3>
-    <%= link_to image_tag("#{product.photo_url}"), product_path(product) %>
+  <h3><%= capitalize_each_word(product.name) %></h3>
+    <%= link_to image_tag("#{product.photo_url}", alt: "#{product.name}"), product_path(product) %>
 <% end %>
