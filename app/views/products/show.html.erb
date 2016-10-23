@@ -3,13 +3,19 @@
   <p>
     <%= image_tag "#{@product.photo_url}", alt: "#{@product.name}" %>
   </p>
+</section>
 
+<section>
   <p>
     <strong>Description</strong>: <%= @product.description %>
   </p>
 
   <p>
     <strong>Price:</strong> <%= show_dollars(@product.price) %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong> <%= @product.stock %>
   </p>
 </section>
 
