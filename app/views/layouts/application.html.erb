@@ -3,8 +3,9 @@
 <head>
   <title>Betsy</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'vendor/modernizr', 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
   <header>
@@ -35,20 +36,58 @@
         <li>
           <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
         </li>
-        <li>
-          <select name="product-by-category">
-            <%= Category.all.each do |cat| %>
-              <option value="<%= cat.id %>"><%= link_to "#{ cat.name }", product_path(cat.id), method: :get %></option>
-            <% end %>
-          </select>
-        </li>
-        <li>
-          <select name="product-by-merchant">
-            <%= Merchant.all.each do |merch| %>
-              <option value="<%= merch.id %>"><%= link_to "#{ merch.username }", merchant_path(merch.id), method: :get %></option>
-            <% end %>
-          </select>
-        </li>
+
+        <!-- I don't like this code, as there has to be a more elegant way to do this using Foundation and
+        Rails, but I cannot figure out how. (See below.) Aesthetically, I also don't like how it looks.
+         -->
+        <ul id="menu">
+          <li>Product by Category</a>
+            <ul>
+              <li>
+              <% Category.all.each do |cat| %>
+                  <%= link_to("#{ cat.name }", products_path) %>
+              <% end %>
+              </li>
+            </ul>
+          </li>
+          <li>Product by Merchant</a>
+            <ul>
+              <li>
+                <%= Merchant.all.each do |merch| %>
+                    <%= link_to("#{ merch.username }", merchant_path(merch.id)) %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Based on the Foundation research I did, this should work to create a drop drop down
+        menu, but it's not working and I cannot figure out why. Tabling for now, but keeping
+        the code, just in case we want to try again. -->
+
+        <!-- <ul class="dropdown menu" data-dropdown-menu>
+          <li class="has-dropdown">
+            Products by Category
+            <ul class="menu">
+              <li>
+                <% Category.all.each do |cat| %>
+                  <%= link_to("#{ cat.name }", products_path) %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Products by Merchant
+            <ul class="menu">
+              <li>
+                <%= Merchant.all.each do |merch| %>
+                  <%= link_to "#{ merch.username }", merchant_path(merch.id) %></option>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul> -->
+
         <li class="search-form">
           <%= form_tag(products_path, :method => "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
