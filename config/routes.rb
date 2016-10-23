@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     resources :categories, only: [:new, :create, :show]
 
-    resource :cart, only: [:show]
+
 
 # We're going to talk about this more if any of us needs to edit this. :)
     resources :orders, only: [:new, :create, :show] do
@@ -31,5 +31,10 @@ Rails.application.routes.draw do
     get '/sessions', to: 'sessions#index', as: 'sessions'
 
     delete '/sessions', to: 'sessions#destroy'
+
+    #specific routes for the cart!
+    get '/carts' => 'carts#index'
+    get 'carts/empty_cart' =>'carts#empty_cart'
+    get '/carts/:id', to: 'carts#add_to_cart', as: "add_cart"
 
 end

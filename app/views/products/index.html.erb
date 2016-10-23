@@ -1,6 +1,6 @@
 <h2>All Products</h2>
 
-<%@product.each do |product|%>
+<%@products.each do |product|%>
   <section>
     <h2>
       <%= link_to product.name, product_path(product) %>
@@ -10,6 +10,9 @@
     </p>
     <p>
       <%= product.description %>
+    </p>
+    <p>
+      <a href="/carts/<%=product.id%>"> Add to Cart
     </p>
   </section>
 <%end%>
