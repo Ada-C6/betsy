@@ -57,7 +57,7 @@ class ProductTest < ActiveSupport::TestCase
     end
   end
 
-  test "Product can be assigned a merchant id" do
+  test "Product belongs to a merchant" do
     product = Product.create!(name: "mouse hat", price: 1240)
     merchant = Merchant.create!(user_name: "testing", email: "test@test.com", uid: 124, provider: "github")
 
@@ -66,21 +66,28 @@ class ProductTest < ActiveSupport::TestCase
 
     assert_equal product.merchant_id, merchant.id
     assert_includes merchant.products, product
+    assert_respond_to product, :merchant
   end
 
   test "Product can have many categories" do
     product = products(:hamster_monocle)
     category_one = categories(:hamster)
     category_two = categories(:eyewear)
-    assert_equal 2, product.categories.length
+    category_three = categories(:mammals)
+    assert_equal 3, product.categories.length
     assert_includes product.category_ids, category_one.id
     assert_includes product.category_ids, category_two.id
+    assert_includes product.category_ids, category_three.id
+    assert_respond_to product, :categories
   end
 
-  # test "Products can have many order_items" do
-  #   product = Product.create!(name: "mouse hat", price: 1240)
-  #   order_item = OrderItem.create!(quantity: 1, product_id: product.id, order_id: 1294, shipped?: false)
-  #
-  #   assert_equal order_item.product_id, product.id
-  # end
+  test "Products can have many order items" do
+    product = products(:hamster_monocle)
+    assert_respond_to product, :order_items
+  end
+
+  test "Products can have many reviews" do
+    product = products(:cat_suit)
+    assert_respond_to product, :reviews
+  end
 end

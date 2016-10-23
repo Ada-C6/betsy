@@ -6,3 +6,5 @@ hamster:
   name: hamster
 eyewear:
   name: eyewear
+mammals:
+  name: mammals

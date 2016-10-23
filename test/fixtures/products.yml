@@ -4,7 +4,8 @@ cat_suit:
   description: your cat will look dapper in this one-piece suit!
   stock: 4
   photo_url: http://placekitten.com/200/300
-  categories: cat, formal_wear
+  categories: cat, formal_wear, mammals
+  merchant: 1234
 
 hamster_monocle:
   name: hamster monocle
@@ -12,4 +13,13 @@ hamster_monocle:
   description: a classy way to correct your hamster's vision.
   stock: 20
   photo_url: http://placekitten.com/200/300
-  categories: hamster, eyewear
+  categories: hamster, eyewear, mammals
+  merchant: 1234
+
+dog_bunny_ears:
+  name: Dog bunny ears
+  price: 3453
+  description: make your dog look like a bunny with these adorable bunny ears!
+  stock: 1
+  photo_url: http://placekitten.com/200/300
+  merchant: 2341
