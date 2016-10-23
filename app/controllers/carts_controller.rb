@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   def index
     if session[:cart]
-      @cart= session[:cart]
+      @cart = session[:cart]
     else
       @cart ={}
     end
@@ -18,10 +18,22 @@ class CartsController < ApplicationController
     end
 
     if cart[id]
-      cart[id] = cart[id] + 1
+      cart[id] = cart[id] - 1
     else
       cart[id] = 1
     end
+    redirect_to carts_path
+  end
+
+  def sub_cart
+    cart = session[:cart]
+    cart[params[:id]] = cart[params[:id]] - 1
+    redirect_to carts_path
+  end
+
+  def destroy
+    cart = session[:cart]
+    cart.destroy
     redirect_to carts_path
   end
 
