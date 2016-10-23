@@ -5,6 +5,10 @@ module ApplicationHelper
 
   def show_dollars(price)
     price = price / 100.0
-    number_to_currency(price)
+    return number_to_currency(price)
+  end
+
+  def date_format(time)
+    return time.strftime("%B %-d, %Y at %l:%M:%S %p")
   end
 end

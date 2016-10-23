@@ -11,36 +11,44 @@
   <p>
     <strong>Price:</strong> <%= show_dollars(@product.price) %>
   </p>
+</section>
 
-<% unless @product.categories.empty? %>
-  <h3>Categories</h3>
-  <ul>
-    <% @product.categories.each do |category| %>
-    <li><%= link_to "#{category.name}", category_path(category) %></li>
+<section>
+  <% unless @product.categories.empty? %>
+    <h3>Categories</h3>
+    <ul>
+      <% @product.categories.each do |category| %>
+      <li><%= link_to "#{category.name}", category_path(category) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+<section>
+  <h3>Reviews</h3>
+  <% if @product.reviews.empty? %>
+  <p>
+    No reviews! <%= link_to "Be the first.", new_product_review_path(@product.id) %>
+  </p>
+  <% else %>
+  <% @product.reviews.each do |review| %>
+
+  <section>
+    <p>
+      <strong><%= date_format(review.created_at) %></strong>
+    </p>
+
+    <p>
+      Rating: <%= review.rating %>
+    </p>
+
+    <p>
+      Description: <%= review.description %>
+    </p>
     <% end %>
-  </ul>
-<% end %>
-
-
-<h3>Reviews</h3>
-<% if @product.reviews.empty? %>
-<p>
-  No reviews! <%= link_to "Be the first.", new_product_review_path(@product.id) %>
-</p>
-<% else %>
-<% @product.reviews.each do |review| %>
-
-<p>
-  <% review.created_at %>
-</p>
-
-<p>
-  Rating: <%= review.rating %>
-</p>
-
-<p>
-  Description: <%= review.description %>
-</p>
-<% end %>
-<% end %>
+  </section>
+  <p>
+    <%= link_to "Review this product!", new_product_review_path(@product.id) %>
+  </p>
+  <% end %>
 </section>
