@@ -6,6 +6,5 @@
 <% end %>
 
 <% @products.each do |product| %>
-  <h3><%= capitalize_each_word(product.name) %></h3>
-    <%= link_to image_tag("#{product.photo_url}", alt: "#{product.name}"), product_path(product) %>
+    <%= link_to capitalize_each_word(product.name), product_path(product) %>
 <% end %>
