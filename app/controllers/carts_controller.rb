@@ -1,19 +1,28 @@
 class CartsController < ApplicationController
-  before_action :shopping_cart, only: [:index]
+  before_action :shopping_cart
   def index
+    @cart.each do | k, v|
+      @id = k
+    end
+    @product = Product.find(@id)
+    @order_item = OrderItem.new
+    @product.order_items << @order_item
+    @product.save
     return @cart
   end
 
   def add_to_cart
     id = params[:id]
-
     @product = Product.find(id)
+    @order_item = OrderItem.new
+    @product.order_items << @order_item
+    @product.save
 
 
-    if cart[id]
-      cart[id] = cart[id] + 1
+    if @cart[id]
+      @cart[id] = @cart[id] + 1
     else
-      cart[id] = 1
+      @cart[id] = 1
     end
     redirect_to carts_path
   end

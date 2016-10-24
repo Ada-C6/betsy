@@ -7,19 +7,20 @@
 
 <ul>
   <% @cart.each do |id, quantity| %>
-  <% product = Product.find(id) %>
+  
+
   <li>
-    <p> <%=product.name%></p>
+    <p> <%=@product.name%></p>
     <p><%=link_to "Learn More", product_path(id)%></p>
-    <p> <%=number_to_currency(product.price, :unit => '$')%></p>
-    <p> Quantity: <%=quantity%> <%=link_to "Add More!", add_cart_path(product.id), method: :get%>
-      <%=link_to "Delete Item", delete_cart_path(product.id), method: :delete%>
+    <p> <%=number_to_currency(@product.price, :unit => '$')%></p>
+    <p> Quantity: <%=quantity%> <%=link_to "Add More!", add_cart_path(@product.id), method: :get%>
+      <%=link_to "Delete Item", delete_cart_path(@product.id), method: :delete%>
     </p>
     <p>
-      <%=link_to "Reduce!", sub_cart_path(product.id)%>
+      <%=link_to "Reduce!", sub_cart_path(@product.id)%>
     </p>
   </li>
-  <% total += quantity * product.price %>
+  <% total += quantity * @product.price %>
   <%end%>
   <%if total != 0%>
   <p><strong> Total: <%=number_to_currency(total, :unit => '$')%></strong></p>
