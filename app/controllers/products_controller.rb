@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.price *= 100
+    @product.merchant_id = session[:merchant_id]
     if @product.save
       redirect_to product_path(@product)
     else

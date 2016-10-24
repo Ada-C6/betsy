@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20161024181022) do
     t.integer  "inventory"
     t.integer  "category"
     t.string   "description"
-    t.string   "photo_url"
     t.string   "url"
+    t.string   "photo_url"
   end
 
   add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"

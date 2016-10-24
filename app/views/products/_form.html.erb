@@ -11,6 +11,7 @@
 <%= form_for [@product] do |f| %>
   <%= f.label "Product name" %>
   <%= f.text_field :name %>
+  <%= f.hidden_field :merchant_id, :value => @product.merchant_id %>
   <%= f.label "Product description" %>
   <%= f.text_area :description %>
   <%#= f.label "Product categories" %>
