@@ -1,0 +1,23 @@
+<h1>Cart Details:</h1>
+<% @order_items.each do |order_item| %>
+  <!-- because order_item model belongs to product model, so I can use order_item.product, which works as attr_reader-->
+  <p><%= link_to "#{order_item.product.name}", show_products_path(order_item.product.id)%></p>
+  <p>$<%= order_item.unit_price %></p>
+
+  <%= form_tag(change_quantity_path, method: :post) do %>
+    <%= label_tag :quantity %>
+    <%= select_tag :quantity, options_for_select((1..order_item.product.inventory), order_item.quantity) %>
+    <%= hidden_field_tag(:order_item_id, order_item.id) %>
+    <%= submit_tag "change quantity" %>
+  <% end %>
+
+  <%= form_tag(destroy_order_item_path, method: :delete) do %>
+    <%= hidden_field_tag(:order_item_id, order_item.id) %>
+    <%= submit_tag "Delete" %>
+  <% end %>
+
+<% end %>
+
+<p>cart subtotal:$<%= @order.total_price %></p>
+<%= button_to "continue shopping", root_path, :method => :get %>
+<%= button_to "checkout", checkout_path, :method => :get %>
