@@ -13,11 +13,15 @@
   <%= f.text_field :name %>
   <%= f.label "Product description" %>
   <%= f.text_area :description %>
+  <%#= f.label "Product categories" %>
+
+  <!-- ADD categories -->
+
   <%= f.label "Product price" %>
   <%= f.text_field :price %>
   <%= f.label "Inventory" %>
   <%= f.number_field :inventory %>
   <%= f.label "Photo URL" %>
-  <%#= f.text_field :photo_url %>
+  <%= f.text_field :photo_url %>
   <%= f.submit %>
 <% end %>

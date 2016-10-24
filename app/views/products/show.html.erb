@@ -1,7 +1,13 @@
 <h1><%= @product.name %></h1>
 
-<% image = @product.name.downcase.gsub(' ', '_') %>
-<p><%= image_tag "#{image}.jpeg", alt: "#{ @product.name }" %></p>
+<% if @product.photo_url == nil %>
+  <% image = @product.name.downcase.gsub(' ', '_') %>
+  <p><%= image_tag "#{image}.jpeg", alt: "#{ @product.name }" %></p>
+
+<% else %>
+  <p><%= image_tag @product.photo_url, alt: "#{ @product.name }" %></p>
+
+<% end %>
 
 <p><%= "Description: " + @product.description %></p>
 
