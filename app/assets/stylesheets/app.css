@@ -1,0 +1,145 @@
+body {
+  min-width: 100%;
+  font-size: 16pt;
+  /*font-family:*/
+}
+
+header {
+  background-color: #680604;
+  min-height: 16%;
+  margin-bottom: 2%;
+}
+
+header h1 {
+  color: white;
+  padding-top: 2.5%;
+  font-size: 3.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+header h1 a {
+  padding-top: 2.5%;
+}
+
+header h1 a:visited {
+  color: white !important;
+}
+
+#login-logout a {
+  color: white;
+  display: inline-block;
+  float: right;
+  min-width: 20%;
+}
+
+
+
+.basic {
+  margin: 2% 12% 5% 12%;
+}
+
+.basic h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+.basic p {
+  padding: 1%;
+  margin-left: 3%;
+}
+
+/*.column {
+  padding-left: 2%;
+  padding-right: 2%;
+}*/
+
+.row ul {
+  list-style: none;
+}
+
+.row ul img {
+  max-height: 10em;
+}
+
+.row ul a {
+  color: black;
+}
+
+.row ul a:hover {
+  color: #680604;
+}
+
+.columns {
+  column-count: 3;
+  /*column-gap: 8vw;*/
+}
+
+.card p {
+  float: center;
+}
+
+img.photo {
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  max-height: 40%;
+  float: right;
+  margin-left: 8%;
+}
+
+
+
+
+.card {
+  /*display: block;*/
+  margin: 1%;
+  padding: 2%;
+  padding-left: 3.5%;
+  background-color: white;
+  /*color: white;*/
+  /*border: solid black;*/
+  min-height: 10rem;
+}
+
+div.product-info {
+  min-height: 6.5em;
+  /*border: solid red;*/
+  /*padding: 0;*/
+}
+
+img.product_photo {
+  display: block;
+  margin: 2% auto;
+  max-height: 8rem;
+}
+
+ul.product-info {
+  list-style: none;
+}
+
+.product-info ul {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: .25em;
+  font-size: 1rem;
+  text-align: center;
+}
+
+ul.product-info li a {
+  color: black;
+}
+
+.product-info ul a {
+  color: black;
+}
+
+.product-info ul a:hover {
+  color: #680604;
+}
+
+.product-info li {
+  float: center;
+  color: black;
+}

@@ -1,0 +1,8 @@
+<p id="login-logout">
+	<% if current_user %>
+		<%= link_to 'Logout', logout_path %>
+	<% else %>
+		<%= link_to 'Login', "/auth/github/" %>
+	<% end %>
+</p>
+

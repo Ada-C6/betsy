@@ -1,0 +1,23 @@
+<div class = "basic">
+
+  <h2> <%= @product.name %> </h2>
+
+    <%= image_tag(@product.photo_url, :class => 'photo') %>
+  
+
+   <div class="card"> 
+    <ul class="product-info">
+      <li><%= @product.description %></li>
+      <li>Price: $<%= @product.price %></li>
+      <li>In-stock: <%= @product.inventory %></li>
+      <li>Category: <%= @product.category %></li>
+      <li>Seller: <%#link_to @seller.name, by_seller_products_path %></li>
+      <li>Average rating: <%= @product.average_rating %></li>
+
+      <li>Review:
+        <% @reviews.each do |review| %></li>
+          <li><%= review.description %></li>
+        <% end %>
+    </ul>
+    </div>
+</div>

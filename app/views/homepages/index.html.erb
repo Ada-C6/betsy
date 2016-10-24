@@ -1,0 +1,32 @@
+<!-- <h1>Welcome to Vampazon!</h1> -->
+<div class="basic">
+	<%= render partial: 'layouts/greeting' %>
+
+	<%= render partial: 'random_photo', locals: {wanted_category: "Fashion"} %>
+<!-- 	<div class="columns small-up-2 medium-up-4"> -->
+	<h3>Shop by Category</h3>
+
+
+	<% @product_categories.each do |product_category| %>
+		<!-- <div class="row" > -->
+			<!-- <div class="card"> -->
+				<!-- <div class="product-info"> -->
+					
+
+					<ul class="product-info">
+					<!-- insert category photos -->
+					<li><%= link_to product_category, show_category_path(product_category)%></li>
+					</ul>
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </div> -->
+	<% end %>
+	<!-- </div> -->
+
+	<div class="product-info">
+		<h3><%= link_to "Browse All Collections", index_products_path%></h3>
+
+
+
+
+</div>
