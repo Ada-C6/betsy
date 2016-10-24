@@ -1,18 +1,19 @@
 <h2>All Products</h2>
 
 <%@products.each do |product|%>
-  <section>
-    <h2>
-      <%= link_to product.name, product_path(product) %>
-    </h2>
-    <p>
-      <%= image_tag "#{product.photo_url}"%>
-    </p>
-    <p>
-      <%= product.description %>
-    </p>
-    <p>
-      <a href="/carts/<%=product.id%>"> Add to Cart
+<section>
+  <h2>
+    <%= link_to product.name, product_path(product) %>
+  </h2>
+  <p>
+    <%= image_tag "#{product.photo_url}"%>
+  </p>
+  <p>
+    <%= product.description %>
+  </p>
+  <p>
+  
+    <a href="/carts/<%=product.id%>"> Add to Cart
     </p>
   </section>
-<%end%>
+  <%end%>

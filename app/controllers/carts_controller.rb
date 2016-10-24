@@ -1,24 +1,17 @@
 class CartsController < ApplicationController
+  before_action :shopping_cart, only: [:index]
   def index
-    if session[:cart]
-      @cart = session[:cart]
-    else
-      @cart ={}
-    end
+    return @cart
   end
 
   def add_to_cart
     id = params[:id]
 
-    if session[:cart]
-      cart = session[:cart]
-    else
-      session[:cart] = {}
-      cart = session[:cart]
-    end
+    @product = Product.find(id)
+
 
     if cart[id]
-      cart[id] = cart[id] - 1
+      cart[id] = cart[id] + 1
     else
       cart[id] = 1
     end
@@ -32,8 +25,11 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    cart = session[:cart]
-    cart.destroy
+
+  @product = Product.find(params[:id])
+    session[:cart].delete(@product)
+    # @cart = shopping_cart
+    # @product = @cart.product.find(params[:id]).destroy
     redirect_to carts_path
   end
 

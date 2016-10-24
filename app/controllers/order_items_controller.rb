@@ -26,7 +26,7 @@ class OrderItemsController < ApplicationController
     def destroy
         @order = current_order
         @order_item = @order.order_items.find(params[:id]).destroy
-        redirect_to order_path(params[:order_id])  
+        redirect_to order_path(params[:order_id])
     end
 
 
