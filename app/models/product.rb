@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
   validates :photo_url, presence: true
 
   def self.find_photo_image(product)
-    if product.photo_url == nil
+    if product.photo_url == "1"
       image = "#{ product.name.downcase.gsub(' ', '_') }.jpeg"
     else
       image = product.photo_url
