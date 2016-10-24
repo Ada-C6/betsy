@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 # If we want to implement this later, will need to customize authorization specifics...
-    # skip_before_action :require_login, only: [:login, :create]
+    skip_before_action :require_login, only: [:login, :create]
 
     def login_failure; end
 
@@ -16,36 +16,21 @@ class SessionsController < ApplicationController
           render :login_failure unless @merchant.save
         end
 
-        session[:merchant_id] = @merchant.id
+        session[:user_id] = @merchant.id
         redirect_to sessions_path
-        # if @merchant.nil?
-        #     # Merchant doesn't match anything in the DB.
-        #     # Attempt to create a new merchant.
-        #     @merchant = Merchant.build_from_github(auth_hash)
-        #     if @merchant.save
-        #       redirect_to sessions_path
-        #     else
-        #       redirect_to login_failure_path
-        #     end
-        # else
-        #     # Save the merchant ID in the session
-        #     session[:merchant_id] = @merchant.id
-        #
-        #     redirect_to sessions_path
-        # end
     end
 
     def index
-        if session[:merchant_id].nil?
-            redirect_to login_failure_path
+        if session[:user_id].nil?
+            redirect_to login_path
         else
-            @merchant = Merchant.find(session[:merchant_id]) # < recalls the value set in a previous request
+            @merchant = Merchant.find(session[:user_id]) # < recalls the value set in a previous request
         end
     end
 
-    def destroy
-        session.delete(:merchant_id)
-        redirect_to login_failure_path
+    def logout
+        session.delete(:user_id)
+        redirect_to root_path
     end
 
 end

@@ -26,8 +26,10 @@ Rails.application.routes.draw do
 
     get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
 
-    get '/sessions', to: 'sessions#index', as: 'sessions'
+    get '/sessions', to: 'sessions#index', as: 'portal'
 
-    delete '/sessions', to: 'sessions#destroy'
+    delete '/auth/logout', to: 'sessions#logout', as: "logout"
+
+    get '/auth/login', to: 'sessions#login', as: 'login'
 
 end
