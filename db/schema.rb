@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021222829) do
+ActiveRecord::Schema.define(version: 20161024175847) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20161021222829) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "inventory"
-    t.integer  "category"
     t.string   "description"
+    t.integer  "category_id"
   end
 
   add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"
@@ -84,8 +84,9 @@ ActiveRecord::Schema.define(version: 20161021222829) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
   end
 
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id"

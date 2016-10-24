@@ -45,7 +45,7 @@
             <ul>
               <li>
               <% Category.all.each do |cat| %>
-                  <%= link_to("#{ cat.name }", products_path) %>
+                  <%= link_to "#{ cat.name }", category_path(cat.id), method: :get %>
               <% end %>
               </li>
             </ul>
@@ -54,7 +54,7 @@
             <ul>
               <li>
                 <%= Merchant.all.each do |merch| %>
-                    <%= link_to("#{ merch.username }", merchant_path(merch.id)) %>
+                    <%= link_to "#{ merch.username }", merchant_path(merch.id)  %>
                 <% end %>
               </li>
             </ul>

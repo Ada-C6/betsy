@@ -5,12 +5,13 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Vendor.find(params[:category_id])
+    @category = Category.find(params[:category_id])
     @product = @category.products.build
   end
 
   def show
     @category = Category.find(params[:id])
+    @products = Product.where(category_id: @category.id)
   end
 
   def create
