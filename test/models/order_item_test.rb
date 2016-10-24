@@ -31,7 +31,7 @@ class OrderItemTest < ActiveSupport::TestCase
         assert_not no_product_id.valid?
         assert_includes(no_product_id.errors, :product_id)
 
-        assert_equal(123, order_items(:one_unit))
+        assert_equal(1234, order_items(:one_unit))
         assert order_items(:four_unit).valid?
     end
 

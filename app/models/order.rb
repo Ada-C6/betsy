@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
     has_many :order_items
 
-    validates :cc_number, presence: true, numericality: {only_integer: true}, length: { is: 16 }
+    validates :cc_number, presence: true, numericality: {only_integer: true}, length: { is: 4 }
     validates :cc_exp_year, presence: true, length: {is: 4}
     validates :cc_exp_month, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 12}
     validates :total, presence: true, numericality: { greater_than_or_equal_to: 0}
@@ -32,7 +32,7 @@ class Order < ActiveRecord::Base
 
     private
     def set_order_status
-        self.status = "PENDING"
+        self[:status] = "PENDING"
     end
 
     def update_total

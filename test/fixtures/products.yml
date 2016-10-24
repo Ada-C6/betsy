@@ -1,4 +1,5 @@
 cat_suit:
+  id: 1234
   name: cat suit
   price: 1234
   description: your cat will look dapper in this one-piece suit!

@@ -1,10 +1,10 @@
 one_unit:
     quantity: 1
-    product_id: 123
+    product_id: 1234
     order_id: 456
     shipped?: true
 four_unit:
     quantity: 4
-    product_id: 123
-    order_id: 456
+    product_id: 1234
+    order_id: 458
     shipped?: true
