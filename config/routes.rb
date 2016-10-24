@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :order_items, except: [:index, :show]
     resources :categories, only: [:index, :new, :create, :show]
 
+
+
 # We're going to talk about this more if any of us needs to edit this. :)
     # resources :orders, only: [:new, :create, :show] do
     #     # resources :order_items, except: [:index, :show]
@@ -28,5 +30,12 @@ Rails.application.routes.draw do
     delete '/auth/logout', to: 'sessions#logout', as: "logout"
 
     get '/auth/login', to: 'sessions#login', as: 'login'
+
+    #specific routes for the cart!
+    get '/carts' => 'carts#index'
+    get 'carts/empty_cart' =>'carts#empty_cart'
+    get '/carts/:id', to: 'carts#add_to_cart', as: "add_cart"
+    get '/carts/:id', to: 'carts#sub_cart', as: "sub_cart"
+    delete '/carts/products/:id', to: 'carts#destroy', as: 'delete_cart'
 
 end
