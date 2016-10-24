@@ -3,3 +3,5 @@
 <% @products.each do |p| %>
   <p>Name: <%= p.name %>, $<%= p.price %></p>
 <% end %>
+
+<%= link_to "Add a New Product", new_product_path %>
