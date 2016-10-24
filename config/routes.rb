@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resources :reviews, only: [:new, :create]
     end
 
-    resources :categories, only: [:new, :create, :show]
+    resources :categories, only: [:index, :new, :create, :show]
 
 # We're going to talk about this more if any of us needs to edit this. :)
     resources :orders, only: [:new, :create, :show] do
