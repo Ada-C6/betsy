@@ -17,12 +17,8 @@
 @import url('foundation.css');
 
 /*Header and footer CSS*/
-#login-navbar li, #product-navbar li {
+.lower-nav li {
   display: inline-block;
-}
-
-.zoolily {
-  display: inline;
 }
 
 .github-button, .log-out-button, .dashboard-button, .cart-button {

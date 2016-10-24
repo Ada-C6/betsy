@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :orders, except: [:index]
 
-  get 'category/:category_id/products', to: 'category#index', as: 'category'
+  get 'category/:category_id/products', to: 'categories#show', as: 'category'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

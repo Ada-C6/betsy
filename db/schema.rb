@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20161024191950) do
 
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -72,9 +73,9 @@ ActiveRecord::Schema.define(version: 20161024191950) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "inventory"
-    t.integer  "category"
     t.string   "description"
     t.string   "photo_url"
+    t.integer  "category_id"
   end
 
   add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"
