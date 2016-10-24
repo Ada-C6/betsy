@@ -1,14 +1,5 @@
 class SessionsController < ApplicationController
 
-  def index
-    if session[:user_id].nil?
-      redirect_to login_failure_path
-      return
-    else
-      @merchant = Merchant.find(session[:user_id])
-    end
-  end
-
   def create
     auth_hash = request.env['omniauth.auth']
     redirect_to login_failure_path if auth_hash['uid'].nil?
@@ -20,9 +11,8 @@ class SessionsController < ApplicationController
       @merchant = Merchant.build_from_github(auth_hash)
       render :creation_failure unless @merchant.save # This line saves the newly built @merchant to the database if it can be saved
     end
-    # Save the user ID in the session
+    # Save the merchant ID in the session
     session[:merchant_id] = @merchant.id
-
     redirect_to sessions_path
   end
 

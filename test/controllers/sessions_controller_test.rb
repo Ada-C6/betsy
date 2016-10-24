@@ -1,9 +1,37 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should redirect to login failure path if the merchant isn't found" do
-    # if auth_has['uid'].nil?
-    #   assert_redirected_to { controller: 'sessions' action: 'create' }
-    # end
+
+  def login_a_merchant
+    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
+    get :create, {provider: "github"}
+  end
+
+  test "can login a merchant" do
+    assert_difference('Merchant.count', 1) do
+      login_a_merchant
+      assert_response :redirect
+      assert_redirected_to sessions_path
+      assert_not_nil session[:merchant_id]
+    end
+  end
+
+  test "if a merchant logs in twice, it doesn't create a second merchant" do
+    assert_difference('Merchant.count', 1) do
+      login_a_merchant
+    end
+    assert_no_difference('Merchant.count') do
+      login_a_merchant
+      assert_response :redirect
+      assert_redirected_to sessions_path
+    end
+  end
+
+  test "can logout a merchant" do
+    login_a_merchant
+    assert_not_nil session[:merchant_id]
+    delete :destroy
+    assert_nil session[:merchant_id]
+
   end
 end
