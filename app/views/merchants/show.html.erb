@@ -1,7 +1,7 @@
 <h1><%= @merchant.username %></h1>
 
 <% @products.each do |p| %>
-  <p>Name: <%= p.name %>, $<%= p.price %></p>
+  <p>Name: <%= link_to p.name, product_path %>, $<%= p.price %></p>
 <% end %>
 
 <%= link_to "Add a New Product", new_product_path %>
