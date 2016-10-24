@@ -1,23 +1,11 @@
 class ProductsController < ApplicationController
-
-# products               products#index
-# merchant_products      products#index
-# "            "         products#create
-# new_merchant_product   products#new
-# edit_merchant_product  products#edit
-# product                products#show
-# merchant_product       products#show
-# "             "        products#update
-# "             "        products#update
-# "             "        products#destroy
+  before_action :find_product, only: [:show, :edit, :update]
 
   def index
     @product = Product.all
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  def show; end
 
 # should be limited to merchants
   # def new
@@ -40,6 +28,14 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :stock, :price,:photo_url, :merchant_id)
+  end
+
+  def find_product
+    begin
+      @product = Product.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    end
   end
 
 end
