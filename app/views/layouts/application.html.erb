@@ -8,10 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-  <header>
-    <h1 class="zoolily"><%= link_to "ZOOLILY", root_path %></h1>
-    <div id="login-navbar">
-      <ul>
+  <header class="top-bar">
+    <h1 class="title_area"><%= link_to "ZOOLILY", root_path %></h1>
+
+    <nav class="top-bar-section">
+      <ul class="menu top-bar-right">
         <li>
           <% if current_user %>
             <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
@@ -30,8 +31,9 @@
           <%= button_to "View Cart", orderitems_path, method: :get, class: "cart-button" %>
         </li>
       </ul>
-    </div>
-    <div id="product-navbar">
+    </nav>
+
+    <div class="lower-nav">
       <ul>
         <li>
           <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
@@ -40,20 +42,20 @@
         <!-- I don't like this code, as there has to be a more elegant way to do this using Foundation and
         Rails, but I cannot figure out how. (See below.) Aesthetically, I also don't like how it looks.
          -->
-        <ul id="menu">
+        <ul>
           <li>Product by Category</a>
             <ul>
               <li>
-              <% Category.all.each do |cat| %>
-                  <%= link_to "#{ cat.name }", category_path(cat.id), method: :get %>
-              <% end %>
+                <% Category.all.each do |cat| %>
+                    <%= link_to "#{ cat.name }", category_path(cat.id) %>
+                <% end %>
               </li>
             </ul>
           </li>
           <li>Product by Merchant</a>
             <ul>
               <li>
-                <%= Merchant.all.each do |merch| %>
+                <% Merchant.all.each do |merch| %>
                     <%= link_to "#{ merch.username }", merchant_path(merch.id)  %>
                 <% end %>
               </li>

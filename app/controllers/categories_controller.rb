@@ -10,13 +10,13 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
     @products = Product.where(category_id: @category.id)
   end
 
   def create
     @category = Category.new(category_params)
-    @product = Vendor.find(params[:product_id])
+    @product = Product.find(params[:product_id])
     if @category.save
       redirect_to root_path
     else
