@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20161024180902) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_tables", force: :cascade do |t|
+  end
+
   create_table "category_products", id: false, force: :cascade do |t|
     t.integer "category_id", null: false
     t.integer "product_id",  null: false
@@ -68,6 +77,7 @@ ActiveRecord::Schema.define(version: 20161024180902) do
     t.integer  "inventory"
     t.integer  "category"
     t.string   "description"
+    t.string   "url"
   end
 
   add_index "products", ["merchant_id"], name: "index_products_on_merchant_id"
