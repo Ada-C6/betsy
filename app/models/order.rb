@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
     validates_associated :order_items
     validate :acceptable_status
 
-    before_create :set_order_status
     before_save :update_total
 
     def valid_exp
@@ -31,11 +30,15 @@ class Order < ActiveRecord::Base
     end
 
     private
-    def set_order_status
-        self[:status] = "PENDING"
-    end
-
     def update_total
         self[:total] = total
+        puts ">>>>>>>> UPDATING TOTAL!"
     end
 end
+
+# test
+# create order model object
+# add order items to it (fixtures)
+#
+# assert_difference
+# end

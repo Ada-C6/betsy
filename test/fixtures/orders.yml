@@ -2,4 +2,3 @@ valid_order:
     cc_number: 6789
     cc_exp_year: 2016
     cc_exp_month: 12
-    status: PENDING

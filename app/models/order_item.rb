@@ -14,6 +14,8 @@ class OrderItem < ActiveRecord::Base
 
     private
     def valid_quantity
+        return false if quantity.nil?
+        return false if self.product.nil?
         if quantity > self.product.stock
             errors.add(:quantity, "there is not enough stock of this product to fulfill your request, please try again")
         end
