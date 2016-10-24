@@ -1,0 +1,14 @@
+best_product:
+  rating: 5
+
+no_rating:
+  rating:
+
+non_integer:
+  rating: 2.5
+
+too_low:
+  rating: 0
+
+too_high:
+  rating: 10
