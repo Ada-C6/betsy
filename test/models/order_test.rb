@@ -25,10 +25,14 @@ class OrderTest < ActiveSupport::TestCase
   end
 
   test "confirming the private method update_total occurs on an order object" do
-      p = Order.new
-      assert_equal(0, p.total)
+      o = Order.new(cc_number: 6789, cc_exp_year: 2016, cc_exp_month: 12)
+      assert_equal(0, o.total)
 
-      o = orders(:valid_order)
+      p =  OrderItem.new(quantity: 4, product: products(:cat_suit), shipped?: true, order_id: o)
+      puts "Here are o's attributes: #{o.attributes}."
+    #   o[:order_item] = p
+        o.save
+      puts "Did o save? #{o.save}."
       assert_equal(4936, o.total)
 
     #   assert_difference("o.order_items = order_items(:four_unit)", 0) do
