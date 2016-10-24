@@ -17,6 +17,11 @@ class OrdersControllerTest < ActionController::TestCase
     assert_nil order.id
   end
 
+  test "should show new form if order does not save" do
+    post :create, { order: { name: "Igor Smith" } }
+    assert_template :new
+  end
+
   test "should get the edit form" do
     order = orders(:ian)
     get :edit, id: order
