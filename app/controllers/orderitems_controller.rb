@@ -9,12 +9,13 @@ class OrderitemsController < ApplicationController
 
   def add_to_cart
     @item = OrderItem.new
+    # @product = Product.find(params[:id])
     @item.quantity = 1
     @item.product_id = @product.id
     @product.inventory -= 1
     @item.save
 
-    redirect_to :index
+    redirect_to orderitems_path
   end
 
   def create

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get "/sessions", to: "sessions#index", as: "sessions"
   delete "/sessions", to: "sessions#destroy"
 
-  get "/add_to_cart" => "orderitems#add_to_cart"
 
   resources :products
 
@@ -16,6 +15,8 @@ Rails.application.routes.draw do
   resources :reviews, except: [:index, :show]
 
   resources :orderitems, except: [:show]
+
+  get "/:product_id/add_to_cart" => "orderitems#add_to_cart"
 
   resources :orders, except: [:index]
 
