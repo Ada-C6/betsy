@@ -6,7 +6,8 @@
       <br />
       <% image = p.name.downcase.gsub(' ', '_') %>
 
-      <%= link_to image_tag("#{image}.jpeg", alt: "#{ p.name }"), product_path(p) %>
+      <% image = Product.find_photo_image(p) %>
+      <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p) %>
 
     </p>
 <% end %>
