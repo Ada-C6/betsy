@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:edit, :update]
 
-  def index
-    @orders = Order.all
-  end
+  # def index
+  #   @orders = Order.all
+  # end
 
   def show
     begin
