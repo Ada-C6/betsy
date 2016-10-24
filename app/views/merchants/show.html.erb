@@ -2,6 +2,8 @@
 
 <% @products.each do |p| %>
   <p>Name: <%= link_to p.name, product_path %>, $<%= p.price %></p>
+  <% image = Product.find_photo_image(p) %>
+  <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p) %>
 <% end %>
 
-<%= link_to "Add a New Product", new_product_path %>
+<p><%= link_to "Add a New Product", new_product_path %></p>
