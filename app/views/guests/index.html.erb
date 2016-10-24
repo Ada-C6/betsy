@@ -2,7 +2,9 @@
   <% 6.times do %>
     <% featured_image = @products[rand(@product_count)] %>
     <%= link_to featured_image.name, product_path(featured_image) %>
-    <% image = featured_image.name.downcase.gsub(' ', '_') %>
-    <%= link_to image_tag("#{ image }.jpeg", alt: "#{ featured_image.name }"), product_path(featured_image) %>
+
+    <% image = Product.find_photo_image(featured_image) %>
+    <%= link_to image_tag(image, alt: "#{ featured_image.name }"), product_path(featured_image) %>
+        
   <% end %>
 </section>
