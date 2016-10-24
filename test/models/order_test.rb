@@ -24,8 +24,23 @@ class OrderTest < ActiveSupport::TestCase
       assert_equal("PENDING", o.status)
   end
 
+  test "confirming the private method update_total occurs on an order object" do
+      p = Order.new
+      assert_equal(0, p.total)
 
+      o = orders(:valid_order)
+      assert_equal(4936, o.total)
 
-
+    #   assert_difference("o.order_items = order_items(:four_unit)", 0) do
+    #       o.save
+    #   end
+  end
 
 end
+
+# test
+# create order model object
+# add order items to it (fixtures)
+#
+# assert_difference
+# end

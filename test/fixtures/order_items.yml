@@ -6,5 +6,5 @@ one_unit:
 four_unit:
     quantity: 4
     product: cat_suit
-    order_id: 458
+    order: valid_order
     shipped?: true

@@ -32,13 +32,5 @@ class Order < ActiveRecord::Base
     private
     def update_total
         self[:total] = total
-        puts ">>>>>>>> UPDATING TOTAL!"
     end
 end
-
-# test
-# create order model object
-# add order items to it (fixtures)
-#
-# assert_difference
-# end
