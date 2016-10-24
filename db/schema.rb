@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20161024191950) do
 
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
