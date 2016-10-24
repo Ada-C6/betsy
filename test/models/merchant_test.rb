@@ -20,28 +20,11 @@ class MerchantTest < ActiveSupport::TestCase
     assert_not m3.valid?
   end
 
-  # def login_a_merchant
-  #   request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
-  #   get :create,  {provider: "github"}
-  # end
-  #
-  # test "Can Create a merchant" do
-  #   assert_difference('Merchant.count', 1) do
-  #     login_a_merchant
-  #     assert_response :redirect
-  #     assert_redirected_to root_path
-  #   end
-  # end
-  #
-  # test "If a merchant logs in twice it doesn't create a 2nd merchant" do
-  #   assert_difference('Merchant.count', 1) do
-  #     login_a_merchant
-  #   end
-  #   assert_no_difference('Merchant.count') do
-  #     login_a_merchant
-  #     assert_response :redirect
-  #     assert_redirected_to root_path
-  #   end
-  # end
+  test "can create a merchant from github" do
+    auth_hash = OmniAuth.config.mock_auth[:github]
+    user_gh_built = Merchant.build_from_github(auth_hash)
+
+    assert user_gh_built.valid?
+  end
 
 end
