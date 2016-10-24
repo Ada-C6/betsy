@@ -1,14 +1,20 @@
 best_product:
   rating: 5
+  product_id: 1
+  description: BEST EVA!
 
 no_rating:
   rating:
+  product_id: 2
 
 non_integer:
   rating: 2.5
+  product_id: 3
 
 too_low:
   rating: 0
+  product_id: 4
 
 too_high:
   rating: 10
+  product_id: 5
