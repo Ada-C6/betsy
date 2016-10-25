@@ -19,9 +19,6 @@ ActiveRecord::Schema.define(version: 20161024224642) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_tables", force: :cascade do |t|
-  end
-
   create_table "category_products", id: false, force: :cascade do |t|
     t.integer "category_id", null: false
     t.integer "product_id",  null: false
@@ -76,8 +73,8 @@ ActiveRecord::Schema.define(version: 20161024224642) do
     t.datetime "updated_at",  null: false
     t.integer  "inventory"
     t.string   "description"
-    t.integer  "category_id"
     t.string   "photo_url"
+    t.integer  "category_id"
     t.boolean  "active"
   end
 
