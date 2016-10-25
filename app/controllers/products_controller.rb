@@ -2,17 +2,21 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:edit, :update]
 
   def index
-    @products = Product.where(active: true)
     if params[:search]
-      @products = Product.search(params[:search]).order("created_at DESC")
+      @products = Product.where(active: true).search(params[:search]).order("created_at DESC")
     else
-      @products = Product.all.order("created_at DESC")
+      @products = Product.where(active: true).order("created_at DESC")
     end
   end
 
   def show
     begin
-      @product = Product.find(params[:id])
+      product = Product.find(params[:id])
+      if product.active == true
+        @product = product
+      else
+        redirect_to products_path
+      end
     rescue StandardError => err
       render "/errors/not_found", status: :not_found
     end
