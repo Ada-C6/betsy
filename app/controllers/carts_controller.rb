@@ -1,30 +1,32 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
   def index
-    # if !@cart.empty?
-        @cart.each do | k, v|
-        @id = k
-      end
+
+    @cart.each do | k, v|
+      @id = k
+    end
+    @order_item = OrderItem.find_by(product_id: @id)
+    raise
+
+    if @order_item != nil
       @product = Product.find(@id)
-      @order_item = OrderItem.new
-      @product.order_items << @order_item
-      @product.save
-    #   return @cart
-    # else
 
-
+      # @product.order_items << @order_item
+      # @product.save
+      # @order_item.save
+      #   return @cart
+    else
       return @cart
-    # end
+    end
   end
 
   def add_to_cart
     id = params[:id]
     @product = Product.find(id)
-    @order_item = OrderItem.new
+    @order_item = OrderItem.create
     @product.order_items << @order_item
     @product.save
     @order_item.save
-
     if @cart[id]
       @cart[id] = @cart[id] + 1
     else
@@ -41,8 +43,8 @@ class CartsController < ApplicationController
 
   def destroy
 
-  @product = Product.find(params[:id])
-    session[:cart].delete(@product)
+   @order_item = OrderItem.find_by(product_id: params[:id])
+   @order_item.destroy
     # @cart = shopping_cart
     # @product = @cart.product.find(params[:id]).destroy
     redirect_to carts_path
