@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_difference('Merchant.count', 1) do
       login_a_merchant
       assert_response :redirect
-      assert_redirected_to sessions_path
+      assert_redirected_to root_path
       assert_not_nil session[:merchant_id]
     end
   end
@@ -23,7 +23,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_no_difference('Merchant.count') do
       login_a_merchant
       assert_response :redirect
-      assert_redirected_to sessions_path
+      assert_redirected_to root_path
     end
   end
 
