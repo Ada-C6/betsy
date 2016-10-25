@@ -10,6 +10,7 @@ module ApplicationHelper
 
   def date_format(time)
     return time.strftime("%B %-d, %Y at %l:%M:%S %p")
+  end
 
   def user_name
     begin
