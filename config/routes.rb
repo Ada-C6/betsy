@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'carts/show'
+
   root 'guests#index'
  # do we need route w/ callback?
   get "/auth/:provider/callback" =>  "sessions#create" # called from the provider (github) OAuth strategy and not by a link the user clicks on
