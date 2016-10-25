@@ -43,8 +43,8 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should create new product" do
-    post_params = {product: { name: "Tigers", price: 234513, inventory: 5, description: "Yay tigers", photo_url: "tigers.jpeg"} }
     assert_difference('Product.count') do
+      post_params = {product: { name: "Tigers", price: 234513, inventory: 5, description: "Yay tigers", photo_url: "tigers.jpeg"} }
       post :create, post_params
     end
 
