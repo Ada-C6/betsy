@@ -4,6 +4,8 @@ elephant:
   name: Elephant
   price: 100200
   inventory: 2
+  description: "has trunk"
+  photo_url: "http://fillmurray.com/200/300"
 
 monkey:
   name: Monkey
