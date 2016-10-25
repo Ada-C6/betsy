@@ -1,4 +1,4 @@
-clas OrderitemsController < ApplicationController
+class OrderitemsController < ApplicationController
   before_action :is_product_in_cart, only: [:create]
   # def index
   #   @order_items = OrderItem.all
