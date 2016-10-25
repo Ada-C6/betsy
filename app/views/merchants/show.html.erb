@@ -1,0 +1,35 @@
+<h1>Here is all the information for a single merchant and links to what they do</h1>
+
+<article class="">
+  <section>
+    <%= "You are registed under the name: #{@merchant.name} (#{@merchant.email})" %>
+    <%= "through the #{"PROVIDER"} authentication" %>
+  </section>
+  <section>
+    <%= link_to "Add a new product", new_merchant_product_path(@merchant) %>
+    <%= link_to "Add a new product category", new_category_path %>
+<p>
+
+</p>
+  </section>
+  <% @merchant.products.each do |product| %>
+    <section>
+      <%= link_to "#{product.name}", product_path(product) %>
+      <%= link_to "Edit", edit_product_path(product) %>
+      <%= link_to "" %>
+    </section>
+<p>
+
+</p>
+    <% product.orders.reverse.each do |order| %>
+    <section>
+      <%= link_to "Date: #{order.purchase_time.strftime("%Y-%m-%d")} Order##{order.id}: Customer: #{order.name}", order_path(order) %>
+      <%= "Order status: #{order.status}" %>
+    </section>
+    <% end %>
+  <% end %>
+</article>
+
+<p>
+  This is the merchants#show view
+</p>

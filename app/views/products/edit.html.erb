@@ -1,0 +1,3 @@
+<!-- This should only be visible to logged in users. -->
+<h1>Hi, <%= @current_user.name %>! You're making a new product!</h1>
+<%= render partial: "form", locals: { http_method: :patch } %>

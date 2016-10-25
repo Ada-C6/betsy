@@ -7,9 +7,18 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
 
 .DS_Store
+
+/coverage
+
+# Ignore the .env file (it's full of secrets!)
+.env

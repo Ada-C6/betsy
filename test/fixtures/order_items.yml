@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  order: one
+  product: one
+  quantity: 1
+  shipping_status: false
+#
+two_true:
+  order: one
+  product: two
+  quantity: 2
+  shipping_status: true
+
+three_true:
+  order: two
+  product: one
+  quantity: 1
+  shipping_status: true
+
+# To show that you can not add more quantity than in the stock
+four:
+  order: three_pending
+  product: three
+  quantity: 1
+  shipping_status: false
+
+# To show that you can not update the quantity if the order status is anything but pending. Can't use ones above because quantity would not be enough to add anything to the cart.
+five:
+  order: two #paid
+  product: three
+  quantity: 1
+  shipping_status: false

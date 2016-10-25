@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Betsy</title>
+  <title>BasketCase</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+  <link href="/assets/favicon.ico" rel="icon" type="icon" /></head>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <body>
+  <header>
+    <h1><%= link_to "BasketCase", root_path%></h1>
+    <section class="button">
+      <% if session[:user_id] == nil %>
+        <%= link_to "Log In", "/auth/google" %>
+      <% else %>
+        <%= link_to "Log Out", sessions_path, method: :delete %>
+      <% end %>
+    </section>
+  </header>
 
 <%= yield %>
 

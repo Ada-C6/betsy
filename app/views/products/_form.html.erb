@@ -1,0 +1,26 @@
+<% if @product.errors.any? %>
+  <ul class="errors">
+    <% @product.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<table>
+<%= form_for [@merchant, @product], method: http_method do |f| %>
+<tr>
+<td>
+  <%= f.label "Product Name" %>
+  <%= f.text_field :name %>
+</td>
+</tr>
+<!-- Don't forget to add checkboxes for product_categories. -->
+<tr>
+  <td>
+  <%= f.submit "Submit" %>
+</td>
+</tr>
+<% end %>
+</ul>
