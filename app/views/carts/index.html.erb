@@ -7,9 +7,8 @@
 
 <ul>
   <% @cart.each do |id, quantity| %>
-  
-
   <li>
+    raise
     <p> <%=@product.name%></p>
     <p><%=link_to "Learn More", product_path(id)%></p>
     <p> <%=number_to_currency(@product.price, :unit => '$')%></p>

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get '/carts' => 'carts#index'
     get 'carts/empty_cart' =>'carts#empty_cart'
     get '/carts/:id', to: 'carts#add_to_cart', as: "add_cart"
+
     get '/carts/:id', to: 'carts#sub_cart', as: "sub_cart"
     delete '/carts/products/:id', to: 'carts#destroy', as: 'delete_cart'
 

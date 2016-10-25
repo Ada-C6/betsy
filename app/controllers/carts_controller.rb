@@ -1,15 +1,18 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
+
   def index
-
-    @cart.each do | k, v|
-      @id = k
+    @cart.each do | cart_item|
+      @id = cart_item.to_i
     end
-    @order_item = OrderItem.find_by(product_id: @id)
-    raise
+    # @order_item = OrderItem.find_by(product_id: @id)
 
-    if @order_item != nil
+raise
+
+    if @id != nil
       @product = Product.find(@id)
+      @order_item = OrderItem.find_by(product_id: @id)
+
 
       # @product.order_items << @order_item
       # @product.save
@@ -23,14 +26,18 @@ class CartsController < ApplicationController
   def add_to_cart
     id = params[:id]
     @product = Product.find(id)
-    @order_item = OrderItem.create
-    @product.order_items << @order_item
-    @product.save
-    @order_item.save
-    if @cart[id]
-      @cart[id] = @cart[id] + 1
-    else
-      @cart[id] = 1
+    begin
+      @order_item = OrderItem.find(params[:product_id])
+    rescue ActiveRecord::RecordNotFound
+      nil
+    end
+    if @order_item.nil?
+
+      @order_item = OrderItem.create
+      @product.order_items << @order_item
+      @product.save
+      # @cart { @product.id => @order_item.quantity })
+      @order_item.save
     end
     redirect_to carts_path
   end
@@ -42,9 +49,9 @@ class CartsController < ApplicationController
   end
 
   def destroy
+   @order_item = OrderItem.find_by(params[:product_id])
 
-   @order_item = OrderItem.find_by(product_id: params[:id])
-   @order_item.destroy
+
     # @cart = shopping_cart
     # @product = @cart.product.find(params[:id]).destroy
     redirect_to carts_path
