@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     end
     # Save the merchant ID in the session
     session[:merchant_id] = @merchant.id
-    redirect_to sessions_path
+    redirect_to root_path
   end
 
   def destroy
