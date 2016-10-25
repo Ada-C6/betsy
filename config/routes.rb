@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  get "/products/:product_id/add_to_cart" => "orderitems#add_to_cart"
+  # get "/products/:id/add_to_cart", to: "orderitems#add_to_cart", as: "add_to_cart"
 
   get "/products/:id/retire", to: "products#retire_product", as: "retire_product"
 
