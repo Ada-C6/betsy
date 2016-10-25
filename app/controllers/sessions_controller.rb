@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         end
 
         session[:user_id] = @merchant.id
-        redirect_to sessions_path
+        redirect_to portal_path
     end
 
     def index
