@@ -8,15 +8,15 @@ class MerchantsController < GuestsController
   #   @merchant = Merchant.new
   # end
   #
-  # def create
-  #   @merchant = Merchant.new(merchant_params)
-  #   # Need to intialize number of merchan to 1 upon creation
-  #   if @merchant.save
-  #     redirect_to merchant_path(@merchant)
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @merchant = Merchant.new(merchant_params)
+    # Need to intialize number of merchan to 1 upon creation
+    if @merchant.save
+      redirect_to merchant_path(@merchant)
+    else
+      render :new
+    end
+  end
 
   def show
     @merchant = Merchant.find(params[:id])
