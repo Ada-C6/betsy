@@ -9,13 +9,16 @@ Rails.application.routes.draw do
 
   resources :products
 
+  get "/products/:product_id/add_to_cart" => "orderitems#add_to_cart"
+
+  get "/products/:id/retire", to: "products#retire_product", as: "retire_product"
+
   resources :merchants, only: [:new, :create, :show]
 
   resources :reviews, except: [:index, :show]
 
   resources :orderitems, except: [:show]
 
-  get "/:product_id/add_to_cart" => "orderitems#add_to_cart"
 
   resources :orders, except: [:index]
 

@@ -52,6 +52,13 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def retire_product
+    p = Product.find(params[:id])
+    p.active = false
+    p.save
+    redirect_to products_path
+  end
+
   private
 
   def product_params

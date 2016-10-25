@@ -14,4 +14,5 @@ class Merchant < ActiveRecord::Base
 
     return merchant
   end
+
 end
