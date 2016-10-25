@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:edit, :update]
 
   def index
-    @products = Product.all
+    @products = Product.where(active: true)
     if params[:search]
       @products = Product.search(params[:search]).order("created_at DESC")
     else
