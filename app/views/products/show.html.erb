@@ -11,10 +11,10 @@
   <%#= link_to "Add To Cart", add_to_cart_path %>
 </p>
 
-<p>
-  <%= link_to "Retire product", retire_product_path, method: :patch %>
-</p>
-
-<p>
-  <%= link_to "Reinstate product", reinstate_product_path, method: :patch %>
-</p>
+<% if current_user %>
+  <% if @product.active == true %>
+  <p><%= link_to "Retire product", retire_product_path, method: :patch %></p>
+  <% else %>
+  <p><%= link_to "Reinstate product", reinstate_product_path, method: :patch %></p>
+  <% end %>
+<% end %>
