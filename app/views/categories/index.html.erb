@@ -1,0 +1,9 @@
+<h2>All Categories</h2>
+
+<ul class="row small-up-3 large-up-5">
+<% @categories.each do |category| %>
+    <li class="column"><h3>
+        <%= link_to capitalize_each_word(category.name), category_path(category) %>
+    </h3></li>
+<%end%>
+</ul>

@@ -1,3 +1,8 @@
+/*
+*= require_tree .
+*= require_self
+*/
+
 .nav-bar li {
   display: inline;
   font-family: 'Julius Sans One', sans-serif;
