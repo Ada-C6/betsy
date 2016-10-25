@@ -20,21 +20,23 @@ class ProductsControllerTest < ActionController::TestCase
       Product.find(product_id)
     end
 
+    get :show, {id: product_id}
+    assert_response :not_found
+  end
+
+  test "should get the new form" do
+    get :new
+    assert_template :new
+    assert_template partial: '_form'
+    assert_response :success
+  end
+
+  test "create should add a new product to the database" do
+    post_params = {product: {name: "dog sunglasses", description: "too cool!"}, }
   end
 
 end
 
-#   get :show, {id: movie_id}
-#   assert_response :not_found
-# end
-#
-# test "should get the new form" do
-#   get :new
-#   assert_template :new
-#   assert_template partial: '_form'
-#   assert_response :success
-# end
-#
 # test "add a new movie to the database" do
 #   post_params = {movie: {name: "The Sound of Music", director: "no idea"} }
 #   assert_difference("Movie.count", 1) do

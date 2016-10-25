@@ -9,13 +9,16 @@ class ProductsController < ApplicationController
   def show; end
 
 # should be limited to merchants
-  # def new
-  # end
-  #
+  def new
+    @product = Product.new
+  end
+
+
   # def create
+  #
   # end
-  #
-  #
+  
+
   # def edit
   # end
   #
