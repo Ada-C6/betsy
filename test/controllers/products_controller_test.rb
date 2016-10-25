@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
+
+  test "should get index" do
+    get :index
+    assert_response :success
+  end
+
   test "should get the new form" do
     get :new
     assert_response :success
@@ -26,8 +32,14 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should update product" do
     product = products(:elephant)
-    patch :update, id: product, product: { name: product.name, price: product.price }
+    patch :update, id: product, product: { name: product.name, price: 55 }
     assert_redirected_to product_path
+  end
+
+  test "should render edit if updating product is unsuccessful" do
+    product = products(:elephant)
+    patch :update, id: product, product: { name: "", price: "5" }
+    assert_template :edit
   end
 
   test "should create new product" do
@@ -40,6 +52,17 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to product_path(product)
     assert_not_nil product
   end
+
+
+  test "should render new if new product doesn't save" do
+    assert_difference('Product.count', 0) do
+      post_params = {product: { name: "Tigers", price: 234513, inventory: 5, description: "striped" } }
+      post :create, post_params
+    end
+
+    assert_template :new
+  end
+
 
   test "should show the show page for the specified product" do
     product_id = products(:elephant).id

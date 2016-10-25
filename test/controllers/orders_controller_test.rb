@@ -50,6 +50,14 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to order_path
   end
 
+  test "should render edit if update doesn't save" do
+    order = orders(:xander)
+    patch :update, id: order, order: { name: "", email: order.email, street_address: order.street_address, city: order.city,
+      state: order.state, mailing_zip: order.mailing_zip, cc_number: order.cc_number, cc_exp_month: order.cc_exp_month, cc_exp_year: order.cc_exp_year,
+      cc_sec_code: order.cc_sec_code, billing_zip: order.billing_zip }
+      assert_template :edit  
+  end
+
   test "should show the show page for the specified order" do
     order_id = orders(:xander).id
     get :show, { id: order_id }
