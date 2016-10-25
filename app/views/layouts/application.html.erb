@@ -13,10 +13,11 @@
 
   <body>
     <header class="top-bar">
-      <h1 class="title_area"><%= link_to "ZOOLILY", root_path %></h1>
-
       <nav class="top-bar-section">
         <ul class="menu top-bar-right">
+          <li>
+            <h1 class="title_area"><%= link_to "ZOOLILY", root_path %></h1>
+          </li>
           <li>
             <% if current_user %>
               <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
@@ -36,16 +37,15 @@
           </li>
         </ul>
       </nav>
-
-      <div class="lower-nav">
-        <ul>
+      <hr />
+      <nav class="top-bar-section row small-up-2 medium-up-4">
+        <ul class="menu top-bar-center">
           <li>
-            <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
+            <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button column" %>
           </li>
-
-          <nav class="row">
             <!-- Make this unordered list horizontal at medium and larger screens & verticle on small ones  -->
-            <section class="small-12 columns">
+          <li>
+            <section class="column">
               <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
                 <li>
                   Products by Category
@@ -57,6 +57,12 @@
                     </li>
                   </ul>
                 </li>
+              </ul>
+            </section>
+          </li>
+          <li>
+            <section class="column">
+              <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
                 <li>
                   Products by Merchant
                   <ul class="menu vertical">
@@ -67,17 +73,19 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
+                </ul>
             </section>
-
-          <li class="search-form">
-            <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-              <%= submit_tag "Search", :name => nil %>
-            <% end %>
+          </li>
+          <li>
+            <section class="search-form column">
+              <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+                <%= submit_tag "Search", :name => nil %>
+              <% end %>
+            </section>
           </li>
         </ul>
-      </div>
+      </nav>
     </header>
 
     <%= yield %>

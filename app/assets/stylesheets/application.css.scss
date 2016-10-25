@@ -17,8 +17,21 @@
 
  */
  /*Header and footer CSS*/
+ body {
+   margin: 0 5%;
+ }
+
+ .top-bar {
+   border: 1px blue dashed;
+   margin: 2% -2%;
+ }
+
  .lower-nav li {
    display: inline-block;
+ }
+
+ .title_area {
+   text-align: center;
  }
 
  .github-button, .log-out-button, .dashboard-button, .cart-button {
