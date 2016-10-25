@@ -1,9 +1,7 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:edit, :update]
 
-  # def index
-  #   @orders = Order.all
-  # end
+  # def index; end # this will show order for only that merchant. Like auth hash - takes from session
 
   def show
     begin
