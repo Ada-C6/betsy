@@ -32,105 +32,93 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "create should add a new product to the database" do
-    post_params = {product: {name: "dog sunglasses", description: "too cool!"}, }
+    post_params = {product: {name: "dog sunglasses", description: "too cool!", price: 549, stock: 10}}
+    assert_difference("Product.count", 1) do
+      post :create, post_params
+    end
+
+    product = assigns(:product)
+    assert_redirected_to product_path(product.id)
   end
 
-end
+  test "product with no name can't change the database" do
+    post_params = {product: {description: "too cool!", price: 549, stock: 10}}
+    assert_no_difference("Product.count") do
+      post :create, post_params
+    end
+    assert_template :new
+  end
 
-# test "add a new movie to the database" do
-#   post_params = {movie: {name: "The Sound of Music", director: "no idea"} }
-#   assert_difference("Movie.count", 1) do
-#     post :create, post_params
-#   end
-#
-#   assert_redirected_to movies_path
-# end
-#
-# test "a movie with no title can't change the database" do
-#   post_params = { movie: {director: "someone", description: "empty values"}}
-#
-#   assert_no_difference("Movie.count") do
-#     post :create, post_params
-#   end
-#
-#   assert_template :new
-# end
-#
-# test "a movie with no author can't change the database" do
-#   post_params = { movie: {name: "something", description: "empty values"}}
-#
-#   assert_no_difference("Movie.count") do
-#     post :create, post_params
-#   end
-#
-#   assert_template :new
-# end
-#
-# test "should get the edit form" do
-#   movie_id = movies(:schindlers_list).id
-#   get :edit, {id: movie_id}
-#   assert_template :edit
-#   assert_template partial: '_form'
-#   assert_response :success
-#
-#   movie = assigns(:movie)
-#   assert_not_nil movie
-#   assert_equal movie.id, movie_id
-# end
-#
-# test "update should change the movie" do
-#   movie_id = movies(:galaxy_quest).id
-#   patch :update, {id: movie_id, movie: {name: "Galaxy Quest (ick)"} }
-#   assert_equal "Galaxy Quest (ick)", Movie.find(movie_id).name
-#
-#   assert_redirected_to movie_path
-# end
-#
-# test "update should not allow nil name" do
-#   movie_id = movies(:toy_story).id
-#   patch :update, {id: movie_id, movie: {name: nil} }
-#
-#   assert_equal "Toy Story", Movie.find(movie_id).name
-#
-#   assert_template :edit
-# end
-#
-# test "update should not allow nil director" do
-#   movie_id = movies(:toy_story).id
-#   patch :update, {id: movie_id, movie: {director: nil} }
-#
-#   assert_equal "Pixar", Movie.find(movie_id).director
-#   assert_template :edit
-# end
-#
-# test "destroy should delete the item" do
-#   movie_id = movies(:galaxy_quest).id
-#
-#   assert_difference("Movie.count", -1) do
-#     delete :destroy, {id: movie_id}
-#   end
-#
-#   assert_raises ActiveRecord::RecordNotFound do
-#     Movie.find(movie_id)
-#   end
-#
-#   assert_redirected_to movies_path
-# end
-#
-# test "upvote should increment rank by one" do
-#   movie_id = movies(:schindlers_list).id
-#
-#   assert_difference("Movie.find(movie_id).rank", 1) do
-#     patch :upvote, {id: movie_id}
-#   end
-#
-#   assert_redirected_to movie_path(movie_id)
-# end
-#
-# test "upvote should set nil ranks to one" do
-#   movie_id = movies(:nil_rank).id
-#
-#   assert_difference("Movie.find(movie_id).rank", 1) do
-#     patch :upvote, {id: movie_id}
-#   end
-# end
+  test "product with no price can't change the database" do
+    post_params = {product: {name: "dog sunglasses", description: "too cool!", stock: 10}}
+    assert_no_difference("Product.count") do
+      post :create, post_params
+    end
+    assert_template :new
+  end
+
+  test "product with no stock can't change the database" do
+    post_params = {product: {name: "dog sunglasses", description: "too cool!"}}
+    assert_no_difference("Product.count") do
+      post :create, post_params
+    end
+    assert_template :new
+  end
+
+  test "should get the product edit form" do
+    product_id = products(:cat_suit).id
+    get :edit, {id: product_id}
+    assert_template :edit
+    assert_template partial: '_form'
+    assert_response :success
+
+    product = assigns(:product)
+    assert_not_nil product
+    assert_equal product.id, product_id
+  end
+
+  test "update should change the product" do
+    product_id = products(:cat_suit).id
+    patch :update, {id: product_id, product: {name: "cat fancy suit"}}
+    assert_equal "cat fancy suit", Product.find(product_id).name
+
+    assert_redirected_to product_path
+  end
+
+  test "update should not allow empty name" do
+    product_id = products(:cat_suit).id
+    patch :update, {id: product_id, product: {name: nil}}
+    assert_equal "cat suit", Product.find(product_id).name
+
+    assert_template :edit
+  end
+
+  test "update should not allow invalid price" do
+    product_id = products(:cat_suit).id
+    patch :update, {id: product_id, product: {price: 0}}
+    assert_equal 1234, Product.find(product_id).price
+
+    assert_template :edit
+  end
+
+  test "update should not allow empty stock" do
+    product_id = products(:cat_suit).id
+    patch :update, {id: product_id, product: {stock: nil}}
+    assert_equal 4, Product.find(product_id).stock
+
+    assert_template :edit
+  end
+
+  test "destroy should delete the product" do
+    product_id = products(:cat_suit).id
+    assert_difference("Product.count", -1) do
+      delete :destroy, {id: product_id}
+    end
+
+    assert_raises ActiveRecord::RecordNotFound do
+      Product.find(product_id)
+    end
+
+    assert_redirected_to portal_path
+  end
+end

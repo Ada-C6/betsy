@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update]
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -13,21 +13,31 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def create
+    @product = Product.new(product_params)
+    @product.merchant_id = session[:user_id]
+    if @product.save
+      redirect_to product_path(@product)
+    else
+      render :new
+    end
+  end
 
-  # def create
-  #
-  # end
+  def edit; end
+
+  def update
+    if @product.update(product_params)
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @product.destroy
+    redirect_to portal_path
+  end
   
-
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # def destroy
-  # end
-
   private
 
   def product_params

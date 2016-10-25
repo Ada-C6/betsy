@@ -2,19 +2,19 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
   test "Cannot create a product without a name" do
-    product = Product.new
+    product = Product.new(stock: 2, price: 400)
     assert_not product.valid?
     assert_includes product.errors, :name
   end
 
   test "Cannot create a product without a price" do
-    product = Product.new(name: "kitten tux")
+    product = Product.new(name: "kitten tux", stock: 2)
     assert_not product.valid?
     assert_includes product.errors, :price
   end
 
   test "Cannot create a product with a duplicate name" do
-    product = Product.new(name: "cat suit", price: 224)
+    product = Product.new(name: "cat suit", price: 224, stock: 5)
     assert_not product.valid?
     assert_not product.save
     assert_includes product.errors, :name
@@ -22,24 +22,38 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "Price must be an integer" do
-    product = Product.new(name: "dog sunglasses", price: "foo")
+    product = Product.new(name: "dog sunglasses", price: "foo", stock: 1)
     assert_not product.valid?
     assert_not product.save
     assert_equal ["is not a number"], product.errors.messages[:price]
   end
 
   test "Price can't be 0" do
-    product = Product.new(name: "foobar", price: 0)
+    product = Product.new(name: "foobar", price: 0, stock: 1)
     assert_not product.valid?
     assert_not product.save
     assert_equal ["must be greater than 0"], product.errors.messages[:price]
   end
 
   test "Price can't be less than 0" do
-    product = Product.new(name: "foobar", price: -1)
+    product = Product.new(name: "foobar", price: -1, stock: 1)
     assert_not product.valid?
     assert_not product.save
     assert_equal ["must be greater than 0"], product.errors.messages[:price]
+  end
+
+  test "Stock can't be less than 0" do
+    product = Product.new(name: "foobar", price: 500, stock: -10)
+    assert_not product.valid?
+    assert_not product.save
+    assert_equal ["must be greater than or equal to 0"], product.errors.messages[:stock]
+  end
+
+  test "Stock can be zero" do
+    product = Product.new(name: "foobar", price: 120, stock: 0)
+    assert product.valid?
+    assert_not_nil product.stock
+    assert product.save
   end
 
   test "create Product with valid data" do
@@ -48,6 +62,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.valid?
     assert_not_nil product.name
     assert_not_nil product.price
+    assert_not_nil product.stock
   end
 
   test "create products with different names" do
@@ -58,7 +73,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "Product belongs to a merchant" do
-    product = Product.create!(name: "mouse hat", price: 1240)
+    product = Product.create!(name: "mouse hat", price: 1240, stock: 5)
     merchant = Merchant.create!(user_name: "testing", email: "test@test.com", uid: 124, provider: "github")
 
     product.merchant = merchant
