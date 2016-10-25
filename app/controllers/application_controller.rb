@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_order, :shopping_cart
-  before_action :require_login
+
 
   private
   def current_user
@@ -28,12 +28,13 @@ class ApplicationController < ActionController::Base
       Order.new
     end
   end
-  
+
   def shopping_cart
     if session[:cart]
       @cart = session[:cart]
     else
-      @cart ={}
+      session[:cart]= {}
+     @cart = session[:cart]
     end
   end
 

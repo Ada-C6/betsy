@@ -1,14 +1,20 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
   def index
-    @cart.each do | k, v|
-      @id = k
-    end
-    @product = Product.find(@id)
-    @order_item = OrderItem.new
-    @product.order_items << @order_item
-    @product.save
-    return @cart
+    # if !@cart.empty?
+        @cart.each do | k, v|
+        @id = k
+      end
+      @product = Product.find(@id)
+      @order_item = OrderItem.new
+      @product.order_items << @order_item
+      @product.save
+    #   return @cart
+    # else
+
+
+      return @cart
+    # end
   end
 
   def add_to_cart
@@ -17,7 +23,7 @@ class CartsController < ApplicationController
     @order_item = OrderItem.new
     @product.order_items << @order_item
     @product.save
-
+    @order_item.save
 
     if @cart[id]
       @cart[id] = @cart[id] + 1
