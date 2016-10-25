@@ -2,16 +2,27 @@ require 'test_helper'
 
 class MerchantsControllerTest < ActionController::TestCase
 
-    # test "should display all merchants" do
-    #   get :index
-    #   assert_response :success
-    #   assert_template 'merchants/index'
-    # end
-
-  test "should show a merchant's page" do
-    get :show, { id: 1 }
+  test "should show the view page for the specified merchant" do
+    merchant_id = merchants(:snoopy).id
+    get :show, { id: merchant_id }
     assert_response :success
+    assert_template :show
+
+    merchant = assigns(:merchant)
+    assert_not_nil merchant
+    assert_equal merchant.id, merchant_id
   end
+
+  # test "should show the show page for the specified product" do
+  #   product_id = products(:elephant).id
+  #   get :show, { id: product_id }
+  #   assert_response :success
+  #   assert_template :show
+  #
+  #   product = assigns(:product)
+  #   assert_not_nil product
+  #   assert_equal product.id, product_id
+  # end
 
   test "cannot add invalid merchant" do
     assert_difference('Merchant.count', 0) do
@@ -29,7 +40,7 @@ class MerchantsControllerTest < ActionController::TestCase
     merchant = assigns(:merchant)
     assert_redirected_to merchant_path(merchant)
     assert_not_nil merchant
-  end 
+  end
 
 
 
