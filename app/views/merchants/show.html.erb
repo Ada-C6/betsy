@@ -6,4 +6,6 @@
   <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p) %>
 <% end %>
 
-<p><%= link_to "Add a New Product", new_product_path %></p>
+<% if current_user != nil && @merchant.id == current_user.id %>
+  <p><%= link_to "Add a New Product", new_product_path %></p>
+<% end %>
