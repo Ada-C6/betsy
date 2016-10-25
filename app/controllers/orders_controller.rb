@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:edit, :update]
+  before_action :set_order_status, only: [:create]
 
   # def index
   #   @orders = Order.all
@@ -49,5 +50,9 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find(params[:id])
+  end
+
+  def set_order_status
+    self.order_status = "pending"
   end
 end

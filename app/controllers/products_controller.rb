@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.where(active: true).order("created_at DESC")
     end
+    @order_item = current_order.order_items.new # may need to use this in a form or may be unneeded
   end
 
   def show

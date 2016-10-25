@@ -28,6 +28,7 @@ class OrderitemsController < ApplicationController
 
   # Unsure where redirect should go?
   def update
+    @order = current_order
     @order_item = OrderItem.find(params[:id])
     @order_item.update_attributes(order_item_params)
     redirect_to orderitems_path
@@ -42,13 +43,7 @@ class OrderitemsController < ApplicationController
     redirect_to orderitems_path
   end
 
-  def current_order
-    if session[:order_id]
-      Order.find(session[:order_id])
-    else
-      Order.create
-    end
-  end
+
 
   def is_product_in_cart
     order = current_order
