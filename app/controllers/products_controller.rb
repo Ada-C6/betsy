@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def show
     begin
       product = Product.find(params[:id])
-      if product.active == true
+      if product.active == true || product.merchant_id == current_user.id
         @product = product
       else
         redirect_to products_path
