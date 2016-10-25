@@ -1,15 +1,19 @@
-<h1><%= @product.name %></h1>
-
-<% image = Product.find_photo_image(@product) %>
-<p><%= image_tag image, alt: "#{ @product.name }" %></p>
-
-<p><%= "Description: #{ @product.description }" %></p>
-
-<p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
-
-<p>
-  <%#= link_to "Add To Cart", add_to_cart_path %>
-</p>
+<section class="row small-up-2">
+  <section class="column">
+    <% image = Product.find_photo_image(@product) %>
+    <p><%= image_tag image, alt: "#{ @product.name }" %></p>
+    <section class="row small-up-2">
+      <p class="column"><%= "Description: #{ @product.description }" %></p>
+      <p class="column">Button to Review Product</p>
+    </section>
+  </section>
+  <section class="column">
+    <h1><%= @product.name %></h1>
+    <p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
+    <p>Link to Add to Cart</p>
+    <p>Stock: <%= @product.inventory %></p>
+  </section>
+</section>
 
 <p>
   <%= link_to "Retire product", retire_product_path %>

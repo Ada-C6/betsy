@@ -1,9 +1,13 @@
-<h1><%= @merchant.username %></h1>
+<h1 class="category-header"><%= @merchant.username %></h1>
 
-<% @products.each do |p| %>
-  <p>Name: <%= link_to p.name, product_path %>, $<%= p.price %></p>
-  <% image = Product.find_photo_image(p) %>
-  <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p) %>
-<% end %>
+<section class="row small-up-1 medium-up-2 large-up-3">
+  <% @products.each do |p| %>
+    <section class="column">
+      <% image = Product.find_photo_image(p) %>
+      <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p), class: "rounded-image" %>
+      <p class="product-description">Name: <%= link_to p.name, product_path %>, $<%= p.price %></p>
+    </section>
+  <% end %>
+</section>
 
 <p><%= link_to "Add a New Product", new_product_path %></p>
