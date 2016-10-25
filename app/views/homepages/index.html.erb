@@ -1,0 +1,21 @@
+<h1>Welcome to Vampazon!</h1>
+
+<h3>Shop by Category</h3>
+<% @product_categories.each do |product_category| %>
+  <!-- insert category photos -->
+  <p><%= link_to product_category, show_category_path(product_category)%></p>
+<% end %>
+
+
+<h3><%= link_to "Browse All Collections", index_products_path%></h3>
+
+<%= render partial: 'layouts/navigation_links' %>
+
+<% if session[:user_id] != nil %>
+  <%= button_to "Create New Product", new_products_path, method: :get, :class => 'button' %>
+<% end %>
+
+<%# if current_user.present? %>
+  <%# button_to "Create New Product", new_products_path, method: :get, :class => 'button', uid: auth_hash[:uid] %>
+  <%# render :partial => "home/statusbar" %>
+<%# end %>

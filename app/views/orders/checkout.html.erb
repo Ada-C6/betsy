@@ -1,0 +1,34 @@
+<h1>Checkout</h1>
+<% @order_items.each do |order_item| %>
+  <!-- because order_item model belongs to product model, so I can use order_item.product, which works as attr_reader-->
+  <p><%= link_to "#{order_item.product.name}", show_products_path(order_item.product.id)%></p>
+  <p>$<%= order_item.unit_price %></p>
+  <p> Qty: <%= order_item.quantity %></p>
+
+<% end %>
+
+<p>cart subtotal:$<%= @order.total_price %></p>
+
+<%= form_for @order, url: confirmation_path, method: :get do |f| %>
+  <h3>Shipping address:</h3>
+  <%= render partial: "address_form", locals: { :f => f } %>
+  <h3>Payment Information:</h3>
+  <p>Payment Method: VISA only</p>
+
+  <%= f.label "Credit Card:" %>
+  <%= f.text_field :cc_number, :class => "cc_number" %>
+
+  <%= f.label "Expiration Month:" %>
+  <%= f.text_field :exp_month, :class => "exp_month" %>
+
+  <%= f.label "Expiration Year:" %>
+  <%= f.text_field :exp_year, :class => "exp_year" %>
+
+  <%= f.label "CVC:" %>
+  <%= f.text_field :cvc, :class => "cvc" %>
+  <%= hidden_field_tag(:order_id, @order.id) %>
+  <%= link_to "Confirm Payment", confirmation_path(@order.id), :class => "button" %>
+<% end %>
+
+
+<%= link_to "Back to Cart", show_cart_path, :method => :get, :class => "button" %>

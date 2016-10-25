@@ -1,0 +1,29 @@
+<div class="basic">
+
+  <h2><%= @product_category %></h2>
+        
+    <div class="row">
+      <!-- <div class="columns small-12 medium-6 large-4"> -->
+        <div class="columns">
+
+        <% @products_in_category.each do |product| %>
+          <div class="row" >
+            <div class="card">
+              <div class="product-info">
+                <%= link_to image_tag(product.photo_url, :class => "product_photo"), show_products_path(product.id) %>
+                <ul>
+                  <li>
+                    <%= link_to product.name, show_products_path(product.id) %>
+                  </li>
+                  <li>
+                    <%= product.price %>                            
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      <!-- </div> -->
+    </div>
+</div>

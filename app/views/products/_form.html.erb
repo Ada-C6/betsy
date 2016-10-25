@@ -1,0 +1,31 @@
+<div class="basic">
+  <%= form_for @product, url: action_name do |f| %>
+
+    <div class="field">
+      <%= f.label "Product Name" %>
+      <%= f.text_field :name, "Product Name" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Description" %>
+      <%= f.text_field :description, "Description" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Price" %>
+      <%= f.number_field :price, "Price" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Inventory" %>
+      <%= f.number_field :inventory, "Inventory" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Category" %>
+      <%= f.select :category, Product.uniq.pluck(:category), "Category" => nil, :required => true %>
+    </div>
+
+    <%= f.submit "Create New Product", class: 'button' %>
+  <% end %>
+</div>

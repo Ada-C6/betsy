@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Betsy</title>
+  <title>Vampazon</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1><%= link_to "Vampazon", root_path %></h1>
+  </header>
+  <p><%= link_to "My Cart", show_cart_path  %></p>
+
+  <!-- <h1>Va</h1><a href="index.html" img src="../../assets/images/MLogo.png"><h1>pazon</h1> -->
+
+ <!-- class="logo"><a tabindex="2" accesskey="1" href="/"><img src="/2008/site/images/logo-w3c-mobile-lg" width="90" height="53" alt="W3C" /></a> <span class="alt-logo">W3C</span></h1> -->
+
+  <!-- tried to scoot M in between - it did not work -->
+
+  <p><%= link_to "User Account", user_account_path %></p>
 
 <%= yield %>
 

@@ -1,0 +1,28 @@
+<div class = "basic">
+
+  <h2> <%= @product.name %> </h2>
+
+  <%= image_tag(@product.photo_url, :class => 'photo') %>
+
+  <p><%= @product.description %></p>
+  <p>Price: $<%= @product.price %></p>
+  <p>In-stock: <%= @product.inventory %></p>
+  <p>Category: <%= @product.category %></p>
+  <p>Seller: <%= link_to "#{@seller.name}", show_seller_products_path %></p>
+  <p>Average rating: <%= @product.average_rating %></p>
+
+  <p>Review:
+    <% @reviews.each do |review| %></p>
+      <p><%= review.description %></p>
+    <% end %>
+
+
+  <%= form_tag(add_to_cart_path, method: :post) do %>
+    <%= label_tag :quantity %>
+    <%= select_tag :quantity, options_for_select((1..@product.inventory), 1) %>
+    <%= hidden_field_tag(:product_id, @product.id) %>
+
+    <%= submit_tag "Add to Cart" %>
+  <% end  %>
+
+</div>
