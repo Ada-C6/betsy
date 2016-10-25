@@ -53,15 +53,15 @@
    display: inline-block;
  }
 
- /*Main page CSS*/
- .home-page-product {
-   border-radius: 50px;
+// All images
+ .rounded-image {
+   border-radius: 45%;
    height: 300px;
    width: 300px;
    margin: 50px;
  }
 
- .order-form {
-   width: 50%;
-   margin-left: 50px;
+ // Products by Category page
+ .category-header, .product-description {
+   text-align: center;
  }
