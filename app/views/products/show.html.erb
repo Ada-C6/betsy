@@ -1,5 +1,7 @@
 <h1><%= @product.name %></h1>
 
+<h3><%= "*Product is currently retired*" if @product.active == false %>
+
 <% image = Product.find_photo_image(@product) %>
 <p><%= image_tag image, alt: "#{ @product.name }" %></p>
 
