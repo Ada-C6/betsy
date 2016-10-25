@@ -38,7 +38,7 @@ module ApplicationHelper
   def login_button(**kwargs)
     if session[:user_id]
       text = "Log Out"
-      path = '/sessions'
+      path = '/auth/logout'
       method = :delete
     else
       text = "Log In"
