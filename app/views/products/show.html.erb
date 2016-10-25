@@ -3,7 +3,7 @@
 <% image = Product.find_photo_image(@product) %>
 <p><%= image_tag image, alt: "#{ @product.name }" %></p>
 
-<p><%= "Description: " + @product.description %></p>
+<p><%= "Description: #{ @product.description }" %></p>
 
 <p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
 

@@ -9,9 +9,9 @@ module OrdersHelper
       'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
       'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
   end
-  
+
   def months
-    ['01','02','03','04','05','06','07','08','09','10','11','12']
+    [1,2,3,4,5,6,7,8,9,10,11,12]
   end
 
   def expiration_year

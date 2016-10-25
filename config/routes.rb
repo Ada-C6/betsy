@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
   root 'guests#index'
-
+ # do we need route w/ callback?
   get "/auth/:provider/callback" =>  "sessions#create" # called from the provider (github) OAuth strategy and not by a link the user clicks on
-  get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
   get "/sessions", to: "sessions#index", as: "sessions"
   delete "/sessions", to: "sessions#destroy"
 

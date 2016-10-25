@@ -10,6 +10,7 @@ class OrderitemsController < ApplicationController
   def add_to_cart
     @item = OrderItem.new
     # @product = Product.find(params[:id])
+    # product = Product.find(@product.id)
     @item.quantity = 1
     @item.product_id = @product.id
     @product.inventory -= 1
