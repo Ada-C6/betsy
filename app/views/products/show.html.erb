@@ -1,0 +1,52 @@
+<!-- TODO: If session[user.id] is not the same as the merchant, should display a buy button (which will add to an existing order, or create a new order.) Otherwise, show a link to edit. -->
+<header>
+  <h1>
+    <%= @product.name %>
+  </h1>
+  <ul>
+    <% @categories.each do |category| %>
+    <li><%= link_to category.name, category_path(category.id) %></li>
+    <% end %>
+  </ul>
+  <%= image_tag(@product.photo_url) %>
+</header>
+
+<article>
+  <section>
+    <table>
+      <tr>
+        <td>Price</td>
+        <td><%= money_format(@product.price) %></td>
+      </tr>
+      <tr>
+        <% if @product.stock_quantity > 0 %>
+          <td>In Stock:</td>
+          <td><%= @product.stock_quantity %> Available</td>
+        <% else %>
+          <td>OUT OF STOCK</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>Sold by:</td>
+        <td><%= @product.merchant.name %></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><%= @product.description %></td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <% if @user_page %>
+      <ul>
+        <li><%= link_to "Edit", edit_product_path(params[:id]) %></li>
+      </ul>
+    <% else %>
+      <ul>
+        <li><%= link_to "Review", new_product_review_path(params[:id]) %></li>
+        <!-- TODO: Will need to update this to go to order path? -->
+        <li><%= link_to "Add to Cart", products_path %></li>
+      </ul>
+    <% end %>
+  </section>
+</article>

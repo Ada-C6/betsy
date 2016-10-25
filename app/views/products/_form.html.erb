@@ -1,0 +1,49 @@
+<% if @product.errors.any? %>
+  <ul class="errors">
+    <% @product.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@merchant, @product], method: http_method do |f| %>
+  <table>
+    <tr>
+      <td>
+        <%= f.label "Product Name" %>
+        <%= f.text_field :name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label "Product Description" %>
+        <%= f.text_field :description %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label "Photo (URL)" %>
+        <%= f.text_field :photo_url %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :price %>
+        <%= f.text_field :price %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label "Quantity Available" %>
+        <%= f.text_field :stock_quantity %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.submit "Submit" %>
+      </td>
+    </tr>
+  </table>
+<% end %>

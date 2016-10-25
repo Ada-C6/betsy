@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: Heart Shaped Everything
+  email: sales@hse.org
+  uid: 1234567890qwerty
+  provider: betsoogle
+
+two:
+  name: Picnic Ant
+  email: sales@picnicant.com
+  uid: qwerty1234567890
+  provider: betsoogle
+
+three:
+  name: Gingham Suppliers
+  email: gingham@suppliers.ya
+  uid: qwerty123456789
+  provider: betsoogle
+
+four:
+  name: Gingham Suppliers
+  email: gingham@suppliers.ya
+  uid: qwerty123456789
+  provider: betsoogle
