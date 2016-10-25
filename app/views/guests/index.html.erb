@@ -1,11 +1,13 @@
-<section class="row small-up-1 medium-up-2">
+<section class="row small-up-1 medium-up-3">
   <% number = (1..(@product_count - 1)).to_a.shuffle %>
   <% 6.times do %>
     <% featured_image = @products[number.pop] %>
-    <section class="column">
-      <% image = Product.find_photo_image(featured_image) %>
-      <%= link_to image_tag(image, alt: "#{ featured_image.name }"), product_path(featured_image), class: "rounded-image" %>
-      <p class="product-description"><%= link_to featured_image.name, product_path(featured_image) %></p>
+    <section class="column image-container">
+      <section class="thumbnail">
+        <% image = Product.find_photo_image(featured_image) %>
+        <%= link_to image_tag(image, alt: "#{ featured_image.name }", class: "rounded-image"), product_path(featured_image) %>
+        <p class="product-description"><%= link_to featured_image.name, product_path(featured_image) %></p>
+      </section>
     </section>
   <% end %>
 </section>

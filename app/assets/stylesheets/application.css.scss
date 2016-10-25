@@ -26,12 +26,16 @@
    margin: 2% -2%;
  }
 
+ .top-bar-left {
+   align-self: center;
+ }
+
  .lower-nav li {
    display: inline-block;
  }
 
  .title_area {
-   text-align: center;
+   margin-right: 3em;
  }
 
  .github-button, .log-out-button, .dashboard-button, .cart-button {
@@ -68,10 +72,21 @@
 
 // All images
  .rounded-image {
-   border-radius: 45%;
-   height: 300px;
+   border-radius: 45px;
+ }
+
+ .image-container {
+   display: block;
+   padding: 4px;
+   border: 1px solid clear;
+   border-radius: 4px;
+ }
+
+ .thumbnail {
    width: 300px;
-   margin: 50px;
+   height: 300px;
+   overflow: hidden;
+   margin: auto;
  }
 
  // Products by Category page
