@@ -21,7 +21,7 @@ class MerchantsController < GuestsController
   def show
     @merchant = Merchant.find(params[:id])
     @products = Product.where(merchant_id: @merchant.id).where(active: true)
-    @inactive_products = current_user.products.where(active: false)
+    @inactive_products = Product.where(merchant_id: @merchant.id).where(active: false)
   end
 
   private
