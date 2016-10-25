@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   # get "/products/:id/add_to_cart", to: "orderitems#add_to_cart", as: "add_to_cart"
 
-  get "/products/:id/retire", to: "products#retire_product", as: "retire_product"
+  patch "/products/:id/retire", to: "products#retire_product", as: "retire_product"
+
+  patch "/products/:id/reinstate", to: "products#reinstate_product", as: "reinstate_product"
 
   resources :merchants, only: [:new, :create, :show]
 

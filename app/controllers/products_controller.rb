@@ -59,6 +59,13 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def reinstate_product
+    p = Product.find(params[:id])
+    p.active = true
+    p.save
+    redirect_to product_path
+  end
+
   private
 
   def product_params
