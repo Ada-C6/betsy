@@ -1,109 +1,89 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'vendor/modernizr', 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
-  <header class="top-bar">
-    <h1 class="title_area"><%= link_to "ZOOLILY", root_path %></h1>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <nav class="top-bar-section">
-      <ul class="menu top-bar-right">
-        <li>
-          <% if current_user %>
-            <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
-          <% else %>
-            <%= button_to "Log in with Github", '/auth/github', method: :post, class: "github-button" %>
-          <% end %>
-        </li>
-        <li>
-          <% if current_user %>
-            <%= button_to "Dashboard", merchant_path(current_user), method: :get, class: "dashboard-button" %>
-          <% else %>
-            <%= button_to "Sign up with Github", '/auth/github', method: :post, class: "dashboard-button" %>
-          <% end %>
-        </li>
-        <li>
-          <%= button_to "View Cart", orderitems_path, method: :get, class: "cart-button" %>
-        </li>
-      </ul>
-    </nav>
+    <title>Zoolily</title>
 
-    <div class="lower-nav">
-      <ul>
-        <li>
-          <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
-        </li>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-        <!-- I don't like this code, as there has to be a more elegant way to do this using Foundation and
-        Rails, but I cannot figure out how. (See below.) Aesthetically, I also don't like how it looks.
-         -->
-        <ul>
-          <li>Product by Category</a>
-            <ul>
-              <li>
-                <% Category.all.each do |cat| %>
-                    <%= link_to "#{ cat.name }", category_path(cat.id) %>
-                <% end %>
-              </li>
-            </ul>
-          </li>
-          <li>Product by Merchant</a>
-            <ul>
-              <li>
-                <% Merchant.all.each do |merch| %>
-                    <%= link_to "#{ merch.username }", merchant_path(merch.id)  %>
-                <% end %>
-              </li>
-            </ul>
-          </li>
-        </ul>
+  <body>
+    <header class="top-bar">
+      <h1 class="title_area"><%= link_to "ZOOLILY", root_path %></h1>
 
-        <!-- Based on the Foundation research I did, this should work to create a drop drop down
-        menu, but it's not working and I cannot figure out why. Tabling for now, but keeping
-        the code, just in case we want to try again. -->
-
-        <!-- <ul class="dropdown menu" data-dropdown-menu>
-          <li class="has-dropdown">
-            Products by Category
-            <ul class="menu">
-              <li>
-                <% Category.all.each do |cat| %>
-                  <%= link_to("#{ cat.name }", products_path) %>
-                <% end %>
-              </li>
-            </ul>
+      <nav class="top-bar-section">
+        <ul class="menu top-bar-right">
+          <li>
+            <% if current_user %>
+              <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
+            <% else %>
+              <%= button_to "Log in with Github", '/auth/github', method: :post, class: "github-button" %>
+            <% end %>
           </li>
           <li>
-            Products by Merchant
-            <ul class="menu">
-              <li>
-                <%= Merchant.all.each do |merch| %>
-                  <%= link_to "#{ merch.username }", merchant_path(merch.id) %></option>
-                <% end %>
-              </li>
-            </ul>
+            <% if current_user %>
+              <%= button_to "Dashboard", merchant_path(current_user), method: :get, class: "dashboard-button" %>
+            <% else %>
+              <%= button_to "Sign up with Github", '/auth/github', method: :post, class: "dashboard-button" %>
+            <% end %>
           </li>
-        </ul> -->
+          <li>
+            <%= button_to "View Cart", orderitems_path, method: :get, class: "cart-button" %>
+          </li>
+        </ul>
+      </nav>
 
-        <li class="search-form">
-          <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-            <%= submit_tag "Search", :name => nil %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </header>
+      <div class="lower-nav">
+        <ul>
+          <li>
+            <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button" %>
+          </li>
 
-<%= yield %>
+          <nav class="row">
+            <!-- Make this unordered list horizontal at medium and larger screens & verticle on small ones  -->
+            <section class="small-12 columns">
+              <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+                <li>
+                  Products by Category
+                  <ul class="menu vertical">
+                    <li>
+                      <% Category.all.each do |cat| %>
+                        <%= link_to("#{ cat.name }", category_path(cat.id)) %>
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Products by Merchant
+                  <ul class="menu vertical">
+                    <li>
+                      <% Merchant.all.each do |merch| %>
+                        <%= link_to "#{ merch.username }", merchant_path(merch.id) %></option>
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
 
-  <footer>
-    <h4>&copy; <%= Time.now.year %> Heather Herrington, Mary Morrison, Yasmin Or, Danielle Schrimmer</h4>
-  </footer>
-</body>
+          <li class="search-form">
+            <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+              <%= submit_tag "Search", :name => nil %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <h4>&copy; <%= Time.now.year %> Heather Herrington, Mary Morrison, Yasmin Or, Danielle Schrimmer</h4>
+    </footer>
+  </body>
 </html>
