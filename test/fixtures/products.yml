@@ -6,7 +6,7 @@ elephant:
   inventory: 2
   description: Elephants are good
   photo_url: elephants.jpeg
-
+  active: true
 
 monkey:
   name: Monkey
@@ -14,6 +14,7 @@ monkey:
   inventory: 3
   description: Monkeys rule!
   photo_url: monkeys.jpeg
+  active: false
 
 kuakka:
   name: Kuakka
@@ -21,6 +22,7 @@ kuakka:
   inventory: 43
   description: Yay kari
   photo_url: kuakkas.jpeg
+  active: true
 
 snake:
   name: Snake
@@ -28,3 +30,4 @@ snake:
   inventory: 1
   description: Snakes have no legs
   photo_url: nolegs.jpeg
+  active: true
