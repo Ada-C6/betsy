@@ -6,6 +6,20 @@
   <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p) %>
 <% end %>
 
+<% if @inactive_products.count != 0 %>
+  <h1>Inactive Products</h1>
+  <% @inactive_products.each do |i| %>
+    <p>
+      <%= i.name %>
+      <br />
+      <% image = i.name.downcase.gsub(' ', '_') %>
+
+      <% image = Product.find_photo_image(i) %>
+      <%= link_to image_tag(image, alt: "#{ i.name }"), product_path(i) %>
+    </p>
+  <% end %>
+<% end %>
+
 <% if current_user != nil && @merchant.id == current_user.id %>
   <p><%= link_to "Add a New Product", new_product_path %></p>
 <% end %>
