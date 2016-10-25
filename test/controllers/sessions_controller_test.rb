@@ -10,7 +10,7 @@ class SessionsControllerTest < ActionController::TestCase
     assert_difference('Merchant.count', 1) do
       login_a_user
       assert_response :redirect
-      assert_redirected_to sessions_path
+      assert_redirected_to portal_path
     end
   end
 
@@ -18,11 +18,12 @@ class SessionsControllerTest < ActionController::TestCase
      assert_difference('Merchant.count', 1) do
        login_a_user
      end
+     assert_not_nil session[:user_id]
      assert_no_difference('Merchant.count') do
        login_a_user
        assert_response :redirect
-       assert_redirected_to sessions_path
-       assert_not_nil session[:merchant_id]
+       assert_redirected_to portal_path
+       assert_not_nil session[:user_id]
      end
    end
 end
