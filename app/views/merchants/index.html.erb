@@ -1,0 +1,12 @@
+<h2>All Merchants</h2>
+
+<ul class="row small-up-3 large-up-5">
+<% @merchants.each do |merchant| %>
+    <li class="column">
+        <section>
+            <%= link_to (image_tag "star_category_image.jpg", alt: "placeholder pinwheel for #{ merchant.user_name }", class: "product-image"), merchant_path(merchant) %>
+            <h3><%= link_to capitalize_each_word(merchant.user_name), merchant_path(merchant) %></h3>
+        </section>
+    </li>
+<%end%>
+</ul>
