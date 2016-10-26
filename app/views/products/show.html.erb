@@ -1,3 +1,13 @@
+<% if @product.errors.any? %>
+  <ul class="errors">
+    <% @product.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h3><%= "*Product is currently retired*" if @product.active == false %>
 
 <section class="row small-up-2">

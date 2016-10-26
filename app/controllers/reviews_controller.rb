@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :merchant_product_self_review, only: [:new]
+
 
   def new
     @review = Review.new
@@ -29,6 +31,13 @@ class ReviewsController < ApplicationController
       # Review.find(params[:id]).destroy
       # redirect_to product_path(@review.product_id)
   # end
+
+  def merchant_product_self_review
+    if current_user.id == Product.find(params[:product_id]).merchant_id && current_user != nil
+      flash[:error] = "You cannot review your own product"
+      redirect_to product_path(Product.find(params[:product_id]))
+    end
+  end
 
   private
 
