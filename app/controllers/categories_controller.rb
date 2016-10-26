@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
 
   def new
-    @category = Category.find(params[:category_id])
-    @product = @category.products.build
+    @category = Category.new
   end
 
   def show
