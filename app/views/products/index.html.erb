@@ -4,7 +4,7 @@
   <% @products.each do |p| %>
     <section class="column image-container">
       <section class="thumbnail">
-        <% image = p.name.downcase.gsub(' ', '_') %>
+        <%# image = p.name.downcase.gsub(' ', '_') %>
         <% image = Product.find_photo_image(p) %>
         <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image"), product_path(p) %>
         <p><%= p.name %></p>
@@ -19,7 +19,7 @@
     <% @inactive_products.each do |i| %>
       <section class="column image-container">
         <section class="thumbnail">
-          <% image = i.name.downcase.gsub(' ', '_') %>
+          <%# image = i.name.downcase.gsub(' ', '_') %>
           <% image = Product.find_photo_image(i) %>
           <%= link_to image_tag(image, alt: "#{ i.name }", class: "rounded-image"), product_path(i) %>
           <p><%= i.name %></p>
