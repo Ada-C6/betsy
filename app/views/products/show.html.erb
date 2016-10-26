@@ -37,9 +37,9 @@
     <h4>No reviews yet.</h4>
   <% end %>
 
-  <%# unless current_user == nil || @product.merchant_id == current_user.id %>
+  <% unless current_user == nil || @product.merchant_id == current_user.id %>
     <p><%= link_to "Review this product", new_product_review_path(@product) %></p>
-  <%# end %>
+  <% end %>
 
   </section>
 </section>
