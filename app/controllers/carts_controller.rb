@@ -2,45 +2,40 @@ class CartsController < ApplicationController
   before_action :shopping_cart
 
   def index
-    @cart.each do | cart_item|
-      @id = cart_item.keys.map {|k| k}
-      @id = @id.join.to_i
-
-    end
-    # @order_item = OrderItem.find_by(product_id: @id)
-
-
-
-    if @id != nil
-      @product = Product.find(@id)
-      @order_item = OrderItem.find_by(product_id: @id)
-
-
-      # @product.order_items << @order_item
-      # @product.save
-      # @order_item.save
-      #   return @cart
-    else
-      return @cart
+    @products = []
+    @cart.each do |item|
+      @products << Product.find(item["id"])
     end
   end
 
   def add_to_cart
     id = params[:id]
     @product = Product.find(id)
-    begin
-      @order_item = OrderItem.find(params[:product_id])
-    rescue ActiveRecord::RecordNotFound
-      nil
-    end
-    if @order_item.nil?
+    if !@cart.empty?
 
-      @order_item = OrderItem.create
-      @product.order_items << @order_item
-        @product.save
-        @cart.push({ @product.id => @order_item.quantity })
-      @order_item.save
+      @cart.each do |k, v|
+        if k["id"] = @product.id
+          k["quantity"] = k["quantity"] + 1
+        end
+      end
+    else
+      @cart << {"id" => @product.id, "quantity" =>1}
     end
+    session[:cart] = @cart
+
+    # begin
+    #   @order_item = OrderItem.find(params[:product_id])
+    # rescue ActiveRecord::RecordNotFound
+    #   nil
+    # end
+    # if @order_item.nil?
+    #
+    #   @order_item = OrderItem.create
+    #   @product.order_items << @order_item
+    #     @product.save
+    #
+    #   @order_item.save
+    # end
     redirect_to carts_path
   end
 
@@ -51,7 +46,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
-   @order_item = OrderItem.find_by(params[:product_id])
+    @order_item = OrderItem.find_by(params[:product_id])
 
 
     # @cart = shopping_cart
@@ -60,7 +55,21 @@ class CartsController < ApplicationController
   end
 
   def empty_cart
+
     session[:cart] = nil
     redirect_to carts_path
   end
+
+  private
+
+  def shopping_cart
+    if !session[:cart].nil?
+      @cart = session[:cart]
+    else
+      session[:cart] = []
+      @cart = session[:cart]
+
+    end
+  end
+
 end

@@ -29,13 +29,12 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
-  def shopping_cart
-    if !session[:cart].nil?
-      @cart = session[:cart]
-    else
-      session[:cart]= []
-     @cart = session[:cart]
-    end
-  end
+  # def shopping_cart
+  #   if !session[:cart].nil?
+  #     @cart = session[:cart]
+  #   else
+  #    @cart = session[:cart]
+  #   end
+  # end
 
 end
