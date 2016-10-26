@@ -1,19 +1,5 @@
-<<<<<<< HEAD
-<h1><%= @product.name %></h1>
-
 <h3><%= "*Product is currently retired*" if @product.active == false %>
 
-<% image = Product.find_photo_image(@product) %>
-<p><%= image_tag image, alt: "#{ @product.name }" %></p>
-
-<p><%= "Description: #{ @product.description }" %></p>
-
-<p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
-
-<p>
-  <%#= link_to "Add To Cart", add_to_cart_path %>
-</p>
-=======
 <section class="row small-up-2">
   <section class="column">
     <% image = Product.find_photo_image(@product) %>
@@ -30,7 +16,6 @@
     <p>Stock: <%= @product.inventory %></p>
   </section>
 </section>
->>>>>>> 22f11a06a08fb36f44526ea83db8257eac0ef5eb
 
 <% if current_user %>
   <% if @product.active == true %>

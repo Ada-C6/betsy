@@ -4,7 +4,7 @@
   <% @products.each do |p| %>
     <section class="column">
       <% image = Product.find_photo_image(p) %>
-      <%= link_to image_tag(image, alt: "#{ p.name }"), product_path(p), class: "rounded-image" %>
+      <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image"), product_path(p) %>
       <p class="product-description">Name: <%= link_to "#{ p.name }", product_path(p) %>, $<%= p.price %></p>
     </section>
   <% end %>
