@@ -5,3 +5,6 @@ big_animals:
 
 small_animals:
   name: Small Animals
+
+reptiles:
+  name: Reptiles

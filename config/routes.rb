@@ -21,9 +21,9 @@ Rails.application.routes.draw do
 
   resources :orderitems, except: [:show]
 
-
   resources :orders, except: [:index]
-  # resources :categories, only: [:new, :index]
+  resources :categories, only: [:create]
+
   get 'category/:category_id/products', to: 'categories#show', as: 'category'
 
   # The priority is based upon order of creation: first created -> highest priority.

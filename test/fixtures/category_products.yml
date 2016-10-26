@@ -1,0 +1,15 @@
+one:
+  product: elephant
+  category: big_animals
+
+two:
+  product: kuakka
+  category: small_animals
+
+three:
+  product: monkey
+  category: small_animals
+
+four:
+  product: snake
+  category: reptiles
