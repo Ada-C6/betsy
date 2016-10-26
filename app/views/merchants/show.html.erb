@@ -10,7 +10,7 @@
   <% end %>
 </section>
 
-<% if @inactive_products.count != 0 %>
+<% if @inactive_products.count > 0 %>
   <h1>My Inactive Products</h1>
   <% @inactive_products.each do |i| %>
     <p>
