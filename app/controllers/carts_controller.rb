@@ -3,11 +3,13 @@ class CartsController < ApplicationController
 
   def index
     @cart.each do | cart_item|
-      @id = cart_item.to_i
+      @id = cart_item.keys.map {|k| k}
+      @id = @id.join.to_i
+
     end
     # @order_item = OrderItem.find_by(product_id: @id)
 
-raise
+
 
     if @id != nil
       @product = Product.find(@id)
@@ -35,8 +37,8 @@ raise
 
       @order_item = OrderItem.create
       @product.order_items << @order_item
-      @product.save
-      # @cart { @product.id => @order_item.quantity })
+        @product.save
+        @cart.push({ @product.id => @order_item.quantity })
       @order_item.save
     end
     redirect_to carts_path

@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     if !session[:cart].nil?
       @cart = session[:cart]
     else
-      session[:cart]= {}
+      session[:cart]= []
      @cart = session[:cart]
     end
   end

@@ -10,7 +10,7 @@
   <li>
     raise
     <p> <%=@product.name%></p>
-    <p><%=link_to "Learn More", product_path(id)%></p>
+    <p><%=link_to "Learn More", product_path(@id)%></p>
     <p> <%=number_to_currency(@product.price, :unit => '$')%></p>
     <p> Quantity: <%=quantity%> <%=link_to "Add More!", add_cart_path(@product.id), method: :get%>
       <%=link_to "Delete Item", delete_cart_path(@product.id), method: :delete%>
