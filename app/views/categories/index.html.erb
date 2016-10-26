@@ -4,7 +4,7 @@
 <% @categories.each do |category| %>
     <li class="column">
         <section>
-            <%= link_to (image_tag "star_category_image.jpg", alt: "placeholder pinwheel for #{category.name}", class: "product-image"), category_path(category) %>
+            <%= link_to (image_tag "star_category_image.jpg", alt: "placeholder pinwheel for #{ category.name }", class: "product-image"), category_path(category) %>
             <h3><%= link_to capitalize_each_word(category.name), category_path(category) %></h3>
         </section>
     </li>
