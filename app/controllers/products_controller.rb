@@ -6,7 +6,9 @@ class ProductsController < ApplicationController
       @products = Product.where(active: true).search(params[:search]).order("created_at DESC")
     else
       @products = Product.where(active: true).order("created_at DESC")
-      @inactive_products = current_user.products.where(active: false) if current_user
+      if current_user
+        @inactive_products = Product.where(merchant_id: current_user.id).where(active: false)
+      end
     end
   end
 
