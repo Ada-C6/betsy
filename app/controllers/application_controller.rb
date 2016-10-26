@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     if session[:order_id]
       Order.find(session[:order_id])
     else
-      Order.create #.create or .new?
+      Order.create
     end
   end
 

@@ -1,12 +1,23 @@
-class OrderitemsController < ApplicationController
+class OrderItemsController < ApplicationController
   before_action :is_product_in_cart, only: [:create]
-  # def index
-  #   @order_items = OrderItem.all
-  # end
+  def index
+    @order_items = current_order.order_items
+
+    #@order_items = OrderItem.all
+
+    # The next 7 lines are an example from the diary project
+    # @pages = @current_user.pages.by_date
+    # unless sessions[:last_page].nil?
+      # @last_page = @current_user.pages.find(session[:last_page])
+    # end
+
+    # in the def show the following:
+    # session[:last_page] = @page.id
+  end
   #
-  # def new
-  #   @order_item = OrderItem.new
-  # end
+  def new
+    @order_item = OrderItem.new
+  end
 
   # def add_to_cart
   #   @item = OrderItem.new
@@ -23,7 +34,7 @@ class OrderitemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.create(order_item_params)
     session[:order_id] = @order.id
-    redirect_to orderitems_path
+    redirect_to order_items_path
   end
 
   # Unsure where redirect should go?
@@ -31,7 +42,7 @@ class OrderitemsController < ApplicationController
     @order = current_order
     @order_item = OrderItem.find(params[:id])
     @order_item.update_attributes(order_item_params)
-    redirect_to orderitems_path
+    redirect_to order_items_path
   end
 
   # Unsure where redirect should go?
@@ -40,7 +51,7 @@ class OrderitemsController < ApplicationController
     @order_item = @order.order_items.find(params[:id])
     @order_item.destroy
     @order_items = @order.order_items
-    redirect_to orderitems_path
+    redirect_to order_items_path
   end
 
 
@@ -62,7 +73,7 @@ class OrderitemsController < ApplicationController
 
     product_in_cart.update_attributes(order_item_params)
 
-    redirect_to orderitems_path
+    redirect_to order_items_path
   end
 
   private

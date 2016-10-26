@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'carts/show'
+  get 'carts/show', as: "cart"
 
   root 'guests#index'
  # do we need route w/ callback?
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  # get "/products/:id/add_to_cart", to: "orderitems#add_to_cart", as: "add_to_cart"
+  # get "/products/:id/add_to_cart", to: "order_items#add_to_cart", as: "add_to_cart"
 
   get "/products/:id/retire", to: "products#retire_product", as: "retire_product"
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :reviews, except: [:index, :show]
 
-  resources :orderitems, except: [:show]
+  resources :order_items, except: [:show]
 
 
   resources :orders, except: [:index]
