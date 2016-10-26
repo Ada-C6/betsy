@@ -1,9 +1,12 @@
-<h2>All Categories</h2>
+<h2>All Categories...</h2>
 
 <ul class="row small-up-3 large-up-5">
 <% @categories.each do |category| %>
-    <li class="column"><h3>
-        <%= link_to capitalize_each_word(category.name), category_path(category) %>
-    </h3></li>
+    <li class="column">
+        <p>
+            <img src="assets/star_category_image.jpg" alt="placeholder pinwheel", class="product-image"/>
+            <h3><%= link_to capitalize_each_word(category.name), category_path(category) %></h3>
+        </p>
+    </li>
 <%end%>
 </ul>
