@@ -25,5 +25,17 @@
     <% end %>
   <% end %>
 
+  <h2>Reviews</h2>
+  <% unless @reviews.count == 0 %>
+    <% @reviews.each do |r| %>
+      <p><%= "Rating: #{ r.rating }" %></p>
+      <p><%= "Description: #{ r.description }" %></p>
+    <% end %>
+  <% else %>
+    <h4>No reviews yet.</h4>
+  <% end %>
+
+  <p><%= link_to "Review this product", new_product_review_path(@product) %></p>
+
   </section>
 </section>
