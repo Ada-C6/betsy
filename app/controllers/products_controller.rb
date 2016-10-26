@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
       product = Product.find(params[:id])
       if product.active == true || product.merchant_id == current_user.id
         @product = product
+        @reviews = Review.where(product_id: @product.id)
       else
         redirect_to products_path
       end
