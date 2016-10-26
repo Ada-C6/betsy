@@ -75,6 +75,12 @@ class ProductsControllerTest < ActionController::TestCase
     assert_equal product.id, product_id
   end
 
+  test "should redirect to products path if product isn't active" do
+    product_id = products(:monkey).id
+    get :show, { id: product_id }
+    assert_redirected_to products_path
+  end
+
   test "should show 404 error for invalid product id" do
     product_id = 1346134598    # Bogus ID shouldn't be in DB, otherwise test is invalid
     assert_raises StandardError do
