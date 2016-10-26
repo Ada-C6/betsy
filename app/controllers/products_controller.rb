@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:edit, :update]
+  before_action :find_product, only: [:edit, :update, :reinstate_product, :retire_product]
 
   def index
     if params[:search]
@@ -28,12 +28,14 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    # @product.active = true
   end
 
   def create
     @product = Product.new(product_params)
     @product.price *= 100
     @product.merchant_id = session[:merchant_id]
+    # @product.active = true
     if @product.save
       redirect_to product_path(@product)
     else
@@ -57,16 +59,14 @@ class ProductsController < ApplicationController
   end
 
   def retire_product
-    p = Product.find(params[:id])
-    p.active = false
-    p.save
+    @product.active = false
+    @product.save
     redirect_to products_path
   end
 
   def reinstate_product
-    p = Product.find(params[:id])
-    p.active = true
-    p.save
+    @product.active = true
+    @product.save
     redirect_to product_path
   end
 

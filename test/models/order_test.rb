@@ -1,6 +1,13 @@
 require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
+
+  test "attempting to create order with expired credit card give error message" do
+    order = orders(:willow)
+    assert_not order.valid?
+    assert_includes order.errors, :cc_exp_year
+  end
+
   test "can create an order with valid data" do
     order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
     city: "Seattle", state: "WA", mailing_zip: "98102", cc_number: "1223456743254456", cc_exp_month: 5,
@@ -51,6 +58,7 @@ class OrderTest < ActiveSupport::TestCase
     assert_includes order.errors, :cc_sec_code
     assert_includes order.errors, :billing_zip
   end
+
 
   test "zip code must be 5 digits long" do
     order = Order.new(name: "Igor Smith", email: "xkcd@gmail.com", street_address: "38 Main St",
