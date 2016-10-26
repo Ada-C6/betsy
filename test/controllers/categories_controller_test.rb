@@ -1,14 +1,11 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
-  # test "can create a new category" do
-  #   assert_difference('Category.count', 1) do
-  #     category_params = { category: { name: "Mammals" } }
-  #     post :create, category_params
-  #   end
-  #   category = assigns(:category)
-  #   assert_not_nil category
-  # end
+  test "should get the new form" do
+    get :new
+    assert_response :success
+    assert_template :new
+  end
 
   test "should show the products within a certain category" do
     # binding.pry

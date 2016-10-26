@@ -7,7 +7,7 @@
         <%# image = p.name.downcase.gsub(' ', '_') %>
         <% image = Product.find_photo_image(p) %>
         <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image"), product_path(p) %>
-        <p><%= p.name %></p>
+        <p><strong><%= p.name %></strong> <%= "$#{ sprintf('%.2f' % (p.price/100.0)) }" %></p>
       </section>
     </section>
   <% end %>
@@ -22,7 +22,7 @@
           <%# image = i.name.downcase.gsub(' ', '_') %>
           <% image = Product.find_photo_image(i) %>
           <%= link_to image_tag(image, alt: "#{ i.name }", class: "rounded-image"), product_path(i) %>
-          <p><%= i.name %></p>
+          <p><strong><%= i.name %></strong> <%= "$#{ sprintf('%.2f' % (i.price/100.0)) }" %></p>
         </section>
       </section>
     <% end %>

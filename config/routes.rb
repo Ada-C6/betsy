@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :orderitems, except: [:show]
 
   resources :orders, except: [:index]
-  resources :categories, only: [:create]
+  resources :categories, only: [:create, :new]
 
   get 'category/:category_id/products', to: 'categories#show', as: 'category'
 
