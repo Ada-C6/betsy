@@ -1,3 +1,4 @@
+<h3><%= "*Product is currently retired*" if @product.active == false %>
 
 <section class="row small-up-2">
   <section class="column">
@@ -13,7 +14,8 @@
     <p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
     <p>Link to Add to Cart</p>
     <p>Stock: <%= @product.inventory %></p>
-    <h3><%= "*Product is currently retired*" if @product.active == false %>
+  </section>
+</section>
 
   <% if current_user %>
     <% if @product.active == true %>
