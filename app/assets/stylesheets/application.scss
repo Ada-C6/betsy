@@ -47,6 +47,11 @@ a:hover {
   color: #666699;
 }
 
+p {
+  color: #66CDAA;
+  font-family: 'Quicksand';
+}
+
 a, ul li {
   color: #F5B19A;
   font-family: 'Quicksand';
@@ -58,15 +63,25 @@ a, ul li {
   width: 300px;
 }
 
+h2 {
+  color: #66CDAA;
+  font-family: 'Quicksand';
+  text-align: center;
+}
 footer {
   font-family: 'Quicksand', sans-serif;
   color: #F5B19A;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #efefef;
-  /*text-align: center;*/
+  border-top: 2pt solid #F5B19A;
+  background-color: white;
   margin-top: 5%;
   padding-left: 5%;
   position: fixed;
+}
+
+/* Make space for the footer */
+#footer-space {
+  height: 7%;
 }
