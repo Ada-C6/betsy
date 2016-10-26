@@ -1,21 +1,14 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
-  test "can create a new category for a certain product" do
-    product = products(:kuakka)
-    assert_difference('Category.count', 1) do
-      category_params = { category: { name: "Mammals", product_id: product.id } }
-      post :create, category_params
-    end
-
-    assert_includes product.categories, categories
-  end
-
-
-
-
-
-
+  # test "can create a new category" do
+  #   assert_difference('Category.count', 1) do
+  #     category_params = { category: { name: "Mammals" } }
+  #     post :create, category_params
+  #   end
+  #   category = assigns(:category)
+  #   assert_not_nil category
+  # end
 
   test "should show the products within a certain category" do
     # binding.pry
@@ -35,8 +28,9 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_difference('Category.count') do
       post :create, category: { name: "Large Animals" }, product_id: product.id
     end
-
-    assert_redirected_to root_path
+    category = assigns(:category)
+    assert_not_nil category
+    assert_redirected_to merchants_path
   end
 
   test "should not create an invalid category" do

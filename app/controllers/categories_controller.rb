@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     @product = Product.find(params[:product_id])
     if @category.save
-      redirect_to root_path
+      redirect_to merchants_path
     else
       render :new
     end
