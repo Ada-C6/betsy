@@ -20,7 +20,8 @@ class Order < ActiveRecord::Base
   validate :card_not_expired
 
   def card_not_expired
-    if cc_exp_month < Time.now.month && cc_exp_year <= Time.now.year
+    return if cc_exp_month.nil? || cc_exp_year.nil?
+    if (cc_exp_month < Time.now.month) && (cc_exp_year <= Time.now.year)
       errors.add(:cc_exp_year, "Bummer. Your card is expired. Please use a different card.")
     end
   end

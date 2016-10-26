@@ -100,6 +100,24 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to products_path
   end
 
+
+  # def retire_product
+  #   p = Product.find(params[:id])
+  #   p.active = false
+  #   p.save
+  #   redirect_to products_path
+  # end
+
+  test "will retire a product from the DB" do
+    product = products(:snake)
+    assert_equal product.active, true
+    product.retire_product
+    assert_equal product.active, false
+  end
+
+
+
+
   # test "purchasing a product will decrease its number by one" do
   #   post :purchase, id: products(:elephant).id
   #   product = assigns(:product)
