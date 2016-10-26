@@ -1,6 +1,6 @@
 <div class="row prod-dets">
   <section class="large-6 small-12 columns">
-    <h2><%= capitalize_each_word(@product.name) %></h2>
+    <h2 class="show-title"><%= capitalize_each_word(@product.name) %></h2>
     <p>
       <%= image_tag "#{@product.photo_url}", alt: "#{@product.name}", class: "product-image" %>
     </p>
@@ -38,7 +38,7 @@
 
 <%# REVIEWS SECTION: %>
 <div class="row">
-  <section>
+  <section class="small-12 columns">
     <h3>Reviews</h3>
     <% if @product.reviews.empty? %>
     <p>
@@ -47,7 +47,7 @@
     <% else %>
     <% @product.reviews.each do |review| %>
 
-    <section>
+    <section class="single-reviews">
       <p>
         <strong><%= date_format(review.created_at) %></strong>
       </p>
