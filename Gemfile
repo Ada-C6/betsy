@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
 
+# Foundation Rails Gem
+gem 'foundation-rails'
+# Required due to an incompatibility between TurboLinks and Foundation.
+gem 'jquery-turbolinks'
+gem 'awesome_print'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use postgresql as the database for Active Record
-# gem 'pg', '~> 0.15'
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,9 +36,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# OAuth gems
+gem 'omniauth'
+gem 'omniauth-github'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'minitest-reporters'
 end
 
 group :development do

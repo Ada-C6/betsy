@@ -1,0 +1,14 @@
+<% if current_user %>
+<%= "#{@merchant.displayname}" %>
+
+<h1>Choose a Category</h1>
+
+    <%= form_tag url: categories_edit_path %>
+
+    <%= select_tag(:category, options_for_select(@category_options))  %>
+    <%= submit_tag %>
+
+<% else %>
+<h2> You are not authorized to visit this page.  Please login as a merchant.</h2>
+
+<% end %>

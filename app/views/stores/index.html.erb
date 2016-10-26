@@ -1,0 +1,26 @@
+
+
+<h1>Browse by store</h1>
+
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Browse by store", stores_index_path %></li>
+    <li><%= link_to "Browse by category", categories_index_path %></li>
+    <li><%= link_to "Browse all", homepages_show_path %></li>
+  </ul>
+</nav>
+
+<% @stores.each do |store| %>
+
+  <div class="product-tile">
+
+    <%if store.products.first && store.products.first.photo && store.products.first.photo != "" %>
+      <%= image_tag store.products.first.photo, alt: store.displayname %>
+    <%else %>
+      <%= image_tag 'default_uni.jpg', alt: store.displayname %>
+    <% end %>
+    <p><%= link_to store.displayname, stores_show_path(store.id) %></p>
+  </div>
+
+<% end %>

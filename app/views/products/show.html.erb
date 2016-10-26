@@ -1,0 +1,7 @@
+
+ <%= render partial: "shared/product_view" %>
+
+
+ <% if current_user %>
+    <%= link_to "Edit",  products_edit_path(@product.id) %>
+ <% end %>

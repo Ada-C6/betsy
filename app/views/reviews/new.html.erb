@@ -1,0 +1,14 @@
+<h1>Add a Review</h1>
+
+<%= form_for @review,
+  method: :post,
+  url: reviews_create_path do |f| %>
+  <%= f.label :rating %>
+  <%= f.number_field :rating, min: 0 %>
+
+  <%= f.label :feedback %>
+  <%= f.text_field :feedback %>
+
+  <%= f.submit value="Submit"%>
+
+<% end %>
