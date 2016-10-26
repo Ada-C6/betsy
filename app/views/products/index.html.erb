@@ -1,14 +1,12 @@
 <h2>All Products</h2>
 
-
-<%@products.each do |product|%>
-<section>
-  <h2>
-    <%= link_to capitalize_each_word(product.name), product_path(product) %>
-  </h2>
-  <p>
-    <%= image_tag "#{product.photo_url}", alt: "#{product.name}", class: "product-image"%>
-  </p>
-
-  </section>
-  <%end%>
+<ul class="row small-up-3 large-up-4">
+<% @products.each do |product| %>
+    <li class="column">
+        <section>
+            <%= link_to (image_tag "#{product.photo_url}", alt: "#{product.name}", class: "product-image"), product_path(product) %>
+            <h3><%= link_to capitalize_each_word(product.name), product_path(product) %></h3>
+        </section>
+    </li>
+<%end%>
+</ul>
