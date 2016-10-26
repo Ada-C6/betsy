@@ -15,6 +15,7 @@ monkey:
   description: Monkeys rule!
   photo_url: monkeys.jpeg
   active: false
+  merchant_id: 1
 
 kuakka:
   name: Kuakka
