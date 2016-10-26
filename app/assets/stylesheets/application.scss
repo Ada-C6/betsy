@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+   margin: 0 5%;
+ }
+
+.top-bar {
+  background-color: white;
+}
+
+.top-bar-left li, .top-bar-right li {
+  font-family: 'Julius Sans One', sans-serif;
+  border-bottom: 2pt solid #F5B19A;
+  color: #666699;
+  background-color: white;
+  margin-right: 8%;
+  margin-left: 8%;
+  padding: 5px 25px;
+  font-size: 9pt;
+}
+
+.title-area {
+  color: #F5B19A;
+  font-family: 'Quicksand';
+  text-align: center;
+}
+/*
+nav a {
+  color: grey;
+}*/
+
+a:hover {
+  color: #666699;
+}
+
+a, ul li {
+  color: #F5B19A;
+  font-family: 'Quicksand';
+  text-decoration: none;
+}
+
+footer {
+  font-family: 'Quicksand', sans-serif;
+  color: #F5B19A;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #efefef;
+  /*text-align: center;*/
+  margin-top: 5%;
+  padding-left: 5%;
+  position: fixed;
+}

@@ -9,17 +9,26 @@
   <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Poiret+One|Quicksand" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1><%= @page_title %></h1>
-    <nav>
-  <ul class="nav-bar">
-    <li><%= link_to "HOME", root_path %></li>
-    <li><%= login_status %></li>
-    <li><%= login_button %></li>
-  </ul>
-</nav>
+  <header class="top-bar">
+    <h1 class="title-area"><%= @page_title %></h1>
+    <nav class="top-bar-section">
+      <ul class="menu top-bar-left">
+        <li><%= link_to "HOME", root_path %></li>
+        <li><%= link_to "PRODUCTS", products_path %></li>
+        <li><%= link_to "CATEGORIES", categories_path %></li>
+        <li><%= link_to "MERCHANTS", merchants_path %></li>
+      </ul>
+
+      <ul class="menu top-bar-right">
+        <li><%= login_status %></li>
+        <li><%= login_button %></li>
+        <li><%= link_to "Cart", carts_path %></li>
+      </ul>
+    </nav>
   </header>
 <%= yield %>
-
+  <!-- <footer>
+  <p>>>>DISCLAIMER: This is not a real pet shop (even though it looks pretty darn real). So please, don't give us your actual credit card information<<<</p>
+  </footer> -->
 </body>
 </html>
