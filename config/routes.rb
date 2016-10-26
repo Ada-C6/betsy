@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   delete "/sessions", to: "sessions#destroy"
 
 
-  resources :products
+  resources :products do
+    resources :reviews, except: [:index, :show]
+  end
+
+  post "/products/:id", to: "reviews#create"
 
   # get "/products/:id/add_to_cart", to: "orderitems#add_to_cart", as: "add_to_cart"
 
@@ -16,8 +20,6 @@ Rails.application.routes.draw do
   patch "/products/:id/reinstate", to: "products#reinstate_product", as: "reinstate_product"
 
   resources :merchants, only: [:new, :create, :show]
-
-  resources :reviews, except: [:index, :show]
 
   resources :orderitems, except: [:show]
 

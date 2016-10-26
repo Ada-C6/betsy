@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @review.product_id = params[:product_id]
   end
 
   def create
@@ -32,7 +33,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :description)
+    params.require(:review).permit(:rating, :description, :product_id)
   end
 
 end
