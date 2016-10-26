@@ -1,0 +1,19 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>Welcome to Unicorns "R" Us!</h1>
+<p>Meeting all your unicorn needs since 2016.</p>
+
+<% @categories.each do |category| %>
+
+  <section class="product-tile">
+    <%if category.products.first && category.products.first.photo && category.products.first.photo != "" %>
+      <%= image_tag category.products.first.photo, alt: category.name %>
+    <%else %>
+      <%= image_tag 'default_uni.jpg', alt: category.name %>
+    <% end %>
+    <p><%= link_to category.name, categories_show_path(category.id) %></p>
+  </section>
+
+<% end %>

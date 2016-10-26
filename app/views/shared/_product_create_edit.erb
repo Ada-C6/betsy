@@ -1,0 +1,42 @@
+
+<h2> <% "#{@action} product" %> </h2>
+
+<section>
+
+
+<%= form_for @product, {:url => "create"} do |f| %>
+
+  <%= f.label "Product Image" %>
+  <%= f.file_field :picture %>
+
+  <%= f.label "Product Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.label "Price" %>
+  <%= f.number_field :price %>
+
+  <%= f.label "Quantity In Stock" %>
+  <%= f.number_field :stock %>
+
+  <%= f.submit "Save" %>
+
+  <%= f.select({:category => @category_options}, {:multiple => true}) %>
+
+  <% f.submit %>
+
+<% end %>
+
+</section>
+
+<section>
+  <h2> Create a New Category </h2>
+  <%= form_for Category do |f| %>
+    <%= f.label "Category Name" %>
+    <%= f.text_field :name %>
+    <% f.submit %>
+  <% end %>
+
+</section>

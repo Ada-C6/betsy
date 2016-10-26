@@ -1,0 +1,17 @@
+<h1>View your orders</h1>
+
+<table>
+  <tr>
+    <th>Order no.</th>
+    <th>Status</th>
+    <th>Sale</th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <tr>
+        <td><%= link_to order.id, orders_show_path %></td>
+        <td><%= order.status %></td>
+        <td><%= %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,38 @@
+
+
+<p><%= flash[:notice] %></p>
+
+<%= image_tag @product.photo, size: "300", alt: @product.name %>
+
+
+<div id="description">
+
+  <h3><%= @product.name %></h3>
+  <p>Sold By: <%= @product.merchant.displayname %> </p>
+  <p>Description: <%= @product.description %></p>
+  <p>Price: <%= number_to_currency(@product.price/100.00) %></p>
+  <p>Stock: <%= @product.stock %></p>
+  <p>Overall Rating: <%= @average %> <%= image_tag("rating.png", :size => "20", :alt => "rating unicorn")%></p>
+
+  <%= form_for @orderitem, as: 'add_to_cart', url: @url, method: @method do |f| %>
+    <%= f.number_field :quantity, min: 1 %>
+    <%= f.submit "Add to cart" %>
+  <% end %>
+
+  <p><%= link_to "See my Cart", carts_index_path %></p>
+
+</div>
+
+<h3>Reviews</h3>
+<% @reviews.each do |review|%>
+  <div id="review">
+  <p>Rating:
+    <% review.rating.times do %>
+      <%= image_tag("rating.png", :size => "20", :alt => "rating unicorn")%>
+    <% end %>
+  </p>
+  <p><%= review.feedback %></p>
+  </div>
+<% end %>
+
+<%= link_to("Add a Review!", reviews_new_path) %>

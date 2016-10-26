@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
+<h1>Unicorns "R" Us</h1>
+<p>Meeting all your unicorn needs since 2016.</p>
+
+  <div class="product-tile">
+    <!-- #product_show_path(merchant.id) -->
+    <p><%= link_to "Manage Your Products", products_index_url %></p>
+    <%= image_tag("horn_magic_cookie.png", :alt => "cookie") %>
+  </div>
+
+  <div class="product-tile">
+    <!-- #merchant_show_path(merchant.id) -->
+    <p><%= link_to "Edit Your Profile", merchants_edit_path(@merchant.id) %></p>
+    <%= image_tag("unicorn_merchant.jpg", :alt => "unicorn") %>
+  </div>
+
+  <div class="product-tile">
+    <!-- #order_index_path(merchant.id) -->
+    <p><%= link_to "Manage Your Orders", orders_index_path %></p>
+    <%= image_tag("uni_cake_tee.png", :alt => "cake") %>
+  </div>
+
+  <div class="product-tile">
+    <p><%= link_to "Shopping", root_path %></p>
+    <%= image_tag("uni_flats.png", :alt => "unicorn shoes") %>
+  </div>

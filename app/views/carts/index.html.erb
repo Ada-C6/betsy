@@ -1,0 +1,51 @@
+<h1>What's in my cart?</h1>
+
+<p><%= flash[:notice] %>
+
+<% if session[:order] %>
+
+  <h2>Your cart contains:</h2>
+
+  <TABLE>
+
+    <TR>
+      <TH>Product</TH>
+      <TH>Unit price</TH>
+      <TH>Quantity</TH>
+      <TH>Total</TH>
+      <TH></TH>
+    </TR>
+
+  <% @order.orderitems.each do |orderitem| %>
+    <TR>
+      <TD><%= link_to orderitem.product.name, products_show_path(orderitem.product.id) %></TD>
+      <TD><%= number_to_currency(orderitem.price/100.00) %></TD>
+      <TD>
+        <%= form_for orderitem, as: 'change_quantity', url: orderitems_update_path(orderitem), method: :patch do |f| %>
+          <%= f.number_field :quantity, min: 1 %>
+          <%= f.submit "Update" %>
+        <% end %>
+      </TD>
+      <TD><%= number_to_currency(orderitem.total/100.00) %></TD>
+      <TD><%= button_to "Delete", orderitems_destroy_path(orderitem), method: :delete %></TD>
+    </TR>
+  <% end %>
+
+  <TR>
+    <TD></TD>
+    <TD></tabindex="">
+    <TD></TD>
+    <TD><%= number_to_currency(@order.total/100.00)%></TD>
+  </TR>
+
+  </TABLE>
+
+<% else %>
+
+  <p>Your cart is empty! That makes the unicorns sad :(</p>
+
+<% end %>
+
+<p><%= link_to "Empty cart", orders_destroy_path %></p>
+<p><%= link_to "Keep shopping", root_path %></p>
+<p><%= link_to "Check out", carts_edit_path %></p>

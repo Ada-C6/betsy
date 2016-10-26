@@ -1,0 +1,40 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+goodorder:
+  name: MyString
+  email: MyString
+  card_name: MyString
+  card_num: MyString
+  expiry: 2016-10-18 14:28:35
+  cvv: 1
+  billing_zip: 1
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+
+testorder1:
+  name:
+  email:
+  card_name:
+  card_num:
+  expiry:
+  cvv:
+  billing_zip:
+  address:
+  city:
+  state:
+  zip:
+
+testorder2:
+  name:
+  email:
+  card_name:
+  card_num:
+  expiry:
+  cvv:
+  billing_zip:
+  address:
+  city:
+  state:
+  zip:

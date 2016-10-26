@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1><%= link_to "Unicorns 'R' Us", root_path %></h1>
+    <nav>
+      <ul>
+        <li><%= link_to "Browse by store", stores_index_path %></li>
+        <li><%= link_to "Browse by category", categories_index_path %></li>
+        <li><%= link_to "Browse all", homepages_show_path %></li>
+            <% if session[:user_id] == nil %>
+              <li><%= link_to "Merchant Login", "/auth/github" %></li>
+            <% else %>
+              <li><%= link_to "Logout", session_delete_path(session[:user_id]), method: :delete, data: {confirm:"End your session?"} %></li>
+            <% end %>
+            <% if current_user %>
+              <li><%= link_to "Merchant Home", merchants_index_path %></li>
+            <% end %>
+        <li><%=link_to image_tag("cart.png"), carts_index_path, :alt => "shopping cart" %></li>
+      </ul>
+    </nav>
+  </header>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>
