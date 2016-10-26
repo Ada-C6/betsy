@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
       redirect_to product_path(@review.product_id)
     else
       render :edit
+    end
   end
 
   # Consider whether deleting a review should be an option
