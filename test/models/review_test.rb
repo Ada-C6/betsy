@@ -21,8 +21,14 @@ class ReviewTest < ActiveSupport::TestCase
   end
 
   test "cannot create a review with a non-integer rating" do
-    assert_not reviews(:non_integer).valid?
-    assert_includes reviews(:non_integer).errors, :rating
+    r = Review.new
+    r.rating = 2.5
+    r.product_id = 3
+    assert_not r.valid?
+    assert_includes r.errors, :rating
+
+    # assert_not reviews(:non_integer).valid?
+    # assert_includes reviews(:non_integer).errors, :rating
   end
 
 end
