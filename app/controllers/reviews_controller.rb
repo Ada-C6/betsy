@@ -33,8 +33,8 @@ class ReviewsController < ApplicationController
   # end
 
   def merchant_product_self_review
-    if current_user.id == Product.find(params[:product_id]).merchant_id && current_user != nil
-      flash[:error] = "You cannot review your own product"
+    if current_user && current_user.id == Product.find(params[:product_id]).merchant_id
+      # flash[:error] = "You cannot review your own product"
       redirect_to product_path(Product.find(params[:product_id]))
     end
   end
