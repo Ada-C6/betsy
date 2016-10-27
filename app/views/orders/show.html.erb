@@ -1,1 +1,11 @@
-<h1>This is the order show page and will be a part of the Merchant's Dashboard, so the merchant can see information about the purchase.</h1>
+<h1> Order details for Order # <%= @order.id %> </h1>
+<h1> Customer Name: <%= @order.name %> </h1>
+<h5> Address: <%= @order.street_address %>, <%= @order.city %>, <%= @order.state %> <%= @order.mailing_zip %> </h5>
+<h5> Email: <%= @order.email %> </h5>
+<h1> Payment Information </h1>
+<h5> Card Number: XXXX-XXXX-XXXX-<%= @order.cc_number[-1..-4] %> </h5>
+<h5> Exp: <%= @order.cc_exp_month %> / <%= @order.cc_exp_year %></h5>
+<h1> Items Ordered </h1>
+<% @order_items.each do |item| %>
+  <%= item.product.name %>
+<% end %>
