@@ -6,31 +6,35 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 merchants = [
-    # {
-    #     user_name: "",
-    #     uid: ,
-    #     provider: "github",
-    #     id: 1
-    # },
+    {
+        user_name: "SSBinks",
+        uid: 16868372,
+        provider: "github",
+        email: "smeggs1@gmail.com",
+        id: 1
+    },
     {
         user_name: "sckirk",
         uid: 17997728,
         provider: "github",
+        email: "skirk.seattle@gmail.com",
         id: 2
     }
-    # },
-    # {
-    #     user_name: "",
-    #     uid: ,
-    #     provider: "github",
-    #     id: 3
-    # },
-    # {
-    #     user_name: "",
-    #     uid: ,
-    #     provider: "github",
-    #     id: 4
-    # }
+    },
+    {
+        user_name: "johnanmorris",
+        uid: 10949311,
+        provider: "github",
+        email: "johna.n.morris@gmail.com",
+        id: 3
+    },
+    {
+        user_name: "yenicapotediaz",
+        uid: 17466680,
+        provider: "github",
+        email: "yenicapote08@gmail.com",
+        id: 4
+    }
 ]
 
 merchants.each do |merchant|
