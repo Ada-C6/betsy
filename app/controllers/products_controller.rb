@@ -13,11 +13,13 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # raise
     begin
       product = Product.find(params[:id])
       if product.active == true || product.merchant_id == current_user.id
         @product = product
         @reviews = Review.where(product_id: @product.id)
+        @average = Product.average(@reviews)
       else
         redirect_to products_path
       end

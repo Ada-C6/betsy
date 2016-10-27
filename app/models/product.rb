@@ -23,4 +23,14 @@ class Product < ActiveRecord::Base
   def self.search(search)
     where(("name LIKE ? OR description LIKE ?"), "%#{search}%", "%#{search}%")
   end
+
+  def self.average(reviews)
+    ratings = []
+    num_ratings = reviews.count
+    reviews.each do |i|
+      ratings << i[:rating]
+    end
+    average = (ratings.sum)/num_ratings.to_f
+    return average
+  end
 end

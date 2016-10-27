@@ -27,6 +27,7 @@
 
   <h2>Reviews</h2>
   <% unless @reviews.count == 0 %>
+    <h5><%= "Average rating: #{ @average } " %></h5>
     <% @reviews.each do |r| %>
       <p><% r.rating.times do |i| %>
         <%= "🐵 " %>
