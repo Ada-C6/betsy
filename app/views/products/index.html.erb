@@ -1,4 +1,8 @@
-<h1>All products</h1>
+<% if params[:search].nil? %>
+  <h1 class="category-header">All products</h1>
+<% else %>
+  <h1 class="category-header">Search Results for "<%= "#{ params[:search] }" %>"</h1>
+<% end %>
 
 <section class="row small-up-1 medium-up-3">
   <% @products.each do |p| %>
