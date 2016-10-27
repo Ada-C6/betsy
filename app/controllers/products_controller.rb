@@ -44,8 +44,12 @@ class ProductsController < ApplicationController
       @product.price *= 100
       @product.save
 
-      params[:category_ids].each do |c|
-        @product.categories << Category.find(c)
+      categories = params[:category_ids]
+
+      if categories
+        categories.each do |c|
+          @product.categories << Category.find(c)
+        end
       end
       redirect_to product_path(@product)
     else
