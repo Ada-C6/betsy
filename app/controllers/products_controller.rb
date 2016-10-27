@@ -59,8 +59,10 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.price *= 100
+
     if @product.update(product_params)
+      @product.price *= 100
+      @product.save
       @product.categories.each do |i|
         @product.categories.delete(Category.find(i.id))
       end
