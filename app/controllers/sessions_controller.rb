@@ -10,7 +10,7 @@ skip_before_action :require_login, only: [:create, :login_failure]
       # merchant doesn't match anything in the DB.
       # Attempt to create a new merchant
       @merchant = Merchant.build_from_github(auth_hash)
-      render :creation_failure unless @merchant.save # This line saves the newly built @merchant to the database if it can be saved
+      render :login_failure unless @merchant.save # This line saves the newly built @merchant to the database if it can be saved
     end
     # Save the merchant ID in the session
     session[:merchant_id] = @merchant.id
@@ -22,6 +22,7 @@ skip_before_action :require_login, only: [:create, :login_failure]
   def destroy
     if current_user
       session.delete(:merchant_id)
+      session.delete(:order_id)
     end
     redirect_to root_path
   end
