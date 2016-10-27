@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:edit, :update]
+  #before_action :paid_order_status, only: [:update]
 
   # def index; end # this will show order for only that merchant. Like auth hash - takes from session
 
@@ -9,6 +10,8 @@ class OrdersController < ApplicationController
     rescue StandardError => err
       render "/errors/not_found", status: :not_found
     end
+
+    @order_items = current_order.order_items
   end
 
   def new
@@ -47,6 +50,13 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = Order.find(params[:id])
+  end
+
+
+
+  def paid_order_status
+    @order.order_status = "paid"
+    @order.save
   end
 
 end

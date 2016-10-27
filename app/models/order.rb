@@ -1,8 +1,9 @@
 class Order < ActiveRecord::Base
   has_many :order_items
-  before_create :set_order_status, only: [:create]
+  before_create :initial_order_status, only: [:create]
 
-  unless :order_status != "pending"
+
+  if :not_pending?
     validates :name, presence: true, uniqueness: { scope: :street_address, :message => "There is already a buyer with this name and address. Please enter a different name and/or address." }
     validates :email, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+\z/,
       message: "Email address is not in the correct format" }
@@ -23,6 +24,8 @@ class Order < ActiveRecord::Base
     validate :card_not_expired # will come back to this
   end
 
+  private
+
   def card_not_expired
     return if cc_exp_month.nil? || cc_exp_year.nil?
     if (cc_exp_month < Time.now.month) && (cc_exp_year <= Time.now.year)
@@ -30,10 +33,12 @@ class Order < ActiveRecord::Base
     end
   end
 
-  private
-
-  def set_order_status
+  def initial_order_status
     self.order_status = "pending"
+  end
+
+  def not_pending?
+    order_status != "pending"
   end
 
 end
