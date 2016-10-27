@@ -1,20 +1,9 @@
 class OrderItemsController < ApplicationController
-  before_action :is_product_in_cart, only: [:create]
+  # before_action :is_product_in_cart, only: [:create]
   def index
     @order_items = current_order.order_items
-
-    #@order_items = OrderItem.all
-
-    # The next 7 lines are an example from the diary project
-    # @pages = @current_user.pages.by_date
-    # unless sessions[:last_page].nil?
-      # @last_page = @current_user.pages.find(session[:last_page])
-    # end
-
-    # in the def show the following:
-    # session[:last_page] = @page.id
   end
-  #
+
   def new
     @order_item = OrderItem.new
   end
@@ -32,7 +21,8 @@ class OrderItemsController < ApplicationController
   # Unsure where the redirect should go?
   def create
     @order = current_order
-    @order_item = @order.order_items.create(order_item_params)
+    @order_item = @order.order_items.new(order_item_params)
+    @order.save
     session[:order_id] = @order.id
     redirect_to order_items_path
   end
@@ -53,28 +43,28 @@ class OrderItemsController < ApplicationController
     @order_items = @order.order_items
     redirect_to order_items_path
   end
+  #
+    # def is_product_in_cart
+    #   order = current_order
+    #   @product_id = params[:order_item][:product_id]
+    #   product_in_cart = order.order_items.select { |order_item| order_item.product_id == @product_id.to_i}
+    #
+    #   if !product_in_cart.nil?
+    #     update_cart(product_in_cart[0])
+    #   end
+    # end
+
+    # def update_cart(product_in_cart)
+    #   current_quantity = product_in_cart.quantity
+    #   additional_quantity = params[:order_item][:quantity].to_i
+    #   params[:order_item][:quantity] = current_quantity + additional_quantity
+    #
+    #   product_in_cart.update_attributes(order_item_params)
+    #
+    #   redirect_to order_items_path
+    # end
 
 
-
-  def is_product_in_cart
-    order = current_order
-    @product_id = params[:order_item][:product_id]
-    product_in_cart = order.order_items.select { |order_item| order_item.product_id == @product_id.to_i}
-
-    if !product_in_cart.nil?
-      update_cart(product_in_cart[0])
-    end
-  end
-
-  def update_cart(product_in_cart)
-    current_quantity = product_in_cart.quantity
-    additional_quantity = params[:order_item][:quantity].to_i
-    params[:order_item][:quantity] = current_quantity + additional_quantity
-
-    product_in_cart.update_attributes(order_item_params)
-
-    redirect_to order_items_path
-  end
 
   private
 

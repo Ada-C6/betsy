@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def show
     @order = current_order
-    @order_item = @order.order_items.create
+    @order_item = @order.order_items.new
 
     begin
       product = Product.find(params[:id])
