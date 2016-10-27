@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
+  before_action :product_ref, except: [:index]
   after_action :no_item, only: [:less_prod, :delete_product]
 
   def index
@@ -84,17 +85,12 @@ class CartsController < ApplicationController
   end
 
   private
-
-  def shopping_cart
-    if !session[:cart].nil?
-      @cart = session[:cart]
-    else
-      session[:cart] = []
-      @cart = session[:cart]
-    end
-  end
   def no_item
     @cart.delete_if {|k| k["quantity"] == 0}
+  end
+
+  def product_ref
+    @product = Product.find(params[:id])
   end
 
 end
