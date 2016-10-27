@@ -1,49 +1,96 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
+  before_action :product_ref, except: [:index]
+  after_action :no_item, only: [:less_prod, :delete_product]
+
   def index
-    @cart.each do | k, v|
-      @id = k
+    @products = {}
+    @cart.each do |item|
+      a = Product.find(item["id"])
+      b = item["quantity"]
+      @products.merge!(a => b)
     end
-    @product = Product.find(@id)
-    @order_item = OrderItem.new
-    @product.order_items << @order_item
-    @product.save
-    return @cart
+    return @products
   end
 
   def add_to_cart
     id = params[:id]
     @product = Product.find(id)
-    @order_item = OrderItem.new
-    @product.order_items << @order_item
-    @product.save
-
-
-    if @cart[id]
-      @cart[id] = @cart[id] + 1
+    if !@cart.empty?
+      @cart.each do |k, v|
+        unless k.values[0] == @product.id
+          @cart << {"id" => @product.id, "quantity" =>1}
+        end
+      end
     else
-      @cart[id] = 1
+      @cart << {"id" => @product.id, "quantity" =>1}
+    end
+    session[:cart] = @cart
+    redirect_to carts_path
+  end
+
+
+  def more_prod
+    id = params[:id]
+    @product = Product.find(id)
+    @cart.each do |k, v|
+      if k.values[0] == @product.id
+        k["quantity"] = ( k["quantity"] + 1)
+      end
     end
     redirect_to carts_path
   end
 
-  def sub_cart
-    cart = session[:cart]
-    cart[params[:id]] = cart[params[:id]] - 1
+  def less_prod
+    id = params[:id]
+    @product = Product.find(id)
+    @cart.each do |k, v|
+      if k.values[0] == @product.id
+        k["quantity"] = ( k["quantity"] - 1)
+      end
+    end
     redirect_to carts_path
   end
 
-  def destroy
-
-  @product = Product.find(params[:id])
-    session[:cart].delete(@product)
-    # @cart = shopping_cart
-    # @product = @cart.product.find(params[:id]).destroy
+  def delete_product
+    id = params[:id]
+    @product = Product.find(id)
+    @cart.each do |k, v|
+      if k.values[0] == @product.id
+        k["quantity"] =   0
+      end
+    end
     redirect_to carts_path
   end
+
+
+
+  # begin
+  #   @order_item = OrderItem.find(params[:product_id])
+  # rescue ActiveRecord::RecordNotFound
+  #   nil
+  # end
+  # if @order_item.nil?
+  #
+  #   @order_item = OrderItem.create
+  #   @product.order_items << @order_item
+  #     @product.save
+  #
+  #   @order_item.save
+  # end
 
   def empty_cart
     session[:cart] = nil
     redirect_to carts_path
   end
+
+  private
+  def no_item
+    @cart.delete_if {|k| k["quantity"] == 0}
+  end
+
+  def product_ref
+    @product = Product.find(params[:id])
+  end
+
 end
