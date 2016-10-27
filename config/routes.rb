@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
 
 
-    resources :orders, except: [:new, :create, :delete]
+    resources :orders
     resources :order_items, except: [:index, :show]
     resources :categories, only: [:index, :new, :create, :show]
 
