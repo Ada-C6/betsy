@@ -1,12 +1,12 @@
 <h2>All Categories</h2>
 
-<ul class="row small-up-3 large-up-5">
+<ul class="row small-up-2 large-up-4 categories">
 <% @categories.each do |category| %>
     <li class="column">
-        <section>
-            <%= link_to (image_tag "star_category_image.jpg", alt: "placeholder pinwheel for #{ category.name }", class: "product-image"), category_path(category) %>
-            <h3><%= link_to capitalize_each_word(category.name), category_path(category) %></h3>
-        </section>
+        <div>
+            <%# link_to (image_tag "http://cdn.wallpapersafari.com/38/84/OmVub1.png", alt: "placeholder for #{ category.name }", class: "product-image"), category_path(category) %>
+            <h4 class="text-center"><%= link_to capitalize_each_word(category.name), category_path(category) %></h4>
+        </div>
     </li>
 <%end%>
 </ul>
