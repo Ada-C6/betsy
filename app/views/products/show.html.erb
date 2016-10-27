@@ -1,3 +1,7 @@
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
 <div class="row prod-dets">
   <section class="large-6 small-12 columns">
     <h2 class="show-title"><%= capitalize_each_word(@product.name) %></h2>
