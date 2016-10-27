@@ -20,7 +20,7 @@
           </li>
           <li>
             <% if current_user %>
-              <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
+              <%= button_to "Log out", logout_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
             <% else %>
               <%= button_to "Log in with Github", '/auth/github', method: :post, class: "github-button" %>
             <% end %>
@@ -33,7 +33,7 @@
             <% end %>
           </li>
           <li>
-            <%= button_to "View Cart", orderitems_path, method: :get, class: "cart-button" %>
+            <%= button_to "View Cart", order_items_path, method: :get, class: "cart-button" %>
           </li>
         </ul>
       </nav>

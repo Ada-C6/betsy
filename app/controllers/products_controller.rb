@@ -14,7 +14,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # raise
+    @order = current_order
+    @order_item = @order.order_items.new
+
     begin
       product = Product.find(params[:id])
       if product.active == true || product.merchant_id == current_user.id
