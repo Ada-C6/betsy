@@ -1,0 +1,15 @@
+<% if current_user %>
+<%= "#{@merchant.displayname}" %>
+
+<h1>Create a New Category</h1>
+
+    <%= form_for Category do |f| %>
+      <%= f.label "Category Name" %>
+      <%= f.text_field :name %>
+      <% f.submit %>
+    <% end %>
+
+<% else %>
+<h2> You are not authorized to visit this page.  Please login as a merchant.</h2>
+
+<% end %>

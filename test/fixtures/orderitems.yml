@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gooditem:
+  quantity: 1
+  product: goods
+  price: 2999
+  order: goodorder
+
+orderitem1:
+  quantity: 1
+  product: shoes
+  price: 1999
+  order: testorder1
+
+orderitem2:
+  quantity: 2
+  product: poo
+  price: 1199
+  order: testorder1
+
+orderitem4:
+  quantity: 1
+  price: 899
+  product: poo
+  order: testorder2

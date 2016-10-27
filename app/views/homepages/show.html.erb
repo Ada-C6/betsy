@@ -1,0 +1,17 @@
+
+
+<h1>Browse all our great products</h1>
+
+
+<% active_products.each do |product| %>
+
+  <div class="product-tile">
+    <% if product.photo && product.photo != "" %>
+      <%= image_tag product.photo, alt: product.name %>
+    <% else%>
+      <%= image_tag 'default_uni.jpg', alt: product.name %>
+    <% end %>
+    <p><%= link_to product.name, products_show_path(product.id) %></p>
+  </div>
+
+<% end %>

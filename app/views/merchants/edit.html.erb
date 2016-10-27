@@ -1,0 +1,8 @@
+<% if @merchant.displayname == nil %>
+  <h3><%= "Please Provide the following information to create a new merchant store"%></h3>
+<% else %>
+  <h2> <%= "#{@merchant.displayname}, edit  your profile"%> </h2>
+<% end %>
+
+
+<%= render partial: "shared/merchant_profile" %>

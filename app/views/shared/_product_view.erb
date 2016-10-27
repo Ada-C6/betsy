@@ -1,0 +1,49 @@
+
+
+<p><%= flash[:notice] %></p>
+
+<div>
+  <div>
+    <%= image_tag @product.photo, size: "300", alt: @product.name %>
+  </div>
+
+  <div id="description">
+
+    <h3><%= @product.name %></h3>
+    <p>Sold By: <%= @product.merchant.displayname %> </p>
+    <p>Description: <%= @product.description %></p>
+    <p>Price: <%= number_to_currency(@product.price/100.00) %></p>
+    <p>Stock: <%= @product.stock %></p>
+    <p>Overall Rating: <%= @average %> <%= image_tag("rating.png", :size => "20", :alt => "rating unicorn")%></p>
+
+
+  <% if @product.stock <= 0 %>
+    <p> <strong>SOLD OUT! Please try back later.</strong></p>
+  <% else %>
+    <%= form_for @orderitem, as: 'add_to_cart', url: @url, method: @method do |f| %>
+      <%= f.number_field :quantity, min: 1 %>
+      <%= f.submit "Add to cart" %>
+    <% end %>
+  <% end %>
+
+
+    <p><%= link_to "See my Cart", carts_index_path %></p>
+
+  </div>
+</div>
+
+<h3>Reviews</h3>
+<% @reviews.each do |review|%>
+  <div id="review">
+  <p>Rating:
+    <% review.rating.times do %>
+      <%= image_tag("rating.png", :size => "20", :alt => "rating unicorn")%>
+    <% end %>
+  </p>
+  <p><%= review.feedback %></p>
+  </div>
+<% end %>
+
+<% if !current_user || current_user.id != @product.merchant_id %>
+  <%= link_to("Add a Review!", reviews_new_path) %>
+<% end %>

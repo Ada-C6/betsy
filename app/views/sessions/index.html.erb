@@ -1,0 +1,13 @@
+
+
+<% if @merchant %>
+<h1>Welcome <%=@merchant.email %></h1>
+<p></p>
+<% else %>
+<h1>Please log in</h1>
+<% end %>
+
+
+<% if flash[:notice] %>
+<p class="flash-notice"><%= flash[:notice] %></p>
+<% end %>

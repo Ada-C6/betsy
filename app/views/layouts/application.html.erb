@@ -7,8 +7,52 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <div class="row">
+      <div class="small-2 column">
+        <img src="/assets/unilogo.png" alt="unicorn logo" >
+      </div>
+      <div class="small-5 column">
+        <h1 ><%= link_to "Unicorns 'R' Us", root_path %></h1>
+      </div>
+      <div class="small-5 column">
+        <h5>Meeting all your unicorn needs since 2016.</h5>
+      </div>
+      <!-- Navigation Dropdown for top Menu -->
+    <div class="small-5 columns">
+    <nav>
+        <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+          <li> <%= link_to "Home", root_path %> </li>
+      <li>
+        <%= link_to "Browse", homepages_show_path %>
+        <ul class="menu vertical">
+          <li><%= link_to "Browse by store", stores_index_path %></li>
+          <li><%= link_to "Browse by category", categories_index_path %></li>
+          <li><%= link_to "Browse all products", homepages_show_path %></li>
+        </ul>
+      </li>
 
-<%= yield %>
+      <li>
+        <% if session[:user_id] == nil %>
+          <li><%= link_to "Login", "/auth/github" %>
+            <% else %>
+              <%= link_to "Merchant", merchants_index_path %>
+              <ul class="menu vertical">
+                <li><%= link_to "Account Home", merchants_index_path %></li>
+                <li><%= link_to "Logout", session_delete_path(session[:user_id]), method: :delete, data: {confirm:"End your session?"} %></li>
+              </ul>
+        <% end %>
+          </li>
+      </li>
 
-</body>
+      <li><%=link_to image_tag("cart.png"), carts_index_path, :alt => "shopping cart" %></li>
+    </ul>
+  </nav>
+  </div>
+  </div>
+  </header>
+
+    <%= yield %>
+
+  </body>
 </html>

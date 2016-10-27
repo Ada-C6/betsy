@@ -1,0 +1,20 @@
+
+
+<h1>Browse by store</h1>
+
+
+
+<% @stores.each do |store| %>
+
+  <div class="product-tile">
+
+    <%if store.photo != "" %>
+      <%= image_tag store.photo, alt: store.displayname %>
+    <%else %>
+      <%= image_tag "default_uni.jpg", alt: store.displayname %>
+    <% end %>
+
+    <p><%= link_to store.displayname, stores_show_path(store.id) %></p>
+  </div>
+
+<% end %>

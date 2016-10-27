@@ -1,0 +1,22 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
+<div class="row">
+  <h3 class="small-12 column center">Welcome!</h3>
+</div>
+
+
+
+<% @categories.each do |category| %>
+
+  <section class="product-tile">
+    <%if category.products.first && category.products.first.photo && category.products.first.photo != "" %>
+      <%= image_tag category.products.first.photo, alt: category.name %>
+    <%else %>
+      <%= image_tag 'default_uni.jpg', alt: category.name %>
+    <% end %>
+    <p><%= link_to category.name, categories_show_path(category.id) %></p>
+  </section>
+
+<% end %>

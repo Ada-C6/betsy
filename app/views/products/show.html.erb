@@ -1,0 +1,7 @@
+
+ <%= render partial: "shared/product_view" %>
+
+
+ <% if current_user && current_user.id == @product.merchant_id %>
+    <%= button_to "Edit",  products_edit_path(@product.id), method: :get %>
+ <% end %>

@@ -1,0 +1,6 @@
+<% if current_user.id == @product.merchant.id %>
+  <%= render partial: "shared/product_create_edit" %>
+<% else %>
+  <%= render flash[:notice] = "You only have access to edit products associated with your store." %>
+  <% redirect_to products_show_path %>
+<% end %>
