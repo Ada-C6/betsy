@@ -68,7 +68,7 @@
                   <ul class="menu vertical">
                     <li>
                       <% Merchant.all.each do |merch| %>
-                        <%= link_to "#{ merch.username }", merchant_path(merch.id) %></option>
+                        <%= link_to "#{ merch.username }", merchant_products_path(merch.id) %></option>
                       <% end %>
                     </li>
                   </ul>

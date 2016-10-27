@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:create, :new]
 
   get 'category/:category_id/products', to: 'categories#show', as: 'category'
+  get 'merchant/:merchant_id/products', to: 'merchants#products', as: 'merchant-products'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
