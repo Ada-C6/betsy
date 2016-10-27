@@ -19,7 +19,6 @@ merchants = [
         provider: "github",
         email: "skirk.seattle@gmail.com",
         id: 2
-    }
     },
     {
         user_name: "johnanmorris",
