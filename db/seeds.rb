@@ -1,7 +1,7 @@
 require 'csv'
 
 CSV.read('db/seed_csvs/products.csv').each do |line|
-  product_hash = { merchant_id: line[0].to_i, name: line[1], price: line[2].to_i, category_id: line[3].to_i, inventory: line[4], description: line[5], photo_url: "1", active: true }
+  product_hash = { merchant_id: line[0].to_i, name: line[1], price: line[2].to_f, category_id: line[3].to_i, inventory: line[4], description: line[5], photo_url: "1", active: true }
   Product.create!(product_hash)
 end
 

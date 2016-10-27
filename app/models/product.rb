@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   belongs_to :merchant
 
   validates :name, presence: true, uniqueness: true
-  validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :price, presence: true, numericality: { greater_than: 0 }
   validates :inventory, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :description, presence: true
   validates :photo_url, presence: true

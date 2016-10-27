@@ -46,9 +46,12 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit;
+    @product.price /= 100.0
+  end
 
   def update
+    @product.price *= 100
     if @product.update(product_params)
       redirect_to product_path
     else
