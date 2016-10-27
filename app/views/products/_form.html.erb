@@ -14,9 +14,9 @@
   <%= f.hidden_field :merchant_id, :value => @product.merchant_id %>
   <%= f.label "Product description" %>
   <%= f.text_area :description %>
-  <%#= f.label "Product categories" %>
 
-  <!-- ADD categories -->
+  <%= f.label "Product categories" %>
+  <%= select_tag :category_ids, options_for_select(@categories_array), {:multiple => true, :style => "width:450px;" } %>
 
   <%= f.label "Product price" %>
   <%= f.text_field :price %>
