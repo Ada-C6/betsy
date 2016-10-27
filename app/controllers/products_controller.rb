@@ -44,13 +44,8 @@ class ProductsController < ApplicationController
       @product.price *= 100
       @product.save
 
-      categories = params[:category_ids]
+      find_categories
 
-      if categories
-        categories.each do |c|
-          @product.categories << Category.find(c)
-        end
-      end
       redirect_to product_path(@product)
     else
       @categories_array = Category.all.map { |category| [Category.find(category.id).name, category.id] }
@@ -69,9 +64,9 @@ class ProductsController < ApplicationController
       @product.categories.each do |i|
         @product.categories.delete(Category.find(i.id))
       end
-      params[:category_ids].each do |c|
-        @product.categories << Category.find(c)
-      end
+
+      find_categories
+
       redirect_to product_path
     else
       render :edit
@@ -110,5 +105,14 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
+  end
+
+  def find_categories
+    categories = params[:category_ids]
+    if categories
+      categories.each do |c|
+        @product.categories << Category.find(c)
+      end
+    end
   end
 end
