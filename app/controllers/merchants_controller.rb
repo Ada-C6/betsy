@@ -1,5 +1,5 @@
 class MerchantsController < GuestsController
-   before_action :require_login, except: [:create, :show]
+   before_action :require_login, only: [:show]
 
 
   # def index
@@ -40,10 +40,11 @@ class MerchantsController < GuestsController
   def merchant_params
     params.require(:merchant).permit(:username, :email)
   end
-  private
 
   def current_user
+    # require 'pry';binding.pry
     @current_user ||= Merchant.find_by(id: session[:merchant_id])
+
   end
 
   helper_method :current_user ## What is this?

@@ -2,3 +2,8 @@ snoopy:
   username: Snoopy
   email: snoopy@gmail.com
   id: 1
+
+Ada:
+  username: Ada
+  email: a@b.com
+  id: 123545
