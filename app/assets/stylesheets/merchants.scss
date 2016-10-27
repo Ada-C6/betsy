@@ -1,3 +1,27 @@
 // Place all the styles related to the merchants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.merchants {
+margin-top: 5%;
+}
+//
+.merchant-names {
+height: auto;
+margin-bottom: 15%;
+}
+//
+h3 a {
+  border: 2pt solid #F5B19A;
+  border-radius: 25px;
+  background-color: #F5B19A;
+  color: white;
+  font-family: 'Anton', sans-serif;
+  font-size: 2em;
+  padding: 5% ;
+  // max-width: 200px;
+}
+
+h3 a:hover {
+  color: white;
+}
