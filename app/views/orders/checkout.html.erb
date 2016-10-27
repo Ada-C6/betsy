@@ -1,0 +1,20 @@
+<h1>Checkout</h1>
+<% @order_items.each do |order_item| %>
+  <!-- because order_item model belongs to product model, so I can use order_item.product, which works as attr_reader-->
+  <p><%= link_to "#{order_item.product.name}", show_products_path(order_item.product.id)%></p>
+  <p>$<%= order_item.unit_price %></p>
+  <p> Qty: <%= order_item.quantity %></p>
+
+<% end %>
+
+<p>Cart subtotal:$<%= @order.total_price %></p>
+
+  <%# form_for @order, url: confirmation_path(@order.id), method: :get do |f| %>
+  <%# render partial: "address_form", locals: { :f => f } %>
+
+
+  <%= render partial: "checkout_form", locals: {action_name: "patch"} %>
+
+
+
+<%= link_to "Back to Cart", show_cart_path, :method => :get, :class => "button" %>

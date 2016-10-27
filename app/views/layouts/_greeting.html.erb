@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <p class="welcome">
+  	<% if current_user %>
+  		<h3 class="welcome">Welcome back, <%= current_user.name %>!</h3>
+  	<% else %>
+  		<h3 class="welcome">Welcome to Vampazon!</h3>
+  	<% end %>
+  </p>
+</div>
+

@@ -1,0 +1,10 @@
+<!-- <h1>Browse All Collections</h1> -->
+<% if @products.empty? %>
+  <%=image_tag "count_zero.jpg"  %>
+<% else %>
+  <% @products.each do |product| %>
+    <p><%= link_to image_tag("product.photo_url"), show_products_path(product.id), { :class => "product_photo" } %></p>
+    <p><%= link_to product.name, show_products_path(product.id) %></p>
+    <p><%= product.price %></p>
+  <% end %>
+<% end %>

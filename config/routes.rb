@@ -1,56 +1,120 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  get 'reviews/index' => 'reviews#index', as: 'index_reviews'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'reviews/show/:id' => 'reviews#show', as: 'show_reviews'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'products/:id/reviews/new/' => 'reviews#new', as: 'new_reviews'
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  post 'products/:id/reviews/create' => 'reviews#create', as: 'create_reviews'
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
+  get 'reviews/edit'
+
+  get 'reviews/update'
+
+  delete 'reviews/:id/destroy' => 'reviews#destroy', as: 'destroy_reviews'
+
+# we chose to make the convention of having the as: be action + plural.
+
+  root to: 'homepages#index'
+  get 'homepages/index' => 'homepages#index', as: 'index'
+
+  get 'homepages/:category/show_category' => 'homepages#show_category', as: 'show_category'
+
+  # get 'homepages/new' => 'homepages#new', as: 'new_homepages'
   #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  # post 'homepages/create' => 'homepages#create', as: 'create_homepages'
+  #
+  # get 'homepages/edit' => 'homepages#edit', as: 'edit_homepages'
+  #
+  # patch 'homepages/update' => 'homepages#update', as: 'update_homepages'
+  #
+  # delete 'homepages/destroy' => 'homepages#destroy', as: 'destroy_homepages'
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  #============== Users ==================
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  resources :users
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  get 'user_account' => 'users#user_account', as: 'user_account'
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  get 'buyer_manage' => 'users#buyer_manage', as: 'buyer_manage'
+
+  get 'seller_manage' => 'users#seller_manage', as: 'seller_manage'
+
+  get 'pending_orders' => 'users#pending_orders', as: 'pending_orders'
+
+  get 'paid_orders' => 'users#paid_orders', as: 'paid_orders'
+
+  get 'completed_orders' => 'users#completed_orders', as: 'completed_orders'
+
+  get 'cancelled_orders' => 'users#cancelled_orders', as: 'cancelled_orders'
+
+  #============== Products ==================
+
+  get 'products/index' => 'products#index', as: 'index_products'
+
+  get 'products/:id/show_seller_products' => 'products#show_seller_products', as: 'show_seller_products'
+
+  get 'products/show/:id' => 'products#show', as: 'show_products'
+
+  get 'products/new' => 'products#new', as: 'new_products'
+
+  post 'products/create' => 'products#create', as: 'create_products'
+
+  get 'products/:id/edit' => 'products#edit', as: 'edit_products'
+
+  patch 'products/:id/update' => 'products#update', as: 'update_products'
+
+  delete 'products/:id/destroy' => 'products#destroy', as: 'destroy_products'
+
+  get 'products/search' => 'products#search', as: 'search_products'
+
+
+
+
+  #============== Sessions ==================
+
+  # get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
+
+  get "/auth/:provider/callback" =>  "sessions#create"
+
+
+  # delete 'sessions/:id/destroy' => 'sessions#destroy', as: 'destroy_sessions'
+
+  resources :sessions
+
+  #============== Orders ==================
+
+
+  post 'cart/add_to_cart' => 'orders#add_to_cart', as: 'add_to_cart'
+
+  get 'cart' => 'orders#show_cart', as: 'show_cart'
+
+  post 'order_item/change_quantity' => 'orders#change_quantity', as: 'change_quantity'
+
+  delete 'order_item/delete' => 'orders#destroy_order_item', as: 'destroy_order_item'
+
+  get 'checkout' => 'orders#checkout', as: 'checkout'
+
+  patch 'orders/create' => 'orders#create_order', as: 'create_order'
+
+  get 'orders/:order_id/confirmation' => 'orders#confirmation', as: 'confirmation'
+
+  patch 'orders/:order_id/cancel' => 'orders#cancel_order', as: 'cancel_order'
+
+
+  get 'orders/index' => 'orders#index', as: 'index_orders'
+
+  get 'orders/show/:id' => 'orders#show', as: 'show_orders'
+
+  get 'orders/new' => 'orders#new', as: 'new_orders'
+
+
+  get 'orders/:id/edit' => 'orders#edit', as: 'edit_orders'
+
+  patch 'orders/:id/update' => 'orders#update', as: 'update_orders'
+
+
+
 end

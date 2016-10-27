@@ -1,4 +1,4 @@
-# bEtsy
+# bEtsy(Vampazon)
 [b]Etsy will be an online store where a wide variety of products can be listed and sold by any user. In this project we will focus on reinforcing the major components of Rails, Model Validation, as well as introducing some more complex logic such as user authentication.
 
 ## Project Learning Goals
@@ -104,18 +104,36 @@ As a signed-in user, I **can**:
 - Retire a product from being sold, which hides it from browsing
 - View an account page to edit/update my existing products
 - View an account page showing my order fulfillment
+
+---
+
+**[customized]**
+As a signed-in user, I can see:
+
+- User Account that contains basic User Information;
+- User Account that has Buyer Management and Seller Management Panel;
+- In Buyer Management Panel, a list of all orders of the current logged in User(buyer);
+   - Each order linked to its order confirmation page, with detail information;
+   - Listing order's id#, creation time, total price, a CANCEL button;
+- In Buyer Management Panel, the order can be cancelled. After pushing CANCEL button, the order status changed to "cancel".
+- In Buyer Management Panel, filter orders displayed by status(pending, paid, completed, cancelled)
+
+---
+
+**[refactored]**
 - On the order fulfillment page:
     - Total Revenue
     - Total Revenue by status
-    - Total number of orders by status
-    - Filter orders displayed by status
-    - Link to each individual order
-    - A list of orders including at least one of my products:
+    - Total number of **order items**(added) 
+    - Total number of **order items**(customized) by status
+    - Filter **order item**(customized) displayed by status
+    - Link to each individual order(A list of orders including at least one of my products):
         - Each order item sold by me with a quantity and line-item subtotal
         - A link to the item description page
         - DateTime the order was placed
         - Link to transition the order item to marked as shipped
         - The current status of the order ("pending", "paid", "complete", "cancelled")
+
 - View an individual order to see the user's:
     - Name
     - Email address
@@ -123,6 +141,8 @@ As a signed-in user, I **can**:
     - Last four digits of their credit card
     - Credit card expiration date
 
+---
+ 
 As a signed-in user, I **cannot**:
 
 - Review my own products

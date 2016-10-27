@@ -1,0 +1,221 @@
+  /**************************************/
+/**GENERAL SECTION **/
+ /**************************************/
+
+.main {
+
+}
+
+.headline {
+	font-size: 1.5rem;
+	/*font-weight: bold;*/
+	text-align: center;
+}
+
+
+h4.headline {
+	font-weight: bold;
+	text-align: left;
+}
+.headline img {
+	margin: auto;
+
+}
+
+.headline a {
+	color: black;
+}
+
+h3.welcome {
+	padding-top: 0;
+  margin-left: 3%;
+  margin-bottom: 2%;
+  text-align: center;
+
+}
+
+.front-page {
+	margin: 3%;
+}
+
+.quantity {
+	width: 7%;
+	/*font-size: rem;*/
+}
+
+.product-detail {
+	max-height: 9em;
+}
+
+  /**************************************/
+
+/** DESKTOP NAVIATION **/
+ /**************************************/
+
+
+.top-bar {
+  padding: 3%;
+}
+
+.logo a {
+	color: black;
+	font-weight: bold;
+	/*font-size: 3rem;*/
+}
+
+
+
+  /**************************************/
+/**HERO SECTION **/
+ /**************************************/
+
+.hero {
+  background-color: gray;
+  padding: 50px 30px 
+  height: 15%;
+}
+
+
+
+  /**************************************/
+/**FOOTER **/
+ /**************************************/
+
+
+
+
+
+
+
+body {
+  min-width: 100%;
+  font-size: 16pt;
+  /*font-family:*/
+}
+
+header {
+  background-color: #680604;
+  height: 16%;
+  margin-bottom: 2%;
+}
+
+header h1 {
+  color: white;
+  padding-top: 1.5%;
+  font-size: 3.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+header h1 a {
+  padding-top: 2.5%;
+}
+
+header h1 a:visited {
+  color: white !important;
+}
+
+
+#login-logout a {
+  color: white;
+  display: inline-block;
+  float: right;
+  min-width: 20%;
+}
+
+
+
+.basic {
+  margin: 2% 12% 5% 12%;
+}
+
+.basic h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+.basic p {
+  padding: 1%;
+  margin-left: 3%;
+}
+
+/*.column {
+  padding-left: 2%;
+  padding-right: 2%;
+}*/
+
+
+
+.row ul {
+  list-style: none;
+}
+
+/*.row ul img {
+  max-height: 10em;
+}*/
+
+.row ul a {
+  color: black;
+}
+
+.row ul a:hover {
+  color: #680604;
+}
+
+
+.columns {
+  column-count: 3;
+  /*column-gap: 8vw;*/
+}
+
+.card p {
+  float: center;
+}
+
+
+
+
+.card {
+  display: inline-block;
+  margin: 1%;
+  padding: 2%;
+  /*padding-left: 3.5%;*/
+  background-color: white;
+  /*color: white;*/
+  border: solid black;
+  min-height: 13em;
+}
+
+div.product-info {
+  min-height: 6.5em;
+  /*border: solid red;*/
+  /*padding: 0;*/
+}
+
+img.product_photo {
+  display: inline-block;
+  margin: 2% auto;
+  max-height: 7em;
+}
+
+.product-info ul {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: .25em;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.product-info ul a {
+  color: black;
+}
+
+.product-info ul a:hover {
+  color: red;
+}
+
+
+.product-info li {
+  float: center;
+}

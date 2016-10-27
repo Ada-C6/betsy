@@ -1,0 +1,49 @@
+<div class="basic">
+  <h2>ORDER PAGE</h2>
+  <ul>
+    <li><h1>Payment Info</h1></li>
+    <li>Name: (order.name) <%=%></li>
+    <li>email: (order.email)</li>
+    <li>Delivery Address: (order.street_address, order.city, order.state, order.zip)</li>
+    <li>Phone: (order.phone)</li>
+    <hr/>
+  </ul>
+
+  <h1>CONTENTS OF ORDER</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Coffin</td>
+        <td>1</td>
+        <td>4.99</td>
+      </tr>
+      <tr>
+        <td>Cape</td>
+        <td>4</td>
+        <td>20.99</td>
+      </tr>
+      <tr>
+        <td>Minion</td>
+        <td>2</td>
+        <td>13.26</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--
+@myorder.status = params[:order][:status]
+@myorder.name = params[:order][:name]
+@myorder.email = params[:order][:email]
+@myorder.street_address = params[:order][:street_address]
+@myorder.city = params[:order][:city]
+@myorder.state = params[:order][:state]
+@myorder.zip = params[:order][:zip]
+@myorder.phone = params[:order][:phone] -->

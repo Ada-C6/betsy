@@ -1,0 +1,7 @@
+<h3><%= @user.name %>'s Account</h3>
+<p>User id: <%= @user.id %></p>
+<p>User Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<%= link_to "Buyer Management", buyer_manage_path, :class => "button" %>
+<%= link_to "Seller Management", seller_manage_path, :class => "button" %>

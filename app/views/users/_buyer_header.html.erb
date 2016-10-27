@@ -1,0 +1,23 @@
+<h3><%= @user.name %>'s Account</h3>
+<p>User id: <%= @user.id %></p>
+<p>User Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+
+<h3>Buyer Management</h3>
+
+<h5>My Orders:</h5>
+<%= link_to "all", buyer_manage_path, :class => "button" %>
+<%= link_to "pending", pending_orders_path, :class => "button" %>
+<%= link_to "paid", paid_orders_path, :class => "button" %>
+<%= link_to "completed", completed_orders_path, :class => "button" %>
+<%= link_to "cancelled", cancelled_orders_path, :class => "button" %>
+
+<% @orders.each do |order| %>
+
+  <p>Order#: <%= link_to "#{order.id}", confirmation_path(order.id) %></p>
+  <p>Creation: <%= order.created_at %></p>
+  <p>$<%= order.total_price %></p>
+  <p><%= order.status %></p>
+  <p><%= link_to "Cancel", cancel_order_path(order.id), :method => :patch, :class => "button" %></p>
+
+<% end %>

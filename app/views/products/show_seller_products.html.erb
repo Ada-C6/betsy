@@ -1,0 +1,10 @@
+<div class="basic">
+  <div class="columns">
+    <h2>Collections by this Seller:</h2>
+    <% @products.each do |product| %>
+      <p><%= link_to image_tag(product.photo_url), show_products_path(product.id), :class => "photo" %></p>
+      <p><%= link_to product.name, show_products_path(product.id) %></p>
+      <p><%= product.price %></p>
+    <% end %>
+  </div>
+</div>
