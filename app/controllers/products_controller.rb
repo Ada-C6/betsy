@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:edit, :update, :reinstate_product, :retire_product]
   before_action :merchant_owns_product, only: [:edit]
+  before_action :require_login, only: [:new]
 
   def index
     if params[:search]
@@ -115,6 +116,13 @@ class ProductsController < ApplicationController
       categories.each do |c|
         @product.categories << Category.find(c)
       end
+    end
+  end
+
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to view this section"
+      redirect_to login_failure_path
     end
   end
 end

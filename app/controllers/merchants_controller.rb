@@ -42,9 +42,7 @@ class MerchantsController < GuestsController
   end
 
   def current_user
-    # require 'pry';binding.pry
     @current_user ||= Merchant.find_by(id: session[:merchant_id])
-
   end
 
   helper_method :current_user ## What is this?
