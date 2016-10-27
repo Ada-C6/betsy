@@ -10,9 +10,9 @@
   <li>
     <%@products.each do |product, quantity|%>
 
-    <p> <%=product.name%></p>
+    <p> <%=capitalize_each_word(product.name)%></p>
     <p><%=link_to "Learn More", product_path(product)%></p>
-    <p> <%=number_to_currency(product.price, :unit => '$')%></p>
+    <p> <%=show_dollars(product.price)%></p>
     <p> Quantity: <%=quantity%> <%=link_to "Add More!", more_products_path(product.id), method: :patch%>
       <%=link_to "Delete Item", delete_products_path(product.id), method: :delete%>
     </p>
@@ -27,7 +27,7 @@
 
 
   <%if total != 0%>
-  <p><strong> Total: <%=number_to_currency(total, :unit => '$')%></strong></p>
+  <p><strong> Total: <%=show_dollars(total)%></strong></p>
   <p> Continue shopping <%=link_to "Here", products_path %></p>
   <br> <br>
   <%= link_to "Empty your cart", carts_empty_cart_path%>
