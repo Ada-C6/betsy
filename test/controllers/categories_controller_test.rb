@@ -8,7 +8,6 @@ class CategoriesControllerTest < ActionController::TestCase
   end
 
   test "should show the products within a certain category" do
-    # binding.pry
     category = categories(:big_animals)
     get :show, { category_id: category.id }
     assert_response :success
