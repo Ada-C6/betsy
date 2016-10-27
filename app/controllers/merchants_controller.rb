@@ -1,5 +1,6 @@
 class MerchantsController < GuestsController
-before_action :require_login, only: [:create]
+  before_action :require_login
+
 
   # def index
   #   @merchant = Merchant.all
@@ -39,5 +40,18 @@ before_action :require_login, only: [:create]
   def merchant_params
     params.require(:merchant).permit(:username, :email)
   end
+  private
 
+  def current_user
+    @current_user ||= Merchant.find_by(id: session[:merchant_id])
+  end
+
+  helper_method :current_user ## What is this?
+
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to view this section"
+      redirect_to login_failure_path
+    end
+  end
 end
