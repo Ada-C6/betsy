@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
   has_many :order_items
+  before_create :set_order_status, only: [:create]
+
   # validates :name, presence: true, uniqueness: { scope: :street_address, :message => "There is already a buyer with this name and address. Please enter a different name and/or address." }
   # validates :email, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+\z/,
   #   message: "Email address is not in the correct format" }
@@ -24,4 +26,11 @@ class Order < ActiveRecord::Base
       errors.add(:cc_exp_year, "Bummer. Your card is expired. Please use a different card.")
     end
   end
+
+  private
+
+  def set_order_status
+    self.order_status = "pending"
+  end
+
 end
