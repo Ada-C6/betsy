@@ -8,6 +8,7 @@ elephant:
   photo_url: elephants.jpeg
   active: true
   merchant_id: 1
+  id: 1
 
 monkey:
   name: Monkey
