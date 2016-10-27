@@ -21,20 +21,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def current_order
-  #   if !session[:order_id].nil?
-  #     Order.find(session[:order_id])
-  #   else
-  #     Order.new
-  #   end
-  # end
-
-  # def shopping_cart
-  #   if !session[:cart].nil?
-  #     @cart = session[:cart]
-  #   else
-  #    @cart = session[:cart]
-  #   end
-  # end
+  def shopping_cart
+    if !session[:cart].nil?
+      @cart = session[:cart]
+    else
+      session[:cart] = []
+      @cart = session[:cart]
+    end
+  end
 
 end
