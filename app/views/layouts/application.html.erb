@@ -19,7 +19,7 @@
         <ul class="menu top-bar-right">
           <li>
             <% if current_user %>
-              <%= button_to "Log out", sessions_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
+              <%= button_to "Log out", logout_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
             <% else %>
               <%= button_to "Log in with Github", '/auth/github', method: :post, class: "github-button" %>
             <% end %>

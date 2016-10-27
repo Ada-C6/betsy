@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
   #   message: "Credit card security code is not valid" }
   # validates :billing_zip, presence: true, numericality: { only_integer: true }, format: { with: /\A[0-9]{5}\z/,
   #   message: "Billing zip code is invalid, must be 5 digits long" }
-
+  #
   # validate :card_not_expired # will come back to this
 
   def card_not_expired

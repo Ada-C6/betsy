@@ -6,7 +6,7 @@ Rails.application.routes.draw do
  # do we need route w/ callback?
   get "/auth/:provider/callback" =>  "sessions#create" # called from the provider (github) OAuth strategy and not by a link the user clicks on
   get "/sessions", to: "sessions#index", as: "sessions"
-  delete "/sessions", to: "sessions#destroy"
+  delete "/sessions", to: "sessions#destroy", as: "logout"
 
 
   resources :products
