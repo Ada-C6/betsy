@@ -10,3 +10,19 @@
     </li>
 <%end%>
 </ul>
+
+<% unless @merchant_id.nil? %>
+
+<h3>Your Products</h3>
+
+<ul class="row small-up-3 large-up-4">
+<% @merchant_products.each do |product| %>
+    <li class="column">
+        <section>
+            <%= link_to (image_tag "#{ product.photo_url }", alt: "#{ product.name }", class: "product-image"), product_path(product) %>
+            <h3><%= link_to capitalize_each_word(product.name), product_path(product) %></h3>
+        </section>
+    </li>
+<%end%>
+</ul>
+<% end %>

@@ -6,6 +6,7 @@ cat_suit:
   photo_url: http://placekitten.com/200/300
   categories: cat, formal_wear, mammals
   merchant: 1234
+  active: true
 
 hamster_monocle:
   name: hamster monocle
@@ -15,6 +16,7 @@ hamster_monocle:
   photo_url: http://placekitten.com/200/300
   categories: hamster, eyewear, mammals
   merchant: 1234
+  active: true
 
 dog_bunny_ears:
   name: Dog bunny ears
@@ -23,3 +25,4 @@ dog_bunny_ears:
   stock: 1
   photo_url: http://placekitten.com/200/300
   merchant: 2341
+  active: true

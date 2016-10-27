@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, except: [:index, :new, :create]
 
     # Will likely need to remove this line (or further customize this), once we've narrowed down which pages require login. This line allows our tests to pass.
     skip_before_action :require_login, only: [:show, :index]
 
   def index
-    @products = Product.all
+      @products = Product.where(active:true)
+      @merchant_id = session[:user_id]
+      @merchant_products = Product.where(merchant_id: @merchant_id)
     # @order_item = current_order.order_items.new
   end
 
@@ -38,6 +40,16 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+    redirect_to portal_path
+  end
+
+  def retire
+    if @product.active
+      @product.active = false
+    else
+      @product.active = true
+    end
+    @product.save
     redirect_to portal_path
   end
 
