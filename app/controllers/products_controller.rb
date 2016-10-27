@@ -53,11 +53,18 @@ class ProductsController < ApplicationController
 
   def edit;
     @product.price /= 100.0
+    @categories_array = Category.all.map { |category| [Category.find(category.id).name, category.id] }
   end
 
   def update
     @product.price *= 100
     if @product.update(product_params)
+      @product.categories.each do |i|
+        @product.categories.delete(Category.find(i.id))
+      end
+      params[:category_ids].each do |c|
+        @product.categories << Category.find(c)
+      end
       redirect_to product_path
     else
       render :edit
@@ -92,7 +99,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :inventory, :description, :photo_url)
-    # params.require(:categoryproduct).permit(:product_id, :category_id)
   end
 
   def find_product
