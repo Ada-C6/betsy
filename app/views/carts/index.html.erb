@@ -8,20 +8,21 @@
 <ul>
 
   <li>
-    <%@products.each do |product|%>
+    <%@products.each do |product, quantity|%>
 
     <p> <%=product.name%></p>
     <p><%=link_to "Learn More", product_path(product)%></p>
     <p> <%=number_to_currency(product.price, :unit => '$')%></p>
-    <p> Quantity: <%=k["quantity"]%> <%=link_to "Add More!", add_cart_path(product.id), method: :get%>
-      <%=link_to "Delete Item", delete_cart_path(product.id), method: :delete%>
+    <p> Quantity: <%=quantity%> <%=link_to "Add More!", more_products_path(product.id), method: :patch%>
+      <%=link_to "Delete Item", delete_products_path(product.id), method: :delete%>
     </p>
     <p>
-      <%=link_to "Reduce!", sub_cart_path(product.id)%>
+      <%=link_to "Reduce!", less_products_path(product.id), method: :patch%>
     </p>
   </li>
-  <% total += k["quantity"] * product.price %>
+  <% total += quantity * product.price %>
   <%end%>
+
 
 
 

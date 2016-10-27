@@ -1,27 +1,69 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
+  after_action :no_item, only: [:less_prod, :delete_product]
 
   def index
-    @products = []
+    @products = {}
     @cart.each do |item|
-      @products << Product.find(item["id"])
+      a = Product.find(item["id"])
+      b = item["quantity"]
+      @products.merge!(a => b)
+
     end
+     return @products
   end
 
   def add_to_cart
     id = params[:id]
     @product = Product.find(id)
     if !@cart.empty?
-
       @cart.each do |k, v|
-        if k["id"] = @product.id
-          k["quantity"] = k["quantity"] + 1
+        unless k.has_value?(@product.id)
+        @cart << {"id" => @product.id, "quantity" =>1}
         end
       end
     else
       @cart << {"id" => @product.id, "quantity" =>1}
     end
     session[:cart] = @cart
+    redirect_to carts_path
+  end
+
+
+    def more_prod
+      id = params[:id]
+      @product = Product.find(id)
+        @cart.each do |k, v|
+          if k.has_value?(@product.id)
+            k["quantity"] = ( k["quantity"] + 1)
+          end
+        end
+        redirect_to carts_path
+    end
+
+    def less_prod
+      id = params[:id]
+      @product = Product.find(id)
+        @cart.each do |k, v|
+          if k.has_value?(@product.id)
+            k["quantity"] = ( k["quantity"] - 1)
+          end
+        end
+        redirect_to carts_path
+    end
+
+    def delete_product
+      id = params[:id]
+      @product = Product.find(id)
+        @cart.each do |k, v|
+          if k.has_value?(@product.id)
+            k["quantity"] =   0
+          end
+        end
+        redirect_to carts_path
+    end
+
+
 
     # begin
     #   @order_item = OrderItem.find(params[:product_id])
@@ -36,14 +78,6 @@ class CartsController < ApplicationController
     #
     #   @order_item.save
     # end
-    redirect_to carts_path
-  end
-
-  def sub_cart
-    cart = session[:cart]
-    cart[params[:id]] = cart[params[:id]] - 1
-    redirect_to carts_path
-  end
 
   def destroy
     @order_item = OrderItem.find_by(params[:product_id])
@@ -68,8 +102,10 @@ class CartsController < ApplicationController
     else
       session[:cart] = []
       @cart = session[:cart]
-
     end
+  end
+  def no_item
+    @cart.delete_if {|k| k["quantity"] == 0}
   end
 
 end
