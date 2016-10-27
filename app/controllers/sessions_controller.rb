@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+skip_before_action :require_login, only: [:create, :login_failure]
 
   def create
     auth_hash = request.env['omniauth.auth']
@@ -15,6 +16,8 @@ class SessionsController < ApplicationController
     session[:merchant_id] = @merchant.id
     redirect_to root_path
   end
+
+  def login_failure; end
 
   def destroy
     if current_user

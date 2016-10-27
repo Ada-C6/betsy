@@ -1,4 +1,5 @@
 class MerchantsController < GuestsController
+before_action :require_login, only: [:create]
 
   # def index
   #   @merchant = Merchant.all

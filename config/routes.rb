@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   get 'category/:category_id/products', to: 'categories#show', as: 'category'
 
+
+  get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
