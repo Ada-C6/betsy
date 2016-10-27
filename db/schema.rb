@@ -19,9 +19,6 @@ ActiveRecord::Schema.define(version: 20161027220418) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_tables", force: :cascade do |t|
-  end
-
   create_table "category_products", id: false, force: :cascade do |t|
     t.integer "category_id", null: false
     t.integer "product_id",  null: false
