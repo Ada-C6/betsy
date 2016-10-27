@@ -17,7 +17,8 @@
   </section>
 </section>
 
-  <% if current_user %>
+  <% if current_user && current_user.id == @product.merchant_id %>
+    <p><%= link_to "Edit Product", edit_product_path %></p>
     <% if @product.active == true %>
     <p><%= link_to "Retire product", retire_product_path, method: :patch %></p>
     <% else %>

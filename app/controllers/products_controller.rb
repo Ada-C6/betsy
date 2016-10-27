@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:edit, :update, :reinstate_product, :retire_product]
+  before_action :merchant_owns_product, only: [:edit]
 
   def index
     if params[:search]
@@ -70,6 +71,13 @@ class ProductsController < ApplicationController
     @product.active = true
     @product.save
     redirect_to product_path
+  end
+
+  def merchant_owns_product
+    product = Product.find(params[:id])
+    unless current_user && current_user.id == product.merchant_id
+      redirect_to product_path(product)
+    end
   end
 
   private
