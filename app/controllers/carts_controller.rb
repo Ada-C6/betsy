@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
-  before_action :product_ref, except: [:index]
+  before_action :product_ref, except: [:index, :empty_cart]
   after_action :no_item, only: [:less_prod, :delete_product]
 
   def index
