@@ -1,0 +1,18 @@
+<h2>Product management</h2>
+
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
+<ul class="row small-up-2 large-up-4">
+<% @products.each do |product| %>
+    <li class="column">
+        <section>
+            <h2><%= capitalize_each_word(product.name) %></h3>
+            <h3><%= link_to "EDIT", edit_product_path(product) %></h3>
+            <h3>CATEGORIZE</h3>
+            <h3>RETIRE</h3>
+        </section>
+    </li>
+<%end%>
+</ul>

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
     resources :merchants, only: [:index, :show]
 
+    # We want logged in merchants to be able to view ALL products in an index--and to manage only their products, so I'm adding in a products#manage Controller action to create this:
+    get '/products/manage', to: 'products#manage', as: 'manage_products'
+
     resources :products do
         resources :reviews, only: [:new, :create]
     end
@@ -12,15 +15,15 @@ Rails.application.routes.draw do
     resources :orders, except: [:new, :create, :delete]
     resources :order_items, except: [:index, :show]
     resources :categories, only: [:index, :new, :create, :show]
+    
 
 
-
-# We're going to talk about this more if any of us needs to edit this. :)
+    # We're going to talk about this more if any of us needs to edit this. :)
     # resources :orders, only: [:new, :create, :show] do
     #     # resources :order_items, except: [:index, :show]
     # end
 
-# Sessions routes - can be further flushed out...
+    # Sessions routes - can be further flushed out...
     get '/auth/:provider/callback' =>  'sessions#create'
 
     get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"

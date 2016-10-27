@@ -1,3 +1,19 @@
-<h1><% @page_title= "Merchant Portal..."%></h1>
-<h1>Login successful.</h1>
-<h2>Welcome <%= @merchant.email %>!</h2>
+<h2>Merchant Portal:  Welcome <%= @merchant.email %>!</h2>
+
+<ul class="row small-up-1 large-up-2 options">
+    <li class="column">
+        <div>
+            <h4 class="text-center"><%= link_to "Manage your products", manage_products_path %></h4>
+        </div>
+    </li>
+    <li class="column">
+        <div>
+            <h4 class="text-center"><%= link_to "Add a new product", new_product_path %></h4>
+        </div>
+    </li>
+    <li class="column">
+        <div>
+            <h4 class="text-center"><%= link_to "Manage your orders", new_product_path %></h4>
+        </div>
+    </li>
+</ul>
