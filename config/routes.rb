@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'carts/show', as: "cart"
+
   root 'guests#index'
  # do we need route w/ callback?
   get "/auth/:provider/callback" =>  "sessions#create" # called from the provider (github) OAuth strategy and not by a link the user clicks on
   get "/sessions", to: "sessions#index", as: "sessions"
-  delete "/sessions", to: "sessions#destroy"
+  delete "/sessions", to: "sessions#destroy", as: "logout"
 
 
   resources :products do
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
 
   post "/products/:id", to: "reviews#create"
 
-  # get "/products/:id/add_to_cart", to: "orderitems#add_to_cart", as: "add_to_cart"
+  # get "/products/:id/add_to_cart", to: "order_items#add_to_cart", as: "add_to_cart"
 
   patch "/products/:id/retire", to: "products#retire_product", as: "retire_product"
 
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :merchants, only: [:new, :create, :show]
 
-  resources :orderitems, except: [:show]
+  resources :order_items, except: [:show]
 
   resources :orders, except: [:index]
   resources :categories, only: [:create, :new]

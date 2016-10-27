@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20161027021452) do
     t.integer  "cc_exp_year"
     t.integer  "cc_sec_code"
     t.string   "billing_zip"
-    t.boolean  "order_status"
+    t.string   "order_status"
     t.datetime "time_placed"
   end
 
