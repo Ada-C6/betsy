@@ -1,7 +1,7 @@
 <h1 class="category-header">Welcome to your Dashboard, <%= "#{ @merchant.username }" %></h1>
 
 <section class="row dashboard-buttons">
-  <%= button_to "Add a Product", new_product_path, class: "column small-4" %>
+  <%= button_to "Add a Product", new_product_path, method: :get, class: "column small-4" %>
 
   <%= button_to "View My Products", merchant_products_path(@merchant), method: :get, class: "column small-4" %>
 

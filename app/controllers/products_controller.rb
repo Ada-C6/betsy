@@ -39,9 +39,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.price *= 100
     @product.merchant_id = session[:merchant_id]
     if @product.save
+      @product.price *= 100
+      @product.save
       params[:category_ids].each do |c|
         @product.categories << Category.find(c)
       end
