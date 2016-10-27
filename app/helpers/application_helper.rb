@@ -29,7 +29,8 @@ module ApplicationHelper
 
   def login_status
     if session[:user_id]
-      "Logged in as #{user_name}"
+      # "Logged in as #{user_name}"
+      link_to "#{user_name}'s Portal", portal_path
     else
       "Not logged in"
     end
