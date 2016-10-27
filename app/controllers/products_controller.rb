@@ -33,15 +33,18 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    # @product.active = true
+    @categories_array = Category.all.map { |category| [Category.find(category.id).name, category.id] }
+    @prod_cat = CategoryProduct.new
   end
 
   def create
     @product = Product.new(product_params)
     @product.price *= 100
     @product.merchant_id = session[:merchant_id]
-    # @product.active = true
     if @product.save
+      params[:category_ids].each do |c|
+        @product.categories << Category.find(c)
+      end
       redirect_to product_path(@product)
     else
       render :new
@@ -89,6 +92,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :inventory, :description, :photo_url)
+    # params.require(:categoryproduct).permit(:product_id, :category_id)
   end
 
   def find_product
