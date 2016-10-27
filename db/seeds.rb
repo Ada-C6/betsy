@@ -9,3 +9,8 @@ CSV.read('db/seed_csvs/categories.csv').each do |line|
   category_hash = { name: line[0] }
   Category.create!(category_hash)
 end
+
+CSV.read('db/seed_csvs/categoryproducts.csv').each do |line|
+  category_product_hash = { product_id: line[0], category_id: line[1] }
+  CategoryProduct.create!(category_product_hash)
+end
