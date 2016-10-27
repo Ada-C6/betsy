@@ -31,6 +31,6 @@ class Product < ActiveRecord::Base
       ratings << i[:rating]
     end
     average = (ratings.sum)/num_ratings.to_f
-    return average
+    return sprintf('%.2f' % average)
   end
 end
