@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
     rescue StandardError => err
       render "/errors/not_found", status: :not_found
     end
+
+    @order_items = current_order.order_items
   end
 
   def new
