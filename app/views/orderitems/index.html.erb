@@ -1,9 +1,0 @@
-<h1>Cart</h1>
-<% @order_items.each do |i| %>
-  <% product = Product.find(i.product_id) %>
-  <%= "Name: #{product.name}" %>
-  <%= "Quantity: #{i.quantity} ADD FUNCTIONALITY TO CHANGE QUANTITY" %>
-  <%= "Item subtotal: #{i.quantity * product.price}" %>
-  <%= link_to "Update", orderitem_path, method: :post %>
-  <%= link_to "Remove item from cart", orderitem_path, method: :delete %>
-<% end %>
