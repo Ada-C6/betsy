@@ -18,7 +18,18 @@
         Products
       </th>
       <th>
-        Dropdown for Order Status
+        <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+          <li>
+            Order Status
+            <ul class="menu vertical">
+              <li>
+                <% Order.all.each do |o| %>
+                  <%= link_to "#{ o.order_status }", order_path(o.id) %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </th>
     </tr>
     <tr>
