@@ -14,8 +14,6 @@ class CartsController < ApplicationController
   end
 
   def add_to_cart
-    id = params[:id]
-    @product = Product.find(id)
     if !@cart.empty?
       @cart.each do |k, v|
         unless k.values[0] == @product.id
@@ -31,8 +29,7 @@ class CartsController < ApplicationController
 
 
   def more_prod
-    id = params[:id]
-    @product = Product.find(id)
+
     @cart.each do |k, v|
       if k.values[0] == @product.id
         k["quantity"] = ( k["quantity"] + 1)
@@ -42,8 +39,7 @@ class CartsController < ApplicationController
   end
 
   def less_prod
-    id = params[:id]
-    @product = Product.find(id)
+
     @cart.each do |k, v|
       if k.values[0] == @product.id
         k["quantity"] = ( k["quantity"] - 1)
@@ -53,8 +49,7 @@ class CartsController < ApplicationController
   end
 
   def delete_product
-    id = params[:id]
-    @product = Product.find(id)
+
     @cart.each do |k, v|
       if k.values[0] == @product.id
         k["quantity"] =   0
