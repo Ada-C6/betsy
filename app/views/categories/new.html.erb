@@ -1,0 +1,11 @@
+<article class = "cream-background">
+  <header>
+    <h2 class="page-title">Add a New Category</h2>
+  </header>
+
+  <section class="new-table">
+    <%= render partial: "form", locals: { submit_url: categories_path, http_method: :post } %>
+  </section>
+
+  <h5 class="form-text">Don't want to add a category, <%= link_to "Go to All Categories", categories_path %></h5>
+</article>

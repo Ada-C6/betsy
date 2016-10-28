@@ -1,0 +1,21 @@
+<article class="new-table cream-background">
+  <header>
+    <h2 class="page-title change-font"><%= "Reviews for #{@product.name}" %></h2>
+  </header>
+
+  <section >
+    <table>
+      <tr>
+        <% @reviews_by_product.each do | review | %>
+          <td>
+            <h6 class="change-font"><strong><%= "#{review.title} (Rating: #{review.rating}):" %></strong></h6>
+            <p><%= "#{review.body}" %></p>
+          </td>
+        </tr>
+        <% end %>
+    </table>
+  </section>
+  <section class="padding-bot">
+    <%= link_to "Add a Review", new_product_review_path(params[:product_id]), class: "product-button" %>
+  </section>
+</article>

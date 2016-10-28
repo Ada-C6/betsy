@@ -1,0 +1,31 @@
+<article>
+  <header>
+    <h1 class="page-title">Add a Review</h1>
+  </header>
+
+  <% if @review.errors.any? %>
+    <ul class="errors">
+      <% @review.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+    <%= form_for @review, class: "", html: {class: 'form'}, url: product_reviews_path, http_method: :post do |f| %>
+    <article class="new-table cream-background padding-bot">
+      <section class="change-font">
+        <%= f.label :title, 'Title:' %>
+        <%= f.text_field :title %>
+
+        <%= f.label :rating, 'Rating:(1-5)' %>
+        <%= f.text_field :rating %>
+
+        <%= f.label :body %>
+        <%= f.text_field :body %>
+      </section>
+        <%= f.submit :class => 'button' %>
+    </article>
+    <% end %>
+</article>

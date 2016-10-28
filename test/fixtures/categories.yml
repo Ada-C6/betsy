@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: textiles
+  description: All the napkins in the world.
+  photo_url: https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12816929_202522856792499_1943289082_n.jpg
+two:
+  name: cookies
+  description: Seriously, cookies.
+  photo_url: https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12547505_182223832136468_536848961_n.jpg

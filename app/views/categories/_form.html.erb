@@ -1,0 +1,31 @@
+<% if @category.errors.any? %>
+  <ul class="errors">
+    <% @category.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @category, class: 'add-form', html: {class: 'form'}, url: submit_url, method:http_method do |f| %>
+  <section>
+    <%= f.label :name, "Category Name(required)" %>
+    <%= f.text_field :name %>
+  </section>
+
+  <section>
+    <%= f.label :description, "Description:" %>
+    <%= f.text_field :description %>
+  </section>
+
+  <section>
+    <%= f.label :photo_url, "Image URL(required):" %>
+    <%= f.text_field :photo_url %>
+  </section>
+
+  <section>
+    <%= f.submit "Create a Category", :class => 'button' %>
+  </section>
+
+<% end %>

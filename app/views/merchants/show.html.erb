@@ -1,0 +1,75 @@
+<article class="change-font padding-lf-rt cream-background">
+  <h3 class="change-font top-add-space underline">
+    <%= @merchant.name %>
+  </h3>
+
+  <% if @user_page == true %>
+    <h3 class="change-font top-add-space underline">
+      <%= "Welcome to your Merchant Page, #{@merchant.name}." %>
+    </h3>
+
+    <section class="underline">
+      <h5 class="change-font add-padding-top"><strong>Total Revenue: </strong>(<%= money_format(@cumulative_revenue) %>)</h5>
+      <%= link_to "Add a new product", new_merchant_product_path(@merchant), class: "button" %>
+    </section>
+  <% end %>
+
+  <section>
+    <% @merchant.products.each do |product| %>
+      <% if product.orders.length > 0 %>
+          <ul class="row small-up-12 bullet-none">
+            <li class="column change-font">
+              <p><%= link_to "#{product.name} (qty: #{product.stock_quantity})", product_path(product), class: "increase-font" %></p>
+              <p><%= link_to(image_tag("#{product.photo_url}", class: "merchant-img-thumbnail"),     product_path(product)) %></p>
+            </li>
+          </ul>
+
+          <% if @user_page == true %>
+            <%= link_to "Edit", edit_product_path(product), class: "button" %>
+            <%= link_to "Retire Product", product_retired_path(product), class: "alert button" %>
+          <% end %>
+          <table class="change-font center">
+          <% if @user_page == true %>
+            <tr>
+              <th>Order Date</th>
+              <th>Order Number</th>
+              <th>Customer</th>
+              <th>Order Status</th>
+              <th>Order Details</th>
+            </tr>
+
+            <% product.orders.reverse.each do |order| %>
+              <section>
+                <tr>
+                  <% if order.status != 'pending' %>
+                    <td><%=order.purchase_time.strftime("%Y-%m-%d")%></td>
+                  <% else %>
+                    <td>N/A</td>
+                  <% end %>
+                  <td><%=order.id%></td>
+                  <td><%=order.name%></td>
+                  <td><%=order.status%></td>
+                  <td><%= link_to "View", order_path(order) %></td>
+                </tr>
+
+              </section>
+            <% end %>
+          <% end %>
+        </table>
+
+      <% else %>
+        <ul class="row small-up-12 bullet-none">
+          <li class="column change-font">
+            <p><%= link_to "#{product.name} (qty: #{product.stock_quantity})", product_path(product), class: "increase-font" %></p>
+            <p><%= link_to(image_tag("#{product.photo_url}", class: "merchant-img-thumbnail"), product_path(product)) %></p>
+          </li>
+        </ul>
+
+        <% if @user_page == true %>
+            <%= link_to "Edit", edit_product_path(product), class: "button"%>
+            <%= link_to "Retire Product", product_retired_path(product), class: "alert button" %>
+        <% end %>
+
+      <% end %>
+    <% end %>
+  </section>

@@ -1,0 +1,18 @@
+<article class="cream-background">
+  <header>
+    <h1 class="page-title"><%= @category.name %></h1>
+  </header>
+
+  <section class="underline-category">
+    <%= link_to "#{image_tag(@category.photo_url)}".html_safe, category_path, class: "category-img" %>
+  </section>
+
+  <ul class="row small-up-3 bullet-none">
+    <% @products_by_category.each do | product | %>
+      <li class="column">
+        <p><%= link_to(image_tag(product.photo_url, class:"category-img-thumbnail"), product_path(product.id)) %></p>
+        <p><%= link_to product.name, product_path(product.id), class: "product-link increase-font2" %></p>
+      </li>
+    <% end %>
+  </ul>
+</article>
