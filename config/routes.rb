@@ -13,11 +13,7 @@ Rails.application.routes.draw do
 
     patch 'products/:id/retire' => 'products#retire', as: :retire_product
 
-    resources :orders, except: [:new, :create, :delete]
-
-    resources :order_items, except: [:index, :show]
-
-    resources :categories, only: [:index, :new, :create, :show]
+    resources :orders
 
     resources :order_items, except: [:index, :show]
     resources :categories, only: [:index, :new, :create, :show]
