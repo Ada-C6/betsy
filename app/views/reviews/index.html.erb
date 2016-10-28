@@ -1,0 +1,32 @@
+<h1 class="product-name"> All Reviews for <%= @product.name %></h1>
+
+<div class='row product-reviews-heading'>
+  <% if @reviews != nil %>
+    <h4 class="reviews-header small-12 medium-7 columns"> Average: <%= star_string(@product.rating) %></h4>
+    <% unless @product.merchant == current_merchant %>
+      <p class="small-4 medium-3 columns">  <%= link_to 'Add A Review!', new_merchant_product_review_path(@merchant.id, @product.id) %> </p>
+    <% end %>
+    <p class="small-4 medium-2 columns end">  <%= link_to "Back to Product", merchant_product_path(@merchant.id, @product.id) %>  </p>
+  <% else %>
+    <p>  This Product has no reviews! </p>
+    <p>  <%= link_to "Back to Product", merchant_product_path(@merchant.id, @product.id) %></p>
+  <% end %>
+</div>
+
+
+
+<div class="row reviews-section">
+  <% if @reviews != nil %>
+    <% @reviews.each do |review| %>
+      <article class="one-review small-12">
+        <div class="row">
+          <div class="columns small-12 medium-2 stars-and-author">
+            <p><%= star_string(review.stars) %></p>
+            <p> <%= "By: #{review.author}" if review.author != ''  %></p>
+          </div>
+          <p class="columns small-12 medium-9"><%= review.description %></p>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,32 @@
+<h5 class="error-message"><%= @error if @error %></h5>
+
+<h1 class="page-header product-name"> Not Yesty Categories </h1>
+
+<div class="row product-grid" data-equalizer data-equalize-on="medium" id="test-eq">
+  <% @category.each do |category| %>
+    <article class="column small-6 medium-4 large-3 <%= "end" if category == @category.last%>">
+      <div class="callout" data-equalizer-watch>
+        <div class="product-name-div">
+          <p class="product-name"><%= link_to(category.name, category_path(category.id)) %></p>
+        </div>
+        <%= image_tag((category.products.first == nil ? "NoProductImage.png" : "#{category.products.first.image}"), size: "200x300", alt: "Link of #{category.name}.", class: "product-photo") %>
+      </div>
+    </article>
+  <% end %>
+</div>
+
+
+
+
+<% if current_merchant != nil %>
+
+  <h3><%= 'Add a New Category' %></h3>
+  <%= form_for @new_category, url: categories_path do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+  <p><%= f.submit class:"button" %></p>
+
+  <% end %>
+<% end %>

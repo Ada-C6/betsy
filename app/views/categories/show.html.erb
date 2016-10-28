@@ -1,0 +1,15 @@
+<h1 class="page-header product-name"> Products For <%= @category.name %></h1>
+
+<div class="row product-grid" data-equalizer data-equalize-on="small-up" id="test-eq">
+<% @products_in_category.each do |p| %>
+  <article class="column small-6 medium-4 large-3 panel" data-equalizer-watch>
+    <div class="callout panel" data-lizer-watch>
+      <div class="product-name-div">
+        <p class="product-name"><%= link_to(p.name, merchant_product_path(p.merchant_id,p.id)) %></p>
+      </div>
+      <%= link_to image_tag(p.image, alt: 'product photo', size: '200x200', class: "product-photo"), merchant_product_path(p.merchant_id,p.id) %>
+    </div>
+ </article>
+<% end %>
+
+<%= link_to("View all Categories", categories_path) %>

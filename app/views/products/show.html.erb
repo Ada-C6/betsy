@@ -1,0 +1,71 @@
+
+
+<h1 class="product-name"><%= @product.name %></h1>
+
+<div class="row product-info-main-container">
+  <p class="small-12 medium-5 columns product-image-main"><%= image_tag(@product.image, size: "200x275", alt: "Photo of #{@product.name}.") %> </p>
+
+  <div class="small-12 medium-5 end columns">
+    <p class="product-description-paragraph"> <span class="identifier-field">Description: </span><%= @product.description %></p>
+    <div class="price-and-inventory-container">
+      <p class="price-and-inventory"><span class="identifier-field">Price: </span>$<%= '%.2f' % (@product.price/100.00) %></p>
+      <p class="price-and-inventory"> <span class="identifier-field">Inventory:</span>  <%= @product.inventory %></p>
+    </div>
+
+    <p> <span class="identifier-field"> Rating: </span><%= @product.rating == nil ? "Not Yet Rated!" : star_string(@product.rating) %></p>
+
+    <% if @product.merchant == current_merchant %>
+      <div class="product-merchant-buttons-container">
+        <p class="product-merchant-buttons"> <%= button_to "Edit Product", {controller: 'products', action: 'edit'}, path: 'edit_merchant_product', class:"button", method: :get %></p>
+        <p class="product-merchant-buttons"> <%= button_to "Delete Product", {controller: 'products', action: 'destroy'}, path: 'merchant_product', class:"button", method: :delete, data: {confirm: "Are you sure?"}%></p>
+      </div>
+    <% end %>
+
+    <div class="add-to-cart-section-container row">
+      <%= form_tag(controller: "orders", action: "add_to_cart", class: "button", method: "post")  do |f| %>
+
+        <div class="input-group add-to-cart-section quantity-input small-3 columns">
+          <%= number_field_tag :qty, 1, class: "form-control", min: 1 %>
+        </div>
+        <div class="input-group-btn add-to-cart-section quantity-input-button small-3 columns end">
+          <%= hidden_field_tag :product_id, @product.id %>
+          <%= hidden_field_tag :merchant_id, @product.merchant_id %>
+          <%= submit_tag "Add to Cart", class: "btn btn-primary button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class='row product-reviews-heading'>
+  <% if @reviews != nil %>
+    <h3 class="reviews-header small-12 medium-5 columns"> Reviews: </h3>
+    <p class="small-4 medium-3 columns">  <%= link_to 'See All Product Reviews', merchant_product_reviews_path(@merchant.id, @product.id) %> </p>
+
+    <% unless @product.merchant == current_merchant %>
+      <p class="small-4 medium-2 columns">  <%= link_to 'Add A Review', new_merchant_product_review_path(@merchant.id, @product.id) %> </p>
+    <% end %>
+  <% end %>
+  <p class="small-4 medium-2 columns">  <%= link_to 'See All Products', all_products_path %></p>
+</div>
+
+
+<div class="row reviews-section">
+  <% if @reviews != nil %>
+    <% @reviews.each do |review| %>
+      <article class="one-review small-12">
+        <div class="row">
+          <div class="columns small-12 medium-2 stars-and-author">
+            <p><%= star_string(review.stars) %></p>
+            <p> <%= "By: #{review.author}" if review.author != ''  %></p>
+          </div>
+          <p class="columns small-12 medium-9"><%= review.description %></p>
+          <p> <%# link_to "Delete Review", merchant_product_review_path(@merchant.id, @product.id, review.id), class: "button", method: :delete, data: {confirm: "Are you sure?"}%></p>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%# Add editing stuff buttons if the merchant is logged in  %>

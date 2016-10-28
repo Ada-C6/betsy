@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+new_shoe:
+  name: "A Shoe!"
+  description: "A beautiful shoe!"
+  price: 300
+  image: 'http://placekitten.com/200/300'
+  merchant: three
+  inventory: 4
+  rating: 3
+
+glitter:
+  name: "Glitter Wand"
+  description: "a glittery wand"
+  price: 1500
+  image: 'http://placekitten.com/200/300'
+  merchant: three
+  inventory: 7
+  rating: 5
+
+no_rating:
+  name: "Glitter Wand"
+  description: "a glittery wand"
+  price: 1500
+  image: 'http://placekitten.com/200/300'
+  merchant: four
+  inventory: 7
+
+poop:
+  name: "A poop!"
+  description: "on your beautiful shoe!"
+  price: 300
+  image: 'http://placekitten.com/200/300'
+  merchant: one
+  inventory: 4
+  rating: 3

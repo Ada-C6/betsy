@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+glitter_review:
+  description: "nfjd"
+  stars: 3
+  author: "fndjk"
+  product: glitter
+
+shoe_review:
+  description: "mkd"
+  stars: 1
+  author: "fncdk"
+  product: new_shoe
+
+rating_review_one:
+  description: "nfjds"
+  stars: 5
+  author: "jf"
+  product: no_rating
+
+rating_review_two:
+  description: "mkvd"
+  stars: 3
+  author: "fdjk"
+  product: no_rating

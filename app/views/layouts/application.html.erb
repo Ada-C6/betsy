@@ -1,14 +1,95 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "Not Yetsy" %></title>
+    <link href="https://fonts.googleapis.com/css?family=Actor|Cookie|Kaushan+Script|Open+Sans|Open+Sans+Condensed:300|Pacifico|Raleway|Unica+One" rel="stylesheet">
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <header>
+    <!-- <img src="NotYetsyLogo.png" alt="Not Yetsy Logo" class="not-yetsy-main-logo"/> -->
+    <div class="top-header row">
+      <h1 class="mobile-header"><span>Not Yetsy</span> The Procrastinators Paradise</h1>
+      <%= link_to(image_tag("NotYetsyLogo.png", alt: "Not Yetsy Logo", class: "not-yetsy-main-logo columns small-12 medium-4 large-3"), index_path, method: :get) %>
+
+      <nav class="columns small-12 medium-8 large-9">
+        <ul class="nav-list">
+          <li><%= link_to("Home", index_path, method: :get) %></li>
+
+          <ul class="dropdown menu large-screen" data-dropdown-menu>
+            <li><%= link_to("Categories", categories_path) %>
+              <ul class="menu">
+                <% @all_categories.each do |category| %>
+                  <li><%= link_to(category.name, category_path(category.id)) %></li>
+                <% end %>
+              </ul>
+            </li>
+
+          </ul>
+
+
+          <li>
+            <%= link_to("Products", all_products_path ) %>
+          </li>
+
+          <% if current_cart != nil %>
+            <li><%= link_to("View Cart", order_path(current_cart.id), method: :get) %></li>
+          <% else %>
+              <li><p>You have nothing in your cart to show.</li>
+          <% end %>
+
+          <% if current_merchant != nil %>
+            <li><%= link_to("Log Out", sessions_destroy_path, method: :delete) %>  </li>
+            <li><%= link_to("My Account", merchant_path(current_merchant.id), method: :get) %></li>
+          <% else %>
+              <li><%= link_to("Log In via Github", "/auth/github") %></li>
+          <% end %>
+
+      </ul>
+    </nav>
+  </div>
+
+
+  <!-- <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu large-screen" data-dropdown-menu>
+        <li><h5 class="categories-explaination">Categories: </h5></li>
+        <%# @top_catgories.each do |category| %>
+        <li><%#= link_to(category.name, category_path(category.id)) %></li>
+        <%# end %>
+        <li>
+          <a>More Categories</a>
+          <ul class="menu">
+            <% @lesser_categories.each do |category| %>
+              <li><%= link_to(category.name, category_path(category.id)) %></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+
+    <% if flash[:notice] %>
+      <p class="flash-notice"> <%= flash[:notice] %></p>
+    <% end %>
+</header>
+<main>
+  <h4 class="greeting-message"><%= greeting %></h4>
+
+    <%= yield %>
+</main>
+  <footer>
+    <p>
+      &copy; - Olivia Legge, Miriam Cortes, Nina Mutty, and Sabrina Wilbert - 2016
+    </p>
+  </footer>
+
+  </body>
 </html>

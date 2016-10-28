@@ -1,0 +1,40 @@
+<div id="checkout">
+<section class="small-12 column">
+  <!-- #show columns to enter shipping info
+   #street address, city, state, zip
+  #show columns to enter billing info
+   #card_name, card_name, card_exp, card_cvv
+   #set order status to complete -->
+   <div class="grid-block">
+   <div class="small-12 medium-6 grid-content">
+<p>Total: <%= number_to_currency(current_cart.total_amount/100.0) %></p>
+<h3>Shipping Information</h3>
+<%= form_tag order_path(current_cart.id), method: :patch do %>
+<p>Name</p>
+<%= text_field_tag :card_name %>
+<p>Street Address</p>
+<%= text_field_tag :shipping_street %>
+<p>City</p>
+<%= text_field_tag :shipping_city %>
+<p>State</p>
+<%= select_tag :state, options_for_select(us_states) %>
+<p>Zip Code</p>
+<%= text_field_tag :shipping_zip, nil, maxlength: 5 %>
+
+<h3>Billing Information</h3>
+<p>Card Number</p>
+<%= text_field_tag :card_number, nil, maxlength: 16 %>
+<p>Card Expiration Date</p>
+<%= text_field_tag :card_exp, nil, maxlength: 5 %>
+<p>Card CVV</p>
+<%= text_field_tag :card_cvv, nil, maxlength: 4%>
+<p>Zip Code</p>
+
+<%= text_field_tag :billing_zip, nil, maxlength: 5 %>
+<%= submit_tag "Submit Order", class: "btn btn-default button" %>
+
+<%end%>
+</div>
+</div>
+</section>
+</div>

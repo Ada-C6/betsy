@@ -1,0 +1,61 @@
+<div class="small-12 columns buttons_container row">
+  <ul>
+    <li class="small-12 medium-4 columns"><%= button_to 'Add a Product', new_merchant_product_path(@merchant.id, params[:product_id]), class: "button", method: :get %></li>
+    <li class="small-12 medium-4 columns"><%= button_to 'View Products', merchant_products_path(@merchant.id), class: "button", method: :get %></li>
+    <li class="small-12 medium-4 columns"><%= button_to 'Add a Category', new_category_path(params[:id]), class: "button", method: :get %></li>
+    <li class="small-12 medium-4 columns"></li>
+  </ul>
+</div>
+
+<article>
+  <table>
+    <tbody>
+      <tr>
+        <th>Order Number</th>
+        <th>Items</th>
+        <th>Order Status</th>
+      </tr>
+
+      <% @merchant.customer_orders.each do |order| %>
+        <% order.products.each do |product| %>
+          <tr>
+            <th><%= order.id %></th>
+            <th><%= link_to(product.name, merchant_product_path(@merchant.id, product.id)) %></th>
+            <th><%= order.order_status %></th>
+          </tr>
+            <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</article>
+
+<container class="row">
+  <h1 class="small-12 columns center">Summary</h1>
+  <div class="small-12 large-6 columns give_me_a_margin">
+    <h2 class="small-12 columns">Revenue</h2>
+    <p class="small-9  medium-10 large-9 columns">Total Revenue for Pending Orders: </p>
+    <p class="small-1 medium-2 columns"><%= number_to_currency(@merchant.revenue_pending_orders/100.0) %></p>
+    <p class="small-9  medium-10 large-9 columns">Total Revenue for Paid Orders:</p>
+    <p class="small-1 medium-2 columns"><%= number_to_currency(@merchant.revenue_paid_orders/100.0) %></p>
+    <p class="small-9  medium-10 large-9 columns">Total Revenue for Cancelled Orders:</p>
+    <p class="small-1 medium-2 columns"><%= number_to_currency(@merchant.revenue_cancelled_orders/100.0) %></p>
+    <p class="small-9  medium-10 large-9 columns">Total Revenue for Completed Orders:</p>
+    <p class="small-1 medium-2 columns"><%= number_to_currency(@merchant.revenue_completed_orders/100.0) %></p>
+    <p class="small-9  medium-10 large-9 columns">Total Net Revenue:</p>
+    <p class="small-1 medium-2 columns"><%= number_to_currency(@merchant.total_revenue/100.0) %></p><p></p>
+  </div>
+
+  <div class="small-12 large-6 columns give_me_a_margin">
+    <h2 class="small-12 columns">Orders</h2>
+    <p class="small-9  medium-10 columns">Total Pending Orders: </p>
+    <p><%= @merchant.pending_orders %></p>
+    <p class="small-9  medium-10 columns">Total Cancelled Orders:</p>
+    <p><%= @merchant.cancelled_orders %></p>
+    <p class="small-9  medium-10 columns">Total Paid Orders:</p>
+    <p><%= @merchant.paid_orders %></p>
+    <p class="small-9  medium-10 columns">Total Completed Orders:</p>
+    <p><%= @merchant.completed_orders %></p>
+    <p class="small-9  medium-10 columns">Total Orders:</p>
+    <p><%= @merchant.total_orders %></p>
+  </div>
+</container>

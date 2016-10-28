@@ -1,0 +1,308 @@
+@import url('foundation.css');
+
+// /*
+//  * This is a manifest file that'll be compiled into application.css, which will include all the files
+//  * listed below.
+//  *
+//  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+//  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+//  *
+//  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+//  * compiled file so the styles you add here take precedence over styles defined in any styles
+//  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+//  * file per style scope.
+//  *
+//  *= require_tree .
+//  *= require_self
+//= require foundation_and_overrides
+
+
+header {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+main {
+  padding-bottom: 12vh;
+}
+
+div#checkout form {
+  padding-bottom: 20vh;
+}
+.greeting-message {
+  margin: 2%;
+  font-family: 'Unica One', 'Kaushan Script', cursive;
+  letter-spacing: 4px;
+}
+
+
+footer {
+  display: block;
+  width: 100%;
+  border-top: 1px solid black;
+  margin-top: 5vh;
+  background-color: white;
+  color: black;
+  vertical-align: middle;
+  font-weight: 200;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  clear: both;
+}
+
+footer p {
+  padding-top: 1%;
+}
+
+
+.dropdown {
+  display: inline-block;
+}
+
+
+ h1{font-size: 2em;}
+ h2 {font-size: 1.5em;}
+
+ul li {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+ul.row {
+  width: 80%;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  font-size: .9em;
+}
+
+.give_me_a_margin {
+  border: 1px solid black;
+}
+body {margin: 1%;}
+
+
+
+
+
+
+
+
+
+
+.top-bar {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  background-color: white;
+}
+
+.categories-explaination {
+  padding: 0.7rem 1rem;
+  margin: 0;
+}
+
+
+.top-bar-left {
+  width: 80%;
+  margin-left: 9%;
+  background-color: white;
+}
+
+.top-bar-left .dropdown {
+  background-color: white;
+}
+
+.orbit-slide div h3 a {
+  font-family: 'Unica One', 'Kaushan Script', cursive;
+  color: black;
+}
+
+.orbit-slide div h3 a:hover {
+  font-weight: 600;
+}
+
+.orbit-slide div {
+  text-align: center;
+}
+
+.orbit-slide div p.orbit-display {
+  display: inline-block;
+  margin: 1% 2%;
+  text-align: center;
+}
+
+.product-name {
+  text-align: center;
+}
+
+.product-name a {
+  font-family: 'Unica One', 'Kaushan Script', cursive;
+  color: black;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.product-name a:hover {
+  font-weight: 600;
+}
+
+h1.product-name {
+  text-align: center;
+  margin: auto;
+  font-family: 'Raleway', cursive;
+  text-transform: uppercase;
+  padding-bottom: 1%;
+  width: 50%;
+  border-bottom: 0.75px solid black;
+  color: black;
+  letter-spacing: 2px;
+}
+
+.product-info-main-container {
+  margin-top: 3%;
+}
+
+.product-image-main {
+  text-align: right;
+}
+.price-and-inventory-container, .product-merchant-buttons-container, .add-to-cart-section-container {
+  margin: 3% 0;
+}
+
+.price-and-inventory, .product-merchant-buttons, .add-to-cart-section {
+  display: inline-block;
+}
+
+.price-and-inventory:last-of-type, .product-merchant-buttons:last-of-type {
+  margin-left: 10%;
+}
+
+
+.add-to-cart-section.quantity-input {
+  width: 60%;
+}
+
+.add-to-cart-section-container form .add-to-cart {
+  display: inline-block;
+}
+
+.quantity-input-button .btn-primary {
+  padding: 7%;
+}
+
+span.identifier-field {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+p.product-description-paragraph {
+  line-height: 2;
+}
+
+.product-reviews-heading {
+  border-bottom: 0.75px solid black;
+  margin-top: 5%;
+}
+
+.one-review {
+  margin: 5% 0;
+  border-bottom: 0.25px solid lightgray;
+}
+
+.stars-and-author {
+  // border-bottom: 0.75px solid black;
+  margin-left: 3%;
+}
+
+
+div.product-name-div {
+  height: 15vh;
+}
+
+.product-photo {
+  max-height: 250px;
+}
+
+.product-grid {
+  margin-top: 3%;
+}
+
+
+h4.order-number {
+  text-align: center;
+  margin-top: 3%;
+}
+
+
+// ###### Media Screen Differences ######
+
+@media only screen {
+  div.top-header {
+    text-align: center;
+  }
+
+  img.not-yetsy-main-logo {
+    // width: 60%;
+    // margin: 0 20%;
+    display: none;
+  }
+
+  nav {
+    margin-top: 0%;
+    text-align: center;
+  }
+
+  nav ul.nav-list li {
+    display: inline-block;
+    margin: 1% 2%;
+    font-size: 1rem;
+  }
+
+  h1.mobile-header {
+    display: block;
+    font-size: .7rem;
+    letter-spacing: 2px;
+  }
+
+  h1.mobile-header span {
+    font-family: 'Unica One', 'Kaushan Script', cursive;
+    font-size: 2.1rem;
+  }
+
+  div.top-bar {
+    display: none;
+  }
+}
+
+
+
+@media only screen and (min-width: 40.063em) {
+  img.not-yetsy-main-logo {
+    width: 25%;
+    display: inline-block;
+  }
+
+  nav {
+    margin-top: 5%;
+    text-align: center;
+  }
+
+  nav ul.nav-list li {
+    display: inline-block;
+    margin: 1% 1.2%;
+    font-size: 1.2rem;
+  }
+
+
+  h1.mobile-header {
+    display: none;
+  }
+
+  div.top-bar {
+    display: block;
+  }
+}

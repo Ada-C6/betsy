@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  qty: 1
+  price: 300
+  order: orderone
+  product: poop
+
+two:
+  qty: 1
+  price: 200
+  order: two
+  product: poop
+
+three:
+  qty: 1
+  price: 300
+  order: three
+  product: poop
+
+four:
+  qty: 1
+  price: 300
+  order: four
+  product: poop
+
+five:
+  qty: 1
+  price: 300
+  order: five
+  product: poop
+
+six:
+  qty: 1
+  price: 300
+  order: six
+  product: poop

@@ -1,0 +1,44 @@
+<h1 class="product-name"><%= @order_items.count %> <%= @order_items.count == 1 ? "Item" : "Items" %> in Your Cart</h1>
+
+<% if @order_items.count == 0 %>
+  <h4 class="text-center order-number">
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </h4>
+<% else %>
+  <table class="table">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+      <th>Total</th>
+      <th></th>
+
+    </tr>
+    <% @order_items.each do |item| %>
+      <tr>
+        <td><%= image_tag(item.product.image, class: "cart-thumbnail") %></td>
+        <td><%= link_to "#{item.product.name}", merchant_product_path(merchant_id: item.product.merchant_id, id: item.product.id) %></td>
+        <td><%= number_to_currency(item.product.price/100.0) %></td>
+
+        <%= form_tag order_update_qty_path(current_cart.id), method: :post do %>
+        <td><%= number_field_tag :qty, item.qty.to_i, class: "form_control", min: 1 %></td>
+          <%= hidden_field_tag :line_item_id, item.id %>
+          <td><%= submit_tag "Update Quantity", class: "btn btn-default button" %></td>
+
+          <td><%= number_to_currency(item.subtotal/100.0) %>
+            <%end%>
+            <td><%= button_to 'Remove from Cart', {action: "destroy", id: item.id}, class: "button", method: :delete, data: {confirm: "Are you sure?"} %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= button_to "Checkout", order_checkout_path(current_cart.id), class: "button", method: :get %></td>
+            <td></td>
+            <td></td>
+            <th>Order Total</th>
+          <td><%= number_to_currency(current_cart.total_amount/100.0) %></td>
+        </tr>
+<% end %>

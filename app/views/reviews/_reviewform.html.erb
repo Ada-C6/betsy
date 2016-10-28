@@ -1,0 +1,20 @@
+<h5 class="error-message"><%= @error if @error %></h5>
+<%= form_for @review,
+  method: @post_method,
+  url: @post_path do |f| %>
+  <div class="form_attribute">
+    <%= f.label :stars %>
+    <%= f.select(:stars, (0..5).map{|index| [star_string(index), index]}, {include_blank: true}) %>
+  </div>
+  <div class="form_attribute">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="form_attribute">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+  <div class="form_attribute">
+    <%= f.submit class:"button" %>
+  </div>
+<% end %>
