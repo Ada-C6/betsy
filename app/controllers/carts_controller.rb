@@ -69,9 +69,6 @@ class CartsController < ApplicationController
     @cart.delete_if {|k| k["quantity"] == 0}
   end
 
-  def total
-  end
-
   def product_ref
     @product = Product.find(params[:id])
   end
