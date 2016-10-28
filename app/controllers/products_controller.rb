@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
       @product.active = true
     end
     @product.save
-    redirect_to portal_path
+    redirect_to manage_products_path
   end
 
   private
