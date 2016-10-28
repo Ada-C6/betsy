@@ -15,18 +15,18 @@
       <%= f.number_field :quantity, value: 1, min: 1 %>
 
       <%= f.hidden_field :product_id, value: @product.id %>
-      <%= f.submit "Add to cart", class: "button" %>
+      <h6><%= f.submit "Add to cart", class: "add-button" %></h6>
     <% end %>
     <p>Stock: <%= @product.inventory %></p>
   </section>
 </section>
 
   <% if current_user && current_user.id == @product.merchant_id %>
-    <p><%= link_to "Edit Product", edit_product_path %></p>
+    <h6><%= button_to "Edit Product", edit_product_path, class: "edit-button" %></h6>
     <% if @product.active == true %>
-    <p><%= link_to "Retire product", retire_product_path, method: :patch %></p>
+    <h6><%= button_to "Retire product", retire_product_path, method: :patch, class: "retire-button" %></h6>
     <% else %>
-    <p><%= link_to "Reinstate product", reinstate_product_path, method: :patch %></p>
+    <h6><%= button_to "Reinstate product", reinstate_product_path, method: :patch, class: "retire-button" %></h6>
     <% end %>
   <% end %>
 
