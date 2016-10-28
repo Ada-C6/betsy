@@ -262,14 +262,14 @@ until i == all_products.size
 end
 
 birds = Category.find_by(name: "birds")
-amphibians = Category.find_by(name: amphibians)
+amphibians = Category.find_by(name: "amphibians")
 mammals = Category.find_by(name: "mammals")
 
 all_products.each do |item|
     if item.name == "penguin hawaiian shirt"
         item.categories << birds
     elsif item.name == "trendy mini hat"
-        item.categories << amphibians    
+        item.categories << amphibians
     else
         item.categories << mammals
     end
