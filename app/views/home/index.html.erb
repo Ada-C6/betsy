@@ -1,0 +1,19 @@
+
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
+<h2>~Top Products~</h2>
+
+<ul class="row small-up-2 large-up-4">
+<% @products.each do |product| %>
+    <li class="column">
+      <p>
+        <%= link_to (image_tag "#{ product.photo_url }", alt: "#{ product.name }", class: "product-image"), product_path(product) %>
+      </p>
+      <h2>
+        <%= link_to capitalize_each_word(product.name), product_path(product) %>
+      </h2>
+    </li>
+<%end%>
+</ul>

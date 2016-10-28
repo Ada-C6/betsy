@@ -1,0 +1,12 @@
+<h2>All Categories</h2>
+
+<ul class="row small-up-2 large-up-3 categories">
+<% @categories.each do |category| %>
+    <li class="column">
+        <div>
+            <%# link_to (image_tag "http://cdn.wallpapersafari.com/38/84/OmVub1.png", alt: "placeholder for #{ category.name }", class: "product-image"), category_path(category) %>
+            <h4 class="text-center"><%= link_to capitalize_each_word(category.name), category_path(category) %></h4>
+        </div>
+    </li>
+<%end%>
+</ul>

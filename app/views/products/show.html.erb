@@ -1,0 +1,73 @@
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
+<div class="row prod-dets">
+  <section class="large-6 small-12 columns">
+    <h2 class="show-title"><%= capitalize_each_word(@product.name) %></h2>
+    <p>
+      <%= image_tag "#{@product.photo_url}", alt: "#{@product.name}", class: "product-image" %>
+    </p>
+  </section>
+
+  <section class="large-6 small-12 columns details">
+    <p>
+      <strong>Price:</strong> <%= show_dollars(@product.price) %>
+    </p>
+
+    <p>
+      <strong>In Stock:</strong> <%= @product.stock %>
+    </p>
+
+    <p>
+      <strong>Description</strong>:
+      <br>
+      <%= @product.description %>
+    </p>
+
+
+      <% unless @product.categories.empty? %>
+      <ul class="categories-links">
+        <li>Categories: </li>
+        <% @product.categories.each do |category| %>
+        <li>
+          <%= link_to "#{category.name}", category_path(category), class: "category-link" %>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+      <%= link_to "Add to cart", add_cart_path(@product), class: "hollow button" %>
+  </section>
+</div>
+
+<%# REVIEWS SECTION: %>
+<div class="row">
+  <section class="small-12 columns">
+    <h3>Reviews</h3>
+    <% if @product.reviews.empty? %>
+    <p>
+      No reviews! <%= link_to "Be the first to review!", new_product_review_path(@product.id) %>
+    </p>
+    <% else %>
+    <% @product.reviews.each do |review| %>
+
+    <section class="single-reviews">
+      <p>
+        <strong><%= date_format(review.created_at) %></strong>
+      </p>
+
+      <p>
+        Rating: <%= review.rating %>
+      </p>
+
+      <p>
+        Description: <%= review.description %>
+      </p>
+      <% end %>
+    </section>
+    <p>
+      <%= link_to "Review this product!", new_product_review_path(@product.id) %>
+    </p>
+    <% end %>
+  </section>
+</div>

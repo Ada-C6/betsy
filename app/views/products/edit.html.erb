@@ -1,0 +1,5 @@
+<h2>Edit <%= @product.name %></h2>
+
+<%= render partial: "form",
+          locals: { http_method: :patch,
+            local_path: product_path(@product) } %>

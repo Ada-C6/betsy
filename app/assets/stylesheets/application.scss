@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+   margin: 0 4%;
+ }
+
+.top-bar {
+  background-color: white;
+}
+
+.top-bar-left li, .top-bar-right li {
+  font-family: 'Julius Sans One', sans-serif;
+  border-bottom: 2pt solid #F5B19A;
+  color: #ff5050;
+  background-color: white;
+  margin: 0 8%;
+  padding: 5px 25px;
+  font-size: 9pt;
+}
+
+.title-area {
+  color: #F5B19A;
+  font-family: 'Quicksand';
+  text-align: center;
+}
+/*
+nav a {
+  color: grey;
+}*/
+
+a:hover {
+  color: #666699;
+}
+
+p {
+  color: #66CDAA;
+  font-family: 'Quicksand';
+}
+
+a, ul li {
+  color: #F5B19A;
+  font-family: 'Quicksand';
+  text-decoration: none;
+}
+
+.product-image {
+  border-radius: 25px;
+  width: 300px;
+}
+
+h2 {
+  color: #66CDAA;
+  font-family: 'Quicksand';
+  text-align: center;
+}
+
+footer {
+  font-family: 'Quicksand', sans-serif;
+  color: #F5B19A;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 2pt solid #F5B19A;
+  background-color: white;
+  margin-top: 5%;
+  padding-left: 5%;
+  position: fixed;
+}
+
+/* Make space for the footer */
+#footer-space {
+  height: 7%;
+}

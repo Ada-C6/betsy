@@ -1,0 +1,10 @@
+one_unit:
+    quantity: 1
+    product: cat_suit
+    order_id: 456
+    shipped?: true
+four_unit:
+    quantity: 4
+    product: cat_suit
+    order: valid_order
+    shipped?: true

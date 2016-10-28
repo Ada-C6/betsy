@@ -1,0 +1,42 @@
+<h2 class="underline">Create a category:</h2>
+<small>Categories must have unique names and cannot be deleted.</small>
+
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
+<main>
+  <% if @category.errors.any? %>
+    <ul class="errors">
+      <% @category.errors.each do |column, message| %>
+        <li>
+          <strong>
+            <%= column.capitalize %>
+          </strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for @category, url: categories_path do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.submit "Submit" %>
+    </p>
+  <% end %>
+</main>
+
+<h2>Here's a list of current categories...</h2>
+<ul class="row small-up-3 large-up-6 categories">
+<% @categories.each do |category| %>
+    <li class="column">
+        <div>
+            <h4 class="text-center"><%= category.name %></h4>
+        </div>
+    </li>
+<%end%>
+</ul>

@@ -1,0 +1,27 @@
+
+<h2>Your Cart</h2>
+
+<br><br><br>
+
+<ul>
+  <li>
+    <%@products.each do |product, quantity|%>
+    <p><strong><%=link_to capitalize_each_word(product.name), product_path(product)%></strong></p>
+    <p> <%=show_dollars(product.price)%></p>
+    <p> Quantity: <%=quantity%> <%=link_to "Add", more_products_path(product.id), method: :patch%>
+      <%=link_to "Reduce", less_products_path(product.id), method: :patch%>
+      <%=link_to "Delete", delete_products_path(product.id), method: :delete%>
+    </p>
+  </li>
+  <%end%>
+  <%if @total != 0 && !@total.nil?%>
+  <p><strong> Total: <%=show_dollars(@total)%></strong></p>
+  <br>
+  <p> Continue shopping <%=link_to "Here", products_path %></p>
+  <p><strong><%=link_to "Purchase Now", new_order_path%></strong></p>
+  <br>
+  <%= link_to "Empty your cart", carts_empty_cart_path%>
+</ul>
+<%else%>
+<p> Your cart is currently empty. Continue shopping <%=link_to "Here", products_path %></p>
+<%end%>

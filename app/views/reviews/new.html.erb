@@ -1,0 +1,12 @@
+<h2>Review <%= capitalize_each_word(@product.name) %></h2>
+<%#= image_tag "#{@product.photo_url}", alt: "#{@product.name}" %>
+
+<%= render partial: "form",
+            locals: {
+              http_method: :post,
+              local_path: product_reviews_path
+              } %>
+
+<p>
+  <%= link_to "Back to Product", product_path(@product) %>
+</p>

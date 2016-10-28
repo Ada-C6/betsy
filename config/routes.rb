@@ -1,56 +1,49 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+    root 'home#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    resources :merchants, only: [:index, :show]
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+    # We want logged in merchants to be able to view ALL products in an index--and to manage only their products, so I'm adding in a products#manage Controller action to create this:
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    get '/products/manage', to: 'products#manage', as: 'manage_products'
+    get '/orders/manage', to: 'orders#manage', as: 'manage_orders'
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+    resources :products do
+        resources :reviews, only: [:new, :create]
+    end
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+    patch 'products/:id/retire' => 'products#retire', as: :retire_product
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+    resources :orders
+
+    resources :order_items, except: [:index, :show]
+    resources :categories, only: [:index, :new, :create, :show]
+
+
+    # Sessions routes
+
+    # We're going to talk about this more if any of us needs to edit this. :)
+    # resources :orders, only: [:new, :create, :show] do
+    #     # resources :order_items, except: [:index, :show]
+    # end
+
+    # Sessions routes - can be further flushed out...
+
+    get '/auth/:provider/callback' =>  'sessions#create'
+    get "/sessions/login_failure", to: "sessions#login_failure", as: "login_failure"
+    get '/sessions', to: 'sessions#index', as: 'portal'
+    delete '/auth/logout', to: 'sessions#logout', as: "logout"
+    get '/auth/login', to: 'sessions#login', as: 'login'
+
+    #specific routes for the cart!
+    get '/carts' => 'carts#index'
+    get 'carts/empty_cart' =>'carts#empty_cart'
+    get '/carts/:id', to: 'carts#add_to_cart', as: "add_cart"
+    patch 'carts/:id', to: 'carts#more_prod', as: 'more_products'
+    patch 'carts/:id/reduce', to: 'carts#less_prod', as: 'less_products'
+    delete '/carts/:id/delete_product', to: 'carts#delete_product', as: 'delete_products'
+    delete '/carts/products/:id', to: 'carts#destroy', as: 'delete_cart'
 end

@@ -1,0 +1,22 @@
+<h2 class="underline">Product management:</h2>
+
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+
+<ul class="row small-up-2 large-up-4">
+<% @products.each do |product| %>
+    <li class="column">
+        <section>
+            <h2><%= capitalize_each_word(product.name) %></h2>
+            <h3><%= link_to "EDIT", edit_product_path(product), class: "button" %></h3>
+            <h3><% if product.active %>
+              <%= link_to "RETIRE", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
+              <% else %>
+              <%= link_to "ACTIVATE", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
+              <% end %></h3>
+              <h3><%= link_to "DELETE", product_path(product), remote: true, method: "delete", class: "alert button" %></h3>
+        </section>
+    </li>
+<%end%>
+</ul>

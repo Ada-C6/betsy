@@ -1,0 +1,56 @@
+<main>
+  <% if @product.errors.any? %>
+    <ul class="errors">
+      <% @product.errors.each do |column, message| %>
+        <li>
+          <strong>
+            <%= column.capitalize %>
+          </strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for @product, url: local_path do |f| %>
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </p>
+
+    <p>
+      <%= f.label :stock, "How many are you selling? (max 500)" %>
+      <%= f.number_field :stock, in: 1..500 %>
+    </p>
+
+    <p>
+      <%= f.label :price, "Price (in cents)" %>
+      <%= f.text_field :price %>
+    </p>
+
+    <p>
+      <%= f.label :photo_url, "URL of photo (sorry, we can't host photos)" %>
+      <%= f.url_field :photo_url %>
+    </p>
+
+    <p>
+      <%= f.label "Choose at least one category" %>
+      <ul class="row small-up-5">
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+        <li class="column">
+          <%= b.check_box %>
+          <%= b.label %>
+        </li>
+        <% end %>
+      </ul>
+    </p>
+
+    <p>
+      <%= f.submit "Submit" %>
+    </p>
+  <% end %>
+</main>

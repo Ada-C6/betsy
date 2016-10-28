@@ -1,0 +1,32 @@
+<section>
+  <%= form_for @review, method: http_method, url: local_path do |f| %>
+    <% if @review.errors.any? %>
+      <div class="row small-6 large-6 end callout alert">
+        <ul>
+          <% @review.errors.each do |column, message| %>
+            <li>
+              <strong><%= column.capitalize %></strong>
+              <%= message %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="small-12 medium-12 large-12 columns">
+      <p class="row">
+        <%= f.label :rating, "Rating (1 (worst) to 5 (best)): " %>
+        <%= f.number_field :rating, in: 1..5 %>
+      </p>
+
+      <p class="row">
+        <%= f.label :description, "Description (max 400 characters):" %>
+      </p>
+      <p class="row">
+        <%= f.text_area :description, size: "35x10" %>
+      </p>
+
+      <%= f.submit "Submit", class: "success button" %>
+    <% end %>
+  </div>
+</section>

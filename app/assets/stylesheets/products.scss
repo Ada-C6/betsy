@@ -1,0 +1,54 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.prod-dets {
+  margin: 5%;
+}
+
+.details {
+  margin-top: 5%;
+  padding: 5% 5% 0 5%;
+  border: 2pt solid #F5B19A;
+  border-radius: 25px;
+  color: #66CDAA;
+}
+
+ul li {
+  display: inline;
+}
+
+.category-link {
+    text-decoration: underline;
+    margin: 2%;
+}
+
+.button {
+  border-radius: 25px;
+  color: #66CDAA;
+
+}
+
+.single-reviews {
+  // margin-top: 5%;
+  padding: 0 5% 0 5%;
+  border: 2pt solid #F5B19A;
+  border-radius: 25px;
+  color: #66CDAA;
+}
+h3 {
+  color: #F5B19A;
+  text-align: center;
+  font-family: 'Quicksand';
+}
+
+.show-title {
+  color: #66CDAA;
+  font-family: 'Quicksand';
+  text-align: left;
+}
+
+.underline {
+    text-decoration: underline;
+}

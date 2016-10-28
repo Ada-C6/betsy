@@ -1,0 +1,4 @@
+
+<h3> Thank you for your order <%="#{@order["cc_name"]}"%>!</h3>
+ <p><strong> Your order number is:  </strong> <%= "#{@order["id"]}" %> </p>
+ <p><strong> Your total comes to:</strong> <%= show_dollars(@order.total)%></p>
