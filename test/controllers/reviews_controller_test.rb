@@ -16,7 +16,7 @@ class ReviewsControllerTest < ActionController::TestCase
     product = products(:cat_suit)
     review = { review: {rating: 1, description: "ugh"}, product_id: product.id }
 
-    assert_difference("Review.count") do
+    assert_difference("Review.count", 1) do
       post :create, review
     end
 
