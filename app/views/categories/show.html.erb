@@ -1,0 +1,23 @@
+<h1><%= @category.name %></h1>
+<h3>Category description: <%= @category.description %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">List of all products in category</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category_products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= link_to "Show Product Details - FIX ROUTE LATER" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to categories_path do %>
+  <div class="button">Back to all categories</div>
+<% end %>

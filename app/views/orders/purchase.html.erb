@@ -1,0 +1,19 @@
+<h1>Order Confirmation</h1>
+
+<h3>Order Items:</h3>
+<% @items.each do |item| %>
+  <% product = item.find_product %>
+  <p><%= link_to "#{ product.name }", product_path(product.id) %>
+  <%= "quantity: #{ item.quantity }" %>
+  <%= "subtotal: #{ add_decimal(product.price * item.quantity) }" %></p>
+<% end %>
+
+<p>
+  Total: <%= "#{ add_decimal(@total) }" %>
+</p>
+
+<p>Order placed at <%= "#{ @cart.updated_at }" %></p>
+
+<p>Status: <%= "#{ @cart.status }" %></p>
+
+<%= link_button("root_path", "Back Home", :get) %>

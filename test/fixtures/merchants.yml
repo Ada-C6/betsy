@@ -1,0 +1,11 @@
+teeny_merchant:
+  username: Teeny Merchant
+  email: teenymerchant@gmail.com
+
+other_merchant:
+  username: Other Guy
+  email: yourface@hotmail.com
+
+merchant_without_products:
+  username: Nuthin here
+  email: blank@email.com

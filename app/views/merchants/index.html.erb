@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>ALL MERCHANTS</h1>
+
+<table>
+
+  <tbody>
+    <% n = 1 %>
+    <% @merchants.each do |merchant| %>
+      <tr>
+        <td><%= "#{n}.) "%> <%=link_to"#{merchant.username}", merchant_path(merchant.id) %></td>
+        <% n += 1 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

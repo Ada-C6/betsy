@@ -1,0 +1,34 @@
+item_one:
+  quantity: 1
+  product: cat
+  order: order_one
+
+item_two:
+  quantity: 1
+  product: cat
+  order: order_two
+
+item_three:
+  quantity: 1
+  product: dog
+  order: order_three
+
+item_four:
+  quantity: 1
+  product: chair
+  order: order_four
+
+item_five:
+  quantity: 1
+  product: chair
+  order: order_five
+
+item_six:
+  quantity: 1
+  product: chair
+  order: order_six
+
+item_seven:
+  quantity: 1
+  product: chair
+  order: order_seven

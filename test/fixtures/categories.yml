@@ -1,0 +1,11 @@
+correct_category:
+  name: Fancy Pants
+  description: Things meant for pants of the fancy persuasion
+
+no_name_category:
+  name: To Be Deleted
+  description: Yuppers do dah.
+
+no_description_category:
+  name: Tiny Animals
+  description: will be deleted, screw you.

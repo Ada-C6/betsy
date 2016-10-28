@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>PRODUCTS</h1>
+
+<table>
+
+  <tbody>
+    <% @products.each do |p| %>
+      <% if p.stock > 0 %>
+        <tr>
+          <td><%= link_to"#{p.name}", product_path(p.id) %></td>
+          <td>Price: $<%= "#{add_decimal(p.price)}" %></td>
+          <td><%= link_to image_tag(p.photo_url), product_path(p.id) %> </td>
+        </tr>
+      <% end%>
+    <% end %>
+  </tbody>
+</table>

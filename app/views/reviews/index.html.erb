@@ -1,0 +1,22 @@
+<h1>Reviews</h1>
+
+<%= link_button("new_product_review_path", "Add a new review", :get, @product) %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Rating</th>
+      <th>Detailed Review</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.rating %> </td>
+        <td><%= review.rating_description %>   </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

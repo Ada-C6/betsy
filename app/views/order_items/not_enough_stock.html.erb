@@ -1,0 +1,12 @@
+<article class="row">
+  <section class="small-12 medium-4 columns" >
+    <img src="/assets/small_fry_sad.png" alt="sad small fry" class="sad-fry" />
+  </section>
+
+  <section class="small-12 medium-8 columns">
+    <h1>Not enough in stock!</h1>
+    <h3>There are only <%="#{session[:product_stock]}"%> in stock.</h3>
+    <h5><%= link_to "Continue shopping", root_path %></h5>
+  </section>
+
+</article>

@@ -1,0 +1,17 @@
+<% if @popular.empty? %>
+  <h2>Welcome to Weebay!<h2>
+  <p>To begin shopping, please select an option above!</p>
+<% else %>
+  <h2>Welcome to Weebay!</h2>
+  <p>To begin shopping, please select an option above, or have a look at our top-rated items:</p>
+  <br>
+
+  <% @popular.each do |product| %>
+    <% if product.stock > 0 %>
+      <h4><%= link_to product.name, product_path(product) %></h4>
+      <p><%= link_to image_tag(product.photo_url), product_path(product) %></p>
+      <p>Stock: <%= product.stock %></p>
+      <hr>
+    <% end %>
+  <% end %>
+<% end %>

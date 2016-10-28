@@ -1,0 +1,106 @@
+<!--  If I'd had more time to refactor much of this would have been moved to partials/view helper functionality. Much of this site was buitl in the last 2-3 days of the project, so ran out of time. (Was focusing efforts on test coverage.)-->
+<% unless @merchant.nil?  %>
+  <h1><%= @merchant.username %></h1>
+<% end %>
+
+<h2>Products</h2>
+  <% if !@products.nil? %>
+    <% @products.each do |product| %>
+      <h3><%= product.name %></h3>
+        <% if session[:merchant_id] == @merchant.id %>
+          <p><%= link_to("Edit Product", edit_merchant_product_path(@merchant.id, product.id), class: "button", method: :get)%></p>
+        <% end %>
+        <p><img src= "<%= product.photo_url %>" ></p>
+        <p>Description: <%= product.description %></p>
+        <p>Price: $<%= add_decimal(product.price) %></p>
+        <p>Stock: <%= product.stock %></p>
+        <p><%= link_to "Details", merchant_product_path(@merchant.id, product.id) %></p>
+    <% end %>
+  <% else %>
+    <h2>My Products</h2>
+    <p>No products yet<p>
+  <% end %>
+
+  <% if session[:merchant_id] == @merchant.id %>
+    <p><%= link_to("New Category", new_category_path, class: "button", method: :get) %></p>
+    <p><%= link_to("New Product", new_merchant_product_path(@merchant.id), class: "button", method: :get ) %></p>
+
+    <h2>Order Fulfillment</h2>
+
+    <h3>Total Revenue</h3>
+    <% if !@merchant_oi_revenue.nil? %>
+      <%= @merchant_oi_revenue %>
+    <% else %>
+    <p>No Revenue</p>
+    <% end %>
+
+    <h3>Total Revenue (by order status)</h3>
+    <p>Pending: <%= @merchant_oi_revenue_by_status[0] %></p>
+    <p>Paid: <%= @merchant_oi_revenue_by_status[1] %></p>
+    <p>Complete: <%= @merchant_oi_revenue_by_status[2] %></p>
+
+    <h3>Number of Orders (by order status)</h3>
+    <p>Pending: <%= @merchant_oi_count_by_status[0] %></p>
+    <p>Paid: <%= @merchant_oi_count_by_status[1] %></p>
+    <p>Complete: <%= @merchant_oi_count_by_status[2] %></p>
+
+
+    <h3>Orders</h3>
+    <% if !@merchant_orders.nil? || @merchant_orders.count == 0 %>
+      <p>Search for Order Status (Pending, Paid, Complete, Cancelled, or Shipped)</p>
+      <input type="text" id="orderStatusInput" onkeyup="myFunction()" placeholder="Search for Order Status (Pending, Paid, Complete, Cancelled, or Shipped)">
+
+      <table id="merchantOrders">
+        <tr class="header">
+          <th style="width:10%;">Order #</th>
+          <th style="width:10%;">Name</th>
+          <th style="width:10%;">Email</th>
+          <th style="width:10%;">Status</th>
+          <th style="width:10%;">Order Date</th>
+          <th style="width:10%;">Mark Shipped?</th>
+        </tr>
+        <% @merchant_orders.each do |order| %>
+          <tr>
+            <% session[:ship_order_id] = order.id %>
+            <td> <%= order.id %> </td>
+            <td> <%= link_to(order.name, merchant_orders_path(@merchant.id,order.id), method: :get) %> </td>
+            <td> <%= order.email %> </td>
+            <td> <%= order.status %> </td>
+            <td> <%= order.updated_at.strftime("%A, %B %d, %Y") %> </td>
+            <td> <%= link_to("Link", ship_path(session[:ship_order_id]), method: :patch) %> </td>
+          </tr>
+        <% end %>
+      </table>
+
+      <table>
+      <% index = 0 %>
+      <% @merchant_orders.each do |order| %>
+      <% if index == 0 %>
+        <tr class="header">
+          <th style="width:10%;">Order #</th>
+          <th style="width:10%;">Name</th>
+          <th style="width:10%;">Product Name</th>
+          <th style="width:10%;">Product Details</th>
+          <th style="width:10%;">Quantity</th>
+          <th style="width:10%;">Subtotal</th>
+        </tr>
+        <% end %>
+        <tr>
+          <td><%= @merchant_order_items[index][0] %></td>
+          <td> <%= order.name %> </td>
+          <td><%= @merchant_order_items[index][1] %></td>
+          <td><%= link_to("Link", product_path(@merchant_order_items[index][2])) %></td>
+          <td><%= @merchant_order_items[index][3] %></td>
+          <% if !@merchant_order_items[index][4].nil? %>
+            <td>$<%= add_decimal(@merchant_order_items[index][4]) %></td>
+          <% else %>
+            <%= add_decimal(@merchant_order_items[index][4]) %></td>
+          <% end %>
+          <% index += 1 %>
+        </tr>
+      <% end %>
+      </table>
+    <% else %>
+      <p>No orders</p>
+    <% end %>
+  <% end %>

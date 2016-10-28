@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Betsy</title>
+  <title>Weebay</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Patrick+Hand+SC|Yantramanav" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <h1 class="weebay"><a href="/">Weebay</a></h1>
+    <h3 class="motto">It's the <img src="/assets/small_fry.png" alt="tiny ketchup bottle" class="small-fry" /><small class="motto-emphasize">little</small> things</h3>
 
-<%= yield %>
+    <nav class="row">
+      <ul class="menu large-6 small-12 columns ">
+        <li><%= link_to("Shop All", products_path) %></li>
+        <li><%= link_to("Shop Merchants", merchants_path) %></li>
+        <% Category.all.each do |category| %>
+        <li><small><%= link_to(category.name, category_products_path(category.id)) %></small></li>
+        <% end %>
+      </ul>
+      <div class="large-3 columns"></div>
+      <ul class="menu large-3 small-12 columns text-right">
+        <% if session[:merchant_id].nil? %>
+        <li><%= link_to("Sign In", "/auth/github", method: :get) %></li>
+        <% else %>
+        <li><%= link_to("Sign Out", sessions_path, method: :delete) %></li>
+        <li><%= link_to("Account Page", merchant_path(session[:merchant_id])) %></li>
+        <% end %>
+        <% if session[:order_id] %>
+        <li><%= link_to("View Cart", order_path, method: :get)%></li>
+        <% end %>
+      </ul>
+    </ul>
+  </nav>
+</header>
 
+<main>
+  <%= yield %>
+</main>
+
+<footer>
+  <div class="row">
+    <p class="small-4 columns">&copy; Team NYnJA <%= Time.now.year %> </p>
+    <p class="small-8 columns text-right">(Nicole Url, Yuri Nakashima, Jennifer Owens, Allison Hoke, and Small Fry <img src="/assets/small_fry.png" alt="tiny ketchup bottle" class="smaller-fry" />)</p>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<h3>You know you wanna buy it!</h3>
+
+<h4><%= @product.name %></h4>
+<p><%= image_tag("#{@product.photo_url}") %></p>
+<p><%= @product.description %></p>
+<p>Price: $<%= "#{add_decimal(@product.price)}" %></p>
+<p>Sold by:<%= " #{Merchant.find(@product.merchant_id).username}" %></p>
+
+
+<%= form_for @order_item, :url => product_order_items_path(@product), method: :post do |f| %>
+  <%= f.label :quantity, "Quantity" %>
+  <%= f.text_field :quantity %>
+  <%= f.submit("Add to cart", class: "button")%>
+<% end %>
+
+
+<br>
+<br>
+
+<h4>Latest review for <%= @product.name %></h4>
+<p><%= link_to "Review this", new_product_review_path(@product) %></p>
+<p><%= link_to "All reviews", product_reviews_path(@product) %></p>
+
+<table>
+  <tr>
+    <th>Rating</th>
+    <th>Rating Description</th>
+  </tr>
+  <% unless @latest_review.nil? %>
+  <tr>
+    <td><%= @latest_review.rating %></td>
+    <td><%= @latest_review.rating_description %>
+    </tr>
+  <% end %>
+</table>

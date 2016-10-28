@@ -1,0 +1,22 @@
+<h1>Edit This Product</h1>
+
+<%= form_for @product, url: merchant_product_path(@product.merchant, @product), method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :photo_url %>
+  <%= f.text_field :photo_url %>
+
+  <%= f.label :stock %>
+  <%= f.text_field :stock %>
+
+  <%= f.select :category_ids, Category.all.collect {|x| [x.name, x.id]}, {}, :multiple => true %>
+
+  <%= f.submit "Update Product" %>
+<% end %>

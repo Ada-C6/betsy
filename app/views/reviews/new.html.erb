@@ -1,0 +1,65 @@
+<h1>New Review</h1>
+<% if @merchant.nil? && !@product.nil?%>
+  <%= form_for @review, url:product_reviews_path(@product), method: :post, class: "form" do |f| %>
+
+  <%= f.radio_button(:rating, 1) %>
+  <%= f.label :rating, "1" %>
+
+  <%= f.radio_button(:rating, 2) %>
+  <%= f.label :rating, "2" %>
+
+  <%= f.radio_button(:rating, 3) %>
+  <%= f.label :rating, "3" %>
+
+  <%= f.radio_button(:rating, 4) %>
+  <%= f.label :rating, "4" %>
+
+  <%= f.radio_button(:rating, 5) %>
+  <%= f.label :rating, "5" %>
+
+  <br>
+
+  <%= f.label :rating_description %>
+  <%= f.text_field :rating_description%>
+  <br>
+
+  <%= f.hidden_field :product_id, value: @product.id %>
+
+  <%= f.submit "Submit" %>
+  <% end %>
+
+<% elsif @merchant && @product %>
+  <%= form_for @review, url:merchant_product_reviews_path(@merchant,@product), method: :post, class: "form" do |f| %>
+
+    <%= f.radio_button(:rating, 1) %>
+    <%= f.label :rating, "1" %>
+
+    <%= f.radio_button(:rating, 2) %>
+    <%= f.label :rating, "2" %>
+
+    <%= f.radio_button(:rating, 3) %>
+    <%= f.label :rating, "3" %>
+
+    <%= f.radio_button(:rating, 4) %>
+    <%= f.label :rating, "4" %>
+
+    <%= f.radio_button(:rating, 5) %>
+    <%= f.label :rating, "5" %>
+
+    <br>
+
+    <%= f.label :rating_description %>
+    <%= f.text_field :rating_description%>
+    <br>
+
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :merchant_id, value: @merchant.id %>
+
+    <%= f.submit "Submit", class: "button" %>
+  <% end %>
+<% end %>
+
+<br>
+<br>
+
+<%= link_button("root_path", "Back home", :get) %>

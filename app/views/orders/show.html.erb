@@ -1,0 +1,16 @@
+<h1>Cart</h1>
+
+<% @items.each do |item| %>
+  <% product = item.find_product %>
+  <p><%= link_to "Product: #{ product.name }", product_path(product.id) %></p> <%# add a link here %>
+  <p><%= "Subtotal: #{ add_decimal(product.price * item.quantity) }" %></p>
+  <p><%= form_for item, :url => order_item_path(item) do |f| %>
+      <%= f.label :quantity, "Change quantity"%>
+      <%= f.number_field :quantity, :value => item.quantity %>
+      <%= f.submit("Update", class: "button") %>
+  <% end %></p>
+
+  <p><%= link_to("Remove this product", order_item_path(item.id), class: "button", method: :delete) %>
+  <% end %></p>
+
+  <p><%= link_to("Purchase this order", orders_edit_path, class: "button", method: :get) %></p>

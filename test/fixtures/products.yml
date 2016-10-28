@@ -1,0 +1,57 @@
+cat:
+  name: Large Cat
+  price: 5000
+  description: Large cat doesn't belong on site
+  photo_url: some_address
+  stock: 10
+  merchant: teeny_merchant
+
+
+narwal:
+  name: Narwal
+  price: 50000
+  description: OMG there's a Narwal
+  photo_url: some_address
+  stock: 1
+  merchant: teeny_merchant
+
+
+dog:
+  name: Large Dog
+  price: 17
+  description: Large dog doesn't belong on site
+  photo_url: some_address
+  stock: 4
+  merchant: teeny_merchant
+
+horse:
+  name: horse
+  price: 10000
+  description: Regular sized horse
+  photo_url: horses_jpg
+  stock: 4
+  merchant: teeny_merchant
+
+pig:
+  name: Large Pig
+  price: 0
+  description: Large pig
+  photo_url: pig.jpg
+  stock: 2
+  merchant: teeny_merchant
+
+frog:
+  name: Medium Frog
+  price: some price
+  description: This is a frog
+  photo_url: frog_jpg
+  stock: 9
+  merchant: teeny_merchant
+
+chair:
+  name: Small chair
+  price: 98765
+  description: This is a chair
+  photo_url: chair_jpg
+  stock: 9
+  merchant: other_merchant

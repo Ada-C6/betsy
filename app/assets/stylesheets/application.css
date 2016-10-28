@@ -1,15 +1,172 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+
+/***** BODY *****/
+body {
+  background-color: #D5DED9;
+  cursor: url("/assets/small_fry.png");
+  min-height:100%;
+}
+
+/****** Header *****/
+header {
+  background-color: #99B2B7;
+}
+
+nav {
+  background-color: #99B2B7;
+}
+
+.weebay {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 5em;
+  text-align: center;
+}
+.weebay a {
+  color: #7c0000;
+}
+.weebay a:hover {
+  color: #D9CEB2;
+}
+
+.motto-emphasize {
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: .5em;
+  color: #9c0505;
+}
+
+.motto {
+  font-family: 'Patrick Hand SC', cursive;
+  text-align: center;
+}
+
+/*This is the nav bar links*/
+header li {
+  font-size: 2em;
+  padding: .5em;
+}
+
+/***** FONTS *****/
+/*Fancier fonts*/
+h1, h2, h3, h4, h5, h6, th, li {
+  font-family: 'Patrick Hand SC', cursive;
+}
+
+/*Basic fonts*/
+p, td {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 1.5em;
+}
+
+/***** IMAGES *****/
+/*To keep our images semi-normal-sized all around*/
+img {
+  height: 200px;
+}
+
+.smaller-fry {
+  height: 30px;
+}
+
+.small-fry {
+  height: 100px;
+  position: absolute;
+  margin-left: -.2em;
+  margin-top: -.6em;
+  opacity: 0;
+  transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+}
+
+.small-fry:hover {
+  opacity: 1;
+}
+
+.sad-fry {
+  height: 200px;
+  padding-left: 2em;
+}
+
+/***** YIELD *****/
+/*This centers the main body and makes it a little narrower than the header*/
+main {
+  text-align: center;
+  width: 70em;
+  margin: 0 auto;
+  background-color: #D5DED9;
+  margin-top: 5em;
+  margin-bottom: 5em;
+}
+
+/*Table formatting*/
+table {
+  background-color: #D5DED9;
+  border: none;
+  border-spacing: 0;
+}
+table tr th {
+  text-align: center;
+  background-color: #D5DED9;
+  font-size: 2em;
+  border: none;
+}
+
+table tr td {
+  background-color: #D5DED9;
+}
+
+table tr td:first-of-type {
+  font-size: 200%;
+}
+
+.button {
+  background-color: #7c0000;
+  font-family: 'Yantramanav', sans-serif;
+  font-size: 1.5em;
+}
+
+.button:hover {
+  background-color: #D9CEB2;
+  color: #7c0000;
+}
+/***** FOOTER *****/
+footer {
+  /*position: absolute;*/
+  height: 5em;
+  /*right: 0;*/
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: #99B2B7;
+}
+
+footer div p {
+  font-size: 1em;
+}
+
+/***** Order Table *****/
+#orderStatusInput {
+    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}

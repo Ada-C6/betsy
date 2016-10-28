@@ -1,0 +1,24 @@
+<h1>Shop by Category</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Details</th>
+      <th>Products in Category</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= link_to "Show Category Details", category_path(category) %></td>
+        <td><%= link_to "All Products", category_products_path(category) %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= merchant_only_button("new_category_path","Add new category", :get) %>

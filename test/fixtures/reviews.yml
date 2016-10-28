@@ -1,0 +1,13 @@
+correct_review:
+  rating_description: Blah blah blah blah.
+  rating: 4
+  product_id: products(:cat).id
+
+no_description_review:
+  rating_description: This'll all get set to nil before test.
+  rating: 3
+  product_id: products(:narwal).id
+
+no_rating_review:
+  rating_description: Yakkity chat chat blah.
+  rating: 1

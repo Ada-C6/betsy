@@ -1,0 +1,26 @@
+<h1>Please enter your information</h1>
+
+<%= form_for @cart, :url => orders_update_path, method: :patch do |f| %>
+      <p><%= f.label :email, "Email:" %>
+        <%= f.text_field :email %></p>
+
+      <p><%= f.label :name, "Name on Credit Card:" %>
+        <%= f.text_field :name %></p>
+
+      <p><%= f.label :address, "Mailing Address:" %>
+      <%= f.text_field :address %></p>
+
+      <p><%= f.label :cc_number, "Credit Card Number:" %>
+      <%= f.text_field :cc_number %></p>
+
+      <p><%= f.label :expiration_date, "Credit Card Expiration Date:" %>
+      <%= f.text_field :expiration_date %></p>
+
+      <p><%= f.label :cvv, "CVV:" %>
+      <%= f.text_field :cvv %></p>
+
+      <p><%= f.label :zip_code, "Zip Code:" %>
+      <%= f.text_field :zip_code %></p>
+
+      <p><%= f.submit "Complete your purchase", class: "button" %></p>
+    <% end %>
