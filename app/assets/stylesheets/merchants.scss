@@ -11,7 +11,7 @@ height: auto;
 margin-bottom: 15%;
 }
 //
-.merchant-names a {
+.merchant-name a {
   border: 2pt solid #F5B19A;
   border-radius: 25px;
   background-color: #F5B19A;
@@ -22,6 +22,6 @@ margin-bottom: 15%;
   // max-width: 200px;
 }
 
-h3 a:hover {
+.merchant-name a:hover {
   color: white;
 }
