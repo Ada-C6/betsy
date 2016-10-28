@@ -8,14 +8,16 @@
   </ul>
 <% end %>
 
-<%= form_for @review, url: product_path(@review.product_id) do |f| %>
-  <%= f.label "Rating" %>
-  <%= f.text_field :rating %>
+<section class="review-form">
+  <%= form_for @review, url: product_path(@review.product_id) do |f| %>
+    <%= f.label "Rating" %>
+    <%= f.select(:rating, options_for_select(1..5)) %>
 
-  <%= f.hidden_field :product_id, value: @review.product_id %>
+    <%= f.hidden_field :product_id, value: @review.product_id %>
 
-  <%= f.label "Description" %>
-  <%= f.text_area :description %>
+    <%= f.label "Description" %>
+    <%= f.text_area :description %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</section>
