@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action  :shopping_cart
+  before_action :shopping_cart
   def index
-    @order = session[:order]
+    @order = Order.find(session[:order_id]) if session[:order_id]
   end
 
   def new
@@ -17,20 +17,18 @@ class OrdersController < ApplicationController
     @order.total = 0
     if @order.save
       @cart.each do |item|
-        @order_item = OrderItem.new
+        @order_item = @order.order_items.new
         @order_item.product_id = item.values[0]
         @order_item.quantity = item.values[1]
-        @order_item.order_id = @order.id
         @order_item.save
       end
+      @order.reload
       @order.update_total
-    
-      raise
-      session[:order] = @order
+      @order.save
+      session[:order_id] = @order.id
       session[:cart] = nil
       redirect_to orders_path
     else
-         raise
       render :new
     end
   end
