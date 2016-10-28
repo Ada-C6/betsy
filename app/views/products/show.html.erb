@@ -37,11 +37,6 @@
       </ul>
       <% end %>
       <%= link_to "Add to cart", add_cart_path(@product), class: "hollow button" %>
-      <% if @product.active %>
-        <%= link_to "RETIRE PRODUCT", retire_product_path(@product), remote: true, method: "patch", class: "warning button" %>
-        <% else %>
-        <%= link_to "ACTIVATE PRODUCT", retire_product_path(@product), remote: true, method: "patch", class: "warning button" %>
-        <% end %>
   </section>
 </div>
 
