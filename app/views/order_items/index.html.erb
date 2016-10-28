@@ -11,5 +11,5 @@
     <% grand_total += product_total_price %>
   <% end %>
   <p><%= "Cart total: $#{ sprintf('%.2f' % grand_total) }" %></p>
-  <%= link_to "Checkout", edit_order_path(current_order.id) %>
+    <%= link_to "Checkout", edit_order_path(@order), class: "button" %>
 <% end %>

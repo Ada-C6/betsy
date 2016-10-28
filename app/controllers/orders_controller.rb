@@ -27,9 +27,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @order.order_status = "almost paid"
+  end
 
   def update
+    @order.order_status = "almost paid"
     if @order.update(post_params)
       redirect_to order_path
     else

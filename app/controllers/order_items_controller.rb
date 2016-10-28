@@ -2,6 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :is_product_in_cart, only: [:create]
   def index
     @order_items = current_order.order_items
+    @order = current_order
   end
 
   def new
@@ -20,7 +21,9 @@ class OrderItemsController < ApplicationController
 
   # Unsure where the redirect should go?
   def create
+
     @order = current_order
+
     if @updated_quantity
       # @current_product.quantity = @updated_quantity
       item = @order.order_items.find_by(product_id: @current_product.product_id)
@@ -41,6 +44,14 @@ class OrderItemsController < ApplicationController
         redirect_to :back
       end
     end
+
+    # from b/yo/order_status
+    # @order_item = @order.order_items.new(order_item_params)
+    # @order_item.quantity = 1 if @order_item.quantity == nil
+    # @order.save
+    # session[:order_id] = @order.id
+    # redirect_to order_items_path
+
   end
 
   # Unsure where redirect should go?
@@ -59,6 +70,7 @@ class OrderItemsController < ApplicationController
     @order_items = @order.order_items
     redirect_to order_items_path
   end
+<<<<<<< HEAD
 
     def is_product_in_cart
       order = current_order
@@ -68,16 +80,28 @@ class OrderItemsController < ApplicationController
         @updated_quantity = @current_product.quantity + params[:order_item][:quantity].to_i
       end
     end
+=======
+  #
+  def is_product_in_cart
+    order = current_order
+    @product_id = params[:order_item][:product_id]
+    product_in_cart = order.order_items.select { |order_item| order_item.product_id == @product_id.to_i}
 
-    # def update_cart(product_in_cart)
-    #   current_quantity = product_in_cart.quantity
-    #   additional_quantity = params[:order_item][:quantity].to_i
-    #   params[:order_item][:quantity] = current_quantity + additional_quantity
-    #
-    #   product_in_cart.update_attributes(order_item_params)
-    #
-    #   redirect_to order_items_path
-    # end
+    if !product_in_cart.nil?
+      update_cart(product_in_cart[0])
+    end
+  end
+>>>>>>> b/yo/order_status
+
+  def update_cart(product_in_cart)
+    current_quantity = product_in_cart.quantity
+    additional_quantity = params[:order_item][:quantity].to_i
+    params[:order_item][:quantity] = current_quantity + additional_quantity
+
+    product_in_cart.update_attributes(order_item_params)
+
+    redirect_to order_items_path
+  end
 
 
 
