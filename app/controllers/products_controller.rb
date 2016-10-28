@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.where(active:true)
-  # @order_item = current_order.order_items.new
   end
 
   def show; end
@@ -66,7 +65,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :stock, :price,:photo_url, :merchant_id)
+    params.require(:product).permit(:name, :description, :stock, :price,:photo_url, :merchant_id, category_ids: [])
   end
 
   def find_product
