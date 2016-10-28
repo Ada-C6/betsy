@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class MerchantsControllerTest < ActionController::TestCase
+  test "should get the index page" do
+    get :index
+    assert_template :index
+    assert_response :success
+  end
+
   test "show the individual merchant page" do
     merchant_id = merchants(:hilarious).id
 

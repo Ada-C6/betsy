@@ -18,7 +18,9 @@ class SessionsControllerTest < ActionController::TestCase
      assert_difference('Merchant.count', 1) do
        login_a_user
      end
+
      assert_not_nil session[:user_id]
+
      assert_no_difference('Merchant.count') do
        login_a_user
        assert_response :redirect
@@ -26,4 +28,11 @@ class SessionsControllerTest < ActionController::TestCase
        assert_not_nil session[:user_id]
      end
    end
+
+  #  test "a logged-in user can view the index" do
+  #    login_a_user
+  #    assert_not_nil session[:user_id]
+  #    assert_response :success
+  #    assert_template :index
+  #  end
 end
