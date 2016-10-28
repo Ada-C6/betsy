@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionController::TestCase
-  test "should show the index page" do
+  test "should get the index page" do
     get :index
     assert_template :index
     assert_response :success

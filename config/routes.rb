@@ -11,9 +11,9 @@ Rails.application.routes.draw do
         resources :reviews, only: [:new, :create]
     end
 
-    get 'products/manage', to: 'products#manage', as: 'manage_products'
+    get '/products/manage' => 'products#manage', as: :manage_products
 
-    patch 'products/:id/retire' => 'products#retire', as: :retire_product
+    patch '/products/:id/retire' => 'products#retire', as: :retire_product
 
     resources :orders
 

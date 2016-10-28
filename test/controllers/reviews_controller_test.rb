@@ -34,4 +34,13 @@ class ReviewsControllerTest < ActionController::TestCase
 
     assert_template :new
   end
+
+  test "should not be able to review one's own product" do
+    product = products(:cat_suit)
+    merchant_id = product.merchant_id
+
+    get :new, {product_id: product.id}, {user_id: merchant_id}
+
+    assert_redirected_to product_path(product)
+  end
 end
