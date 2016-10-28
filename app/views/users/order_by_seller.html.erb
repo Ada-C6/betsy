@@ -1,0 +1,16 @@
+<div class="basic">
+
+  <h3>Order Details</h3>
+  <p>Buyer: <%= @order.user.name %></p>
+  <p>Email: <%= @order.email %></p>
+  <p>Shipping Address: <%= @order.street_address %></p>
+  <p><%= @order.city %>, <%= @order.state %> <%= @order.zip  %></p>
+  <% if @order.phone  %>
+    <p>Phone:<%= @order.phone %></p>
+  <% end %>
+  <p>Last 4 digits of credit card#: <%= @order.cc_number.to_s[-4..-1].to_i %></p>
+  <p>Credit card expiration date: <%= @order.exp_month %>-<%= @order.exp_year %></p>
+
+  <%= link_to "Return to Seller Management", seller_manage_path, :class => "button" %>
+
+</div>
