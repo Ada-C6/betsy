@@ -8,7 +8,7 @@ class OrderItem < ActiveRecord::Base
   private
 
   def quantity_not_greater_than_inventory
-    unless quantity <= Product.find(product_id).inventory
+    unless quantity == nil || quantity <= Product.find(product_id).inventory
       errors.add(:quantity, "Bummer. There are only #{Product.find(product_id).inventory} #{Product.find(product_id).name.pluralize} available.")
     end
   end
