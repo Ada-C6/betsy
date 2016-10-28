@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:edit, :update, :reinstate_product, :retire_product]
   before_action :merchant_owns_product, only: [:edit]
-  before_action :require_login, only: [:new]
 
   def index
     if params[:search]
@@ -30,7 +29,6 @@ class ProductsController < ApplicationController
     end
     @order = current_order
     @order_item = @order.order_items.new
-
   end
 
   def new
@@ -46,8 +44,9 @@ class ProductsController < ApplicationController
       @product.price *= 100
       @product.save
 
-      find_categories
-
+      params[:category_ids].each do |c|
+        @product.categories << Category.find(c)
+      end
       redirect_to product_path(@product)
     else
       @categories_array = Category.all.map { |category| [Category.find(category.id).name, category.id] }
@@ -61,16 +60,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-
+    @product.price *= 100
     if @product.update(product_params)
-      @product.price *= 100
-      @product.save
       @product.categories.each do |i|
         @product.categories.delete(Category.find(i.id))
       end
-
-      find_categories
-
+      params[:category_ids].each do |c|
+        @product.categories << Category.find(c)
+      end
       redirect_to product_path
     else
       render :edit
@@ -109,21 +106,5 @@ class ProductsController < ApplicationController
 
   def find_product
     @product = Product.find(params[:id])
-  end
-
-  def find_categories
-    categories = params[:category_ids]
-    if categories
-      categories.each do |c|
-        @product.categories << Category.find(c)
-      end
-    end
-  end
-
-  def require_login
-    if current_user.nil?
-      flash[:error] = "You must be logged in to view this section"
-      redirect_to login_failure_path
-    end
   end
 end
