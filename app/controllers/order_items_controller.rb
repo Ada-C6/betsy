@@ -70,7 +70,6 @@ class OrderItemsController < ApplicationController
     @order_items = @order.order_items
     redirect_to order_items_path
   end
-<<<<<<< HEAD
 
     def is_product_in_cart
       order = current_order
@@ -80,18 +79,6 @@ class OrderItemsController < ApplicationController
         @updated_quantity = @current_product.quantity + params[:order_item][:quantity].to_i
       end
     end
-=======
-  #
-  def is_product_in_cart
-    order = current_order
-    @product_id = params[:order_item][:product_id]
-    product_in_cart = order.order_items.select { |order_item| order_item.product_id == @product_id.to_i}
-
-    if !product_in_cart.nil?
-      update_cart(product_in_cart[0])
-    end
-  end
->>>>>>> b/yo/order_status
 
   def update_cart(product_in_cart)
     current_quantity = product_in_cart.quantity
