@@ -38,6 +38,18 @@
     </p>
 
     <p>
+      <%= f.label "Choose at least one category" %>
+      <ul class="row small-up-5">
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+        <li class="column">
+          <%= b.check_box %>
+          <%= b.label %>
+        </li>
+        <% end %>
+      </ul>
+    </p>
+
+    <p>
       <%= f.submit "Submit" %>
     </p>
   <% end %>
