@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
     def show
         begin
             @category = Category.find(params[:id])
-            @products = @category.products
+            @products = @category.products.where(active:true)
         rescue ActiveRecord::RecordNotFound
             render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
         end

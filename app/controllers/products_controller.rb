@@ -43,10 +43,10 @@ class ProductsController < ApplicationController
   def destroy
     unless @product.merchant_id == session[:user_id]
       flash[:error] = "Please note: You are only allowed to delete your own products."
-      # redirect_to manage_products_path
+      redirect_to manage_products_path
     end
     @product.destroy
-    redirect_to portal_path
+    redirect_to manage_products_path
   end
 
   def manage
@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
       @product.active = true
     end
     @product.save
-    redirect_to portal_path
+    redirect_to manage_products_path
   end
 
   private

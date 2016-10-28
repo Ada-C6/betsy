@@ -1,13 +1,13 @@
 <h2><%= @merchant.user_name %>'s Products</h2>
 
-<% if @merchant.products.empty? %>
+<% if @products.empty? %>
   <p>
     Currently, this merchant does not have any products.
   </p>
 <% end %>
 
 <ul class="row small-up-3 large-up-4">
-<% @merchant.products.each do |product| %>
+<% @products.each do |product| %>
     <li class="column">
         <section>
             <%= link_to (image_tag "#{ product.photo_url }", alt: "#{ product.name }", class: "product-image"), product_path(product) %>

@@ -8,14 +8,15 @@
 <% @products.each do |product| %>
     <li class="column">
         <section>
-            <h2><%= capitalize_each_word(product.name) %></h3>
-            <h3><%= link_to "EDIT", edit_product_path(product) %></h3>
-            <h3>CATEGORIZE</h3>
+            <h2><%= capitalize_each_word(product.name) %></h2>
+            <h3><%= link_to "EDIT", edit_product_path(product), remote: true, class: "button" %></h3>
+            <h3><%= link_to "tbd: CATEGORIZE", edit_product_path(product), remote: true, class: "success button" %></h3>
             <h3><% if product.active %>
-              <%= link_to "RETIRE PRODUCT", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
+              <%= link_to "RETIRE", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
               <% else %>
-              <%= link_to "ACTIVATE PRODUCT", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
+              <%= link_to "ACTIVATE", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
               <% end %></h3>
+              <h3><%= link_to "DELETE", product_path(product), remote: true, method: "delete", class: "alert button" %></h3>
         </section>
     </li>
 <%end%>
