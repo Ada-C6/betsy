@@ -27,10 +27,14 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "can logout a merchant" do
-    login_a_merchant
-    assert_not_nil session[:merchant_id]
-    delete :destroy
-    assert_nil session[:merchant_id]
+    assert_difference('Merchant.count', 1) do
+      login_a_merchant
+      assert_not_nil session[:merchant_id]
+    end
+    assert_difference('Merchant.count', -1) do
+      delete :destroy
+    end
 
+    assert_nil session[:merchant_id]
   end
 end
