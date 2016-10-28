@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  rating: 1
+  title: Not for picnics.
+  body: Because apparently in parks you're not supposed to be openly drinking alcohol. Who knew.
+  product: one
+two:
+    rating: 2
+    title: I've seen worse.
+    body: Strawberries get kind of soggy when you coat them in chocolate and then put them in a picnic basket. Better to eat them right out of the fridge.
+    product: two
+three:
+  rating: 4
+  title: Nom Nom Nom
+  body: Thinky Drinky every day!
+  product: one

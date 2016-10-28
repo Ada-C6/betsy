@@ -1,15 +1,142 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url('foundation.css');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab');
+/*@import url('https://fonts.googleapis.com/css?family=Cormorant+SC|Forum|Gruppo|Josefin+Slab|Kameron|Kranky|Nixie+One');*/
+
+/*HEADER*/
+header section.top-bar {
+  background-color: #5A6070;
+  margin-bottom: 2%;
+}
+
+section.top-bar nav.top-bar-section {
+  font-family: 'Josefin Slab', serif;
+}
+
+ul.menu.top-bar-left, ul.menu.top-bar-right {
+  background-color: transparent;
+  font-family: 'Josefin Slab', serif;
+  color: #ECEBE4;
+  padding: 0 1% 0 1%;
+}
+
+header article h1#header-title a {
+  font-family: 'Josefin Slab', serif;
+  color: #483C46;
+  background-color: transparent;
+}
+
+header article h4#header-subtitle {
+  font-family: 'Josefin Slab', serif;
+  color: #483C46;
+  background-color: transparent;
+}
+
+header article h1#header-title a:hover {
+  color: #595959;
+}
+
+header section#category-list article.top-bar-section ul {
+  margin-top: 2%;
+  border-top: #5A6070 solid 1px;
+  border-bottom: #5A6070 solid 1px;
+
+}
+
+.center {
+  text-align: center;
+}
+
+/*ALL PAGES*/
+.page-title {
+  padding-top: 2%;
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+  color: #5E4E5B;
+}
+
+ul.bullet-none {
+  list-style: none;
+}
+
+
+table, th, td {
+  border: 1px solid black;
+}
+
+/*PRODUCT PAGES*/
+.product-img {
+  display: block;
+  width: 50%;
+  margin: auto;
+  padding: auto;
+}
+
+.product-link {
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+  color: #5E4E5B;
+}
+
+.product-image-thumbnail {
+  width: 70%;
+  padding: 2%;
+}
+
+/*CATEGORY PAGES*/
+.category-img {
+  display: block;
+  width: 50%;
+  margin: auto;
+  padding-bottom: 2%
+}
+.category-img-thumbnail {
+  display: block;
+  padding: 2%
+}
+
+.underline-category {
+  border-bottom: solid 1px #110D0F;
+  margin-bottom: 2%;
+}
+
+.product-categories-link {
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+  color: #5E4E5B;
+}
+
+/*TABLES*/
+.new-table {
+  padding: 2% 3% 0% 3%;
+}
+
+.product-new-table {
+  padding: 2% 15% 0% 15%;
+}
+
+.form-text {
+  font-family: 'Josefin Slab', serif;
+  padding-left: 3%;
+  padding-top: 2%;
+}
+
+#category-list {
+  font-family: 'Josefin Slab', serif;
+  padding-left: 3%;
+}
+
+.indent {
+  margin-left: 3%;
+}
+
+.change-font {
+  font-family: 'Josefin Slab', serif;
+}
+
+.add-padding-top {
+  padding-top: 2%;
+}
+
+.underline {
+  border-bottom: dotted black 1px;
+}

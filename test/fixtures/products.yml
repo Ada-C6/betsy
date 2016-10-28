@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: Hot Toddy
+  price: 1200
+  stock_quantity: 1
+  description: Who doesn't like a nice hot toddy on a cold day?
+  photo_url: http://assets.epicurious.com/photos/5761c7f08accf290434553a2/master/pass/hot-toddy.jpg
+  merchant: one
+  # apparently, I can associate them by name with the active record model name.
+two:
+  name: Chocolate Covered Strawberries
+  price: 849
+  stock_quantity: 2
+  description: Best picnic snack ever! Get them today!
+  photo_url: https://c3.staticflickr.com/5/4100/4873551178_cb27bf93f6_b.jpg
+  merchant: two
+
+three:
+  name: Chocolate Bar
+  price: 400
+  stock_quantity: 6
+  description: How could you say no?
+  photo_url: https://c3.staticflickr.com/5/4100/4873551178_cb27bf93f6_b.jpg
+  merchant: two

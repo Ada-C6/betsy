@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: A. Customer
+  email: person@email.com
+  mailing_address: 1234 NW 56th Street, Seattle, WA 98107
+  cc_last_4: 1234
+  cc_expire: <%= Date.new(2017, 12, 31) %>
+  purchase_time: <%= DateTime.now %>
+  status: paid
+
+two:
+  name: B. Customer
+  email: person_two@email.com
+  mailing_address: 98765 NW 56th Street, Seattle, WA 98107
+  cc_last_4: 1234
+  cc_expire: <%= Date.new(2017, 12, 31) %>
+  purchase_time: <%= DateTime.now %>
+  status: paid
+
+three_pending:
+  name: C. Customer
+  email: person_three@email.com
+  mailing_address: 98765 NW 56th Street, Seattle, WA 98107
+  cc_last_4: 1234
+  cc_expire: <%= Date.new(2017, 12, 31) %>
+  purchase_time: <%= DateTime.now %>
+  status: pending
+
+four_shipped:
+  name: D. Customer
+  email: person_four@email.com
+  mailing_address: 4567 NW 56th Street, Seattle, WA 98107
+  cc_last_4: 4567
+  cc_expire: <%= Date.new(2017, 12, 31) %>
+  purchase_time: <%= DateTime.now %>
+  status: completed

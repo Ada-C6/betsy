@@ -1,0 +1,14 @@
+<article>
+  <header>
+    <h1 class="page-title">Product Categories</h1>
+  </header>
+
+  <ul class="row small-up-2 bullet-none">
+    <% @all_categories.each do | category | %>
+      <li class="column">
+        <p><%= image_tag(category.photo_url, class:"category-img-thumbnail")%></p>
+        <p><%= link_to category.name, category_path(category.id), class: "product-categories-link" %></p>
+      </li>
+    <% end %>
+  </ul>
+</article>

@@ -1,0 +1,9 @@
+<article>
+  <header>
+    <h1>Add a New Product-Category</h1>
+  </header>
+</article>
+
+<section class="new-table">
+  <%= render partial: "form", locals: { submit_url: product_product_categories_path, http_method: :post } %>
+</section>

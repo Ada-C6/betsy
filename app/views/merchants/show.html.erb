@@ -1,0 +1,71 @@
+<article class="">
+  <section>
+    <%= "You are registed under the name: #{@merchant.name} (#{@merchant.email})" %>
+    <%= "through the #{"PROVIDER"} authentication" %>
+
+  </section>
+
+  <% if @user_page == true %>
+    <section>
+      <h4>Total Revenue:<%=money_format(@cumulative_revenue)%><h4>
+      <%= link_to "Add a new product", new_merchant_product_path(@merchant) %>
+      <%= link_to "Add a new product category", new_category_path %>
+    </section>
+  <% end %>
+
+<% @merchant.products.each do |product| %>
+  <% if product.orders.length > 0 %>
+  <!-- For each product the merchant has, we're listing the product, and then inside each   product's section, we're listing each of the orders that contains that product. -->
+    <table>
+      <h3>
+        <%= link_to "#{product.name}", product_path(product) %>
+        <% if @user_page == true %>
+          <small><%= link_to "Edit", edit_product_path(product) %></small>
+          <!-- This doesn't exist yet -->
+          <small><%= link_to "Retire Product", product_retired_path(product) %></small>
+        <% end %>
+      </h3>
+      <!-- Update this to be revenue instead of product price. -->
+      <% if @user_page == true %>
+        <p>THIS IS THE PRODUCT'S PRICE<%= product.price %></p>
+        <tr>
+          <th>Order Date</th>
+          <th>Order Number</th>
+          <th>Customer</th>
+          <th>Order Status</th>
+          <!-- <th>Order Revenue</th> -->
+          <th>Order Details</th>
+        </tr>
+        <% product.orders.reverse.each do |order| %>
+          <section>
+            <tr>
+              <td><%=order.purchase_time.strftime("%Y-%m-%d")%></td>
+              <td><%=order.id%></td>
+              <td><%=order.name%></td>
+              <td><%=order.status%></td>
+              <!-- <td><%= OrderItem.find_by(product_id = product.id, order_id =  order.id)%></td>   -->
+              <td><%= link_to "View", order_path(order) %></td>
+            </tr>
+          </section>
+        <% end %>
+      <% end %>
+    </table>
+  <% else %>
+    <h3><%= link_to "#{product.name}", product_path(product) %></h3>
+    <% if @user_page == true %>
+      <h4>
+        <small><%= link_to "Edit", edit_product_path(product) %></small>
+        <small><%= link_to "" %></small>
+        <!-- Retire product doesn't exist yet. -->
+        <small><%= link_to "Retire Product", product_retired_path(product) %></small>
+      </h4>
+    <% end %>
+  <% end %>
+<% end %>
+<!-- >>>>>>> master -->
+
+
+
+  <p>
+    This is the merchants#show view
+  </p>

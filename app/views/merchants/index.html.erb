@@ -1,0 +1,21 @@
+<article>
+
+  <header>
+    <h1 class="page-title">Here are all the merchants listed</h1>
+  </header>
+  <!-- navbar stuff, really... -->
+  <ul>
+    <li> <%= link_to "home", root_path %></li>
+  </ul>
+  <article class="">
+    <% @merchants.each do |merchant| %>
+    <section>
+      <%= link_to "#{merchant.name}", merchant_path(merchant) %>
+    </section>
+    <% end %>
+  </article>
+
+  <p>
+    This is the merchants#index view page
+  </p>
+</article> 

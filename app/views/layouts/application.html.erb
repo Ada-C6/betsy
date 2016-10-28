@@ -1,12 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Betsy</title>
+  <title>BasketCase</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 </head>
 <body>
+  <header>
+    <section class="top-bar">
+      <nav class="top-bar-section">
+        <ul class="menu top-bar-left">
+          <% if session[:user_id] == nil %>
+            <li><%= "Welcome" %></li>
+          <% else %>
+            <li><%= "Welcome, #{ Merchant.find(session[:user_id]).name }"%></li>
+          <% end %>
+        </ul>
+        <ul class="menu top-bar-right">
+          <li>
+            <% if session[:user_id] == nil %>
+              <%= link_to "Log In", "/auth/google" %>
+            <% else %>
+              <%= link_to "Log Out", sessions_path, method: :delete %>
+            <% end %>
+          </li>
+          <li>Sign Up</li>
+          <li>
+            <% if @current_order_id.nil? %>
+              Your Basket
+            <% else %>
+              <%= link_to "Your Basket", order_path(@current_order_id) %>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <article class= "row">
+      <h1 class="small-12 center columns" id="header-title"><%= link_to "BasketCase", root_path%></h1>
+      <h4 class="small-12 center columns" id="header-subtitle"> - - the go-to site for all things picnic! - -</h4>
+    </article>
+
+    <section id="category-list" class="row small-up-2">
+      <article class="top-bar-section">
+        <ul class="menu top-bar-left column">
+          <li><%= link_to "Merchants", merchants_path %></li>
+          <li><%= link_to "Products", products_path %></li>
+          <li><%= link_to "Categories", categories_path %></li>
+        </ul>
+      </article>
+    </section>
+  </header>
 
 <%= yield %>
 
