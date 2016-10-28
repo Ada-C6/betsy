@@ -22,7 +22,7 @@
 </section>
 
   <% if current_user && current_user.id == @product.merchant_id %>
-    <h6><%= button_to "Edit Product", edit_product_path, method: :get, class: "edit-button" %></h6>
+    <h6><%= button_to "Edit Product", edit_product_path, method: :get, class: "edit-button-show" %></h6>
     <% if @product.active == true %>
     <h6><%= button_to "Retire product", retire_product_path, method: :patch, class: "retire-button" %></h6>
     <% else %>

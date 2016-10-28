@@ -38,7 +38,7 @@
    margin-right: 3em;
  }
 
- .github-button, .log-out-button, .dashboard-button, .cart-button, .edit-button, .add-button {
+ .github-button, .log-out-button, .dashboard-button, .cart-button, .edit-button-show, .add-button {
    color: white;
    font-weight: bold;
    border-radius: 5px;
@@ -53,7 +53,7 @@
    background-color: red;
  }
 
- .dashboard-button, .edit-button {
+ .dashboard-button, .edit-button-show {
    background-color: green;
  }
 
