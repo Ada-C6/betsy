@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+normal_category:
+  id: 1
+  name: 'this is a category!'
+
+nameless_category:
+  id: 2
+
+productless_category:
+  id: 10000
+  name: 'category category'

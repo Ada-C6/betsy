@@ -1,0 +1,123 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+normal_user:
+  id: 1
+  first_name: edith
+  last_name: wharton
+  email: edith@edith.com
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  uid: 3494395
+  provider: github
+
+user_without_extras:
+  email: edith@edith.com.gov.creedthoughts
+  uid: 3494395
+  provider: github
+
+user_without_email:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  uid: 3494395
+  provider: github
+
+user_without_uid:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  email: ooohlala@france.gov
+  provider: github
+
+user_without_provider:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  email: bob@twitter.com
+  uid: 12
+
+user_without_admin:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  uid: 1000000000
+  active: true
+  email: edith@wharton.com
+  provider: github
+
+user_without_active:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  uid: 1000000000
+  admin: true
+  email: cat@cat.com
+  provider: github
+
+one:
+  first_name: 'Becky'
+  last_name: 'beckyGoodHair'
+  email: beckygoodhair@lockskey.com
+  birthdate: 1997-10-18 13:28:07
+  phone: '555-867-5309'
+  admin: false
+  active: true
+  uid: 'whatisgood'
+  provider: 'github'
+
+two:
+  first_name: 'Oshun'
+  last_name: 'Irunmole'
+  email: lovelightwater@goldandhoney.com
+  birthdate: 1900-09-08 13:28:07
+  phone: MyString
+  admin: true
+  active: true
+  uid: '12345678'
+  provider: 'github'
+
+inactive_user:
+  first_name: 'Ganga'
+  last_name: 'Mai'
+  email: meetmeattheriver@takemetothewater.com
+  birthdate: 1900-10-09 13:28:07
+  phone: '214-867-5309'
+  admin: false
+  active: false
+  uid: '87654321'
+  provider: 'github'
+
+four:
+  first_name: 'Orunmila'
+  last_name: 'Olodumare'
+  email: books&bells@indiebookstore&coffee.com
+  birthdate: 1900-10-09 13:28:07
+  phone: '527-867-5309'
+  admin: true
+  active: true
+  uid: '09876543'
+  provider: 'github'
+
+user_that_has_those_orderproducts:
+  first_name: edith
+  last_name: wharton
+  birthdate: 2010-09-15
+  phone: 3203438504593
+  admin: false
+  active: true
+  email: bob@twitter.com
+  uid: 12
+  id: 8

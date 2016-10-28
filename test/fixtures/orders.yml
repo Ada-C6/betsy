@@ -1,0 +1,34 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+normal_order:
+  order_status: "cart"
+  shipping_cost: 1000
+  user_id: 1
+
+order_without_user:
+  order_status: "dog"
+  shipping_cost: 1000000
+
+order_with_order_products:
+  id: 100
+  order_status: "ordered"
+  shipping_cost: 10
+  user_id: 8
+
+order_without_order_products:
+  id: 140
+  order_status: "ordered"
+  shipping_cost: 10
+  user_id: 90
+
+order_with_invalid_ops:
+  id: 141
+  order_status: "ordered"
+  shipping_cost: 10
+  user_id: 90
+
+user_1_order_products:
+  id: 103
+  order_status: "cart"
+  shipping_cost: 1000
+  user_id: 1

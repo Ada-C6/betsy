@@ -1,0 +1,29 @@
+<div class="row">
+
+  <h1 class="center-text">All Users</h1>
+  <div class="mid-page-space"></div>
+
+
+    <table class="style-user-table">
+      <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Edit User</th>
+        <th>Change Status</th>
+        <th>Delete User</th>
+        <th>See Orders</th>
+      </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%="#{user.first_name} #{user.last_name}" %></td>
+        <td><%="#{user.id}" %></td>
+        <td><%= link_to("Edit", edit_user_path(user.id)) %></td>
+        <td><%= link_to("Make #{active_for_button(user)}", toggle_path(user.id), method: :patch) %></td>
+        <td><%= link_to("Delete", user_path(user.id), method: :delete, data: {confirm: "Are you sure? Deleting a user is permanent."}) %></td>
+
+        <td><%= link_to("See orders", user_orders_path(user.id)) %></td>
+      </tr>
+    <% end %>
+    </table>
+
+  </div>

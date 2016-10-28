@@ -1,0 +1,13 @@
+<% if :kind == "Shipping" %>
+  <% @address.each do |address|  %>
+  <%= address.first_name %>
+  <%= address.last_name %>
+  <%= address.street1 %>
+  <%= address.street2 %>
+  <%= address.city %>
+  <%= address.state %>
+  <%= address.zip %>
+  <%= address.country %>
+  <%= address.phone %>
+  <% end %>
+<% end %>

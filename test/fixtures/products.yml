@@ -1,0 +1,62 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+normal_product:
+  id: 1
+  name: "everything about this product is good"
+  description: "cool normal products"
+  price: 50000
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+nameless_product:
+  description: "this product has no name"
+  price: 1000
+  inventory_qty: 100
+  active: true
+  category_id: 1
+
+product_with_negative_price:
+  name: "negative price"
+  description: "blah blah"
+  price: -10000
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+product_with_no_price:
+  name: "no price"
+  description: "blah blah"
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+free_product:
+  name: "fo free"
+  description: "blah blah"
+  price: 0
+  inventory_qty: 10
+  active: true
+  category_id: 1
+
+product_without_active_marker:
+  name: "not active"
+  description: "blah blah"
+  price: 10000
+  inventory_qty: 10
+  category_id: 1
+
+product_with_no_category:
+  name: "not active"
+  description: "blah blah"
+  price: 100
+  inventory_qty: 10
+  active: true
+
+inactive_product:
+  name: "hello"
+  description: "blah blah"
+  price: 10000
+  inventory_qty: 10
+  category_id: 1
+  active: false

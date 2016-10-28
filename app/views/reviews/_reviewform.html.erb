@@ -1,0 +1,16 @@
+<%= form_for @review,
+  url: action_name do |f| %>
+<ul>
+  <li><%= f.label :subject %></li>
+  <li><%= f.text_field :subject %></li>
+
+  <li><%= f.label :leave_a_comment %></li>
+  <li><%= f.text_area :body %></li>
+
+  <li><%= f.label :rating %></li>
+  <li><%= select_tag(:rating, options_for_select([1, 2, 3, 4, 5], @review.rating), :prompt => "Select one!") %></li>
+
+  <li><%= f.submit "Leave Review", class:"hollow button" %> </li>
+</ul>
+
+<% end %>

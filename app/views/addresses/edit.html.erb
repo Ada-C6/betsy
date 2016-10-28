@@ -1,0 +1,5 @@
+<div class="format-forms">
+  <p class="flash-notice"><%= render partial: 'shared/flash_notice' %></p>
+  <h1>Edit an Address</h1>
+  <%= render partial: "addressform", method: :post, locals: { action_name: address_path, params: {id: @address.id }} %>
+</div>

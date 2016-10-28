@@ -1,0 +1,39 @@
+<h4 class="alert"><%= flash[:notice] %></h4>
+
+
+<div class="row">
+  <h1 class="center-text">Order No. <%= @order.id %></h1>
+
+  <h4 class="alert"><%= flash[:alert] %></h4>
+
+    <table class="order">
+      <tr>
+        <h3>
+          <th>Product</th>
+          <th></th>
+          <th>Qty</th>
+          <th>Price Per</th>
+          <th>Total Price</th>
+          <th></th>
+          <!-- <th>Edit:</th> -->
+        </h3>
+      </tr>
+
+
+  <% @order.order_products.each do |order_product| %>
+    <tr>
+      <td><%=image_tag(Product.find(order_product.product_id).picture, :alt => "product photo")  %></td>
+      <td><strong><%=Product.find(order_product.product_id).name%></strong> <%=Product.find(order_product.product_id).category.name%></td>
+      <td><div class="qty"><%= "#{order_product.qty}"%></div></td>
+      <td><%= number_to_currency(order_product.price_per/100.0) %></td>
+      <td><%= number_to_currency(order_product.line_item_price/100.0) %></td>
+    </tr>
+  <% end %>
+
+  </table>
+</div>
+
+<div class="mid-page-space"></div>
+
+
+</section>

@@ -1,0 +1,74 @@
+<div class="row">
+  <section class="small-4 columns">
+    <ul>
+      <li class="showprod"><%=image_tag(@product.picture, :alt => "product photo", :title => @product.name)%></li>
+    </ul>
+  </section>
+  <section class="small-8 columns">
+    <ul class="line-height">
+      <li class="admin-button">
+        <h2>
+          <%= @product.name %>
+        </h2>
+          <% if !@user.nil? %>
+            <% if @user.admin %>
+                <%= button_to 'Edit', edit_product_path(params[:id]), class:"hollow button", method: :get %>
+                <%= button_to("Mark #{active_for_button(@product)}", toggle_product_path(@product.id), class:"hollow button", method: :patch, data: {confirm: 'Are you sure you want to make this product inactive?'}) %>
+            <% end  %>
+          <% end  %>
+      </li>
+
+      <li>
+        <h5>
+          <%=@product.description%>
+        </h5>
+      </li>
+      <li><h4><%= number_to_currency((@product.price/100.0))%></h4></li>
+
+      <% if @product.inventory_qty <= 0 %>
+        <li><h4 class=alert>OUT OF STOCK</h4></li>
+      <% else %>
+        <li><h6><%= @product.inventory_qty %> in stock</h6></li>
+        <%= form_for :order_products, url: order_products_path do |f| %>
+          <%= f.hidden_field :id, value: @product.id %>
+          <%= f.label :delta, "Quantity" %>
+          <%= f.number_field :delta, value: 1%>
+          <%= f.submit "Add to Cart", class:"hollow button" %>
+        <% end %>
+      <% end %>
+
+
+    </ul>
+  </section>
+</div>
+
+<div class="row reviews-show">
+  <section class="small-6 columns">
+    <ul class="line-height">
+      <li><h3> Product Reviews </h3></li>
+      <% if @product.reviews.empty? %>
+        <%= "No reviews yet." %>
+      <% else %>
+      <% @product.reviews.each do |review| %>
+          <p><strong><%= review.subject %></strong></p>
+          <p>Reviewer: <%= review.user.first_name %></p>
+          <p><%= show_lemons(review) %></p>
+          <p><%= review.body %></p>
+        </br>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+
+
+
+  <section class="small-6 columns">
+    <% if session[:user_id] != nil %>
+    <ul>
+      <li><h3>Leave a review for <%= @product.name %></h3></li>
+    </ul>
+      <%= render partial: "reviews/reviewform", locals: {  action_name: product_reviews_path(@product.id)} %>
+    <% end %>
+  </section>
+</div>
+<div class="end-page-space"></div>
