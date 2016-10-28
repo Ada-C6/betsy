@@ -6,8 +6,8 @@
 <% else %>
   <% @order_items.each do |order_item| %>
     <%= render 'order_items/shopping_cart_items', product: order_item.product, order_item: order_item, show_total: true %>
-    <% product_total_price = sprintf('%.2f' % (order_item.product.price * order_item.quantity / 100.0)).to_f %>
-    <p><%= "Total Price: $#{ product_total_price }"  %></p>
+    <% product_total_price = (order_item.product.price * order_item.quantity / 100.0).to_f %>
+    <p><%= "Total Price: $#{ sprintf('%.2f' % product_total_price) }"  %></p>
     <% grand_total += product_total_price %>
   <% end %>
   <p><%= "Cart total: $#{ sprintf('%.2f' % grand_total) }" %></p>
