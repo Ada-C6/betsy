@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 100
+  product_id: 5
+  qty: 1
+  price_per: 1000
+
+two:
+  order_id: 100
+  product_id: 2
+  qty: 1
+  price_per: 4000
+
+three:
+  id: 10000
+  order_id: 141
+  product_id: 2
+  qty: 1
+  price_per: 4000
+
+four:
+  id: 10001
+  order_id: 141
+
+five:
+  id: 10002
+  order_id: 103
+  product_id: 5
+
+six:
+  id: 10003
+  order_id: 103
+  product_id: 6
+
+seven:
+  id: 10004
+  order_id: 103
+  product_id: 7

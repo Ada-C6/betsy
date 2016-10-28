@@ -1,0 +1,5 @@
+<div class="format-forms">
+  <h1>Edit a Review</h1>
+  <p class="flash-notice"><%= render partial: 'shared/flash_notice' %></p>
+  <%= render partial: "reviewform", method: :post, locals: { action_name: product_review_path, params: {id: @review.id }} %>
+</div>

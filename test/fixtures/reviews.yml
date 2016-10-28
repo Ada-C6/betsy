@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+normal_review:
+  subject: hello
+  body: "here is some stuff that i think"
+  rating: 5
+  user_id: 1
+  product_id: 1
+
+review_without_subject:
+  body: MyString
+  rating: 1
+  user_id: 1
+  product_id: 1
+
+review_without_user:
+  subject: hello
+  body: "cats are cool"
+  rating: 1
+  product_id: 1
+
+review_without_product:
+  subject: MyString
+  body: MyString
+  rating: 1
+  user_id: 1
+
+review_without_rating:
+  subject: hello
+  body: "here is some stuff that i think"
+  user_id: 1
+  product_id: 1
+
+_100_review:
+  subject: hello
+  body: "here is some stuff that i think"
+  rating: 100
+  user_id: 1
+  product_id: 1
+
+_4_review:
+  subject: hello
+  body: "here is some stuff that i think"
+  rating: 4
+  user_id: 1
+  product_id: 1
+
+_3_review:
+  subject: hello
+  body: "here is some stuff that i think"
+  rating: 3
+  user_id: 1
+  product_id: 1
+
+_2_review:
+  subject: hello
+  body: "here is some stuff that i think"
+  rating: 2
+  user_id: 1
+  product_id: 1
+
+_1_review:
+  subject: hello
+  body: "here is some stuff that i think"
+  rating: 1
+  user_id: 1
+  product_id: 1

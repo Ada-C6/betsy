@@ -1,14 +1,71 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel='shortcut icon' href='assets/favicon.ico' type='image/x-icon'/ >
+    <title><%= content_for?(:title) ? yield(:title) : "Beyoncy" %></title>
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <header>
+      <nav>
+        <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+          <li><h1><%= link_to "BEYONCY", root_path %></h1></li>
+
+          <li><%= form_tag(products_path, :method => "get", id: "search-form") do %>
+            <li><%= text_field_tag :search, params[:search], placeholder: "Search Products" %></li>
+            <li><%= image_submit_tag("fi-magnifying-glass.svg", class:"magglass") %></li>
+          <% end %></li>
+
+          <li class="navlinks"><a href='/products'>Shop</a>
+            <ul class="menu vertical style-dropdown">
+              <li class="style-dropdown-2"><%= link_to "All Products", products_path %></li>
+              <li class="style-dropdown-2">
+              <%= link_to "Categories", categories_path %></li>
+              <!-- <li>By Category</li> -->
+              <% @categories.each do |category| %>
+              <li>
+                  <%= link_to category.name, category_path(category.id), class: "style-dropdown-2" %>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <% if @user.nil? %>
+            <li class="navlinks"><a href='/auth/github'>Login</a></li>
+          <% else %>
+            <% if !@user.admin  %>
+              <li class="navlinks name"><a href='/account_path'>Hi, <%= @user.first_name %></a>
+                <ul class="menu vertical style-dropdown">
+                  <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
+                  <li class="style-dropdown-2"><%= link_to "View My Orders", orders_path %></li>
+                  <li class="style-dropdown-2"><%= link_to "Log Out", logout_path %></li>
+                </ul>
+              </li>
+            <% elsif @user.admin %>
+              <li class="navlinks name"><a href='/account_path'>Hi, <%= @user.first_name %></a>
+                  <ul class ="menu vertical style-dropdown">
+                    <li class="style-dropdown-2"><%= link_to "My Account", account_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "View All Orders", orders_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "View All Users", users_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "Add Product", new_product_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "Add Category", new_category_path %></li>
+                    <li class="style-dropdown-2"><%= link_to "Log Out", logout_path %></li>
+                  </ul>
+                </li>
+            <% end %>
+          <% end %>
+          <li class="navlinks"><a href='/cart'>Cart  [<%= cart_count %>]</a>
+        </ul>
+      </nav>
+      <div class="top-spacing"></div>
+    </header>
+
+    <%= yield %>
+
+  </body>
 </html>

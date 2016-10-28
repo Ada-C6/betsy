@@ -1,0 +1,11 @@
+<h1 class="center-text">Shop Products by Category</h1>
+<p class="flash-notice"><%= render partial: 'shared/flash_notice' %></p>
+<div class="row small-up-1 medium-up-2">
+  <% @categories.each do |category| %>
+  <article class="column center-text">
+      <%=link_to image_tag(category.picture, :alt => category.name, :title => category.name), category_path(category.id) %>
+      <h3><%= link_to category.name, category_path(category.id) %></h3>
+
+  </article>
+  <% end %>
+</div>

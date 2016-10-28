@@ -1,0 +1,27 @@
+<%= form_for @user_in_question, method: method, path: path do |f| %>
+
+<ul>
+  <li><%= f.label :first_name %></li>
+  <li><%= f.text_field :first_name %></li>
+
+  <li><%= f.label :last_name %></li>
+  <li><%= f.text_field :last_name %></li>
+
+  <li><%= f.label :email %></li>
+  <li><%= f.text_field :email %></li>
+
+  <li><%= f.label :phone_number %></li>
+  <li><%= f.text_field :phone %></li>
+
+<% if @user.admin %>
+  <li><%= f.label :active? %></li>
+  <li><%= f.check_box :active %></li>
+
+  <li><%= f.label :admin? %></li>
+  <li><%= f.check_box :admin %></li>
+<% end %>
+
+  <li><%= f.submit class:"hollow button" %> </li>
+</ul>
+
+<% end %>
