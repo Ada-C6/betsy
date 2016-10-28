@@ -1,10 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :total, :shopping_cart
   def index
+    @orders = Order.all
   end
 
   def new
-  @order = Order.new
+    @order = Order.new
   end
+
   def show
     @order = Order.find(params[:id])
   end
@@ -18,25 +21,27 @@ class OrdersController < ApplicationController
         @order_item.quantity = item.values[1]
         @order_item.order_id = @order.id
         @order_item.save
-        redirect_to order_path
       end
+      redirect_to orders_path
     else
+      raise
       render :new
     end
   end
 
 
-
   def update
-      @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
     if @order.update.save
     end
   end
 
   def destroy
   end
+
   private
+
   def order_params
-  params.require(:order).permit(:date_purchased, :email, :cc_name, :cc_number, :cc_exp_year, :cc_exp_month, :billing_zip)
+    params.require(:order).permit(:date_purchased, :email, :cc_name, :cc_number, :cc_exp_year, :cc_exp_month, :billing_zip, :address, :total, )
   end
 end

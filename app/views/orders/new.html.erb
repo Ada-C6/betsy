@@ -9,9 +9,9 @@
 <%= f.label "Credit Card Number" %>
 <%= f.text_field :cc_number %>
 <%= f.label "Expiration Year" %>
-<%= select_tag :cc_exp_year, options_for_select(years) %>
+<%= f.select :cc_exp_year, options_for_select(years) %>
 <%= f.label "Expiration Month" %>
-<%= select_tag :cc_exp_month, options_for_select(months) %>
+<%= f.select :cc_exp_month, options_for_select(months) %>
 <%= f.label "Zip Code" %>
 <%= f.text_field :billing_zip %>
 <%= f.hidden_field :date_purchased, :value => Time.now %>
