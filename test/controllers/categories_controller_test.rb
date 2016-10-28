@@ -19,20 +19,18 @@ class CategoriesControllerTest < ActionController::TestCase
     end
   end
 
-  test "should create a new category for a product" do
-    product = products(:elephant)
+  test "should create a new category" do
     assert_difference('Category.count') do
-      post :create, category: { name: "Large Animals" }, product_id: product.id
+      post_params = { category: { name: "Large Animals" } }
+      post :create, post_params
     end
     category = assigns(:category)
     assert_not_nil category
-    assert_redirected_to merchants_path
   end
 
   test "should not create an invalid category" do
-    product = products(:monkey)
     assert_difference('Category.count', 0) do
-      post :create, category: { id: 5 }, product_id: product.id
+      post :create, category: { id: 5 }
     end
 
     assert_template :new
