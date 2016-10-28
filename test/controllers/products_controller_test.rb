@@ -19,7 +19,6 @@ class ProductsControllerTest < ActionController::TestCase
     assert_raises ActiveRecord::RecordNotFound do
       Product.find(product_id)
     end
-
     get :show, {id: product_id}
     assert_response :not_found
   end
