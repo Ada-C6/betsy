@@ -1,4 +1,4 @@
-<% if @order.errors.any? || @order_item.errors.any? %>
+<% if @order.errors.any? %>
 alert("not valid.")
   <ul class="errors">
     <% @order.errors.each do |column, message| %>
