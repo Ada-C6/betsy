@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :require_login, only: [:create, :new]
 
   def new
     @category = Category.new
@@ -22,6 +23,13 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to view this section"
+      redirect_to login_failure_path
+    end
   end
 
 end
