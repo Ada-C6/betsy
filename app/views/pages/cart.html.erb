@@ -1,0 +1,102 @@
+<div class="row">
+  <h1 class="center-text">Shopping Cart</h1>
+
+  <h4 class="alert"><%= flash[:alert] %></h4>
+
+    <table class="order">
+      <tr>
+        <h3>
+          <th>Product</th>
+          <th></th>
+          <th>Qty</th>
+          <th>Price Per</th>
+          <th>Total Price</th>
+          <th></th>
+          <!-- <th>Edit:</th> -->
+        </h3>
+      </tr>
+
+
+  <% @order.order_products.each do |order_product| %>
+    <tr>
+      <td><%=image_tag(Product.find(order_product.product_id).picture, :alt => "product photo")  %></td>
+      <td><strong><%=Product.find(order_product.product_id).name%></strong> <%=Product.find(order_product.product_id).category.name%></td>
+      <td><%= button_to "-", { controller: 'order_products', action: 'update', id: order_product.id, delta: -1}, method: :patch, class:"hollow button min-pad" %>
+          <div class="qty"><%= "#{order_product.qty}"%></div>
+          <%= button_to "+", { controller: 'order_products', action: 'update', id: order_product.id, delta: 1}, method: :patch, class:"hollow button min-pad"  %>
+      </td>
+      <td><%= number_to_currency(order_product.price_per/100.0) %></td>
+      <td><%= number_to_currency(order_product.line_item_price/100.0) %></td>
+
+      <td><%= button_to "Remove", {controller: :order_products, action: :destroy, id: order_product.id}, method: :delete, class:"hollow button" %></td>
+    </tr>
+  <% end %>
+
+  </table>
+</div>
+
+<div class="mid-page-space"></div>
+
+<section class="row">
+  <%= form_for @order,
+    url: { controller: 'orders', action: 'update', id: @order }, method: :patch do |f| %>
+    <%= f.hidden_field :order_status, {:value => 'ordered'} %>
+  <div class="small-4 columns">
+    <h3>Shipping Address</h3>
+    <% @user.addresses.each do |address|  %>
+      <% if address.kind == "Shipping" %>
+      <%= f.radio_button(:shipping_address_id, address.id) %>
+      <ul>
+        <p><%= address.first_name %>
+        <%= address.last_name %></p>
+        <p><%= address.street1 %></p>
+        <p><%= address.street2 %></p>
+        <p><%= address.city %>,
+        <%= address.state %>
+        <%= address.zip %>
+        <%= address.country %></p>
+        <p><%= address.phone %></p>
+        <%= link_to("Edit", edit_address_path(address.id), class:"hollow button") %>
+        <br>
+      </ul>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="small-4 columns">
+    <h3>Billing Address</h3>
+
+      <% @user.addresses.each do |address|  %>
+        <% if address.kind == "Billing" %>
+        <%= f.radio_button(:billing_address_id, address.id) %>
+        <ul>
+          <p><%= address.first_name %>
+          <%= address.last_name %></p>
+          <p><%= address.street1 %></p>
+          <p><%= address.street2 %></p>
+          <p><%= address.city %>,
+          <%= address.state %>
+          <%= address.zip %>
+          <%= address.country %></p>
+          <p><%= address.phone %></p>
+          <%= link_to("Edit", edit_address_path(address.id), class:"hollow button") %>
+          <br>
+        </ul>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="small-4 columns">
+    <h3>Order Total</h3>
+    <h4><%=number_to_currency(@order.subtotal/100.0) %></h4>
+    <div class="mid-page-space"></div>
+
+
+
+  <%= f.submit "Checkout", class:"hollow button"%>
+  <% end %>
+
+      <%= button_to 'Add a New Address', address_new_path("0"), :method => :get, :class => "hollow button"%>
+
+    </div>
+
+</section>

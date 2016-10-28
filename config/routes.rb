@@ -1,56 +1,31 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # omniauth route
+  get "/auth/:provider/callback" =>  "sessions#create", as: 'create'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get "logout" => "sessions#destroy", as: "logout"
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  root to: 'pages#index'
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :products, except: [:destroy] do
+    resources :reviews
+  end
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  resources :users, :categories, :orders, :addresses, :order_products
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  get 'addresses/new/:redirect_to' => 'addresses#new', as: 'address_new'
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  get 'cart' => 'pages#cart', as: 'cart'
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
+  get 'account' => 'users#show', as: 'account'
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  get 'account/edit' => 'users#edit', as: 'account_edit'
+
+  put 'account/update' => 'users#update', as: 'account_update'
+
+  patch 'toggle/:id' => 'users#switch_active', as: 'toggle'
+
+  patch 'toggle_product/:id' => 'products#switch_active', as: 'toggle_product'
+
+  get 'users/orders/:id' => 'orders#all', as: 'user_orders'
 end

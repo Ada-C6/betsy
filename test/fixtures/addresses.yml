@@ -1,0 +1,108 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+normal_address:
+  kind: home
+  first_name: lauren
+  last_name: brink
+  street1: "blah blah"
+  street2: nil
+  city: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923
+  user_id: 1
+
+address_without_extras:
+  kind: home
+  last_name: brink
+  street1: "blah blah"
+  city: seattle
+  state: california
+  country: Russia
+  user_id: 1
+
+address_without_kind:
+  first_name: lauren
+  last_name: brink
+  street1: "blah blah"
+  street2: nil
+  city: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923
+  user_id: 1
+
+address_without_last_name:
+  kind: home
+  first_name: lauren
+  street1: "blah blah"
+  street2: nil
+  city: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923
+  user_id: 1
+
+address_without_street1:
+  kind: home
+  first_name: lauren
+  last_name: "blah blah"
+  street2: nil
+  city: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923
+  user_id: 1
+
+address_without_city:
+  kind: bloop
+  first_name: lauren
+  last_name: "blah blah"
+  street2: nil
+  street1: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923
+  user_id: 1
+
+
+address_without_state:
+  kind: stateless
+  first_name: lauren
+  last_name: "blah blah"
+  street2: nil
+  street1: seattle
+  city: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923
+  user_id: 1
+
+address_without_country:
+  kind: stateless
+  first_name: lauren
+  last_name: "blah blah"
+  street2: nil
+  street1: seattle
+  city: california
+  zip: blah
+  state: Russia
+  phone: 3040404594923
+  user_id: 1
+
+address_without_user:
+  kind: home
+  first_name: lauren
+  last_name: cat
+  street1: "blah blah"
+  street2: nil
+  city: seattle
+  state: california
+  zip: blah
+  country: Russia
+  phone: 3040404594923

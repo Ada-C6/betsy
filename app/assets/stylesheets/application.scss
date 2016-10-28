@@ -1,0 +1,412 @@
+@import url('foundation.css');
+@import url('foundation-icons.css');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif|Oswald|Pontano+Sans|Lato|Josefin+Sans');
+
+/************************************/
+/* OVERALL STYLING - BODY           */
+/************************************/
+
+
+input.magglass {
+  // padding: 2vw 0 0 .75vw;
+  // position: relative;
+}
+
+input#search {
+  width: 30vw;
+  border: 1px solid transparent;
+  background-color: #141414;
+  height: 2.75vw;
+  color: #2d2d2d;
+  font: normal normal 1.5vw/2 'Oswald', sans-serif;
+  margin: 0 0 .75vw 10vw;
+}
+
+li.navlinks {
+  width: 12vw;
+  padding-left: 1vw
+}
+
+li.navlinks.name {
+  width: 15vw;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+.padding-top {
+  padding-top: 13%;
+}
+
+table{
+    color: #000;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table.order tr {
+  border: 1px solid transparent;
+  background-color: transparent !important;
+}
+
+table.order td {
+  height: 5vw;
+  text-align: top;
+}
+
+
+th,
+td {
+  text-align: left;
+  overflow: hidden;
+  text-transform: uppercase;
+  // width: 10%;
+}
+
+td {
+  font: normal normal 1.1vw/1.25 'Josefin Sans', sans-serif;
+  color: #000;
+  text-transform: uppercase;
+}
+
+th {
+  font: normal bold 1.2vw 'Lato', sans-serif;
+}
+
+
+/************************************/
+/* NAVIGATION BAR AND HEADER SECTION */
+/************************************/
+html {
+  margin: 0;
+  padding: 0;
+}
+
+
+@media only screen and (orientation: landscape) {
+  .homepage-banner {
+    width: 100%;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  .homepage-banner {
+    height: 100%;
+    width: auto;
+  }
+}
+
+#slider {
+	width: 100vw;
+	height: auto;
+	overflow: hidden;
+  position: fixed;
+  top: 0vw;
+  left: 0vw;
+
+}
+
+.slide {
+  display: inline-block;
+	width: 100vw;
+	height: auto;
+	float: left;
+	position: relative;
+}
+
+#slide-holder {
+	width: 400vw;
+	position: relative;
+	left: 0;
+	will-change: transform;
+	animation: scroller 15s;
+  animation-delay: 2s;
+}
+
+@keyframes scroller {
+  0% { transform: translateX(0); }
+  10% { transform: translateX(-100vw); }
+  25% { transform: translateX(-100vw); }
+  35% { transform: translateX(-200vw); }
+  50% { transform: translateX(-200vw); }
+  60% { transform: translateX(-300vw); }
+  75% { transform: translateX(-300vw); }
+  100% { transform: translateX(0); }
+
+}
+
+nav {
+  background-color: #000;
+  color: #FFF;
+  // height: 11vw;
+  font: normal normal 2vw/1 'Oswald', sans-serif;
+  margin: 0;
+  // padding: 2vw;
+  position: fixed;
+  opacity: .8;
+  text-align: left;
+  width: 100vw;
+  z-index: 100;
+}
+
+.top-spacing {
+  height: 12vw;
+}
+
+form#search-form {
+  display: inline-block;
+  width: 45vw;
+}
+
+nav ul {
+  display: inline-block;
+}
+
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  padding: 2vw 0 2vw 2.5vw;
+  text-transform: uppercase;
+}
+
+nav ul li li {
+  padding: 0;
+}
+
+h1 {
+  font: normal normal 4vw/1 'Oswald', sans-serif;
+  margin: 0;
+  // width: 20vw;
+}
+
+nav a:link,
+nav a:hover,
+nav a:visited {
+  color: #FFF;
+  // padding: 0;
+}
+
+.style-dropdown {
+  color: #333333;
+  margin: -1vw 0 0 2vw;
+}
+.style-dropdown li a {
+  color: #333333;
+}
+.style-dropdown li a:hover {
+  color: #E7AD3F;
+}
+
+.style-dropdown-2 {
+  font-size: 1.5vw;
+  padding-left: 0;
+}
+
+
+/************************************/
+/* LINKS                            */
+/************************************/
+
+
+
+/********************/
+/*   BUTTONS        */
+/*******************/
+
+#admin-button-location {
+  padding-top: 4%;
+}
+
+
+/********************/
+/*  GRID DISPLAYS  */
+/*******************/
+
+article.column {
+  margin: 3em 0 3em 0;
+  padding: 0 3em 0 3em;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/********************/
+/*  FORMAT FORMS */
+/*******************/
+.format-forms {
+  padding: 0 8% 0 8%;
+  margin: 0 20vw;
+
+}
+.format-forms h1  {
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+/********************/
+/*  PRODUCTS SHOW  */
+/*******************/
+
+.reviews-show {
+  padding-top: 5vw;
+}
+
+.line-height {
+  line-height: 250%;
+}
+
+.line-height h1, h3 {
+  line-height: 150%;
+}
+
+/********************/
+/*  USER INDEX     */
+/*******************/
+
+.style-user-table {
+  color: black;
+}
+
+.style-user-table tr {
+  text-align: left;
+}
+
+.style-user-table a:hover {
+  color: #E7AD3F
+}
+
+
+/********************/
+/*  BUTTONS        */
+/*******************/
+
+.hollow.button {
+  text-transform: uppercase;
+  border-radius: 0;
+  border: 1px solid black;
+  font: normal 400 1vw/1 'Lato', sans-serif;
+  letter-spacing: .15em;
+  padding: .9vw 1.75vw;
+  display: inline-block;
+}
+
+.admin-button .hollow.button {
+  margin: -2vw 0 0 0;
+  float: right;
+}
+
+.hollow.button:hover {
+  color: #FFF;
+  background-color: #000;
+}
+
+.hollow.button.min-pad {
+  padding: .5vw;
+  width: 2vw;
+  height: 2vw;
+}
+
+#admin-button-location {
+  display: inline-block;
+}
+
+#order_products_delta {
+  width: 5vw;
+}
+
+
+label,
+h6 {
+  font: normal 400 1vw/1 'Josefin Sans', sans-serif;
+  text-transform: uppercase;
+  padding: .15vw;
+}
+
+
+
+form.button_to {
+  display: inline-block;
+  padding: 0 1vw 0 0;
+}
+
+h2 {
+  text-align: top;
+  text-transform: uppercase;
+  font: normal 400 3vw/1 'Oswald', sans-serif;
+  padding: 0 2vw 0 0;
+  display: inline-block;
+  margin: 0 0 2vw 0;
+}
+
+h3 {
+  font: normal normal 1.75vw/1 'Josefin Sans', sans-serif;
+  padding: 1vw 0;
+  text-transform: uppercase;
+}
+
+h4 {
+  padding: .5vw 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+h4.alert,
+.flash-notice {
+  font-weight: bold;
+  color: #df0d4e;
+}
+
+h5 {
+  // text-align: top;
+  // text-transform: uppercase;
+  font: normal 400 1.5vw/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+
+}
+
+
+textarea {
+  height: 8vw;
+}
+
+.mid-page-space {
+  height: 5.1vw;
+}
+
+.end-page-space {
+  height: 10vw;
+}
+
+p {
+  font: normal normal 1.5vw/1 'Josefin Sans', sans-serif;
+  color: #525252;
+}
+
+
+h1.overlay a{
+  position: fixed;
+  margin: auto;
+  color: #FFF;
+  z-index: 1;
+  padding: 3vw;
+  text-transform: uppercase;
+  border: 2px solid #FFF;
+  width: 40vw;
+  margin: 20vw 0 0 30vw;
+}
+
+h1.overlay a:hover {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.qty {
+  display: inline-block;
+  width: 2vw;
+  text-align: left;
+  font-size: 2vw;
+}

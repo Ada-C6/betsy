@@ -1,0 +1,13 @@
+<%= form_for @category,
+  url: action_name do |f| %>
+<ul>
+  <li><%= f.label :name %></li>
+  <li><%= f.text_field :name %></li>
+
+  <!-- will need to add gem and figure out how to upload photos -->
+  <li><%= f.file_field :picture%></li>
+
+  <li><%= f.submit class:"hollow button"%> </li>
+</ul>
+
+<% end %>

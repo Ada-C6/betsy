@@ -1,0 +1,48 @@
+<h1 class="center-text"><%= "Welcome, #{@user.first_name}" %></h1>
+<div class="mid-page-space"></div>
+<h4 class="alert center-text"><%= render partial: 'shared/flash_notice' %></h4>
+
+<div class="row">
+  <section class="small-4 columns">
+    <h3>Account Info</h3>
+    <p><strong><%= "Name: #{@user.first_name} #{@user.last_name}" %></strong></p>
+    <p><%= "Email: #{@user.email}" %></p>
+    <p><%= "Phone: #{@user.phone}" %></p>
+
+    <div class="mid-page-space"></div>
+
+    <ul>
+      <li><%= button_to 'Edit Account', account_edit_path, class:"hollow button", method: :get%></li>
+      <li><%= button_to 'Your Orders', user_orders_path(@user.id), class:"hollow button", method: :get%></li>
+    </ul>
+
+
+  </section>
+
+  <section class="small-8 columns">
+    <h3>Addresses</h3>
+
+    <div class="row">
+      <% @addresses.each do |address|%>
+        <div class="small-6 columns">
+          <p><strong><%= address.kind %></strong></p>
+          <p><%= address.first_name %>
+          <%= address.last_name %></p>
+          <p><%= address.street1 %></p>
+          <p><%= address.street2 %></p>
+          <p><%= address.city %>,
+          <%= address.state %>
+          <%= address.zip %>
+          <%= address.country %></p>
+          <p><%= address.phone %></p>
+          <%= button_to "Edit", edit_address_path(address.id), class:"hollow button" %>
+          <%= button_to "Delete", address_path(address.id), method: :delete, class:"hollow button" %>
+
+        </div>
+      <% end %>
+
+      <div class="small-12 columns"><%= button_to 'Add a New Address', address_new_path("1"), :method => :get, class:"hollow button"%></div>
+
+
+  </section>
+</div>
