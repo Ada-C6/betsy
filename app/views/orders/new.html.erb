@@ -15,7 +15,5 @@
 <%= f.label "Zip Code" %>
 <%= f.text_field :billing_zip %>
 <%= f.hidden_field :date_purchased, :value => Time.now %>
-<%= f.hidden_field :total, :value => @total %>
-
 <%= f.submit%>
 <% end %>

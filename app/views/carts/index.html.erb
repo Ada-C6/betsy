@@ -2,7 +2,7 @@
 <h2>Your Cart</h2>
 
 <br><br><br>
-<%total =  0%>
+
 <ul>
   <li>
     <%@products.each do |product, quantity|%>
@@ -13,10 +13,9 @@
       <%=link_to "Delete", delete_products_path(product.id), method: :delete%>
     </p>
   </li>
-  <% total += quantity * product.price %>
   <%end%>
-  <%if total != 0%>
-  <p><strong> Total: <%=show_dollars(total)%></strong></p>
+  <%if @total != 0 && !@total.nil?%>
+  <p><strong> Total: <%=show_dollars(@total)%></strong></p>
   <br>
   <p> Continue shopping <%=link_to "Here", products_path %></p>
   <p><strong><%=link_to "Purchase Now", new_order_path%></strong></p>

@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :total, :shopping_cart
+  before_action :shopping_cart
   def index
-    @order = session[:order]
+    @order = Order.find(session[:order_id]) if session[:order_id]
   end
 
   def new
@@ -14,15 +14,18 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.total = 0
     if @order.save
       @cart.each do |item|
-        @order_item = OrderItem.new
+        @order_item = @order.order_items.new
         @order_item.product_id = item.values[0]
         @order_item.quantity = item.values[1]
-        @order_item.order_id = @order.id
         @order_item.save
       end
-      session[:order] = @order
+      @order.reload
+      @order.update_total
+      @order.save
+      session[:order_id] = @order.id
       session[:cart] = nil
       redirect_to orders_path
     else
@@ -50,7 +53,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:date_purchased, :email, :cc_name, :cc_number, :cc_exp_year, :cc_exp_month, :billing_zip, :address, :total, )
+    params.require(:order).permit(:date_purchased, :email, :cc_name, :cc_number, :cc_exp_year, :cc_exp_month, :billing_zip, :address, :total )
   end
 
 

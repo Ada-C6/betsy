@@ -1,15 +1,18 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
   before_action :product_ref, except: [:index, :empty_cart]
-  # before_action :total
   after_action :no_item, only: [:less_prod, :delete_product]
 
   def index
     @products = {}
     @cart.each do |item|
-      a = Product.find(item["id"])
-      b = item["quantity"]
-      @products.merge!(a => b)
+      product = Product.find(item["id"])
+      quantity = item["quantity"]
+      if @total.nil?
+        @total = 0
+      end
+      @total += quantity * product.price
+      @products.merge!(product => quantity)
     end
     return @products
   end
@@ -56,22 +59,6 @@ class CartsController < ApplicationController
     redirect_to carts_path
   end
 
-
-
-  # begin
-  #   @order_item = OrderItem.find(params[:product_id])
-  # rescue ActiveRecord::RecordNotFound
-  #   nil
-  # end
-  # if @order_item.nil?
-  #
-  #   @order_item = OrderItem.create
-  #   @product.order_items << @order_item
-  #     @product.save
-  #
-  #   @order_item.save
-  # end
-
   def empty_cart
     session[:cart] = nil
     redirect_to carts_path
@@ -80,6 +67,9 @@ class CartsController < ApplicationController
   private
   def no_item
     @cart.delete_if {|k| k["quantity"] == 0}
+  end
+
+  def total
   end
 
   def product_ref
