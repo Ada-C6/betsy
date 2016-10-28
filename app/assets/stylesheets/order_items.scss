@@ -1,0 +1,33 @@
+// Place all the styles related to the Order Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.button {
+  background-color: rgba(245,242,225, 1);
+  border-radius: .25rem;
+  border: 1px solid #cacaca;
+}
+
+.button:hover {
+  background-color: rgba(245,242,225, 0.3);
+}
+
+.all-items, label {
+  color: rgb(136, 149, 194);
+}
+
+.items-output {
+  padding-left: 5rem;
+}
+
+.small-up-1 {
+  margin-top: 1rem;
+}
+
+.item-input {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.all-items, li {
+  list-style: none;
+}

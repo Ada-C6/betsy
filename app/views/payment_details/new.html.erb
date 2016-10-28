@@ -1,0 +1,36 @@
+<h1>Pay!!!</h1>
+<main>
+
+  <%= form_for :payment_details, url: {action: "create"} do |f| %>
+  <%= f.label :buyer_name %>
+  <%= f.text_field :buyer_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :street %>
+  <%= f.text_field :street %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zip %>
+  <%= f.number_field :zip %>
+
+  <%= f.label :cc_four_digits, "Credit Card Number" %>
+  <%= f.text_field :cc_four_digits %>
+
+  <%= f.label :CVV %>
+  <%= f.number_field :CVV %>
+
+  <%= f.label :cc_expiration_date %>
+  <%= f.date_field :cc_expiration_date %>
+
+
+
+  <%= f.submit "Checkout" %>
+  <% end %>
+</main>

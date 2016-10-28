@@ -1,0 +1,33 @@
+<main>
+
+  <article class="row all-items">
+    <section class="items-output columns small-6">
+      <h1>Your Orders</h1>
+      <ul class="row small-up-1">
+        <aside class="item-input columns small-6">
+          <% @order_items.each do |item| %>
+          <li> <%= item.product.name %></li>
+          <li>
+            <%= form_for(item) do |f| %>
+            <%= f.label :quantity %>
+            <%= f.number_field :quantity,
+            in: 1.0..item.product.quantity,
+            step: 1.0 %>
+            <%= f.submit "Update" %>
+            <% end %>
+          </li>
+          <li> Price: <%= item.product.price %></li>
+          <li class= "link"><%= link_to 'Remove from Cart', order_item_path(item), method: :delete %></li><br>
+          <% end %>
+        </aside>
+      </ul>
+    </section>
+  </article>
+
+  <section>
+    <%= link_to 'Cancel Order', order_path(@order), method: :delete %>
+    <%= link_to 'Purchase Cart', new_order_payment_detail_path(@order) %>
+    <%= link_to 'Keep Shopping', products_path %>
+  </section>
+</section>
+</main>

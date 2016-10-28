@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h3><%= @category.name %></h3>
+
+<section class="body-text">
+<%= render partial: '/application/products_index' %>
+
+<%= link_to 'Back', categories_path, class: "button", id: "white-link" %>
+</section>

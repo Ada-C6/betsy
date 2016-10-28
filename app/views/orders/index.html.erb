@@ -1,0 +1,58 @@
+<h2>Order Fulfilment Page</h2>
+
+<main>
+  <section class="row">
+    <ul class="columns small-3">
+      <li><span class="totals">TOTAL REVENUE: <%= OrderItem.sum_total_prices(@order_items)  %></span>
+        <ul>
+          <li>COMPLETED: <%= OrderItem.sum_total_prices(@completed_orders)  %>  </li>
+          <li>PAID: <%= OrderItem.sum_total_prices(@paid_orders)  %></li>
+          <li>PENDING: <%= OrderItem.sum_total_prices(@pending_orders)  %></li>
+          <li>CANCELLED: <%= OrderItem.sum_total_prices(@cancelled_orders)    %></li>
+        </ul>
+      </li>
+    </ul>
+
+    <ul class="columns small-8">
+      <li>
+        <span class="totals">TOTAL ORDER COUNT: <%= @order_items.count %></span>
+        <ul>
+          <li>COMPLETED: <%= @completed_orders.count %> </li>
+          <li>PAID: <%= @paid_orders.count %></li>
+          <li>PENDING: <%= @pending_orders.count %></li>
+          <li>CANCELLED: <%= @cancelled_orders.count %></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  </section class="row">
+    <%= form_for @merchant, method: :get, url: orders_path do |f| %>
+    <%= f.button "ALL ORDERS", class: "button" %>
+    <%= f.submit "COMPLETED", class: "button"  %>
+    <%= f.submit "PAID", class: "button"  %>
+    <%= f.submit "PENDING", class: "button"  %>
+    <%= f.submit "CANCELLED", class: "button"  %>
+    <% end %>
+  </section>
+
+  <section class="body-text">
+
+      <% @filtered_orders.each do |item| %>
+    <ul class="row purchases-list">
+
+      <li class="columns small-4">
+        <%= link_to "Ordered #{item.product.name}", order_item_path(item) %>
+        <%= render partial: "order_details", locals: {order_items: [item] } %>
+      </li>
+      <li class="columns small-8">
+        <ul>
+          <li class="column"> Underlying Order Status: <%=  item.order.order_status %></li>
+          <li class="column">Time Placed: <%= order_time_placed(item) %></li>
+          <li class= "column"><%= ship_order(item) %></li>
+        </ul>
+      </li>
+    </ul>
+      <% end %>
+  </section>
+</main>

@@ -1,0 +1,63 @@
+<section>
+  <ul class='row small-up-1'>
+    <li class="column text-center">
+      <%= product_image(@product, "300x260") %>
+      <ul 'row small-up-3' >
+        <li class="column text-center"><h2><%= link_to @product.name%></h2></li>
+
+        <% if @product.description != nil %>
+        <li class="product-info column text-center"><%= @product.description %></li>
+        <%end %>
+        <li class="product-info column text-center"> $ <%= @product.price %>0</li>
+        <li class="product-info notice column text-center">Only <%= @product.quantity %> left!</li>
+        <li class="product-info notice column text-center"><%= link_to 'Add to Cart', orders_path, method: :post %></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<article class="row all-orders">
+  <section class="reviews-output columns small-6">
+
+    <h4 class="fix-me">Customer Reviews</h4>
+    <ul class="row small-up-1">
+    <%  @reviews.each do |f| %>
+      <li class="column">
+        <% f.rating.times do |f| %>
+        <%= image_tag "robot.png", size: "18x18", alt: "Robots" %>
+        <% end %>
+      </li>
+
+        <% if current_merchant %>
+      <li class="column">By: <%= "#{current_merchant.user_name}"%> </li>
+        <% else %>
+      <li class="column">By: Anonymous</li>
+        <% end %>
+
+        <% if f.description != nil %>
+      <li class="column"><%= f.description %></li>
+        <% end %>
+    <% end %>
+    </ul>
+
+  </section>
+
+  <aside class="reviews-input columns small-6">
+    <% if @product.merchant_id == nil || @product.merchant_id != session[:merchant_id] %>
+    <h3 class="fix-me">Add a Review</h3>
+      <%= form_for [@product, @review] do |f| %>
+        <%= f.label :rating %>
+        <%= f.number_field :rating,  in: 1..5 %>
+
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+
+        <%= f.submit "Submit Review", class: "button" %>
+      <% end %>
+    </ul>
+    <% else %>
+    <h5>You can't review your own product.</h5>
+    <% end %>
+
+
+</article>

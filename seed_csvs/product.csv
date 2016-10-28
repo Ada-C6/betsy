@@ -1,0 +1,11 @@
+id,name,stocking_quantity,price,merchant_id
+1,"CSS Cups",100,11.0,1
+2,"PHP Pencils",100,12.0,2
+3,"HTML Hats",100,12.0,3
+4,"Ruby Rugs",100,13.0,4
+5,"Python Pants",100,10.0,5
+6,"CSS Bottles",100,11.0,1
+7,"PHP Rulers",100,12.0,2
+8,"HTML Papers",100,14.0,3
+9,"Ruby Notepads",100,20.0,4
+10,"Python Shirts",100,19.0,5

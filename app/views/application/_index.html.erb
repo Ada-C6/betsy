@@ -1,0 +1,5 @@
+<ul class='row small-up-3'>
+  <% collection.each do |item| %>
+   <li class='column'><h2><%= link_to (item[field]), polymorphic_url(item) %></h2></li>
+  <% end %>
+</ul>

@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  name: broomstick
+  price: 15.0
+  quantity: 1
+  merchant: one
+
+two:
+  name: savoflange
+  price: 13.52
+  quantity: 1
+  merchant: two
+
+three:
+  name: blorble
+  price: 13.52
+  quantity: 1
+  merchant: two
+
+product_stock1:
+  name: stocker
+  price: 12.00
+  quantity: 2
+  merchant: merchant_with_orders
+
+product_stock2:
+  name: stockings
+  price: 13.00
+  quantity: 2
+  merchant: merchant_with_orders
+
+filter_product:
+    name: something
+    price: 13.00
+    quantity: 100
+    merchant: filter_merchant

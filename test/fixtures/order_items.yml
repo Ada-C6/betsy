@@ -1,0 +1,84 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  quantity: 4
+  product_id: 37
+  order_id: 87
+
+two:
+  quantity: 1
+  product_id: 36
+  order_id: 89
+
+three:
+  quantity: 1
+  product_id: 38
+  order_id: 2
+
+reduce_quantity1:
+  quantity: 1
+  order: purchasing_order
+  product: product_stock1
+
+reduce_quantity2:
+  quantity: 1
+  order: purchasing_order
+  product: product_stock2
+
+filter_pending:
+  quantity: 1
+  order: filter_order_pending
+  product: filter_product
+  shipped: false
+
+filter_complete_shipped:
+  quantity: 1
+  order: filter_order_complete_shipped
+  product: filter_product
+  shipped: true
+
+filter_complete_not_shipped:
+  quantity: 1
+  order: filter_order_complete_not_shipped
+  product: filter_product
+  shipped: false
+
+filter_paid_shipped:
+  quantity: 1
+  order: filter_order_paid_shipped
+  product: filter_product
+  shipped: true
+
+filter_cancelled:
+  quantity: 1
+  order: filter_order_cancelled
+  product: filter_product
+  shipped: false
+
+filter_paid:
+  quantity: 1
+  order: filter_order_paid
+  product: filter_product
+  shipped: false
+
+not_shipped_item1:
+  quantity: 1
+  order: order_to_be_shipped
+  product: filter_product
+  shipped: false
+
+not_shipped_item2:
+  quantity: 1
+  order: order_to_be_shipped
+  product: filter_product
+  shipped: false
+
+not_shipped_item3:
+  quantity: 1
+  order: order_to_be_shipped2
+  product: filter_product
+  shipped: false

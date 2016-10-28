@@ -1,0 +1,7 @@
+<!-- Might be useless at this moment -->
+
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+<% end %>
+
+<h1>Please <%= link_to "Log In", "/auth/github" %></h1>

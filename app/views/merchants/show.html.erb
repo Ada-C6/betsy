@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Browse <%= @merchant.user_name %>'s Products</h3>
+
+<section class="body-text">
+
+<%= render partial: '/application/products_index' %>
+
+<%= link_to 'Back', merchants_path %>
+
+</section>

@@ -1,0 +1,17 @@
+<ul>
+  <% order_items.each  do |item| %>
+  <% product = item.product %>
+  <li>
+    <%= link_to product.name, product_path(product) %>
+  </li>
+  <li>
+    Price: <%= price = product.price %>
+  </li>
+  <li>
+  Quantity: <%= quantity = item.quantity %>
+  </li>
+  <li>
+    Subtotal: <%= subtotal = price * quantity %>
+  </li>
+  <% end %>
+</ul>

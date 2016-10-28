@@ -1,0 +1,23 @@
+<h1>This is the confirmation page</h1>
+<main>
+  <section>
+    <%= render partial: "order_details", locals: {order_items: @order_items} %>
+  </section>
+
+  <section>
+    <ul>
+      <li>
+        Total Price: <%= @total_order_price %>
+      </li>
+      <li>
+      Order Status: <%= @order.order_status %>
+      </li>
+      <li>
+        Time placed: <%= render_date(@payment_details.time_placed) %>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+  <%= link_to 'Cancel Order', order_path(@order), method: :patch %>

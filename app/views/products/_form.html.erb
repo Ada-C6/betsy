@@ -1,0 +1,51 @@
+<% if @product.errors.any? %>
+<ul>
+  <% @product.errors.each do |column, message| %>
+  <li>
+    <%= column %>
+    <%= message %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @product, method: action_name do |f| %>
+
+<ul>
+
+<li class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</li>
+
+<li class="field">
+  <%= f.label :price %><br />
+  <%= f.text_field :price %>
+</li>
+
+<li class="field">
+  <%= f.label :description %><br>
+  <%= f.text_field :description %>
+</li>
+
+<li class="field">
+  <%= f.label :quantity %><br>
+  <%= f.text_field :quantity %>
+</li>
+
+<li class="field">
+  <%= f.label :image %><br>
+  <%= f.file_field :image %>
+</li>
+
+<li class="field">
+  <%= f.label :Category %><br>
+  <li>Hold command and shift to select more than one category</li>
+  <%= f.select :category_ids, Category.all.collect{|category| [category.name, category.id]}, {}, {multiple: true}%>
+</li>
+
+<li class="actions">
+  <%= f.submit %>
+</li>
+<% end %>
+</ul>

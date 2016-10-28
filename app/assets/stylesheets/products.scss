@@ -1,0 +1,54 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.small-up-1 {
+  margin-top: 1rem;
+}
+
+.notice > a {
+  color: rgb(82, 82, 142);
+  font-size: 2rem;
+}
+
+.reviews-output {
+  padding-left: 5rem;
+}
+
+.reviews-input {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.reviews-input, .reviews-output {
+  color: rgb(136, 149, 194);
+  font-family: 'Rubik', sans-serif;
+}
+
+.reviews-input > h4, .fix-me {
+  font-family: 'Rubik', sans-serif;
+  font-size: 2rem;
+}
+
+#review_rating, #review_description, .button {
+  background-color: rgba(245,242,225, 0.7);
+  border-radius: .25rem;
+}
+
+.button {
+  background-color: rgba(245,242,225, 1);
+  border-radius: .25rem;
+  border: 1px solid #cacaca;
+}
+
+.button:hover {
+  background-color: #5877B3;
+}
+
+.all-reviews, label {
+  color: rgb(136, 149, 194);
+}
+
+.link, a {
+  color: rgb(82, 82, 142);
+}

@@ -1,0 +1,16 @@
+  <ul class='row small-up-4'>
+    <% @products.each do |product| %>
+    <li class="column text-center">
+      <%= link_to product_image(product, "80x60"), product_path(product.id) %>
+      <ul 'row small-up-3' >
+        <li class="column text-center"><h2><%= link_to product.name, product_path(product.id) %></h2></li>
+        <li class="product-info column text-center"> $ <%= product.price %>0</li>
+        <% if !product.quantity%>
+        <li class="product-info notice column text-center">PRODUCT OUT OF STOCK</li>
+        <% else %>
+        <li class="product-info notice column text-center">Only <%= product.quantity %> left!</li>
+        <% end %>
+      </ul>
+    </li>
+    <% end %>
+  </ul>

@@ -1,0 +1,18 @@
+<h1>Individual order item detail</h1>
+
+<section class="body-text">
+  <% if @payment_detail.nil? %>
+  <h2>There is no information to display for this order</h2>
+  <% else %>
+  <ul>
+    <li>Name: <%= @payment_detail.buyer_name %> </li>
+    <li>Email: <%= @payment_detail.email %> </li>
+    <li>Address: <%= @payment_detail.street %>
+      <br /> <%= @payment_detail.city %>, <%= @payment_detail.state %> <%= @payment_detail.zip %>
+    </li>
+    <li>Credit Card: <%= @payment_detail.cc_four_digits %></li>
+    <li>Expiration Date: <%= @payment_detail.cc_expiration_date %> </li>
+
+  </ul>
+  <% end %>
+</section>

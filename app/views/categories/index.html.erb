@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Categories</h3>
+
+<section class="body-text">
+<ul class='row small-up-4'>
+  <% @categories.each do |item| %>
+  <li class='column'><h2><%= link_to (item.name),  category_path(item) %></h2></li>
+  <% end %>
+</ul>
+
+<%#render partial: '/application/index', locals: {collection: @categories, field:'name'}%>
+</section>

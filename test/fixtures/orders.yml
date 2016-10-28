@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  order_status: "pending"
+
+two:
+  order_status: "paid"
+
+three:
+  order_status: "cancelled"
+
+four:
+  order_status: "completed"
+
+purchasing_order:
+  order_status: "pending"
+
+filter_order_pending:
+  order_status: "pending"
+
+filter_order_complete_shipped:
+  order_status: "complete"
+
+filter_order_complete_not_shipped:
+  order_status: "complete"
+
+filter_order_paid_shipped:
+  order_status: "paid"
+
+filter_order_cancelled:
+  order_status: "cancelled"
+
+filter_order_paid:
+  order_status: "paid"
+
+order_to_be_shipped:
+  order_status: "paid"
+
+order_to_be_shipped2:
+  order_status: "paid"
+  

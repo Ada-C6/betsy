@@ -1,0 +1,47 @@
+<h4>Welcome, <%= @current_merchant.user_name %></h4>
+
+<section class="body-text">
+  <h5>Available Functions</h5>
+
+  <p><%= link_to "Create a new Category", new_category_path, method: :get, class: "button", id: "white-link" %></p>
+
+  <p><%= link_to "Create a new Product", new_product_path(@current_merchant), method: :get, class: "button", id: "white-link" %> </p>
+
+  <p><%= link_to "Order Fulfillment", orders_path, method: :get, class: "button", id: "white-link" %> </p>
+
+  <h5>Product Management</h5>
+  <table>
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Edit</th>
+      <th>Retire</th>
+    </tr>
+
+    <% @current_merchant.products.each do |product| %>
+    <tr>
+
+      <td><%= product.id %></td>
+      <td><%= link_to "#{product.name}", product_path(product.id) %></td>
+      <td><%= product.price %></td>
+      <td><%= product.quantity %></td>
+      <td><%= link_to "Edit this Product", edit_product_path(product.id), class: "button", id: "white-link" %></td>
+      <td>
+        <% if product.active %>
+        <%= form_for product, method: :patch do |f| %>
+        <%= f.hidden_field :active, :value => false %>
+        <%= f.submit "Retire Product", class: "button" %>
+        <% end %>
+        <% else %>
+        <%= form_for product, method: :patch do |f| %>
+        <%= f.hidden_field :active, :value => true %>
+        <%= f.submit "Reactivate Product", class: "button" %>
+        <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</section>

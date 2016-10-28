@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+
+  <!-- ROBITS cute font -->
+  <link href="https://fonts.googleapis.com/css?family=Chelsea+Market|Rubik" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+  <header>
 
-<%= yield %>
+    <!-- Navigation row for top Menu -->
+    <nav class="row top-bar">
+      <section class="small-12 column">
+        <ul class="title-area row">
+          <li class="name centered column">
+            <h1><%= image_tag("robits_logo") %> <%= link_to "ROBITS", root_path, class: "logo-name" %></h1>
+          </li>
+        </ul>
+      </section>
 
-</body>
-</html>
+      <div class="lower-link-area">
+        <section class="small-12 columns top-bar-left">
+          <!-- Make this unordered list horizontal at medium and larger screens & verticle on small ones  -->
+          <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+            <li>
+              <%= link_to 'SHOP ALL', products_path %>
+            </li>
+
+            <li>
+              <%= link_to 'CATEGORIES', categories_path %>
+              <!-- Submenu of Categories -->
+              <ul class="menu vertical">
+                <% category.each do |f| %>
+                <li>
+                  <%= link_to "#{f.name}", category_path(f.id) %>
+                </li>
+                <% end %>
+              </ul>
+            </li>
+
+            <li>
+              <%= link_to 'MERCHANTS', merchants_path %>
+              <!-- Submenu of Merchants -->
+              <ul class="menu vertical">
+                <% merchant.each do |f| %>
+                <li>
+                  <%= link_to "#{f.user_name}", merchant_path(f.id) %>
+                </li>
+                <% end %>
+              </ul>
+            </li>
+
+            <li>
+              <%= cart_button %>
+            </li>
+
+          </section>
+
+          <section>
+            <ul class="menu top-bar-right">
+              <li><%= login_status %></li>
+              <li><%= login_button %></li>
+            </ul>
+          </section>
+        </div>
+
+      </nav>
+    </header>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+    </body>
+    </html>

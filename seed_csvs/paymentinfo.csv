@@ -1,0 +1,6 @@
+id,order_id,buyer_name,email,street,city,state,zip, cc_four_digits,cc_expiry_date,time_placed
+1,1,"Bob","bob@gmail.com","30th and Burnside","Portland","Oregon",97202,1111,"2016-11-07 12:34:56.000000","2016-10-07 12:34:56.000000"
+2,2,"Candice","candice@gmail.com","1 2nd Street","Petaluma","California",94952,4444,"2016-11-10 10:44:56.000000","2016-10-10 10:44:56.000000"
+3,3,"James","james@gmail.com","1 Austin Street","Boston","Massachusetts",2129,2222,"2016-11-13 09:49:37.000000","2016-10-13 09:49:37.000000"
+4,4,"Anna","anna@gmail.com","1 Bayberry Drive","Ballston Sp","New York",12020,3333,"2016-11-09 00:36:03.000000","2016-10-09 00:36:03.000000"
+5,5,"Andrei","andrei@gmail.com","1 Bennett",,"Cambridge","Massachusetts",2138,5555,"2016-11-10 12:16:12.000000","2016-10-10 12:16:12.000000"
