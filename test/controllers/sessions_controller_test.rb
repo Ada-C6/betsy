@@ -4,7 +4,7 @@ class SessionsControllerTest < ActionController::TestCase
 
   def login_a_merchant
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
-    get :create, {provider: "github"}
+    get :create, merchant: { email: "a@b.com", name: "Ada", id: 123545 }
   end
 
   test "can login a merchant" do
