@@ -23,9 +23,12 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
     # @order_item.quantity = 1 if @order_item.quantity == nil
-    @order.save
-    session[:order_id] = @order.id
-    redirect_to order_items_path
+    if @order.save
+      session[:order_id] = @order.id
+      redirect_to order_items_path
+    else
+      render :new
+    end
   end
 
   # Unsure where redirect should go?
