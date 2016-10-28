@@ -43,6 +43,14 @@ end
 
 products = [
     {
+        name: "dragon costume",
+        description: "For your gecko who's always wanted to be a dragon",
+        stock: 48,
+        price: 1798,
+        photo_url: "http://img05.deviantart.net/156d/i/2006/304/e/d/happy_halloween_by_snakeskii.jpg",
+        merchant_id: 1
+    },
+    {
         name: "cat pants",
         description: "a nice pair of slacks with an elastic waist",
         stock: 15,
@@ -234,7 +242,7 @@ end
 
 
 
-categories = ["pants", "booties", "santa", "pirate", "scarves", "frog", "hoodies", "bagpipes", "pumpkin", "shirts", "beaver", "jackets", "cat", "track suits", "hats", "cowboy hats", "tutus", "bobsleds", "nyan", "sailors", "minnie mouse", "bunny", "leopard print", "mammals", "birds", "amphibians"]
+categories = ["dragon", "pants", "booties", "santa", "pirate", "scarves", "frog", "hoodies", "bagpipes", "pumpkin", "shirts", "beaver", "jackets", "cat", "track suits", "hats", "cowboy hats", "tutus", "bobsleds", "nyan", "sailors", "minnie mouse", "bunny", "leopard print", "mammals", "birds", "amphibians"]
 
 # categories = ["cat", "pants", "dog", "booties", "santa", "guinea pig", "pirate", "pig", "llama", "scarves", "frog", "pig", "pig", "hoodies", "hedgehog", "bagpipes", "pumpkin", "guinea pig", "penguin", "shirts", "beaver", "bagpipes", "dog", "jackets", "pirate", "cat", "dog", "track suits", "hats", "dog", "pig", "cowboy hats", "pig", "tutus", "dog", "bobsleds", "nyan", "cat", "cat", "sailors", "pig", "minnie mouse", "baby", "bunny", "mammals", "birds"]
 
