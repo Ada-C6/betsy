@@ -1,0 +1,13 @@
+<h1>your search results</h1>
+
+<% @product.each do |product| %>
+<%=image_tag "#{product.photo_url}"%>
+<h3><%= "#{product.name.capitalize}" %></h3>
+<h3><%= "#{product.price}" %></h3>
+<h3><%= "#{product.inventory}" %></h3>
+<h3><%= "#{product.description}" %></h3>
+<h3><%= link_to "take a quick look", product_path(product.id), method: :get, class:"button" %></h3>
+<% if @session == false %>
+<h3><%= link_to "review this product", new_product_review_path(product.id), method: :get, class: "button" %></h3>
+<%end %>
+<% end %>

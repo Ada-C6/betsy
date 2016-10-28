@@ -1,0 +1,56 @@
+<main class="row">
+  <section class="small-12 medium-6 medium-centered">
+    <%= form_for @order do |f| %>
+      <h2 class="text-center">Checkout: Complete Your Order</h2>
+      <ul>
+      <h3>Mailing Address:</h3>
+        <li>
+          <%= f.label :mailing_address, "Street Address" %>
+          <%= f.text_field :mailing_address %>
+        </li>
+        <li>
+          <%= f.label :mailing_city, "City" %>
+          <%= f.text_field :mailing_city %>
+        </li>
+        <li>
+          <%= f.label :mailing_state, "State" %>
+          <%= f.text_field :mailing_state %>
+        </li>
+        <li>
+          <%= f.label :mailing_zip, "Zip Code" %>
+          <%= f.text_field :mailing_zip %>
+        </li>
+      </ul>
+      <ul>
+        <li>
+        <%= f.label :email, "Email Address" %>
+        <%= f.text_field :email %>
+      </li>
+      <h3>TipsyBrain Card Information:</h3>
+      <li>
+        <%= f.label :cc_holder_name, "Name on Card" %>
+        <%= f.text_field :cc_holder_name %>
+      </li>
+      <li>
+        <%= f.label :cc_number, "12-digit Card Number:"%>
+        <%= f.text_field :cc_number%>
+      </li>
+      <li>
+        <%= f.label :exp, "Expiration Date" %>
+        <%= f.date_field :exp, { discard_day: true } %>
+      </li>
+      <li>
+        <%= f.label :cvv, "CVV" %>
+        <%= f.text_field :cvv %>
+      </li>
+      <li>
+        <%= f.label :billing_zip, "Billing Zip Code" %>
+        <%= f.text_field :billing_zip %>
+      </li>
+      <ul>
+
+      </ul>
+      <%= f.submit "Submit", class: "success button" %>
+    <% end %>
+  </section>
+</main>

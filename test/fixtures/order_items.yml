@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture per the syntax in the comments below
+#
+one:
+  order_id: 1
+  product_id: 1
+  quantity: 5
+two:
+  order_id: 2
+  product_id: 22
+  quantity: 10
+three:
+  order_id: 2
+  product_id: 1
+  quantity: 15
+four:
+  order_id: 3
+  product_id: 22
+  quantity: 20
+five:
+  order_id: 4
+  product_id: 22
+  quantity: 25
+six:
+  order_id: 4
+  product_id: 22
+  quantity: 25
+
+lil:
+ order_id: 88
+ product_id: 99
+ quantity: 5

@@ -1,0 +1,14 @@
+
+<main class="row container">
+  <h1 class="AllList text-center small-12 column">Products </h1>
+  <div class="row small-up-3 medium-up-3 large-up-4" id="product-list">
+    <% @products.each do |product| %>
+      <div class="column">
+        <%=image_tag "#{product.photo_url}", class: "thumbnail", alt: "#{product.name}"%>
+        <h5><%= product.name %></h5>
+        <p><%= currency(product.price) %></p>
+        <%= link_to "Buy", product_path(product.id), class: "button small expanded hollow" %>
+      </div>
+    <% end %>
+  </div>
+</main>

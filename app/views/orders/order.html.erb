@@ -1,0 +1,21 @@
+<h2 class="link"><%= link_to "back", orders_path%></h2>
+<h2><%= form_for @order, method: :patch do |f| %>
+  email: <%= f.text_field :email %>
+  Name On Card: <%= f.text_field :cc_holder_name %>
+  Credit Card Number: <%= f.text_field :cc_number %>
+  exp:<%= f.date_field :exp %>cvv: <%= f.text_field :cvv %>billing zip code: <%= f.text_field :billing_zip %>
+
+  Mailing Address:
+  Street: <%= f.text_field :mailing_address %>
+  City: <%= f.text_field :mailing_city %>
+  State:<%= f.text_field :mailing_state %>
+  Zip Code:<%= f.text_field :mailing_zip %>
+  <%= f.submit "Submit" %></h2>
+  <% end %>
+
+
+
+
+
+  <h1>Once Your Information is Submitted, You Will Have A Chance To Review and Finalize Your Order </h1>
+  <h2 class="link"><%= link_to "keep shopping", products_path%></h2>

@@ -1,0 +1,18 @@
+<h1> Products by this seller </h1>
+
+
+<h1 class="AllList"> </h1>
+<% @product.each do |product| %>
+  <%=image_tag "#{product.photo_url}"%>
+  <td><%= "#{product.name.capitalize}" %></td>
+  <td><%= "#{product.price}" %></td>
+  <td><%= "#{product.inventory}" %></td>
+  <td><%= "#{product.description}" %></td>
+  <h3><%# button_to ##TODO make a button to "buy this product" method: :get %></h3>
+  <%end %>
+
+
+  <% if @user.logged_in? == false %>
+  <h3><%= link_to "review this product", new_product_review_path(product.id), method: :get, class:"button" %></h3>
+
+    <%end %>

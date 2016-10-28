@@ -1,0 +1,28 @@
+
+<%# if flash[:error] %>
+<h3 class="errors">
+  <%# flash[:error] %>
+</h3>
+<%# end %>
+<div class="container">
+  <div class="link">
+  <div class="row small-up-1 medium-up-1 large-up-1">
+
+    <%= link_to "Browse Products List by Seller", users_path, method: :get, class: "button"%>
+
+          <%= link_to "Browse Products by Category", categories_path, method: :get, class: "button"%>
+
+            <%= link_to "Our Most Popular Products", popular_path, method: :get, class: "button"%>
+
+        </div>
+    </div>
+
+<div class="row small-up-3 medium-up-3 large-up-4">
+  <% @products.each do |products| %>
+  <div class="column">
+    <li class="thumbnail"><%=image_tag products.photo_url, rwidth: '150', rheight: '150'%></li>
+    <%=link_to "Take a peak", product_path(products.id), method: :get, class:"button small expanded hollow"%>
+  </div>
+  <% end %>
+</div>
+</div>

@@ -1,0 +1,99 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture per the syntax in the comments below
+#
+pending_one:
+  id: 1
+  status: "pending"
+pending_two:
+  id: 2
+  placed: rand(2.years).seconds.ago.to_datetime
+  email: pending_two@fixture.com
+  mailing_address: Pending Order 2 Address
+  mailing_city: Pending Order 2 City
+  mailing_state: Pending Order 2 State
+  mailing_zip: 22222
+  cc_holder_name: Pending Order 2 CC Name
+  cc_number: 2222222
+  exp: rand(5.years).seconds.from_now.to_date
+  cvv: 222
+  billing_zip: 21111
+  status: "pending"
+paid_order:
+  id: 3
+  placed: rand(2.years).seconds.ago.to_datetime
+  email: paid_order@fixture.com
+  mailing_address: Paid Order Address
+  mailing_city: Paid Order City
+  mailing_state: Paid Order State
+  mailing_zip: 33333
+  cc_holder_name: Paid Order CC Name
+  cc_number: 3333333
+  exp: rand(5.years).seconds.from_now.to_date
+  cvv: 333
+  billing_zip: 31111
+  status: "paid"
+complete_order:
+  id: 4
+  placed: rand(2.years).seconds.ago.to_datetime
+  email: complete_order@fixture.com
+  mailing_address: Complete Order Address
+  mailing_city: Complete Order City
+  mailing_state: Complete Order State
+  mailing_zip: 44444
+  cc_holder_name: Complete Order CC Name
+  cc_number: 4444444
+  exp: rand(5.years).seconds.from_now.to_date
+  cvv: 444
+  billing_zip: 41111
+  status: "complete"
+cancelled_order:
+  id: 5
+  placed: rand(2.years).seconds.ago.to_datetime
+  email: cancelled_order@fixture.com
+  mailing_address: Cancelled Order Address
+  mailing_city: Cancelled Order City
+  mailing_state: Cancelled Order State
+  mailing_zip: 55555
+  cc_holder_name: Cancelled Order CC Name
+  cc_number: 5555555
+  exp: rand(5.years).seconds.from_now.to_date
+  cvv: 555
+  billing_zip: 51111
+  status: "cancelled"
+
+six:
+ id: 6
+ placed: 2016-10-29 21:56:43
+ email: cd@ma.com
+ mailing_address: 123 main st
+ mailing_city: seattle
+ mailing_state: wa
+ mailing_zip: 98118
+ cc_holder_name: jane doe
+ cc_number: 1234 1233 1235 1243
+ exp: 0820
+ cvv: 152
+ billing_zip: 11231
+ created_at: 2016-10-19 21:56:43
+ updated_at: 2016-10-19 21:56:43
+ status: paid
+
+lil_order:
+ id: 88
+ placed: 2016-10-19 21:56:43
+ email: sd@laksj.com
+ mailing_address: 555 main st
+ mailing_city: seattle
+ mailing_state: wa
+ mailing_zip: 98118
+ cc_holder_name: john doe
+ cc_number: 5555 1233 1235 1243
+ exp: 0820
+ cvv: 152
+ billing_zip: 11231
+ created_at: 2016-10-19 21:56:43
+ updated_at: 2016-10-19 21:56:43
+ status: completed

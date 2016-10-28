@@ -1,0 +1,94 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 2
+  name: MyString
+  price: 999
+  description: MyString
+  photo_url: MyString
+  retired: false
+  created_at: 2016-10-19 21:56:43
+  updated_at: 2016-10-19 21:56:43
+
+two:
+  user_id: 1
+  name: MyString
+  price: 999
+  description: MyString
+  photo_url: MyString
+  retired: false
+  created_at: 2016-10-19 21:56:43
+  updated_at: 2016-10-19 21:56:43
+
+lil_product:
+  id: 99
+  user_id: 246879948
+  name: test product
+  price: 1999
+  description: MyString
+  photo_url: MyString
+  retired: false
+  created_at: 2016-10-19 21:56:43
+  updated_at: 2016-10-19 21:56:43
+
+kates:
+  id: 2
+  user_id: 9865
+  name: Kates
+  price: 9.99
+  description: MyString
+  photo_url: tincture.jpg
+  retired: false
+  created_at: 2016-10-19 21:56:43
+  updated_at: 2016-10-19 21:56:43
+
+lil_product2:
+  user_id: 246879948
+  name: test product
+  price: 1999
+  description: MyString
+  photo_url: MyString
+  retired: true
+  created_at: 2016-10-19 21:56:43
+  updated_at: 2016-11-19 21:56:43
+
+esthern:
+  id: 3
+  user_id: 9268
+  name: Kates
+  price: 9.99
+  description: MyString
+  photo_url: something.png
+  retired: false
+  created_at: 2016-10-19 21:56:43
+  updated_at: 2016-31-19 21:56:43
+
+order_test_product_1:
+  id: 1
+  user_id: 12345
+  name: order test product 1 name
+  price: 999999
+  inventory: 10
+  description: order test product 1 description
+  photo_url: http://product_1.com
+  retired: false
+
+order_test_product_22:
+  id: 22
+  user_id: 12346
+  name: order test product 22 name
+  price: 111111
+  inventory: 100
+  description: order test product 22 description
+  photo_url: http://product_1.com
+  retired: false
+
+ada_product:
+  id: 58
+  user_id: 225478506
+  name: original name
+  price: 1100
+  inventory: 10
+  description: some description
+  photo_url: http://product_1.com
+  retired: false

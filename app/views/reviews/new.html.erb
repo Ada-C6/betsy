@@ -1,0 +1,20 @@
+<main class="row">
+  <section class="small-12 medium-6 medium-offset-3 columns" id="review-form">
+    <h3>How would you rate <%= @product.name %>?</h3>
+    <%= form_for [@product, @review] do |f| %>
+        <%= f.radio_button(:rating, 1) %>
+        <%= f.label :rating, "1 &#x2605;".html_safe %>
+        <%= f.radio_button(:rating, 2) %>
+        <%= f.label :rating, "2 &#x2605;".html_safe %>
+        <%= f.radio_button(:rating, 3) %>
+        <%= f.label :rating, "3 &#x2605;".html_safe %>
+        <%= f.radio_button(:rating, 4) %>
+        <%= f.label :rating, "4 &#x2605;".html_safe %>
+        <%= f.radio_button(:rating, 5) %>
+        <%= f.label :rating, "5 &#x2605;".html_safe %>
+        <%= f.label :review, "Review" %>
+        <%= f.text_area :review %>
+        <%= f.submit "Submit", class: "success button" %>
+    <% end %>
+  </section>
+</main>

@@ -1,0 +1,41 @@
+<main class="row">
+  <section id="new-product" class="small-12 medium-6 medium-centered">
+  <h1>Add a New Product</h1>
+  <%= form_for @product, method: http_verb do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label "Price in cents" %>
+    <%= f.number_field :price, in: 50..20000, step: 50 %> <%# figure out how to have the display amount differ from submit value %>
+    <%= f.label :photo_url %>
+    <%= f.text_field :photo_url %>
+
+    <%# f.label :category_ids %>
+    <%# f.select :category_ids, @categories %>
+    <%= f.fields_for :categories_products do |cp| %>
+      <%= cp.label :category_id, "Select a Category" %>
+      <%= cp.select :category_id, @categories, include_blank: true, multiple: true %>
+      <%= cp.label :category_id_2, "Select a Category" %>
+      <%= cp.select :category_id_2, @categories, include_blank: true %>
+      <%= cp.label :category_id_3, "Select a Category" %>
+      <%= cp.select :category_id_3, @categories, include_blank: true %>
+    <% end %>
+
+    <%= f.fields_for :categories do |c| %>
+      <%= c.label :name, "Create a new category" %>
+      <%= c.text_field :name %>
+    <% end %>
+    <%# cp.hidden_field :product_id, value: @product.id %>
+
+
+    <%= f.label :inventory %>
+    <%= f.number_field :inventory, in: 0..500 %>
+    <%= f.radio_button(:retired, false) %>
+    <%= f.label "Keep this product active" %>
+    <%= f.radio_button(:retired, true) %>
+    <%= f.label "Retire this product" %>
+    <%= f.submit "Submit", class: "success button" %>
+  <% end %>
+</section>
+</main>

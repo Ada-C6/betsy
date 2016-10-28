@@ -1,0 +1,107 @@
+<main id="seller_dashboard">
+  <h2 class="welcome">Welcome to <%= user_name %>'s Dashboard</h2>
+
+  <h2><%= flash[:errors] %></h2>
+  <% if @user.products.blank? %>
+  <p>You have not listed any products yet, time to change that!</p>
+  <%= link_to "Get Started", new_product_path, method: :get, class: "button hollow"  %>
+
+  <% else %>
+  <article class="orders">
+
+    <h2>ORDER FULFILLMENT</h2>
+
+    <section class="order-summary">
+      <h3><%= "Total Number of Orders: #{@orders.count}" %></h3>
+      <% unless @user.revenues.nil? %>
+      <h3><%= "Total Revenues: #{currency(@user.revenues)}" %></h3>
+      <% end %>
+    </section>
+
+    <section class="filter">
+      <span>Select View</span>
+      <%= link_to "All", orderstatus_path(@user.id, orderstatus: "all"), class: "hollow button" %>
+      <%= link_to "Paid", orderstatus_path(@user.id, orderstatus: "paid"), class: "hollow button" %>
+      <%= link_to "Pending", orderstatus_path(@user.id, orderstatus: "pending"), class: "hollow button" %>
+      <%= link_to "Completed", orderstatus_path(@user.id, orderstatus: "completed"), class: "hollow button" %>
+      <%= link_to "Cancelled", orderstatus_path(@user.id, orderstatus: "cancelled"), class: "hollow button" %>
+    </section>
+
+    <section class="orders-table">
+      <% if @orders.empty? %>
+      <%= "You have no #{@status} orders" %>
+      <% else %>
+      <% if !@status.nil? && !(@status == "all") %>
+      <h4><%= "#{@status.capitalize} Revenues: #{currency(@revenues)}" %></h4>
+      <h4><%= "#{@status.capitalize} Orders: #{@orders.count}" %></h4>
+      <% end %>
+      <table>
+        <thead>
+          <tr>
+            <th>Order</th>
+            <!-- <th>Order Item</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Description (show product link)</th>
+            <th>Date/Time Placed</th>
+            <th>Mark Shipped</th> -->
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to "Order No. #{order.id}", order_path(order) %></td>
+            <td>Status:
+              <% unless order.complete_order_for_user(@user).nil? %>
+                complete
+              <% else %>
+              <%= order.status %></td>
+              <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+    </section>
+    </article>
+
+    <article class="products-summary">
+      <h2>PRODUCTS</h2>
+      <section class="add row">
+        <%= link_to "Add a category", new_category_path, method: :get, class: "button hollow large-3 column large-offset-3" %>
+        <%= link_to "Add a product", new_product_path, method: :get, class: "button hollow large-3 column large-offset-3 " %>
+        <%= link_to "Browse all my active products", users_products_path(@user.id), method: :get, class: "button hollow large03 column large-offset-3 end" %>
+      </section>
+
+      <table>
+        <tbody>
+          <%= form_tag user_path(@user.id), method: :get do %>
+          <%= label_tag(:show, "Show Only: ") %>
+          <%= select_tag :show, options_for_select([["Active", "active"], ["Retired", "retired"]]), prompt: "Please Select" %>
+          <%= submit_tag "Show me filtered Products", class: "button"%>
+          <% end %>
+
+          <% unless @show.nil? || @show.empty? %>
+          <h2 class="productlist">  Now showing <%= @show.capitalize %> Products: </h2>
+          <% end %>
+          <% @products.each do |product| %>
+          <tr>
+            <td><%= link_to "#{product.name.capitalize}", product_path(product) %></td>
+            <td><%= button_to "Edit", edit_product_path(product), { method: :get, class: "hollow button" }  %></td>
+            <% if @show == "active" %>
+            <td><%= button_to "Retire", productstatus_path(product, productstatus: "retire"), { method: :patch, class: "secondary hollow button" } %></td>
+            <% end %>
+            <% if @show == "retired" %>
+            <td><%= link_to "Activate", productstatus_path(product, productstatus: "activate"), { method: :patch, class: "secondary hollow button" } %></td>
+            <% end %>
+            <td><%= button_to "Delete", product_path(product), method: :delete, class: "button alert", data: { confirm: 'Are you certain you want to delete this?' } %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+
+  </article>
+  <% end %>
+</main>

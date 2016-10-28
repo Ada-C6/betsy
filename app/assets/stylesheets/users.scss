@@ -1,0 +1,17 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#seller_dashboard {
+  width: 60%;
+  margin: 10vh auto;
+}
+
+#seller_dashboard h2 {
+  text-align: center;
+}
+
+.filter a.button, .add a.button {
+  font-family: Arial;
+  font-size: 0.9rem;
+  width: auto;
+}

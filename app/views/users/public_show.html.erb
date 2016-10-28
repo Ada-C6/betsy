@@ -1,0 +1,14 @@
+<h1> All Products Sold by <%= @user.user_name %></h1>
+
+
+<% @products.each do |product|  %>
+<div class="row" >
+  <li class="small-3 columns"> <%= link_to "#{product.name}", product_path(product)  %>
+  <%=image_tag "#{product.photo_url}" %> </li>
+
+<%# @products.each do |product|  %>
+<%# link_to "#{product.name}", product_path(product)  %>
+<!-- adds image of the product -->
+<%#image_tag "#{product.photo_url}" %>
+<% end  %>
+</div>

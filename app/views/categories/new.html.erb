@@ -1,0 +1,21 @@
+<section class="errors">
+  <% if @category.errors.any? %>
+  <ul class="errors">
+    <% @category.errors.each do |column, message| %>
+    <li>
+      <strong>
+        <%= column.capitalize %>
+      </strong> <%= message %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</section>
+
+<main class="row">
+  <section id="new-category" class="small-12 medium-6 medium-centered">
+
+<h2>Add New Category</h2>
+  <%= render partial: 'form' %>
+</section>
+</main>

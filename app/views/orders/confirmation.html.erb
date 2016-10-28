@@ -1,0 +1,31 @@
+<main class="row">
+  <section id="order-confirmation" class="small-12 medium-6 medium-centered">
+    <h1 class="text-center"> Order confirmation for <%= @order.cc_holder_name %></h1>
+    <h5 class="text-center"> Order number:  <%= @order.id %></h5>
+    <ul id="buyer-information">
+      <h2> Buyer Information </h2>
+      <li> Name: <%= @order.cc_holder_name %> </li>
+      <li> Email Address: <%= @order.email %> </li>
+      <li> Mailing Address: <%= @order.mailing_address %> </li>
+        <!-- masks numbers except last 4 -->
+      <li> Credit Card Number: <%= @order.mask(@order.cc_number) %> </li>
+      <li> Credit Card Exp. Date: <%= @order.exp %> </li>
+
+      <li> Order placed at: <%= pretty_date(@order.created_at) %> </li>
+      <li> Order status: <%= @order.status %> </li>
+    </ul>
+
+    <ul id="order-items">
+      <h2> Ordered Items </h2>
+      <% @order.order_items.each do |item| %>
+      <li>  Name: <%= link_to "#{item.product.name}", product_path(item.product_id) %></li>
+      <li>  Quantity:  <%= item.quantity %></li>
+      <li>  Price:  <%= currency(item.product.price) %></li>
+      <li>  Subtotal:  <%= currency(item.subtotal) %></li>
+      <% end  %>
+      </ul>
+      <ul>
+      <h4>  Order Total:  <%= currency(@order.order_total) %></h4>
+    </ul>
+  </secion>
+</main>

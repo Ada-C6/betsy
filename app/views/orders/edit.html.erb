@@ -1,0 +1,43 @@
+<section id="errors" class="small-12 medium-6 medium-centered">
+  <h4 class="errors text-center"> <%= flash[:error] %> </h4>
+  <% if !@order_item.nil? && @order_item.errors.any? %>
+  <ul class="errors">
+    <% @order_item.errors.each do |column, message| %>
+    <li>
+      <strong><%= column.capitalize %></strong> <%= message %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</section>
+<main class="row">
+  <section id="order-items" class="small-12 medium-6 medium-centered">
+    <h1 class="text-center">Your Order: <%= @order.id %></h1>
+    <% if !@order_items.blank? %>
+      <!-- view for non-empty cart -->
+      <% @order_items.each do |item| %>
+      <h3><%= link_to item.product.name, product_path(item.product) %></h3>
+      <ul>
+        <li>
+          Price: <%= currency(item.product.price) %>
+        </li>
+        <li>
+          <%= form_for [@order, item] do |f| %>
+          <%= f.label :quantity %>
+          <%= f.text_field :quantity %>
+          <%= f.submit "Update", class: "small button hollow" %>
+          <% end %>
+        </li>
+        <li>
+          Subtotal: <%= currency(item.subtotal) %>
+          <%= button_to [@order, item], method: :delete, class: "button tiny", data: { confirm: "Are you sure?" } do %>Remove from Cart<% end %>
+        </li>
+      </ul>
+      <% end %>
+      <%= button_to "Checkout", checkout_order_path(@order), method: :get, class: "success button" %>
+    <% else %>
+      <!-- view for empty cart -->
+      <h3 class="text-center">Your cart is empty. <%= link_to "Go shopping!", products_path %></h3>
+    <% end %>
+  </section>
+</main>

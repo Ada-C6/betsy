@@ -1,0 +1,13 @@
+<!-- Browse products by merchant (users) (users#index ⇒ index view, shows all sellers/merchants) -->
+<nav class="nav">
+  <div class="callout large">
+      <div class="row small-up-1 medium-up-1 large-up-1">
+      <h1>Toggle the link with your user name to navigate to your account!</h1>
+
+        <% @users.each do |user| %>
+        <h2><%= link_to "#{user.user_name}", users_products_path(user) %></h2>
+
+      <% end %>
+    </div>
+  </div>
+</nav>

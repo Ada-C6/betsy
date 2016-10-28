@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+
+<% @category.products.each do |product| %>
+  <section>
+    <p class="small-4 columns"><%=  link_to "#{product.name}", product_path(product) %>  </p>
+  </section>
+  <% end %>

@@ -1,0 +1,91 @@
+<!-- Errors -->
+<section id="errors" class="small-12 medium-6 medium-centered">
+  <% if @order_item.errors.any? %>
+  <ul class="errors">
+    <% @order_item.errors.each do |column, message| %>
+    <li>
+      <strong><%= column.capitalize %></strong> <%= message %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+  <h2><%= flash[:errors] %></h2>
+</section>
+<!-- Product Details -->
+<main class="row">
+  <section id="product-details" class="small-12 medium-6 medium-centered">
+    <h1 class="details text-center"><%= "#{@product.name.capitalize}" %></h1>
+    <h3>Categories</h3>
+    <% @product.categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
+    <h3>Details</h3>
+    <%=image_tag "#{@product.photo_url}"%>
+    <ul>
+      <li>
+        <%= "Price: #{currency(@product.price)}" %>
+      </li>
+      <li>
+        <%= "Details: #{@product.description}" %>
+      </li>
+      <% if @product.in_stock? %>
+      <li>
+        There are <%= "#{@product.inventory}" %>  remaining items, for  <%= "#{@product.name}" %> left!
+      </li>
+      <!-- Add to Cart Form -->
+      <li>
+        <%= form_for [@order, @order_item] do |f| %>
+        <%= f.label :quantity %>
+        <%= f.text_field :quantity %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.submit "Add to Cart", class: "button" %>
+        <% end %>
+      </li>
+      <% else %>
+      <li>
+        <%= "#{@product.name}" %> is out of stock.
+      </li>
+      <% end %>
+    </ul>
+  </section>
+  <!-- Reviews -->
+  <section class="row" id="product-reviews">
+    <div class="small-12 medium-10 medium-centered columns">
+      <div class="row small-up-1 medium-up-2">
+        <h3>Reviews</h3>
+        <% if @reviews.blank? %>
+          <h5>There are no reviews for this product. <%= link_to "Add a Review!", new_product_review_path(@product.id) %></h5>
+        <% else %>
+        <h4>Average Rating: <%= @product.average_rating.round(2) %> <big><%= stars(@product.average_rating) %></big></h4>
+          <% @reviews.each do |review| %>
+            <article class="review column">
+              <h2><%= stars(review.rating) %></h2>
+              <h5>Review: "<%= review.review %>"</h5>
+            </article>
+          <% end %>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</main>
+<!-- Buttons -->
+<!-- <section class="row small-2-up medium-4-up small-centered" id="button-section"> -->
+  <!-- <div class="column"> -->
+<div class="container">
+  <div class="link">
+    <div class="row small-up-1 medium-up-1 large-up-1">
+      <%= link_to "view related items", category_path(@product.id), method: :get, class: "button" %>
+      <%= link_to "view all products by this seller", users_products_path(@product.user_id), method: :get, class: "button" %>
+      <% if session[:user_id] != @product.user_id || session[:user_id] == nil %>
+        <%= link_to "review this product", new_product_review_path(@product.id), method: :get, class: "button" %>
+        <%end %>
+
+      <%#TODO: how do I make the method to only allow the user selling the product to be able to edit it? @session means has seller, @session == true && if  %>
+      <% if session[:user_id] == @product.user_id %>
+        <%= link_to "Edit this Product", edit_product_path(@product.id), method: :get, class: "button" %>
+        <%# link_to "add another product", new_product_path, method: :get, class: "button" %>
+        <%= link_to "Delete this Product", product_path(@product.id), method: :delete, class: "button", data: { confirm: 'Are you certain you want to delete this?' }  %>
+      <%end%>
+    </div>
+  </div>
+</section>
