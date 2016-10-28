@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   before_action :shopping_cart
   before_action :product_ref, except: [:index, :empty_cart]
-  before_action :total
+  # before_action :total
   after_action :no_item, only: [:less_prod, :delete_product]
 
   def index

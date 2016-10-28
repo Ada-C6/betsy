@@ -1,4 +1,6 @@
-<%@orders.each do |order|%>
-<h3> Thank you for your order <%="#{order.cc_name}"%>!</h3>
- <p><strong> Your order number is  </strong> <%= "#{order.id}" %> </p>
- <%end%>
+
+<h3> Thank you for your order <%="#{@order["cc_name"]}"%>!</h3>
+ <p><strong> Your order number is  </strong> <%= "#{@order["id"]}" %> </p>
+ <p>
+   Total comes to: <%= @total["total"] %>
+ </p>
