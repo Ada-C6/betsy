@@ -5,8 +5,11 @@
     <section class="column image-container">
       <section class="thumbnail">
         <% image = Product.find_photo_image(featured_image) %>
-        <%= link_to image_tag(image, alt: "#{ featured_image.name }", class: "rounded-image"), product_path(featured_image) %>
-        <p class="product-description caption"><strong><%= link_to featured_image.name, product_path(featured_image) %></strong> <%= "$#{ sprintf('%.2f' % (featured_image.price/100.0)) }" %></p>
+        <div class="row">
+          <p class="medium-1 columns"></p>
+          <%= link_to image_tag(image, alt: "#{ featured_image.name }", class: "rounded-image medium-10 columns"), product_path(featured_image) %>
+        </div>
+        <p class="product-name product-description caption"><strong><%= link_to featured_image.name, product_path(featured_image) %></strong> <%= "$#{ sprintf('%.2f' % (featured_image.price/100.0)) }" %></p>
       </section>
     </section>
   <% end %>

@@ -75,6 +75,7 @@
    border-radius: 45px;
    margin: 0 auto;
    max-width: 85%;
+   max-height: 200px;
  }
 
  .image-container {
@@ -84,11 +85,25 @@
    border-radius: 4px;
  }
 
+ .product-name {
+  position: absolute;
+  bottom: 2rem;
+  padding: 1rem;
+  text-align: center;
+ }
+
  .thumbnail {
    width: 300px;
    height: 300px;
    overflow: hidden;
    margin: auto;
+   position: relative;
+ }
+
+ .edit-button {
+   position: absolute;
+   bottom: 0;
+   padding: 1rem;
  }
 
  // Products by Category page
