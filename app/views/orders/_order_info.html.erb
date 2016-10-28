@@ -1,0 +1,30 @@
+<% if @order.status != "pending" %>
+<section>
+  <p></p>
+  <table style="width:100%" class="table">
+    <h3>Customer Information:</h3>
+  <tr>
+    <th>Email:</th>
+    <td><%= @order.email %></td>
+  </tr>
+  <tr>
+    <th>Mailing Address:</th>
+    <td><%= @order.mailing_address %></td>
+  </tr>
+  <tr>
+    <th>Name on Credit Card:</th>
+    <td><%= @order.name %></td>
+  </tr>
+  <tr>
+    <th>Last four digits of Credit Card:</th>
+    <!-- Will have to adjust the order model - to include leading zeros -->
+    <td><%= sprintf '%04d' % @order.cc_last_4 %></td>
+  </tr>
+  <tr>
+    <th>Credit Card Expiration Date:</th>
+    <!-- Currently not displaying the expiration date.  -->
+    <td><%= @order.cc_expire %></td>
+  </tr>
+</table>
+</section>
+<% end %> 

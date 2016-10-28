@@ -1,0 +1,60 @@
+<article>
+  <header>
+    <h1 class="page-title">Order Page for <%= @order.name%></h1>
+  </header>
+
+  <%if flash[:notice]%>
+    <h2 id="notice"><%= flash[:notice] %></h2>
+  <%end%>
+
+<!-- this link to edit order will be restricted to customer if order_status is pending) -->
+<% if @order.status == "pending" %>
+  <p>
+    <!--  -->
+    <%= button_to "Checkout", checkout_path(@order.id), method: :get %>
+  </p>
+<% end %>
+
+<%= render partial: "order_info" %>
+
+
+<section>
+  <table class="table">
+    <h3>Order Information:</h3>
+    <tr>
+      <th>Product Item</th>
+      <th>Quantity</th>
+      <th>Price per Item</th>
+      <th>Total</th>
+      <th>Associated Merchant</th>
+      <th>Shipped?</th>
+    </tr>
+    <% @order_items.each do |item| %>
+    <tr>
+
+        <td><%= Product.find(item.product_id).name%></td>
+        <td><%= item.quantity%></td>
+        <td><%= money_format(Product.find(item.product_id).price)%></td>
+        <td><%= money_format(Product.find(item.product_id).price * item.quantity)%></td>
+        <td><%= Product.find(item.product_id).merchant_id%></td>
+        <td>
+          <%= item.shipping_status%>
+          <% if @current_user == Product.find(item.product_id).merchant_id %>
+          <%= button_to "ship this product", some_path %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <h3>Grand Total:<%= money_format(@total_revenue) %></h3>
+</section>
+
+<% @order_items.each do |item| %>
+  <% if @order.id == item.order_id %>
+    <p> Merchant_id: <%=(item.product.merchant_id) %>Product_id: <%= item.product_id %> Order_id <%= item.order_id %></p>
+  <% end %>
+<% end %>
+
+
+</article>

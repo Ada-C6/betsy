@@ -1,0 +1,7 @@
+<!-- This should only be visible to logged in users. -->
+<article>
+  <header>
+    <h1 class="page-title">Hi, <%= @current_user.name %>! You're editing <%= @product.name %> !</h1>
+  </header>
+  <%= render partial: "form", locals: { http_method: :patch } %>
+</article>

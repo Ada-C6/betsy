@@ -1,0 +1,27 @@
+<!-- This should only be visible to logged in users. -->
+<article>
+  <header>
+    <h3 class="page-title underline cream-background">Hi, <%= @current_user.name %>! You're making a new product!</h3>
+  </header>
+
+  <section>
+    <div class="row">
+      <h5 class="small-8 columns indent change-font add-padding-top">Please add a category if you do not see an appropriate one for your product below:</h5>
+      <%= link_to "Add a Category", new_category_path, class: "button small-2 columns" %></p>
+    </div>
+
+    <div class="row">
+      <ol id="category-options">
+        <% @all_categories.each do | category | %>
+          <li class="small-3 columns"><%= category.name %></li>
+        <% end %>
+      </ol>
+    </div>
+    <article class="underline">
+    </article>
+  </section>
+
+  <section class="product-new-table">
+    <%= render partial: "form", locals: { http_method: :post } %>
+  </section>
+</article>

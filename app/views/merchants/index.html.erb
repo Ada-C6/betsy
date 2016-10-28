@@ -1,0 +1,23 @@
+<section class="cream-background">
+  <article>
+    <header>
+      <h2 class="page-title">All Mechants</h2>
+    </header>
+  </article>
+
+  <article>
+    <ul class="row small-up-2 medium-up-4 bullet-none indent top-add-space change-font increase-font">
+      <% @merchants.each do |merchant| %>
+        <li class="column">
+          <%= link_to "#{merchant.name}", merchant_path(merchant) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="row small-up-12">
+      <li class="column">
+        <%= image_tag "merchant-strawberries.jpg", class: "merchant-img" %>
+      </li>
+    </ul>
+  </article>
+</section>

@@ -1,0 +1,28 @@
+<article>
+<header>
+  <h1>Checkout</h1>
+</header>
+<p><%= @order.name%>, please complete the following information to complete your checkout.</p>
+
+<%= form_for(@order, url: pay_for_order_path) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label :mailing_address %>
+<%= f.text_field :mailing_address %>
+
+<%= f.label :cc_last_4%>
+<%= f.text_field :cc_last_4 %>
+
+<%= f.label :cc_expire %>
+<%= f.text_field :cc_expire %>
+
+<%= f.hidden_field :status, :value => "paid" %>
+
+  <%= f.submit "Complete Order" %>
+<% end %>
+</article>

@@ -1,0 +1,9 @@
+<article class="cream-background padding-bot">
+  <header>
+    <h2 class="page-title padding-top">Select all of the Categories that your Product belongs to:</h2>
+  </header>
+
+  <section class="new-table change-font">
+    <%= render partial: "form", locals: { submit_url: product_product_categories_path, http_method: :post } %>
+  </section>
+</article>

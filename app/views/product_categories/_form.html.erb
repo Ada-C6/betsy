@@ -1,0 +1,23 @@
+<% if @product_category.errors.any? %>
+  <ul class="errors">
+    <% @product_category.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @product_category, class: 'add-form', html: {class: 'form'}, url: submit_url,method: http_method do |f| %>
+  <section>
+    <% @all_categories.each do | category | %>
+      <%= check_box_tag 'category_ids[]', category.id %>
+      <%= category.name %>
+    <% end %>
+  </section>
+
+  <section>
+    <%= f.submit "Create", class: "button"%>
+  </section>
+
+<% end %>
