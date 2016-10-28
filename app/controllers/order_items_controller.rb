@@ -23,7 +23,7 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
     # @order_item.quantity = 1 if @order_item.quantity == nil
-    # @order.save
+    @order.save
     session[:order_id] = @order.id
     redirect_to order_items_path
   end
@@ -44,7 +44,7 @@ class OrderItemsController < ApplicationController
     @order_items = @order.order_items
     redirect_to order_items_path
   end
-  #
+
     # def is_product_in_cart
     #   order = current_order
     #   @product_id = params[:order_item][:product_id]
