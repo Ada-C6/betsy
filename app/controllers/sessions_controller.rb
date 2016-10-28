@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-# If we want to implement this later, will need to customize authorization specifics...
-    skip_before_action :require_login, only: [:login, :create]
+    before_action :require_login, except: [:login, :create]
 
     def login_failure; end
 

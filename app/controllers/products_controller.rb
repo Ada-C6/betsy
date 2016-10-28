@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   before_action :find_product, except: [:index, :new, :create]
-  skip_before_action :require_login, only: [:index, :show]
+  before_action :require_login, except: [:index, :show]
 
   def index
     @products = Product.where(active:true)
-    # @order_item = current_order.order_items.new
+  # @order_item = current_order.order_items.new
   end
 
   def show; end

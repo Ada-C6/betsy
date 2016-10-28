@@ -25,8 +25,8 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   test "should get the new form" do
-    merchant_id = merchants(:doctor).id
-    get :new
+    merchant = merchants(:doctor)
+    get :new, {user_id: merchant.id}
     assert_template :new
     assert_template partial: '_form'
     assert_response :success
@@ -72,15 +72,22 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should get the product edit form" do
     product = products(:cat_suit)
-    user_id = product.merchant_id
-    get :edit, {id: product.id}, {user_id: user_id}
+    merchant_id = product.merchant_id
+    get :edit, {id: product.id}, {user_id: merchant_id}
     assert_template :edit
     assert_template partial: '_form'
     assert_response :success
 
-    # product = assigns(:product)
-    # assert_not_nil product
-    # assert_equal product.id, product_id
+    product = assigns(:product)
+    assert_not_nil product
+    assert_equal product.id, product.id
+  end
+
+  test "merchant should not be able to edit another merchant's product" do
+    product = products(:cat_suit)
+    merchant = merchants(:doctor)
+    get :edit, {id: product.id}, {user_id: merchant.id}
+    assert_redirected_to manage_products_path
   end
 
   test "update should change the product" do
