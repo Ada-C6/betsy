@@ -1,0 +1,34 @@
+<div class="basic">
+
+  <div class="row small-up-1 medium-up-2 large-up-4">
+    <%= render partial: 'layouts/greeting' %>
+    <h3 class="headline">Find Your Product</h3>
+      <%= form_tag(search_products_path(), :method => "get") do %>
+        <%= search_field_tag("query", nil, :placeholder => "search")%>
+        <%= submit_tag "Submit", :name => nil, class: 'button' %>
+      <% end %>
+  </div>
+
+  <div class="row small-up-1 medium-up-2 large-up-2">
+
+    <div class="headline">
+      <h3><%= link_to "All Collections", index_products_path%></h3>
+
+      <% @product_categories.each do |product_category| %>
+
+      <article class="column">
+        <ul class="product-info">
+          <div class="headline">
+
+            <li><%= link_to product_category, show_category_path(product_category) %></li>
+
+            <li><%= link_to(image_tag(Product.random_photo(product_category), :class=>'product_photo'), image_path(show_category_path(product_category))) %></li>
+
+          </div>
+        </ul>
+      </article>
+
+    <% end %>
+  </div>
+
+</div>

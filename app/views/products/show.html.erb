@@ -1,0 +1,67 @@
+<div class = "basic">
+  <div class="column medium-7 small-centered large-uncentered">
+    <%= image_tag(@product.photo_url) %>
+  </div>
+
+  <div class="column medium-5 small-centered large-uncentered">
+    <div class="row">
+      <h3 class="small-12 columns"> <%= @product.name %> </h3>
+
+      <p><%= @product.description %></p>
+      <p>Price: $<%= @product.price %></p>
+      <p>In-stock: <%= @product.inventory %></p>
+      <p>Category: <%= @product.category %></p>
+
+      <p>Seller: <%= link_to @seller.name, show_seller_products_path %></p>
+      <%= button_to("Other Items by this Seller", show_seller_products_path(@product.id), method: :get, class: 'button') %>
+
+
+      <p>Average rating:</p>
+        <% @product.average_rating.to_i.times do %>
+          <%= image_tag "http://www.clipartkid.com/images/24/bat-clipart-for-my-15month-old-alfie-i-vunZoo-clipart.png", alt: "bat rating", :class => "bat_rating"%>
+        <% end %>
+
+      <div class="quantity">
+        <%= form_tag(add_to_cart_path, method: :post) do %>
+          <%= label_tag :quantity %>
+          <%= select_tag :quantity, options_for_select((1..@product.inventory), 1) %>
+          <%= hidden_field_tag(:product_id, @product.id) %>
+          <%= submit_tag "Add to Cart", class: 'button' %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Review BUTTON -->
+
+      <%= button_to("Review Product",new_reviews_path(@product.id), action: :new, method: :get, class: 'button')%>
+
+    <%if @product.user_id == session[:user_id]%>
+
+      <!-- EDIT BUTTON, ONLY VISIBLE TO THOSE WHO ARE LOGGED IN -->
+
+      <%= button_to("Edit: #{@product.name}",edit_products_path(@product.id), action: :edit, method: :get, class: 'button')%>
+
+      <!-- DELETE BUTTON, REQUIRES LOGIN, LIKE EDIT BUTTON -->
+
+      <%=button_to "delete", destroy_products_path(@product.id), action: :destroy, method: :delete, class: 'button alert' %>
+
+    <% end %>
+
+    <p> REVIEWS:</p>
+    <% @reviews.each do |review| %>
+      <article class="review_box">
+        <p class="review_title">Title: <%= review.title %></p>
+        <% review.rank.to_i.times do %>
+          <%= image_tag "http://www.clipartkid.com/images/24/bat-clipart-for-my-15month-old-alfie-i-vunZoo-clipart.png", alt: "bat rating", :class => "bat_rating_small"%>
+        <% end %>
+        <p><%= review.description %></p>
+        <p class="review_title">
+            By: <%= review.name %>
+        </p>
+      </article>
+    <% end %>
+    <!-- BELOW IS COLUMN END DIV -->
+  </div>
+
+  <!-- BELOW IS BASIC END DIV -->
+</div>

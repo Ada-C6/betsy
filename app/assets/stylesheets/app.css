@@ -1,0 +1,130 @@
+body {
+  min-width: 100%;
+  font-size: 14pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.basic {
+  margin: 2% 12% 1% 12%;
+}
+
+.basic h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+.basic p {
+  padding: 1%;
+  font-weight: bold;
+}
+
+img.logo {
+  height: auto;
+  width: auto;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.top-bar {
+  background-color: black;
+  min-width: 100%;
+  padding: 2% 3%;
+}
+
+.top-bar ul {
+  background-color: black;
+}
+
+.top-bar-left {
+  max-width: 60%;
+}
+
+.top-bar-right {
+  background-color: black;
+  max-width: 40%;
+  width: 20% !important;
+  margin-right: 8%;
+}
+
+.top-bar-right li {
+  margin-left: 2%;
+  text-align: right;
+  font-weight: bold;
+}
+
+.top-bar-right li a {
+  color: white;
+  font-size: 1.25rem;
+}
+
+li.frontpage {
+  float: center;
+  display: inline-block;
+  margin-bottom: 3%;
+}
+
+article.column {
+  width: 50%;
+}
+
+h3 {
+  font-size: 2.75rem;
+	font-weight: bold;
+	text-align: center;
+  margin: 2% 0 3% 0;
+}
+
+.column {
+  padding: 1% 1.5% 3% 1.5%;
+}
+
+.quantity {
+	width: 15%;
+}
+
+.headline {
+	font-size: 1.75rem;
+  font-weight: bold;
+	text-align: center;
+  margin-top: 2%;
+}
+
+.headline a {
+	color: black;
+  margin: 3%;
+}
+
+.headline a:hover, .headline a:focus {
+  color: #680604;
+  text-decoration: underline;
+}
+
+img.product_photo {
+  display: inline-block;
+  margin: 10% 0;
+  max-height: 9em;
+}
+
+.row ul {
+  list-style: none;
+}
+
+.bat_rating {
+   width: 18%;
+   height: 18%;
+}
+
+.bat_rating_small {
+   width: 10%;
+   height: 10%;
+}
+
+.review_box {
+  border-top-style: double;
+  /*border-bottom-style: double;*/
+}
+
+.review_title{
+  color: darkred;
+}
