@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :merchants, only: [:index, :show]
 
     # We want logged in merchants to be able to view ALL products in an index--and to manage only their products, so I'm adding in a products#manage Controller action to create this:
-    get 'products/manage', to: 'products#manage', as: 'manage_products'
+
+
+    get '/products/manage', to: 'products#manage', as: 'manage_products'
+    get 'orders/manage', to: 'orders#manage', as: 'manage_orders'
+
 
     resources :products do
         resources :reviews, only: [:new, :create]
