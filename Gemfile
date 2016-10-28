@@ -1,10 +1,22 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+
+#Add simplecov for testing coverage
+#gem 'simplecov', :require => false, :group => :test
+#gem 'pg', group: :production
+gem 'rails_12factor', group: :production
+
+######## ADDED GEMS #########
+# for OAuth github Authentication
+gem "omniauth"
+gem "omniauth-github"
+
+#gem "awesome_print"
+######## ADDED GEMS #########
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use postgresql as the database for Active Record
-# gem 'pg', '~> 0.15'
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3', group: [:development, :test]
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -22,6 +34,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Use money gem to convert cents to dollars
+gem 'money'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -35,11 +49,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  ######## ADDED GEMS ########
+  gem 'dotenv-rails'
+  gem 'better_errors'
+  gem 'simplecov'
+  ######## ADDED GEMS ########
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

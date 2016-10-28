@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+current_user:
+  email: blah@gmail.com
+  uid: 54321
+  provider: github
+  name: Blah Person
+
+two:
+  email: "a@b.com"
+  uid: '123545'
+  provider: 'github'
+  name: "Ada"
+

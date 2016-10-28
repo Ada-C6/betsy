@@ -1,0 +1,9 @@
+<section>
+  <%= form_for @review, url: "#{@product.id}/reviews", id: @product.id do |f| %>
+    <%= f.label :rate_product %>
+    <%= f.select :rating, (1..5)%>
+    <%= f.text_field :content, placeholder: "add your review here" %>
+
+    <p><%= f.submit "Save" %></p>
+  <% end %>
+</section>

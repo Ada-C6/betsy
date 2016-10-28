@@ -1,0 +1,15 @@
+<%= form_for @user,
+  method: :post,
+  url: users_create_path do |f| %>
+  <%= f.label :name %>
+    <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.hidden_field :uid, :value => @user.uid %>
+  <%= f.hidden_field :provider, :value => @user.provider %>
+
+
+  <%= f.submit "Sign up"%>
+    <% end %>

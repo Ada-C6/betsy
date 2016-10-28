@@ -1,0 +1,22 @@
+<h3>Customer information:</h3>
+<p>Status: <%= @transaction.status %></p>
+<p>Client Name: <%= @transaction.client_name %></p>
+<p>Email: <%= @transaction.client_email %></p>
+<p>Address: <%= @transaction.client_address %></p>
+<p>Last four digits of credit card: ...<%= @transaction.client_cc_num %></p>
+<p>Credit card expiration: <%= @transaction.client_cc_exp %></p>
+
+<h3>Products bought from me in this transaction:</h3>
+<% @mytransaction.each do |i| %>
+  <% if i.merchant_id == session[:user_id]%>
+    <p><%= i.product_quantity%> <%= i.product_name %> for <%= number_to_currency(i.product_total_price) %>
+      <% if i.mark_shipped == false %>
+        <%= button_to 'Mark as shipped', {action: "mark_shipped", id: i.id },
+            method: :mark_shipped %>
+      <% else %>
+        <%= button_to 'Mark as unshipped', {action: "mark_not_shipped", id: i.id },
+          method: :mark_not_shipped %>
+      <% end %>
+    </p>
+  <% end  %>
+<% end %>

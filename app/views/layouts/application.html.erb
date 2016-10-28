@@ -1,14 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
 <head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %> -->
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="large-12 columns">
 
-<%= yield %>
+          <nav class="top-bar" data-topbar>
 
+            <ul class="title-area">
+<!-- link to homepage top left of top bar -->
+              <li class="name"><h1><%= link_to "Besty", index_path %></h1></li>
+            </ul>
+
+            <section class="top-bar-section">
+              <ul class="right">
+                <li class="divider"></li>
+                <li class="has-dropdown">
+                  <a href="#">products by merchant</a>
+                  <ul class="dropdown">
+                    <li><label>merchants</label></li>
+                  <% @users.each do |user| %>
+                    <li><%= link_to user.name, show_by_merchant_path(user[:id]) %></li>
+                  <% end %>
+                  </ul>
+                </li>
+                <li class="divider"></li>
+                <li class="has-dropdown">
+                  <a href="#">products by category</a>
+                  <ul class="dropdown">
+                    <li><label>categories</label></li>
+                  <% @categories.each do |category| %>
+                    <li><a><%= link_to category.name, show_by_category_path(category[:id]) %></a></li>
+                  <% end %>
+                  </ul>
+                </li>
+                <li class="divider"></li>
+
+<!-- link to links to "log in/register via github" top right of top bar  -->
+            <% if session[:user_id] == nil %>
+                <li><%= link_to "Welcome! Please log in!", "/auth/github" %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Register via github", "/users/new" %></li>
+                <li class="divider"></li>
+ <!-- link to links to "log out / my account top right of top bar  -->
+            <% else %>
+              <% if @user %>
+                <li><%= link_to "Hello #{@user.name}!", index_path %></li>
+              <% end %>
+                <li><%= link_to "Logout", sessions_destroy_path, method: :delete %></li>
+                <li class="divider"></li>
+                <li><%= link_to "My Account", "/users/logged_in_index" %></li>
+                <li class="divider"></li>
+<!-- need to figure out the link to the show cart -->
+                <li><%= link_to "Cart", show_cart_product_path %></li>
+                <li class="divider"></li>
+              </ul>
+            <% end %>
+            </section>
+          </nav>
+        </div>
+      </div>
+
+      <%= yield %>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr>
+          <div class="row">
+            <div class="large-12 columns">
+              <p>🚫 Discalimer: this website was created only for purposes of demonstrating programming skills, nothing is actually offered for sale. DO NOT provide any personal information.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.equalizer.js"></script>
+  <script>
+        $(document).foundation();
+      </script>
 </body>
 </html>

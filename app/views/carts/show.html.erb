@@ -1,0 +1,37 @@
+<h1>Your Cart</h1>
+
+<% if flash[:notice] %>
+<p class = "flash-notice"><%= flash[:notice] %></p>
+
+<% end %>
+
+<p><%= button_to "Empty Cart", empty_cart_items_path, method: :delete, data: { confirm: "Are you sure?" }  %></p>
+<p><%= button_to "Checkout", new_transaction_path, method: :get %></p>
+
+
+<table>
+  <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th></th>
+  </tr>
+  <% order_total = 0 %>
+  <%   @cart.each do |i| %>
+  <% q = i.product_quantity  %>
+  <% p = Product.find(i.product_id) %>
+  <% order_total += q*p.unit_price %>
+  <tr>
+      <td> <%= p.name %></td>
+      <td><%= button_to "-1", decrease_quantity_path(i.id), method: :patch %><%= q %><%= button_to "+1", increase_quantity_path(i.id), method: :patch %></td>
+      <td> <%= number_to_currency(q*p.unit_price) %></td>
+      <td> <%= button_to "Delete Item", destroy_cart_item_path(i.id), method: :delete, data: { confirm: "Are you sure?" }  %></td>
+  </tr>
+  <% end %>
+  <tr>
+      <td><h5>Total Price</h5></td>
+      <td></td>
+      <td><%= number_to_currency(order_total) %></td>
+      <td></td>
+  </tr>
+</table>
