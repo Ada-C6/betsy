@@ -10,7 +10,7 @@
         <section>
             <h2><%= capitalize_each_word(product.name) %></h3>
             <h3><%= link_to "EDIT", edit_product_path(product) %></h3>
-            <h3>CATEGORIZE</h3>
+            <h3>tbd: CATEGORIZE</h3>
             <h3><% if product.active %>
               <%= link_to "RETIRE PRODUCT", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
               <% else %>
