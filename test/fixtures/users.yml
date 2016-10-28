@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+rbg:
+  name: Ruth Ginsburg
+  email: notorious@thesupremes.io
+  street_address: 1 First Street NE
+  city: Washington
+  state: DC
+  zip: 20543
+  phone: 2024793000
+  merchant: false
+  provider: github
+  status: true
+
+ss:
+  name: Sonia Sotomayor
+  email: not-red-sonia@thesupremes.io
+  street_address: 1 First Street NE
+  city: Washington
+  state: MyString
+  zip: DC
+  phone: 2024793000
+  merchant: true
+  provider: github
+  status: true

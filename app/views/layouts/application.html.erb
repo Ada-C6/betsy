@@ -1,14 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<%= yield %>
+    <%= favicon_link_tag 'vamp_favicon.ico' %>
+    <title>Vampazon</title>
+    <%= stylesheet_link_tag "application.css"%>
+  </head>
 
-</body>
+  <body>
+    <header>
+        <a href="/"><%= image_tag("Homepage/Vampazon.png", alt: "Vampazon Home", class: "logo") %></a>
+
+      <nav>
+        <%= render partial: '/homepages/navigation_links' %>
+        <% get_product_categories.each do |product_category| %>
+          <li><%= link_to product_category, show_category_path(product_category) %></li>
+        <% end %>
+      </nav>
+    </header>
+
+
+    <%= render 'layouts/messages' %>
+
+    <%= yield %>
+
+  </body>
+
 </html>
