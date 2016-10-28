@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
     validates :cc_exp_month, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 12}
     validates :total, presence: true, numericality: { greater_than_or_equal_to: 0}
     # validate :valid_exp
-    validates_associated :order_items
+    # validates_associated :order_items
     # validate :acceptable_status
 
     # before_save :update_total

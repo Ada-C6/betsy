@@ -1,0 +1,16 @@
+<h2> Manage Orders</h2>
+
+<% @orders.each do |order| %>
+  <p>
+    Status: <%= order.status %>
+  </p>
+  <p>
+    Email: <%= order.email %>
+  </p>
+  <p>
+    Date Purchased: <%= date_format(order.date_purchased) %>
+  </p>
+  <p>
+
+  </p>
+<% end %>

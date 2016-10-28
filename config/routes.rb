@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
 
     get '/products/manage', to: 'products#manage', as: 'manage_products'
-    get 'orders/manage', to: 'orders#manage', as: 'manage_orders'
+    get '/orders/manage', to: 'orders#manage', as: 'manage_orders'
 
 
     resources :products do
