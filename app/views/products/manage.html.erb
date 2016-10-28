@@ -9,8 +9,7 @@
     <li class="column">
         <section>
             <h2><%= capitalize_each_word(product.name) %></h2>
-            <h3><%= link_to "EDIT", edit_product_path(product), remote: true, class: "button" %></h3>
-            <h3><%= link_to "tbd: CATEGORIZE", edit_product_path(product), remote: true, class: "success button" %></h3>
+            <h3><%= link_to "EDIT", edit_product_path(product), class: "button" %></h3>
             <h3><% if product.active %>
               <%= link_to "RETIRE", retire_product_path(product), remote: true, method: "patch", class: "warning button" %>
               <% else %>
