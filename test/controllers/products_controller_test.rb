@@ -121,4 +121,23 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to portal_path
   end
+
+  test "retire should retire the product if the product is active" do
+    product_id = products(:cat_suit).id
+    patch :retire, {id: product_id}
+
+    product = assigns(:product)
+    assert_equal product.id, product_id
+    assert_equal false, product.active
+
+    assert_redirected_to portal_path
+  end
+
+  test "retire should activate the product if the product is retired" do
+    product_id = products(:cat_suit).id
+    patch :retire, {id: product_id}
+    assert_equal false, Product.find(product_id).active
+    patch :retire, {id: product_id}
+    assert_equal true, Product.find(product_id).active
+  end
 end
