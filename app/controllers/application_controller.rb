@@ -21,14 +21,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def total
-  #   if !session[:total].nil?
-  #     session[:total] = @total
-  #   else
-  #     session[:total] = 0
-  #     @total = session[:total]
-  #   end
-  # end
 
   def shopping_cart
     if !session[:cart].nil?

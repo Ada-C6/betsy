@@ -9,6 +9,10 @@ class CartsController < ApplicationController
     @cart.each do |item|
       a = Product.find(item["id"])
       b = item["quantity"]
+      if @total.nil?
+        @total = 0
+      end
+      @total += b + a.price
       @products.merge!(a => b)
     end
     return @products
@@ -80,6 +84,9 @@ class CartsController < ApplicationController
   private
   def no_item
     @cart.delete_if {|k| k["quantity"] == 0}
+  end
+
+  def total
   end
 
   def product_ref
