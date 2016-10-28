@@ -6,7 +6,7 @@ Rails.application.configure do
 
 
 
-  config.serve_static_assets = true
+  config.serve_static_files = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
 
   # Eager load code on boot. This eager loads most of Rails and
