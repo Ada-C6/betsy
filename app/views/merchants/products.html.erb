@@ -5,7 +5,10 @@
     <section class="column image-container">
       <section class="thumbnail">
         <% image = Product.find_photo_image(p) %>
-        <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image"), product_path(p) %>
+        <div class="row">
+          <p class="medium-1 columns"></p>
+        <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image medium-10 columns"), product_path(p) %>
+      </div>
         <p class="product-description product-name"><strong><%= link_to p.name, product_path(p) %></strong> <%= "$#{ sprintf('%.2f' % (p.price/100.0)) }" %></p>
           <% if current_user != nil && @merchant.id == current_user.id %>
             <p class="edit-button"><%= button_to "Edit Product", edit_product_path(p), method: :get, class: "edit-button" %></p>
