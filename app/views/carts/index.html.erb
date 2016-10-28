@@ -13,7 +13,6 @@
       <%=link_to "Delete", delete_products_path(product.id), method: :delete%>
     </p>
   </li>
-  <% @total += quantity * product.price %>
   <%end%>
   <%if @total != 0 && !@total.nil?%>
   <p><strong> Total: <%=show_dollars(@total)%></strong></p>

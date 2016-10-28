@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
     validates_associated :order_items
     # validate :acceptable_status
 
-    # before_save :update_total
+    before_save :update_total
 
     def valid_exp
         if @order.cc_exp_year < Time.now.year
@@ -25,7 +25,7 @@ class Order < ActiveRecord::Base
         end
     end
 
-    def total
+    def update_total
         order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.product.price) : 0 }.sum
     end
 
