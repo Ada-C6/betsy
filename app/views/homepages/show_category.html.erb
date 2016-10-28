@@ -1,0 +1,31 @@
+<div class="basic">
+  <div class="wrapper">
+  
+
+  <div class="row small-up-1 medium-up-2 large-up-4">
+
+      <h4 class="headline"><%= @product_category %></h4>
+          <!-- <div class="row"> -->
+        <% @products_in_category.each do |product| %>
+          <article class="column">
+
+            <ul class='product-info'>
+
+              <li class='headline'>
+                <%= link_to image_tag(product.photo_url, :class => 'product_photo'), show_products_path(product.id) %>
+              </li>
+              <li class="headline">
+                <%= link_to product.name, show_products_path(product.id) %>
+              </li>
+              <li class="headline">
+                $<%= product.price %>                            
+              </li>
+            </ul>
+          </article>
+
+
+        <% end %>
+          <!-- </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<h1>Thank you for purchase with us!</h1>
+
+<p>Order Details:</p>
+<p>Order#: <%= @order.id %></p>
+<p>Order Status: <%= @order.status %></p>
+<p>Purchased at: <%= @order.created_at %></p>
+
+<% @order.order_items.each do |order_item|  %>
+  <%= order_item.product.name  %>
+  unit price:<%= order_item.unit_price %>
+  Qty: <%= order_item.quantity %>
+  $<%= order_item.total_price %>
+<% end %>
+<p>Order Subtotal:$<%= @order.total_price %></p>
+
+<p>Shipping address:</p>
+<p>Name:<%= @order.name %></p>
+<p>Email:<%= @order.email %></p>
+<p>Street Address:<%= @order.street_address %></p>
+<p>City:<%= @order.city %></p>
+<p>State:<%= @order.state %></p>
+<p>Zip:<%= @order.zip %></p>
+<p>Phone:<%= @order.phone %></p>
+
+
+<%= link_to "continue shopping", root_path, :method => :get, :class => "button" %>

@@ -1,14 +1,65 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vampazon</title>
+    <%= stylesheet_link_tag "application.css"%>
+  </head>
+  <body>
+
+  <!-- DESKTOP NAVIATION -->
+
+  <nav class="top-bar">
+
+    <div class="top-bar-left">
+
+     <h2 class="logo"><%= link_to 'Vampazon', root_path %></h2>
+
+    </div>
+
+    <div class="top-bar-right">
+
+      <%= render partial: '/homepages/navigation_links' %>
+
+    </div>
+
+  </nav>
+
+  <!-- <h1>Va</h1><a href="index.html" img src="../../assets/images/MLogo.png"><h1>pazon</h1> -->
+
+ <!-- class="logo"><a tabindex="2" accesskey="1" href="/"><img src="/2008/site/images/logo-w3c-mobile-lg" width="90" height="53" alt="W3C" /></a> <span class="alt-logo">W3C</span></h1> -->
+
+  <!-- tried to scoot M in between - it did not work -->
+
+  <% if current_user %>
+    <p><%= link_to "User Account", user_account_path %></p>
+  <% end %>
+
+
+<%= render 'layouts/messages' %>
 
 <%= yield %>
 
 </body>
+
+
+  <!-- FOOTER -->
+
+
+  <footer>
+
+  </footer>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
 </html>

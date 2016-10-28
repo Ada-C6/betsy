@@ -1,0 +1,67 @@
+<%= form_for @order, url: create_order_path do |f| %>
+  <div class="form">
+
+    <h3>Shipping Address:</h3>
+
+    <div class="field">
+      <%= f.label "Name: " %>
+      <%= f.text_field :name, "Name" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Email: " %>
+      <%= f.text_field :email, "Email" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Street Address: " %>
+      <%= f.text_field :street_address, "Street Address" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "City: " %>
+      <%= f.text_field :city, "City" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "State: " %>
+      <%= f.text_field :state, "State" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Zip: " %>
+      <%= f.text_field :zip, "Zip" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Phone: " %>
+      <%= f.text_field :phone, "Phone" => nil, :required => false %>
+    </div>
+
+    <h3>Payment Information:</h3>
+
+    <div class="field">
+      <%= f.label "Credit Card: " %>
+      <%= f.text_field :cc_number, "Credit Card" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Expiration Month: " %>
+      <%= f.text_field :exp_month, "Expiration Month" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Expiration Year: " %>
+      <%= f.text_field :exp_year, "Expiration Year" => nil, :required => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "CVC: " %>
+      <%= f.text_field :cvc, "CVC" => nil, :required => true %>
+    </div>
+
+    <%= hidden_field_tag(:order_id, @order.id) %>
+    <%= f.submit "Confirm Payment", class: 'button '%>
+
+  </div>
+<% end %>
