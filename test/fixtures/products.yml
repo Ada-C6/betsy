@@ -18,6 +18,7 @@ monkey:
   photo_url: monkeys.jpeg
   active: false
   merchant_id: 1
+  id: 2
 
 kuakka:
   name: Kuakka

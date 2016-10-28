@@ -15,8 +15,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @order = current_order
-    @order_item = @order.order_items.new
 
     begin
       product = Product.find(params[:id])
@@ -30,6 +28,9 @@ class ProductsController < ApplicationController
     rescue StandardError => err
       render "/errors/not_found", status: :not_found
     end
+    @order = current_order
+    @order_item = @order.order_items.new
+
   end
 
   def new
