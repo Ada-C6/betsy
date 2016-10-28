@@ -10,7 +10,9 @@
       <section class="thumbnail">
         <%# image = p.name.downcase.gsub(' ', '_') %>
         <% image = Product.find_photo_image(p) %>
-        <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image"), product_path(p) %>
+        <div class="row">
+          <p class="medium-1 columns"></p>
+        <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image medium-10 columns"), product_path(p) %>
         <p class="product-name"><strong><%= p.name %></strong> <%= "$#{ sprintf('%.2f' % (p.price/100.0)) }" %></p>
       </section>
     </section>
