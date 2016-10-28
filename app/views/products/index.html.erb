@@ -12,7 +12,8 @@
         <% image = Product.find_photo_image(p) %>
         <div class="row">
           <p class="medium-1 columns"></p>
-        <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image medium-10 columns"), product_path(p) %>
+          <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image medium-10 columns"), product_path(p) %>
+        </div>
         <p class="product-name"><strong><%= p.name %></strong> <%= "$#{ sprintf('%.2f' % (p.price/100.0)) }" %></p>
       </section>
     </section>
