@@ -29,7 +29,7 @@ class OrderItemsController < ApplicationController
         session[:order_id] = @order.id
         redirect_to order_items_path
       else
-        render :new
+        redirect_to(:back)
       end
     else
       @order_item = @order.order_items.new(order_item_params)
@@ -38,7 +38,7 @@ class OrderItemsController < ApplicationController
         session[:order_id] = @order.id
         redirect_to order_items_path
       else
-        render :new
+        redirect_to :back
       end
     end
   end

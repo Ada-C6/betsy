@@ -8,17 +8,17 @@ class ApplicationController < ActionController::Base
 
   def current_order
 
-      if !session[:order_id].nil?
-        begin
-          Order.find(session[:order_id])
-        rescue StandardError => err
-          render "/errors/not_found", status: :not_found
-        end
-      else
-        Order.new
+    if !session[:order_id].nil?
+      begin
+        Order.find(session[:order_id])
+      rescue StandardError => err
+        render "/errors/not_found", status: :not_found
       end
+    else
+      Order.new
+    end
   end
-
+  
   private
 
   def current_user
