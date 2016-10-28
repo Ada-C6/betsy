@@ -22,18 +22,26 @@ class OrdersController < ApplicationController
         @order_item.order_id = @order.id
         @order_item.save
       end
+      session[:cart] = nil
       redirect_to orders_path
     else
-      raise
       render :new
     end
   end
 
 
   def update
+
     @order = Order.find(params[:id])
-    if @order.update.save
+  end
+
+  def manage_orders
+    @orders = Order.all
+    @product = Product.find_by(merchant_id: session[:user_id])
+    @product.each do |prod|
+      @order_item = OrderItem.find_by(product_id: prod.id)
     end
+    @order
   end
 
   def destroy
