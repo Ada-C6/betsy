@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.search(search)
-    where(("name LIKE ? OR description LIKE ?"), "%#{search}%", "%#{search}%")
+    where(("name ILIKE ? OR description ILIKE ?"), "%#{search}%", "%#{search}%")
   end
 
   def self.average(reviews)
