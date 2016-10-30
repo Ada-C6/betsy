@@ -1,0 +1,53 @@
+<h3><%= "*Product is currently retired*" if @product.active == false %>
+
+<section class="row small-up-2">
+  <section class="column">
+    <% image = Product.find_photo_image(@product) %>
+    <p><%= image_tag image, alt: "#{ @product.name }" %></p>
+    <section class="row small-up-2">
+      <p class="column"><%= "Description: #{ @product.description }" %></p>
+    </section>
+  </section>
+  <section class="column">
+    <h1><%= @product.name %></h1>
+    <p><%= "Price: $#{ sprintf('%.2f' % (@product.price/100.0)) }" %></p>
+    <%= form_for @order_item, method: :post do |f| %>
+      <%= f.number_field :quantity, value: 1, min: 1 %>
+
+      <%= f.hidden_field :product_id, value: @product.id %>
+      <h6><%= f.submit "Add to cart", class: "add-button" %></h6>
+    <% end %>
+    <p>Stock: <%= @product.inventory %></p>
+  </section>
+</section>
+
+  <% if current_user && current_user.id == @product.merchant_id %>
+    <h6><%= button_to "Edit Product", edit_product_path, method: :get, class: "edit-button-show" %></h6>
+    <% if @product.active == true %>
+    <h6><%= button_to "Retire product", retire_product_path, method: :patch, class: "retire-button" %></h6>
+    <% else %>
+    <h6><%= button_to "Reinstate product", reinstate_product_path, method: :patch, class: "retire-button" %></h6>
+    <% end %>
+  <% end %>
+
+  <h2>Reviews</h2>
+  <% unless @reviews.count == 0 %>
+    <h5><%= "Average rating: #{ @average } " %></h5>
+    <% @reviews.each do |r| %>
+      <p><% r.rating.times do |i| %>
+        <%= "🐵 " %>
+      <% end %>
+      <%= ": #{ r.description }" %></p>
+    <% end %>
+  <% else %>
+    <h4>No reviews yet.</h4>
+  <% end %>
+
+  <% unless current_user != nil && @product.merchant_id == current_user.id %>
+    <p><%= link_to "Review this product", new_product_review_path(@product) %></p>
+  <% else %>
+    <p>You cannot review your own product</p>
+  <% end %>
+
+  </section>
+</section>

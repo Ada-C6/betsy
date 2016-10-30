@@ -1,0 +1,71 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+nicole:
+  name: Nicole
+  email: email@gmail.com
+  street_address: 12 Main St
+  city: Seattle
+  state: WA
+  mailing_zip: 98201
+  cc_number: 1223456743254456
+  cc_exp_month: 11
+  cc_exp_year: 2017
+  cc_sec_code: 250
+  billing_zip: 98201
+
+ian:
+  name: Ian
+  email: hi@gmail.com
+  street_address: 786 Square St
+  city: Pittsburgh
+  state: PA
+  mailing_zip: 15201
+  cc_number: 8888777766665555
+  cc_exp_month: 5
+  cc_exp_year: 2018
+  cc_sec_code: 847
+  billing_zip: 15201
+
+buffy:
+  name: Buffy Summers
+  email: howdy@gmail.com
+  street_address: 786 Springfield Rd
+  city: Sunnydale
+  state: CA
+  mailing_zip: 42183
+  cc_number: 7766558765435675
+  cc_exp_month: 1
+  cc_exp_year: 2020
+  cc_sec_code: 456
+  billing_zip: 42183
+
+xander:
+  name: Xander
+  email: yinz@gmail.com
+  street_address: 347 Alpine Rd
+  city: Sunnydale
+  state: CA
+  mailing_zip: 42184
+  cc_number: 8976545687678976
+  cc_exp_month: 5
+  cc_exp_year: 2018
+  cc_sec_code: 354
+  billing_zip: 42184
+
+willow:
+  name: Willow
+  email: Willow@gmail.com
+  street_address: 123 Yolo St
+  city: Sunnydale
+  state: CA
+  mailing_zip: 42184
+  cc_number: 8976545687678977
+  cc_exp_month: 9
+  cc_exp_year: 2015
+  cc_sec_code: 355
+  billing_zip: 42184

@@ -1,0 +1,17 @@
+<% if @category.errors.any? %>
+  <ul class="errors">
+    <% @category.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2 class="category-header">New Category</h2>
+<%= form_for [@category] do |f| %>
+  <%= f.label "Category Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Save and Add Another"%>
+<% end %>

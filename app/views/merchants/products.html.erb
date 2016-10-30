@@ -1,0 +1,37 @@
+<h1 class="category-header"><%= @merchant.username %></h1>
+
+<section class="row small-up-1 medium-up-2 large-up-3">
+  <% @products.each do |p| %>
+    <section class="column image-container">
+      <section class="thumbnail">
+        <% image = Product.find_photo_image(p) %>
+        <div class="row">
+          <p class="medium-1 columns"></p>
+          <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image medium-10 columns"), product_path(p) %>
+        </div>
+        <p class="product-description product-name"><strong><%= link_to p.name, product_path(p) %></strong> <%= "$#{ sprintf('%.2f' % (p.price/100.0)) }" %></p>
+          <% if current_user != nil && @merchant.id == current_user.id %>
+            <p class="edit-button"><%= button_to "Edit Product", edit_product_path(p), method: :get, class: "edit-button" %></p>
+          <% end %>
+      </section>
+    </section>
+  <% end %>
+</section>
+
+<% if @inactive_products && @inactive_products.count > 0 %>
+  <h1>My Inactive Products</h1>
+  <% @inactive_products.each do |i| %>
+    <p>
+      <%= i.name %>
+      <br />
+      <% image = i.name.downcase.gsub(' ', '_') %>
+
+      <% image = Product.find_photo_image(i) %>
+      <%= link_to image_tag(image, alt: "#{ i.name }", class: "rounded-image"), product_path(i) %>
+    </p>
+  <% end %>
+<% end %>
+
+<% if current_user != nil && @merchant.id == current_user.id %>
+  <p><%= link_to "Add a New Product", new_product_path %></p>
+<% end %>

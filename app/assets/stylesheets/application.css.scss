@@ -1,0 +1,130 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+ /*Header and footer CSS*/
+ body {
+   margin: 0 5%;
+ }
+
+ .top-bar {
+   border: 1px blue dashed;
+   margin: 2% -2%;
+ }
+
+ .top-bar-left {
+   align-self: center;
+ }
+
+ .lower-nav li {
+   display: inline-block;
+ }
+
+ .title_area {
+   margin-right: 3em;
+ }
+
+ .github-button, .log-out-button, .dashboard-button, .cart-button, .edit-button-show, .add-button {
+   color: white;
+   font-weight: bold;
+   border-radius: 5px;
+   padding: 5px;
+ }
+
+ .github-button {
+   background-color: blue;
+ }
+
+ .log-out-button {
+   background-color: red;
+ }
+
+ .dashboard-button, .edit-button-show {
+   background-color: green;
+ }
+
+ .cart-button, .add-button {
+   background-color: purple;
+ }
+
+ .get-products-button, .retire-button {
+   background-color: lightgrey;
+   border-radius: 5px;
+ }
+
+ .search-form {
+   display: inline-block;
+ }
+
+// All images
+ .rounded-image {
+   border-radius: 45px;
+   margin: 0 auto;
+   max-width: 85%;
+   max-height: 200px;
+ }
+
+ .image-container {
+   display: block;
+   padding: 4px;
+   border: 1px solid clear;
+   border-radius: 4px;
+ }
+
+ .product-name {
+  position: absolute;
+  bottom: 2rem;
+  padding: 1rem;
+  text-align: center;
+ }
+
+ .thumbnail {
+   width: 300px;
+   height: 300px;
+   overflow: hidden;
+   margin: auto;
+   position: relative;
+ }
+
+ .edit-button {
+   position: absolute;
+   bottom: 0;
+   padding: 1rem;
+ }
+
+ // Products by Category page
+ .category-header, .product-description {
+   text-align: center;
+ }
+
+ .dashboard-orders-table {
+   border: 1px dotted blue;
+   margin: 30px 10px;
+ }
+
+ .dashboard-summary {
+   margin: 0 50px;
+ }
+
+.product-edit-form, .order-form, .review-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+ // .caption {
+ //   margin-bottom: 40px;
+ // }

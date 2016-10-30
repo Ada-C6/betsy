@@ -1,0 +1,37 @@
+<% if params[:search].nil? %>
+  <h1 class="category-header">All products</h1>
+<% else %>
+  <h1 class="category-header">Search Results for "<%= "#{ params[:search] }" %>"</h1>
+<% end %>
+
+<section class="row small-up-1 medium-up-3">
+  <% @products.each do |p| %>
+    <section class="column image-container">
+      <section class="thumbnail">
+        <%# image = p.name.downcase.gsub(' ', '_') %>
+        <% image = Product.find_photo_image(p) %>
+        <div class="row">
+          <p class="medium-1 columns"></p>
+          <%= link_to image_tag(image, alt: "#{ p.name }", class: "rounded-image medium-10 columns"), product_path(p) %>
+        </div>
+        <p class="product-name"><strong><%= p.name %></strong> <%= "$#{ sprintf('%.2f' % (p.price/100.0)) }" %></p>
+      </section>
+    </section>
+  <% end %>
+</section>
+
+<section class="row small-up-1 medium-up-3">
+  <% if @inactive_products && @inactive_products.count > 0 %>
+    <h1>My Inactive Products</h1>
+    <% @inactive_products.each do |i| %>
+      <section class="column image-container">
+        <section class="thumbnail">
+          <%# image = i.name.downcase.gsub(' ', '_') %>
+          <% image = Product.find_photo_image(i) %>
+          <%= link_to image_tag(image, alt: "#{ i.name }", class: "rounded-image"), product_path(i) %>
+          <p><strong><%= i.name %></strong> <%= "$#{ sprintf('%.2f' % (i.price/100.0)) }" %></p>
+        </section>
+      </section>
+    <% end %>
+  <% end %>
+</section>

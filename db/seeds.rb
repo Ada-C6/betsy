@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+
+CSV.read('db/seed_csvs/products.csv').each do |line|
+  product_hash = { merchant_id: line[0].to_i, name: line[1], price: line[2].to_f, inventory: line[4], description: line[5], photo_url: "1", active: true }
+  Product.create!(product_hash)
+end
+
+CSV.read('db/seed_csvs/categories.csv').each do |line|
+  category_hash = { name: line[0] }
+  Category.create!(category_hash)
+end
+
+CSV.read('db/seed_csvs/categoryproducts.csv').each do |line|
+  category_product_hash = { product_id: line[0], category_id: line[1] }
+  CategoryProduct.create!(category_product_hash)
+end

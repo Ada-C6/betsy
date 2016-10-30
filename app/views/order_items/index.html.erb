@@ -1,0 +1,15 @@
+<h1>Cart</h1>
+
+<% grand_total = 0 %>
+<% if @order_items.size == 0 %>
+  <p>There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.</p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'order_items/shopping_cart_items', product: order_item.product, order_item: order_item, show_total: true %>
+    <% product_total_price = (order_item.product.price * order_item.quantity / 100.0).to_f %>
+    <p><%= "Total Price: $#{ sprintf('%.2f' % product_total_price) }"  %></p>
+    <% grand_total += product_total_price %>
+  <% end %>
+  <p><%= "Cart total: $#{ sprintf('%.2f' % grand_total) }" %></p>
+    <%= link_to "Checkout", edit_order_path(@order), class: "button" %>
+<% end %>

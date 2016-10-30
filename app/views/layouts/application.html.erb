@@ -1,14 +1,94 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Betsy</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%= favicon_link_tag 'favicon.ico' %>
+    <title>Zoolily</title>
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <header class="top-bar">
+      <nav class="top-bar-section">
+        <ul class="menu top-bar-right">
+          <li>
+            <h1 class="title_area"><%= link_to "ZOOLILY", root_path %></h1>
+          </li>
+          <li>
+            <% if current_user %>
+              <%= button_to "Log out", logout_path, { method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "log-out-button"} %>
+            <% else %>
+              <%= button_to "Log in with Github", '/auth/github', method: :post, class: "github-button" %>
+            <% end %>
+          </li>
+          <li>
+            <% if current_user %>
+              <%= button_to "Dashboard", merchant_path(current_user), method: :get, class: "dashboard-button" %>
+            <% else %>
+              <%= button_to "Sign up with Github", '/auth/github', method: :post, class: "dashboard-button" %>
+            <% end %>
+          </li>
+          <li>
+            <%= button_to "View Cart", order_items_path, method: :get, class: "cart-button" %>
+          </li>
+        </ul>
+      </nav>
+      <hr />
+      <nav class="header-subnav row small-up-2 medium-up-4">
+        <ul class="menu top-bar-left">
+          <li>
+            <%= button_to "Shop All Products", products_path, method: :get, class: "get-products-button column" %>
+          </li>
+            <!-- Make this unordered list horizontal at medium and larger screens & verticle on small ones  -->
+          <li>
+            <section class="column">
+              <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+                <li>
+                  Products by Category
+                  <ul class="menu vertical">
+                    <li>
+                      <% Category.all.each do |cat| %>
+                        <%= link_to("#{ cat.name }", category_path(cat.id)) %>
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+          </li>
+          <li>
+            <section class="column">
+              <ul class="vertical menu medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+                <li>
+                  Products by Merchant
+                  <ul class="menu vertical">
+                    <li>
+                      <% Merchant.all.each do |merch| %>
+                        <%= link_to "#{ merch.username }", merchant_products_path(merch.id) %></option>
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+                </ul>
+            </section>
+          </li>
+          <li>
+            <section class="search-form column">
+              <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+                <%= submit_tag "Search", :name => nil %>
+              <% end %>
+            </section>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <%= yield %>
+
+  </body>
 </html>

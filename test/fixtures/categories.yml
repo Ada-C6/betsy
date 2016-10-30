@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+big_animals:
+  name: Big Animals
+
+small_animals:
+  name: Small Animals
+
+reptiles:
+  name: Reptiles

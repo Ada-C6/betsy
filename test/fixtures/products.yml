@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+elephant:
+  name: Elephant
+  price: 100200
+  inventory: 2
+  description: Elephants are good
+  photo_url: elephants.jpeg
+  active: true
+  merchant_id: 1
+  id: 1
+
+monkey:
+  name: Monkey
+  price: 10290
+  inventory: 3
+  description: Monkeys rule!
+  photo_url: monkeys.jpeg
+  active: false
+  merchant_id: 1
+  id: 2
+
+kuakka:
+  name: Kuakka
+  price: 10340
+  inventory: 43
+  description: Yay kari
+  photo_url: kuakkas.jpeg
+  active: true
+  merchant_id: 1
+
+snake:
+  name: Snake
+  price: 20000
+  inventory: 1
+  description: Snakes have no legs
+  photo_url: nolegs.jpeg
+  active: true
+  merchant_id: 1
