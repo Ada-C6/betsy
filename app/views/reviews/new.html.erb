@@ -1,0 +1,33 @@
+
+<h1 class="pg-title">Add a Review</h1>
+
+<div class="row">
+  <div class="column">
+
+
+    <% if @review.errors.any? %>
+      <p>Whoops! We couldn't save your review because:</p>
+      <ul>
+        <% @review.errors.each do |column, message| %>
+          <li>
+            <%= "#{column.capitalize} #{message}"  %>
+          </li>
+        <% end %>
+      </ul>
+      <p>Please edit your review and try again.</p>
+    <% end %>
+
+    <%= form_for @review,
+      method: :post,
+      url: reviews_create_path do |f| %>
+      <%= f.label :rating %>
+      <%= f.number_field :rating, min: 0, max: 5 %>
+
+      <%= f.label :feedback %>
+      <%= f.text_field :feedback %>
+
+      <%= f.submit value="Submit"%>
+
+    <% end %>
+  </div>
+</div>

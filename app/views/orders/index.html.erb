@@ -1,0 +1,85 @@
+<h1>Manage Your Orders</h1>
+<div class="row">
+  <div class="small-6 large-centered columns" id="order_sum">
+    <div class="row">
+      <div class="small-12 medium-6 columns" class="order">
+        <h3>Revenue</h3>
+        <p>Paid Order Revenue: <%= number_to_currency(total(@paid)/100.0) %></p>
+        <p>Completed Order Revenue: <%= number_to_currency(total(@complete)/100.0) %></p>
+        <p>Total Pending Order Revenue: <%= number_to_currency(total(@pending)/100.0) %></p>
+        <p>Total Cancelled Order Revenue: <%= number_to_currency(total(@cancelled)/100.0) %></p>
+        <p>Total Revenue*: <%= number_to_currency(total_revenue(@orders)/100.0) %></p>
+      </div>
+
+      <div class="small-12 medium-6 columns" class="order">
+        <h3>Orders</h3>
+        <p>Paid Orders: <%= @paid.length %></p>
+        <p>Completed Orders: <%= @complete.length %></p>
+        <p>Pending Orders: <%= @pending.length %></p>
+        <p>Cancelled Orders: <%= @cancelled.length %></p>
+        <p>Total Orders: <%= @orders.length %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="center">*Total Revenue calculated based on all successfully shipped items.</p>
+
+<table>
+  <tr>
+    <th>Order ID</th>
+    <th>Order Date</th>
+    <th>Items</th>
+    <th>
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#">Status</a>
+          <ul class="menu">
+            <li><%= link_to 'all', {controller: 'orders', action: 'index'} %></li>
+            <li><%= link_to 'paid', {controller: 'orders', action: 'index', :status => 'paid'} %></li>
+            <li><%= link_to 'complete', {controller: 'orders', action: 'index', :status => 'complete'} %></li>
+            <li><%= link_to 'pending', {controller: 'orders', action: 'index', :status => 'pending'} %></li>
+            <li><%= link_to 'cancelled', {controller: 'orders', action: 'index', :status => 'cancelled'} %></li>
+          </ul>
+        </li>
+      </ul>
+    </th>
+    <th>Order Total</th>
+  </tr>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.id, orders_show_path(order.id) %></td>
+      <td><% if order.placed_at %>
+            <%= order.placed_at.strftime("%m/%d/%Y %I:%M %p")%>
+          <% else %>
+            <%= "N/A" %>
+          <% end %>
+      </td>
+      <td><table>
+        <% order.find_merchant_order_items(session[:user_id]).each do |orderitem| %>
+        <tr>
+          <td>
+            <p><%= link_to orderitem.product.name, products_show_path(orderitem.product.id) %> : <%= number_to_currency(orderitem.price/100.00) %> X <%= orderitem.quantity %></p>
+            <p>Subtotal: <%= number_to_currency(orderitem.total/100.00) %></p>
+          </td>
+          <td>
+            <% if orderitem.status == "pending"  && order.status == "paid"%>
+              <%= button_to "Unshipped", orderitems_ship_path(orderitem.id), method: :patch, class: "warning hollow button" %>
+            <% else %>
+              <%= orderitem.status %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table></td>
+      <td>
+        <% if complete_check(order.find_merchant_order_items(session[:user_id])) == true && order.status == "paid" %>
+          <%= button_to "Complete Your Order!", orders_complete_path(order), method: :patch, class: "success hollow button" %>
+        <% else %>
+          <%= order.status %>
+        <% end %>
+      </td>
+      <td><%= number_to_currency(final_total(order.find_merchant_order_items(session[:user_id]))/100.0) %></td>
+    </tr>
+  <% end %>
+</table>

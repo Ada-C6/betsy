@@ -1,0 +1,20 @@
+
+<div class="row">
+  <div class="column gallery">
+
+
+<h2 class="pg-title"> <%= "#{@category.name} Products" %> </h2>
+
+
+    <% @products.each do |product| %>
+
+        <div class="product-tile">
+
+          <%= image_tag product.photo, alt: product.name %>
+          <p><%= link_to product.name, products_show_path(product.id) %></p>
+        </div>
+
+    <% end %>
+
+  </div>
+</div>

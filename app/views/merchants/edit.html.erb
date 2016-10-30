@@ -1,0 +1,40 @@
+<% if @merchant.displayname == nil %>
+  <h4 class="pg-title"><%= "Please Provide the following information to create a new merchant store"%></h4>
+<% else %>
+  <h2 class="pg-title"> <%= "#{@merchant.displayname}, edit  your profile"%> </h2>
+<% end %>
+
+
+<%= flash[:notice] %>
+
+<article>
+
+
+<%= form_for @merchant, url: merchants_update_path do |f| %>
+
+<div class="row">
+  <div class="small-6 medium-10 large-12 column">
+    <%= f.label "Profile Image URL" %>
+    <%= f.text_field :photo %>
+
+    <%= f.label "Store Name" %>
+    <%= f.text_field :displayname %>
+
+    <%= f.label "Store Location" %>
+    <%= f.text_field :location %>
+
+    <%= f.label "Store Contact Number" %>
+    <%= f.telephone_field :phone %>
+
+    <%= f.label "Email" %>
+    <%= f.email_field :email  %>
+
+    <%= f.label "User Name" %>
+    <%= f.text_field :username %>
+
+    <%= f.submit "Save", class: "button" %>
+  </div>
+</div>
+<% end %>
+
+</article>

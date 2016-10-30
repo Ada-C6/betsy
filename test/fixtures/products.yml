@@ -1,0 +1,70 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+minimalproduct:
+  name: Minimal Product
+  price: 1
+  merchant: bob
+  description:
+  photo:
+  stock:
+  retired:
+
+goods:
+  name: Good
+  price: 1000
+  merchant: bob
+  description: Some good product
+  photo: photourl
+  stock: 1
+  retired: false
+  categories: apparel
+
+shoes:
+  name: Unicorn Flats
+  price: 2999
+  merchant: bob
+  description: Shoes with unicorns on them.
+  photo: uni_flats.png
+  stock: 20
+  retired: false
+  categories: apparel
+
+shirt:
+  name: Unicorn Shirt
+  price: 1999
+  merchant: bob
+  description: Shirt with unicorns on it.
+  photo: uni_cake_tee.png
+  stock: 30
+  retired: false
+  categories: apparel
+
+farts:
+  name: Unicorn Farts
+  price: 599
+  merchant: jane
+  description: Unicorn farts candy.
+  photo: unicorn_farts.png
+  stock: 50
+  retired: false
+  categories: foods
+
+poo:
+  name: Unicorn Poo
+  price: 899
+  merchant: jane
+  description: Unicorn poo cookies.
+  photo: uni_poo.png
+  stock: 20
+  retired: false
+  categories: foods
+
+retired_item:
+  name: Retired Product
+  price: 1899
+  merchant: jane
+  description: Not available
+  photo: default_uni.png
+  stock: 20
+  retired: true
+  categories: foods

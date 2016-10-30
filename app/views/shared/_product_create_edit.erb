@@ -1,0 +1,33 @@
+
+<h2 class="pg-title"> <% "#{@action} a product" %> </h2>
+
+<section>
+
+
+<%= form_for @product, {:url => @action} do |f| %>
+<div class="row">
+  <div class="small-6 medium-10 large-12 column">
+  <%= f.label "Product Image URL" %>
+  <%= f.text_field :photo %>
+
+  <%= f.label "Product Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.label "Price" %>
+  <%= f.number_field :price %>
+
+  <%= f.label "Quantity In Stock" %>
+  <%= f.number_field :stock %>
+
+  <%= f.select(:category_ids, options_for_select(category_options))  %>
+
+  <%= f.submit "Save", class: "button" %>
+  </div>
+</div>
+
+<% end %>
+
+</section>

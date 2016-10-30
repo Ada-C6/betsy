@@ -1,0 +1,49 @@
+
+
+<h1 class="pg-title">
+<%= "#{@merchant.displayname}" %>
+</h1>
+<section>
+
+  <h3 class="pg-title">Current Product List:</h3>
+
+  <% @merchant.products.each do |product| %>
+  <div class="row product-row">
+    <div class="small-2 column">
+      <%= image_tag product.photo, alt: product.name %>
+    </div>
+
+
+    <div class="small-4 column">
+      <h3>
+      <%= link_to product.name, products_show_path(product.id) %>
+      </h3>
+    </div>
+
+    <div class="small-4 column">
+      <% if product.retired == false %>
+        <%= "Product status: Active" %>
+      <% else %>
+        <%= "Product status: Inactive" %>
+      <% end %>
+    </div>
+
+
+    <div class="small-2 column">
+      <% if product.retired == false %>
+        <%= button_to "Inactivate", products_retire_path(product.id), method: :patch, class: "success button" %>
+      <% else %>
+        <%= button_to "Activate", products_retire_path(product.id), method: :patch, class: "success button"%>
+      <% end %>
+      <%= button_to "Edit", products_edit_path(product.id), method: :get, class: "success button" %>
+    </div>
+  </div>
+
+  <% end %>
+
+
+
+      <%= link_to "Add Product", products_new_url, class: "expanded button"%>
+
+
+</section>

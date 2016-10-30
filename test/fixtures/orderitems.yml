@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gooditem:
+  quantity: 1
+  product: goods
+  price: 2999
+  order: goodorder
+  status: pending
+
+orderitem1:
+  quantity: 1
+  product: shoes
+  price: 1999
+  order: testorder1
+  status: pending
+
+orderitem2:
+  quantity: 2
+  product: poo
+  price: 1199
+  order: testorder1
+  status: pending
+
+orderitem4:
+  quantity: 1
+  price: 899
+  product: poo
+  order: testorder2
+  status: pending
+
+pendingitem:
+  quantity: 1
+  price: 899
+  product: poo
+  order: pendingorder
+  status: pending
+
+shippeditem:
+  quantity: 1
+  price: 90
+  product: shoes
+  order: goodorder
+  status: Shipped

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+apparel:
+  name: Apparel
+  products: shoes, shirt, goods
+
+foods:
+  name: Foods
+  products: farts, poo

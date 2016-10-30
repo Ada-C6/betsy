@@ -1,0 +1,36 @@
+<% if @order.status == "pending"%>
+<div class="row">
+  <div class="small-6 large-centered columns">
+    <h4>Order ID: <%= @order.id %></h4>
+    <p>Order Status: <%= @order.status %> </p>
+    <p>Items:</p>
+      <% @orderitems.each do |orderitem| %>
+        <p><%= link_to orderitem.product.name, products_show_path(orderitem.product.id) %> X <%= orderitem.quantity %></p>
+      <% end %>
+    <%= button_to "Manage Orders", orders_index_path, method: :get, class: "secondary button" %>
+  </div>
+</div>
+
+<% else %>
+<div class="row">
+  <div class="small-6 large-centered columns">
+      <h4>Order ID: <%= @order.id %></h4>
+      <p>Customer Name: <%= @order.name %></p>
+      <p>Shipping Address: <%= @order.address %> <%= @order.city %>, <%= @order.state %> <%= @order.zip %></p>
+      <p>Email: <%= @order.email %></p>
+      <p>Credit Card Information: XXXX-XXXX-XXXX-<%= @order.card_num[@order.card_num.length - 4, 4] %></p>
+      <p>Exp: <%= @order.expiry.strftime("%m/%Y") %></p>
+      <p>Items:</p>
+        <% @orderitems.each do |orderitem| %>
+          <p><%= link_to orderitem.product.name, products_show_path(orderitem.product.id) %> X <%= orderitem.quantity %></p>
+        <% end %>
+      <p>Order Status: <%= @order.status %> </p>
+
+      <p>Order Date: <%= @order.placed_at.strftime("%m/%d/%Y %I:%M %p") %> </p>
+      <% if @order.status == "paid" %>
+        <%= button_to "Cancel Order", orders_cancel_path, method: :patch, class: "alert button" %>
+      <% end %>
+    <%= button_to "Manage Orders", orders_index_path, method: :get, class: "secondary button" %>
+  </div>
+</div>
+<% end %>

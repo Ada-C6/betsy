@@ -1,0 +1,25 @@
+
+<div class="row">
+  <div class="column gallery">
+
+
+<h1 class="pg-title">Browse by store</h1>
+
+
+    <% @stores.each do |store| %>
+
+      <div class="product-tile">
+
+        <%if store.photo != "" && store.photo != nil %>
+          <%= image_tag store.photo, alt: store.displayname %>
+        <% else %>
+          <%= image_tag "unicorn_merchant.jpg", alt: store.displayname %>
+        <% end %>
+
+        <p><%= link_to store.displayname, stores_show_path(store.id) %></p>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,61 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+goodorder:
+  name: MyString
+  email: MyString@msn.com
+  card_name: MyString
+  card_num: 0000111100001111
+  expiry: 2017-10-18 14:28:35
+  cvv: 111
+  billing_zip: 11111
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: 11111
+  status: paid
+  placed_at: 2016-10-18 14:28:35
+
+testorder1:
+  name: Bobby Jo Smith
+  email: bobbyjo@comcast.net
+  card_name: Robert Joseph Smith
+  card_num: 9999000099990000
+  expiry: 2017-10-18 14:28:35
+  cvv: 897
+  billing_zip: 98000
+  address: 22 Silver Circle
+  city: Wheaton
+  state: Nebraska
+  zip: 98009
+  status: paid
+  placed_at: 2016-10-18 14:28:35
+
+testorder2:
+  name: Annabel Thomas
+  email: annabel@thomas.net
+  card_name: Annabel Thomas
+  card_num: 9889000099990000
+  expiry: 2017-10-18 14:28:35
+  cvv: 9990
+  billing_zip: 98007
+  address: 127 Valley Creek
+  city: Juneau
+  state: Alaska
+  zip: 87998
+  status: paid
+  placed_at: 2016-10-18 14:28:35
+
+pendingorder:
+  name:
+  email:
+  card_name:
+  card_num:
+  expiry:
+  cvv:
+  billing_zip:
+  address:
+  city:
+  state:
+  zip:
+  status: pending
+  placed_at:

@@ -1,0 +1,40 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
+
+<h1 class="pg-title">Top Picks</h1>
+
+<!-- Wrapper Around Orbit -->
+<div class="orbit" role="region" aria-label="Top Picks" data-orbit>
+  <!-- Previous and Next Buttons -->
+  <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+  <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+
+<!-- Unordered List of photos for carousel. The DateTime.now is a weird hack to get carousel to consistently load on refresh: http://stackoverflow.com/questions/1431512/is-there-a-way-to-force-browsers-to-refresh-download-images. Otherwise, they did not usually load when refreshed with the refresh button (though it worked fine with enter from the nav bar, Shift + refresh button, and links within the site). -->
+  <ul class="orbit-container">
+      <li class="orbit-slide">
+        <%= image_tag "horn_magic_cookie.png?#{DateTime.now}", alt: "Horn Cookie", class: "orbit_img"%>
+        <figcaption class="orbit-caption"><%= link_to "Unicorn Horn Cookie", products_show_path(21) %></figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "uni_pllw.png", alt: "Unicorn Pillow", class: "orbit_img" %>
+        <figcaption class="orbit-caption"><%= link_to "Unicorn Pillow Sham", products_show_path(14) %></figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "uni_puke_mug.png", alt: "Mug", class: "orbit_img" %>
+        <figcaption class="orbit-caption"><%= link_to "Unicorn Fun Mug", products_show_path(3) %></figcaption>
+      </li>
+      <li class="orbit-slide">
+        <%= image_tag "my_unicorn_necklace.png", alt: "Necklace", class: "orbit_img" %>
+        <figcaption class="orbit-caption"><%= link_to "Unicorn Love Necklace", products_show_path(4) %></figcaption>
+      </li>
+</ul>
+<!-- Navigation Buttons for Accessibility -->
+<nav class="orbit-bullets">
+  <button class="is-active" data-slide="0"><span class="show-for-sr">Unicorn Horn Cookie</span><span class="show-for-sr">Current Slide</span></button>
+  <button data-slide="1"><span class="show-for-sr">Unicorn Pillow Sham</span></button>
+  <button data-slide="2"><span class="show-for-sr">Unicorn Mug</span></button>
+  <button data-slide="3"><span class="show-for-sr">Unicorn Necklace</span></button>
+</nav>
+</div>
