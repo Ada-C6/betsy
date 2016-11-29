@@ -1,0 +1,190 @@
+/************************* OVERALL *************************/
+
+body {
+  min-width: 100%;
+  font-size: 14pt;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.basic {
+  margin: 2% 12% 1% 12%;
+}
+
+.basic h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+.basic p {
+  padding: 1%;
+  font-weight: bold;
+}
+
+header {
+  background-color: black;
+  height: 17%;
+  margin-bottom: 2%;
+  padding: 3% 3% 3% 0;
+}
+
+img.logo {
+  margin: auto;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+img.frontpage {
+  float: left;
+  display: inline-block;
+}
+
+/*.top-bar ul {
+  background-color: black;
+}*/
+
+/*.top-bar-left {
+  max-width: 50%;
+}*/
+
+/*.top-bar-left img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  float:center;
+}*/
+
+/*.top-bar-right a {
+  font-size: 1.75rem;
+}*/
+
+#product-navigation {
+  text-align: center;
+}
+
+nav li {
+  background-color: black;
+  display: inline-block;
+  padding-right: 5%;
+}
+
+nav li a {
+  background-color: black;
+  color: white;
+}
+
+h3 {
+  font-size: 2.75rem;
+	font-weight: bold;
+	text-align: center;
+  margin: 2% 0 3% 0;
+}
+
+.column {
+  padding: 1% 1.5% 3% 1.5%;
+}
+
+.quantity {
+	width: 15%;
+}
+
+.headline {
+	font-size: 1.75rem;
+  font-weight: bold;
+	text-align: center;
+}
+
+.headline a {
+	color: black;
+}
+
+.headline a:hover, .headline a:focus {
+  color: #680604;
+}
+
+img.product_photo {
+  display: inline-block;
+  margin: 10% 0;
+  max-height: 9em;
+}
+
+.row ul {
+  list-style: none;
+}
+
+/*.product-detail {
+	max-height: 9em;
+}*/
+
+  /**************************************/
+/**HERO SECTION **/
+ /**************************************/
+/*
+.hero {
+  background-color: gray;
+  padding: 50px 30px;
+  height: 15%;
+}
+
+  /**************************************
+/**FOOTER **/
+ /**************************************/
+
+
+/*#login-logout a {
+  color: white;
+  display: inline-block;
+  float: right;
+  min-width: 20%;
+}*/
+
+
+
+/*.row ul a {
+  color: black;
+}
+
+.row ul a:hover {
+  color: #680604;
+}*/
+
+
+/*.columns {
+  column-count: 3;
+  /*column-gap: 8vw;
+  }*/
+
+
+
+
+/*.card p {
+  float: center;
+}
+
+
+/*.product-info {
+  min-height: 6.5em;
+}*/
+
+/*.product-info ul {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: .25em;
+  font-size: 1rem;
+  text-align: center;
+}*/
+
+/*.product-info ul a {
+  color: black;
+}*/
+
+/*.product-info ul a:hover {
+  color: red;
+}*/
+
+/*.product-info li {
+  float: center;
+}*/

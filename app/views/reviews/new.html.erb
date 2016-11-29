@@ -1,0 +1,17 @@
+<h1>Product Review for <%= "#{@product.name}"%></h1>
+
+<p>Tell us what you think!</p>
+
+<%=form_for @review, method: :post, url: 'create' do |f| %>
+
+<%= f.label :rank%>
+<%= f.select :rank, [['5'],['4'],['3'], ['2'],['1']]%>
+
+<%= f.label :description%>
+<%= f.text_field :description%>
+
+<%= f.submit %>
+
+
+
+<% end %>

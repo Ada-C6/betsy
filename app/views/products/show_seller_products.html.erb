@@ -1,0 +1,24 @@
+<div class="basic">
+  <div class="row small-up-1 medium-up-2 large-up-3">
+
+    <h3>Collections by this Seller:</h3>
+
+    <% @products.each do |product| %>
+
+    <article class="column">
+      <ul class="product-info">
+        <div class="headline">
+
+          <li><%= link_to product.name, show_products_path(product.id) %></li>
+
+          <li><%= "$#{product.price}" %></li>
+
+          <li><%= link_to image_tag(product.photo_url, :class => "product_photo"), show_products_path(product.id) %></li>
+
+        </div>
+      </ul>
+    </article>
+
+    <% end %>
+  </div>
+</div>
