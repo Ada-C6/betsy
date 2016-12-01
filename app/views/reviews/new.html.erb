@@ -1,0 +1,22 @@
+<div class="basic">
+  <h2>Product Review for <%= "#{@product.name}"%></h2>
+
+  <p>Tell us what you think!</p>
+
+  <%=form_for @review, method: :post, url: 'create' do |f| %>
+
+  <%= f.label :rank%>
+  <%= f.select :rank, [['5'],['4'],['3'],['2'],['1']]%>
+
+<%= f.label :title%>
+<%= f.text_field :title%>
+
+<%= f.label :description%>
+<%= f.text_field :description%>
+
+  <%= f.submit %>
+
+  <%=link_to "Cancel", show_products_path(@product.id), class: "button alert" %>
+
+  <% end %>
+</div>
