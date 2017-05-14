@@ -1,0 +1,11 @@
+
+<h1>Account Updated</h1>
+<ul>
+	<li><%=@user.name%></li>
+	<li><%=@user.email%></li>
+</ul>
+<button class="secondary button"><%= link_to "Edit my account", "/users/#{@user.id}/edit" %></button>
+
+
+
+<p class = "flash-notice"><%= flash[:notice] %></p>

@@ -1,0 +1,71 @@
+
+<h1><%= @product.name %></h1>
+<div class="row">
+  <div class="large-4 columns">
+    <!-- product picture: -->
+    <%= image_tag(@product.photo_url, :title => @product.name, :alt => @product.name) %>
+    <div class="hide-for-small panel">
+
+      <h3> sold by: <%= @product.user.name %></h3>
+
+      <h5 class="subheader"> <%= "currently on sale!" if rand(1..5) == 1 %></h5>
+    </div>
+  </div>
+
+
+
+<!-- <h1><%= @product.name %></h1> -->
+  <div class="large-8 columns">
+    <p> Price: <%= number_to_currency(@product.unit_price) %></p>
+    <p><% if @product.quantity == 0 %>
+       <%= "Out of Stock" %>
+       <% else %>
+       <%= @product.quantity %> left in stock.
+       <% end %>
+    </p>
+    <p><%= @product.description %></p>
+    <ul>
+      <button class="secondary button">
+        <%=link_to "Add item to cart", create_cart_product_path(@product), method: :post %>
+      </button>
+      <button class="secondary button">
+      <%= link_to "View my cart", show_cart_product_path, method: :get %>
+    </button>
+    </ul>
+  </div>
+</div>
+
+<!-- Insert reviews here -->
+
+<%= render partial: "products/reviewsform" %>
+
+<% if flash[:notice] %>
+<p class = "flash-notice"><%= flash[:notice] %></p>
+
+<% end %>
+<!-- dispaly all product's reviews here using @reviews.each do  -->
+<% @reviews.each do |r| %>
+  <div class="panel callout radius">
+    <h6>pears grade:
+      <% (r.rating).times do %>
+      <%= "🍐" %>
+      <% end %>
+    </h6>
+    <h6>
+      review contect:
+      <%= r.content %>
+    </h6>
+  </div>
+  <% end %>
+
+
+<!-- ONLY FOR MERCHANTS -->
+<% if @user and @user.id == @product.user_id %>
+	<%= button_to "Edit Item", edit_product_path(@product), method: :get %>
+	<%= button_to "Delete Item", product_path(@product), method: :delete, data: { confirm: "Are you sure?" } %>
+<%end%>
+
+
+
+
+<!-- ONLY FOR MERCHANTS -->

@@ -1,0 +1,56 @@
+
+<!-- !!!!!!!!!!!!!!!!didn't touch this in terms of CSSing it... not sure how.!!!!!!!!!!!!!! -->
+
+<!-- inside page content -->
+<div class="row">
+  <div class="large-12 columns">
+    <!-- <img src="http://placehold.it/500x500&amp;text=Logo"> -->
+    <%= image_tag "heart_hands.jpg" %>
+    <div class="hide-for-small panel">
+      <h3>Besty - Where everything comes in pairs!</h3>
+      <h5 class="subheader"></h5>
+    </div>
+    <a href="#"><div class="panel callout radius"><h6>Take a look at our awesome products...</h6></div></a>
+  </div>
+</div>
+
+<!-- not touching for now.. untill we figure out where we want it..  -->
+<!-- ########### Products ################### -->
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel">
+      <div class="row">
+        <div class="small-block-grid-5">
+        <% @products.each do |p| %>
+          <li>
+            <%= link_to image_tag(p.photo_url, :title => p.name, :alt => p.name), product_path(p), method: :get %>
+            <h5 class="subheader"><%=p.name%></h5>
+            <h6 class="subheader"><%= number_to_currency(p.unit_price)%></h6>
+          </li>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="index-photo">
+======= ########### Products ################### -->
+
+
+<!-- <div>
+  <h4>Show by Merchant</h4>
+  <%#= form_tag show_by_merchant_path, method: :get do %>
+  <%#= select_tag "user_id", options_from_collection_for_select(@users, 'id', 'name') %>
+  <%#= submit_tag "Select" %>
+  <%# end %>
+</div> -->
+
+<!-- <div>
+  <h4>Show by Category</h4>
+  <%#= form_tag show_by_category_path, method: :get do %>
+  <%#= select_tag "category_id", options_from_collection_for_select(@categories, 'id', 'name') %>
+  <%#= submit_tag "Select" %>
+  <%# end %>
+</div> -->

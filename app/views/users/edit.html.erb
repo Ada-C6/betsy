@@ -1,0 +1,12 @@
+
+<%= form_for @user,
+  method: :put,
+  url: users_update_path do |f| %>
+  <%= f.label :name %>
+    <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.submit "Update account details", class: "secondary button"%>
+    <% end %>

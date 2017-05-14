@@ -1,0 +1,15 @@
+product_id,name,unit_price,quantity,description,photo_url,user_id
+1,leggings for women,20,6,High Quality Leggings,leggings_for_women.jpeg,1
+2,leggings for men,20,6,Men's FILA SPORT Running Base Layer Tights,leggings_for_men.jpeg,1
+3,glasses,100,4,Fantastic eye glasses (eyes included),glasses.png,1
+4,Hamburger Slippers,30,2,,Hamburger_Slippers.jpeg,2
+5,Bear Slippers,40,2,"You will love clomping around in these fun grizzly paw slippers. They are warm on your feet and fun to look at. They are great for wearing around the house or as a conversation starter at parties (costume parties, we mean). These slippers are the perfect finishing touch for this year's Halloween costume.
+",Bear_Slippers.gif,3
+6,Shoes,60,4,Grey and white shoes,Shoes.jpeg,3
+7,Pears,5,6,These pears come in pairs,Pears.jpg,2
+8,Mustache,20,2,Mustache for sale,Mustache.png,2
+9,coffee mugs,30,4,dishwasher safe mugs,coffee_mugs.jpg,1
+10,pillow cases,40,2,couple pillowcases,pillow_cases.jpg,1
+11,couple glasses,30,2,couple glasses,couple_glasses.jpg,3
+12,earrings,50,2,earrings,earrings.jpg,3
+13,salt and pepper,30,3,salt and pepper shakers,salt_and_pepper.jpg,2

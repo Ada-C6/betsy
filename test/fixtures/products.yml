@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+couple_cases:
+  name: Couple Cell phone case
+  unit_price: 1
+  description: cute cases that come in twos
+  photo_url: 
+  quantity: 10
+  categories: electronics
+  user: :current_user
+
+rando:
+  name: Rando Thing
+  unit_price: 1
+  description: this is a random thing
+  photo_url: MyString
+  categories: miscellaneous
+  user: :rando_guy
+
+cookies:
+  name: Chocolate Chip cookies
+  unit_price: 1
+  description: yum
+  quantity: 10
+  photo_url: 
+  categories: food
+  user: :current_user

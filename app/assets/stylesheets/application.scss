@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+// @import url('foundation.css');
+
+.top-bar .name h1#logo a {
+  font-family: 'Lobster', cursive;
+  font-size: 2em;
+}
+
+
+//
+// @import "bootstrap";
+// @navbarBackground: $red;
+// // This doesn't work. Navbar will still be same color.
+// // But if you do write styles for navbar again
+// .navbar-inner { background: $navbarBackground; }
+// // Now, Navbar will have a red background
+//
+// @import "bootstrap";
+// $blue: $white;
+// After this line, whenever your reference $blue, it'll generate white color.

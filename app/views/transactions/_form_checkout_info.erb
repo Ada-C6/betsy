@@ -1,0 +1,20 @@
+
+<%= form_for @transaction, url: create_transaction_path do |f| %>
+
+  <%= f.label :client_name %>
+  <%= f.text_field :client_name %>
+
+  <%= f.label :client_email %>
+  <%= f.text_field :client_email %>
+
+  <%= f.label :client_address %>
+  <%= f.text_field :client_address %>
+
+  <%= f.label :client_cc_num %>
+  <%= f.text_field :client_cc_num %>
+
+  <%= f.label :client_cc_exp %>
+  <%= f.text_field :client_cc_exp %>
+
+  <%= f.submit class: "secondary button" %>
+<% end %>

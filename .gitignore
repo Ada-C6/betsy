@@ -7,9 +7,21 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
+
+
+##### ADDED ITEM ########
+# Hide the .env. It's full of secrets!
+/.env
+#prevent test coverage from being uploaded on github
+coverage
+##### ADDED ITEM ########
 
 .DS_Store

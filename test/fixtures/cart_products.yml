@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test_cart_item:
+  product_quantity: 1
+  cart: :one
+  product: :couple_cases
+
+two:
+  product_quantity: 1
+
+two_of_them:
+  product_quantity: 2
+  cart: :one
+  product: :cookies

@@ -1,0 +1,29 @@
+
+<table>
+<tr>
+    <th>Order ID</th>
+    <th>Customer Information for Order</th>
+    <th>Shipment Status</th>
+</tr>
+<% @mytps.length.times do |i| %>
+<% @alltransactions = TransactionProduct.where(order_id: @mytps[i].order_id) %>
+<% if @mytps[i].order_id == @mytps[i-1].order_id %>
+  <% next %>
+<% else %>
+  <tr>
+    <td> <%= @mytps[i].order_id %></td>
+    <td><button class="secondary button"><%=link_to( 'Link to customer Information', transactions_show_path(@mytps[i].order_id)) %></button></td>
+    <% @shipped = 0 %>
+    <% @not_shipped = 0 %>
+    <% @alltransactions.each do |i| %>
+      <% if i.mark_shipped == true %>
+        <% @shipped += 1 %>
+      <% elsif i.mark_shipped == false %>
+        <% @not_shipped += 1 %>
+      <% end %>
+    <% end %>
+    <td> <%= @shipped %> Shipped, <%= @not_shipped %> Not shipped</td>
+  </tr>
+  <% end %>
+<% end %>
+</table>

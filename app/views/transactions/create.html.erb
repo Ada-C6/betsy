@@ -1,0 +1,15 @@
+
+<h2>Thank you for your purchase!</h2>
+
+<p>Name: <%= @transaction.client_name %></p>
+<p>Email: <%= @transaction.client_email %></p>
+<p>Address: <%= @transaction.client_address %></p>
+<p>Last four digits of credit card: ...<%= @transaction.client_cc_num %></p>
+<p>Credit card expiration: <%= @transaction.client_cc_exp %></p>
+
+<h4>Here are your purchased items:</h4>
+
+<% @cart.each do |i| %>
+<% p = Product.find(i.product_id) %>
+  <p><%= p.name %></p>
+<% end %>

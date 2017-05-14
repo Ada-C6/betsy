@@ -1,0 +1,5 @@
+<h1>My Account</h1>
+    <button class="secondary button"><%= link_to "Edit my account", "/users/#{@user.id}/edit" %></button>
+    <button class="secondary button"><%= link_to "Add a product", "/products/new"%></button>
+    <button class="secondary button"><%= link_to "View my products", show_by_merchant_path(@user.id) %></button>
+    <button class="secondary button"><%= link_to "View my orders", transactions_show_all_path %></button>
